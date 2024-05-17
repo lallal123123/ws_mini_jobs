@@ -19,4 +19,6 @@ public interface ICompanyDao3854 {
     void deleteCompany(Long com_no);
 
     Company findByComIdAndComPw(@Param("com_id") String com_id, @Param("com_pw") String com_pw);
+    
+    int countByComId(@Param("com_id") String com_id);
 }

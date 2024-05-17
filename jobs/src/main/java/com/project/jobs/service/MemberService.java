@@ -35,4 +35,5 @@ public class MemberService {
     public Member login(String mem_id, String mem_pw) {
         return memberDao.findByMemIdAndMemPw(mem_id, mem_pw);
     }
+    
 }

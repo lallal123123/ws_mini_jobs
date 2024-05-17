@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,8 +21,13 @@
                 </div>
                 <div class="float-end">
                     <c:choose>
-                        <c:when test="${not empty welcomeMessage}">
-                            <span class="btn btn-jobs">${welcomeMessage}</span>
+                        <c:when test="${not empty sessionScope.loggedInMember}">
+                            <span class="btn btn-jobs">환영합니다, ${sessionScope.loggedInMember.mem_id}님!</span>
+                            <a href="/members/logout" class="btn btn-jobs">로그아웃</a>
+                        </c:when>
+                        <c:when test="${not empty sessionScope.loggedInCompany}">
+                            <span class="btn btn-jobs">환영합니다, ${sessionScope.loggedInCompany.com_id}님!</span>
+                            <a href="/companies/logout" class="btn btn-jobs">로그아웃</a>
                         </c:when>
                         <c:otherwise>
                             <a href="/members/loginForm" class="btn btn-jobs">로그인</a>
@@ -41,10 +46,6 @@
         </ul>
     </div>
 </header>
-
-<div class="container">
-    <h1>${welcomeMessage}</h1>
-</div>
-
 </body>
 </html>
+

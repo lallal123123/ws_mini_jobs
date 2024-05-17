@@ -21,4 +21,8 @@ public interface IMemberDao3854 {
 	void updateMember(Member member);
 
 	void deleteMember(Long mem_no);
+	
+	int countByMemId(@Param("mem_id") String mem_id);
+	
+	
 }
