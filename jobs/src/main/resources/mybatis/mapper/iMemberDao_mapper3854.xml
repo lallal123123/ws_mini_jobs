@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.project.jobs.dao.IMemberDao3854">
-
-    <resultMap id="memberResultMap" type="com.project.jobs.dto.Member">
-        <id property="mem_no" column="mem_no"/>
-        <result property="mem_id" column="mem_id"/>
-        <result property="mem_pw" column="mem_pw"/>
-        <result property="mem_name" column="mem_name"/>
-        <result property="mem_birth" column="mem_birth"/>
-        <result property="mem_tel" column="mem_tel"/>
-        <result property="mem_email" column="mem_email"/>
-        <result property="mem_gender" column="mem_gender"/>
-        <result property="make_date" column="make_date"/>
-    </resultMap>
-
-    <select id="getAllList" resultMap="memberResultMap">
+    <select id="getAllMembers" resultType="com.project.jobs.dto.Member">
         SELECT * FROM members
     </select>
 
-    <select id="getListById" parameterType="long" resultMap="memberResultMap">
+    <select id="getMemberById" parameterType="Long" resultType="com.project.jobs.dto.Member">
         SELECT * FROM members WHERE mem_no = #{mem_no}
     </select>
 
@@ -29,19 +19,12 @@
 
     <update id="updateMember" parameterType="com.project.jobs.dto.Member">
         UPDATE members
-        SET mem_id = #{mem_id},
-            mem_pw = #{mem_pw},
-            mem_name = #{mem_name},
-            mem_birth = #{mem_birth},
-            mem_tel = #{mem_tel},
-            mem_email = #{mem_email},
-            mem_gender = #{mem_gender},
-            make_date = #{make_date}
+        SET mem_id = #{mem_id}, mem_pw = #{mem_pw}, mem_name = #{mem_name}, mem_birth = #{mem_birth},
+            mem_tel = #{mem_tel}, mem_email = #{mem_email}, mem_gender = #{mem_gender}, make_date = #{make_date}
         WHERE mem_no = #{mem_no}
     </update>
 
-    <delete id="deleteMember" parameterType="long">
+    <delete id="deleteMember" parameterType="Long">
         DELETE FROM members WHERE mem_no = #{mem_no}
     </delete>
-
 </mapper>

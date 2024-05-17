@@ -23,7 +23,7 @@
 		</div>
 		<div class="float-end">
 			<a href="#" class="btn btn-jobs">로그인</a>
-			<a href="/member/signup" class="btn btn-jobs">회원가입</a>
+			<a href="/member/signup.jsp" class="btn btn-jobs">회원가입</a>
 		</div>
 	</div>
 	</div>
