@@ -13,6 +13,7 @@ public class Com_community {
 	
 	private Long com_community_no;
 	private Long com_no;
+	private String com_id;
 	private String title; 
 	private String content; 
 	private Date reg_date;
