@@ -27,5 +27,6 @@
         </c:if>
     </div>
 </form:form>
+<a href="/members/index">메인으로 돌아가기</a>
 </body>
 </html>
