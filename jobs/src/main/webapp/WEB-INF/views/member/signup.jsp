@@ -8,6 +8,7 @@
     <title>회원가입</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -27,6 +28,8 @@
                 <div class="form-group">
                     <label for="mem_id">아이디</label>
                     <form:input path="mem_id" id="mem_id" cssClass="form-control"/>
+                    <button type="button" id="checkMemIdBtn" class="btn btn-secondary">중복 체크</button>
+                    <span id="idCheckResultMember"></span>
                 </div>
                 <div class="form-group">
                     <label for="mem_pw">비밀번호</label>
@@ -63,6 +66,8 @@
                 <div class="form-group">
                     <label for="com_id">아이디</label>
                     <form:input path="com_id" id="com_id" cssClass="form-control"/>
+                    <button type="button" id="checkComIdBtn" class="btn btn-secondary">중복 체크</button>
+                    <span id="idCheckResultCompany"></span>
                 </div>
                 <div class="form-group">
                     <label for="com_pw">비밀번호</label>
@@ -109,8 +114,43 @@
     <a href="${pageContext.request.contextPath}/members/index">메인으로 돌아가기</a>
 </div>
 <!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#checkMemIdBtn').click(function() {
+        var mem_id = $('#mem_id').val();
+        $.ajax({
+            url: '${pageContext.request.contextPath}/members/checkId',
+            type: 'GET',
+            data: { id: mem_id },
+            success: function(response) {
+                if(response) {
+                    $('#idCheckResultMember').text('아이디가 이미 존재합니다.').css('color', 'red');
+                } else {
+                    $('#idCheckResultMember').text('사용 가능한 아이디입니다.').css('color', 'green');
+                }
+            }
+        });
+    });
+    
+    $('#checkComIdBtn').click(function() {
+        var com_id = $('#com_id').val();
+        $.ajax({
+            url: '${pageContext.request.contextPath}/members/checkId',
+            type: 'GET',
+            data: { id: com_id },
+            success: function(response) {
+                if(response) {
+                    $('#idCheckResultCompany').text('아이디가 이미 존재합니다.').css('color', 'red');
+                } else {
+                    $('#idCheckResultCompany').text('사용 가능한 아이디입니다.').css('color', 'green');
+                }
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
+

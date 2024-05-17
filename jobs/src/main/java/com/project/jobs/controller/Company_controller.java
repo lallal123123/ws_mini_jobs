@@ -40,23 +40,21 @@ public class Company_controller {
 	@PostMapping("/insertCompany")
 	public String insertCompany(@ModelAttribute Company company) {
 		companyService.insertCompany(company);
-		return "member/loginForm";
+		return "redirect:/members/loginForm";
 	}
 
-/*
-    @PostMapping("/login")
+	@PostMapping("/login")
     public String login(@ModelAttribute Company company, Model model, HttpSession session) {
-        Company loginCompany = companyService.login(company.getCom_id(), company.getCom_pw());
+        Company loginCompany = companyService.findByComIdAndComPw(company.getCom_id(), company.getCom_pw());
         if (loginCompany != null) {
             session.setAttribute("loggedInCompany", loginCompany);
             return "redirect:/members/index";
         } else {
             model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
-            return "member/loginForm";
+            return "redirect:/members/loginForm";
         }
     }
 
-*/
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
