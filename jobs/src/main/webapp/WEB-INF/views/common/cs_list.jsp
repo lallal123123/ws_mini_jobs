@@ -19,7 +19,7 @@
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
               <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
+                <a href="../cs_list_99" class="nav-link active" aria-current="page">
                   문의·신고
                 </a>
               </li>
@@ -45,11 +45,19 @@
 			    </tr>
 			  </thead>
 			  <tbody class="table-group-divider">
+			  
 			  <c:forEach var="list" items="${list }" varStatus="status">
 			  	<tr>
 			      <th scope="row">${status.count }</th>
 			      <td>${list.category }</td>
-			      <td><a href="cs_detail_99?cs_no=${list.cs_no }">${list.title }</a></td>
+			      <c:choose>
+			      	<c:when test="${list.ch_private != '1' && list.mem_no != '1'}">
+			      		<td>비밀글입니다</td>
+			      	</c:when>
+			      	<c:otherwise>
+			      		<td><a href="cs_detail_99?cs_no=${list.cs_no }">${list.title }</a></td>
+			      	</c:otherwise>
+			      </c:choose>
 			      <td>${list.reg_date }</td>
 			    </tr>
 			  </c:forEach>

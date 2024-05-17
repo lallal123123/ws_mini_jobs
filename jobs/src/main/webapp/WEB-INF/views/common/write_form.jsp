@@ -19,7 +19,7 @@
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
               <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
+                <a href="../cs_list_99" class="nav-link active" aria-current="page">
                   문의·신고
                 </a>
               </li>
