@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.project.jobs.dto.ComInfoJoinRecruit;
 import com.project.jobs.dto.Recruit;
 import com.project.jobs.dto.Region;
 import com.project.jobs.service.CompanyService5963;
@@ -43,12 +44,15 @@ public class Controller5963 {
 	}
 	
 	//com_no로 공고 리스트
-	@RequestMapping("/getComRecruitAllList")
-	public String getComRecruitAllList(int com_no, Model model) {
+	@RequestMapping("/getComInfoJoinRecruitAllListt")
+	public String getComInfoJoinRecruitAllList(int com_no, Model model) {
 		System.out.println("공고 번호로 리스트 출력 접근");
 		System.out.println("com_no: " + com_no);
-		List<Recruit> comRecruitAllList = companyService.getComRecruitAllList(com_no);
-		model.addAttribute("list", comRecruitAllList);
+		com_no = 1;
+		//List<Recruit> comRecruitAllList = companyService.getComRecruitAllList(com_no);
+		//model.addAttribute("list", comRecruitAllList);
+		List<ComInfoJoinRecruit> comInfoJoinRecruitAllList = companyService.comInfoJoinRecruitList(com_no);
+		model.addAttribute("comInfoJoinRecruitAllList", comInfoJoinRecruitAllList);
 		
 		return "/company/mypage/recruit_list";
 	}

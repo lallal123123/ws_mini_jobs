@@ -58,13 +58,13 @@
     
         <div class="border p-5 rounded">
         
-        	<c:forEach var="recruit" items="${list }">
+        	<c:forEach var="comInfoJoinRecruit" items="${comInfoJoinRecruitAllList }">
 	        <div class="border p-3">
 	        	<div class="row">
 	        		<div class="col-md-4">
-	        			<div>공고번호 :${recruit.recruit_no } </div>
-	        			<div>회사명 : </div>
-	        			<div>공고제목</div>
+	        			<div>공고번호 :${comInfoJoinRecruit.recruit_no } </div>
+	        			<div>회사명 : ${comInfoJoinRecruit.com_name }</div>
+	        			<div>공고제목 : ${comInfoJoinRecruit.title }</div>
 	        		</div>
 	        		<div class="col-md-4">
 	        				정규직
@@ -72,7 +72,7 @@
 	        				회사내규에 따름
 	        				주소
 	        				마감일
-	        				현재 지원자 <a href="#">5</a>
+	        				현재 지원자 <a href="#"></a>
 	        		</div>
 	        		<div class="col-md-4">
 	        			<a class="btn btn-secondary" href="">공고 마감하기</a>

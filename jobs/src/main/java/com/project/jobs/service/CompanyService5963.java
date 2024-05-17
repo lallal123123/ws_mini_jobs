@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.jobs.dao.ICompanyDao5963;
+import com.project.jobs.dto.ComInfoJoinRecruit;
 import com.project.jobs.dto.Recruit;
 import com.project.jobs.dto.Region;
 
@@ -35,4 +36,10 @@ public class CompanyService5963 {
 		
 		return list;
 	}
+	
+	// 기업 번호로 공고와 기업 정보 조인 리스트
+	public List<ComInfoJoinRecruit> comInfoJoinRecruitList(int com_no){
+		List<ComInfoJoinRecruit> list = companyDao5963.comInfoJoinRecruitList(com_no);
+		return list;
+	};
 }
