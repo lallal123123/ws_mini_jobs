@@ -92,6 +92,11 @@ public class Member {
 
 	public Long getMem_no() {
 		return mem_no;
+	}
+
+	public String get_mem_pw() {
+		// TODO Auto-generated method stub
+		return null;
 	} 
 	
 	

@@ -25,6 +25,10 @@
                             <span class="btn btn-jobs">환영합니다, ${sessionScope.loggedInMember.mem_id}님!</span>
                             <a href="/members/logout" class="btn btn-jobs">로그아웃</a>
                         </c:when>
+                        <c:when test="${not empty sessionScope.loggedInCompany}">
+                            <span class="btn btn-jobs">환영합니다, ${sessionScope.loggedInCompany.com_id}님!</span>
+                            <a href="/companies/logout" class="btn btn-jobs">로그아웃</a>
+                        </c:when>
                         <c:otherwise>
                             <a href="/members/loginForm" class="btn btn-jobs">로그인</a>
                             <a href="/members/signup" class="btn btn-jobs">회원가입</a>
@@ -44,3 +48,4 @@
 </header>
 </body>
 </html>
+
