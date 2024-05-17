@@ -67,17 +67,17 @@ public class Member_controller {
 		return "member/loginForm";
 	}
 
-    @PostMapping("/login")
-    public String login(@ModelAttribute Member member, Model model, HttpSession session) {
-        Member loginMember = memberService.login(member.getMem_id(), member.getMem_pw());
-        if (loginMember != null) {
-            session.setAttribute("loggedInMember", loginMember);
-            return "redirect:/members/index";
-        } else {
-            model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
-            return "member/loginForm";
-        }
-    }
+	 @PostMapping("/login")
+	    public String login(@ModelAttribute Member member, Model model, HttpSession session) {
+	        Member loginMember = memberService.login(member.getMem_id(), member.getMem_pw());
+	        if (loginMember != null) {
+	            session.setAttribute("loggedInMember", loginMember);
+	            return "redirect:/members/index";
+	        } else {
+	            model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
+	            return "member/loginForm";
+	        }
+	    }
 
 	
     @GetMapping("/logout")
