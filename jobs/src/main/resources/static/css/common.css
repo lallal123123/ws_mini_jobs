@@ -4,13 +4,9 @@
     width:150px;
     height:auto;
 }
-header{
-    /*background-color:#ccc;*/
+.bg-jobs{
+	background-color:#1c459a;
 }
-footer{
-    background-color:#ccc;
-}
-
 .btn-jobs {
     --bs-btn-color: #fff;
     --bs-btn-bg: #1c459a;
@@ -38,4 +34,22 @@ footer{
 }
 .search-box{
 	width:250px;
+}
+
+
+.btn-jobs-community {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #51e554;
+    --bs-btn-border-color: #51e554;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #6bf66e;
+    --bs-btn-hover-border-color: #6bf66e;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #6bf66e;
+    --bs-btn-active-border-color: #6bf66e;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #51e554;
+    --bs-btn-disabled-border-color: #51e554;
 }
