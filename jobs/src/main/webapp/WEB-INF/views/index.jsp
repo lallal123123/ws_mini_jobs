@@ -9,6 +9,12 @@
 <link href="/css/common.css" rel="stylesheet">
 </head>
 <body>
+<a href="community/"> 이준형</a>
+<a href="member/index">김경민</a>
+<a href="common/index">배서원</a>
+<a href="">김지선</a>
+<a href="index3854">추창민</a>
+
 <jsp:include page="header.jsp"></jsp:include>
 <!-- 작업공간 영역 -->
 <div class="container">
