@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.project.jobs.dto.Recruit;
 import com.project.jobs.dto.Region;
 import com.project.jobs.service.CompanyService;
+import com.project.jobs.service.CompanyService5963;
 
 
 
@@ -18,7 +19,7 @@ import com.project.jobs.service.CompanyService;
 public class Controller5963 {
 
 	@Autowired
-	CompanyService companyService;
+	CompanyService5963 companyService;
 	
 	//공고 등록 폼 이동
 	@RequestMapping("/recruit_write_form")
