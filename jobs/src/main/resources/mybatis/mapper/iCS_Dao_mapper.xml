@@ -3,6 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.jobs.dao.ICS_Dao_won">
+	<!-- 고객센터 문의 신고 -->
 	<select id="getList_99">
 		SELECT * FROM cs_question
 	</select>
@@ -19,4 +20,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="modifyDao_99">
 		UPDATE cs_question SET title = #{title}, content = #{content}, category = #{category}, ch_private = #{ch_private} WHERE cs_no = #{cs_no}
 	</update>
+	
 </mapper>

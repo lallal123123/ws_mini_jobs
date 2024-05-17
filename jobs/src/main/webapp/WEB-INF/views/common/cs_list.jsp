@@ -51,7 +51,7 @@
 			      <th scope="row">${status.count }</th>
 			      <td>${list.category }</td>
 			      <c:choose>
-			      	<c:when test="${list.ch_private != '1' && list.mem_no != '1'}">
+			      	<c:when test="${list.ch_private != '1' && list.mem_no != ${mem_no}}">
 			      		<td>비밀글입니다</td>
 			      	</c:when>
 			      	<c:otherwise>
