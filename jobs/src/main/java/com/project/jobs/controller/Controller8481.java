@@ -4,12 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+
 public class Controller8481 {
 
 	@RequestMapping("/member_mypage_resume_list")
-	public String site_resume() {
+	public void site_resume() {
 		
-		return"";
+		//return"";
 	}
 	
 	
