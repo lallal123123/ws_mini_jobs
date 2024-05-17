@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,29 +58,38 @@
     
         <div class="border p-5 rounded">
         
-        	<form>
-	        	<div class="mb-5">
-			  		<label for="" class="form-label">제목</label>
-			  		<input type="text" class="form-control" name="title" id="title" placeholder="제목">
+        	<form action="/company/mypage/registRecruit" method="post">
+        		<input type="text" name="com_no" value="1">
+        		<div class="mb-3">
+			  		<label for="" class="form-label">공고제목</label>
+			  		<input type="text" class="form-control" name="title" id="title" placeholder="공고제목">
+				</div>
+	        	<div class="mb-3">
+			  		<label for="" class="form-label">공고 마감일</label>
+			  		<input type="date" class="form-control" name="deadline_date" id="deadline_date" placeholder="ex)2024-00-00">
+				</div>
+				<div class="mb-5">
+			  		<label for="" class="form-label">직급</label>
+			  		<input type="text" class="form-control" name="rank" id="rank" placeholder="직급">
 				</div>
 				<h4 class="mt-2 fs-5">지원자격</h4>
 				<div class="mb-3">
 			  		<label for="" class="form-label">경력</label>
-			  		<input type="text" class="form-control" name="title" id="title" placeholder="경력">
+			  		<input type="text" class="form-control" name="career" id="career" placeholder="경력">
 				</div>
 				<div class="mb-3">
 			  		<label for="" class="form-label">학력</label>
-			  		<input type="text" class="form-control" name="title" id="title" placeholder="학력">
+			  		<input type="text" class="form-control" name="education " id="education " placeholder="학력">
 				</div>
 				<div class="mb-5">
 			  		<label for="" class="form-label">스킬</label>
-			  		<input type="text" class="form-control" name="title" id="title" placeholder="스킬">
+			  		<input type="text" class="form-control" name="skill " id="skill " placeholder="스킬">
 				</div>
 				
 				<h4 class="mt-2 fs-5">근무조건</h4>
 				<div class="mb-3">
-			  		<label for="" class="form-label">근무형태</label>
-			  		<select class="form-select" name="title" id="title">
+			  		<label for="" class="form-label">고용형태</label>
+			  		<select class="form-select" name="field" id="field">
 				  		<option value="정규직">정규직</option>
 						<option value="계약직">계약직</option>
 						<option value="인턴">인턴</option>
@@ -94,54 +104,45 @@
 				</div>
 				<div class="mb-3">
 			  		<label for="" class="form-label">급여</label>
-			  		<input type="text" class="form-control" name="title" id="title" placeholder="급여">
+			  		<input type="number" class="form-control" name="pay" id="pay" placeholder="급여">
 				</div>
 				<div class="mb-3">
 			  		<label for="" class="form-label">지역</label>
-			  		<select class="form-select" name="title" id="title">
-				  		<option value="서울">서울</option>
-						<option value="경기">경기</option>
-						<option value="인천">인천</option>
-						<option value="대전">대전</option>
-						<option value="세종">세종</option>
-						<option value="충남">충남</option>
-						<option value="충북">충북</option>
-						<option value="광주">광주</option>
-						<option value="전남">전남</option>
-						<option value="전북">전북</option>
-						<option value="대구">대구</option>
-						<option value="경북">경북</option>
-						<option value="부산">부산</option>
-						<option value="울산">울산</option>
-						<option value="경남">경남</option>
-						<option value="강원">강원</option>
-						<option value="제주">제주</option>
-						<option value="전국">전국</option>
+			  		
+			  		<select class="form-select" name="location" id="location">
+				  		<c:forEach var="region" items="${regionList}">
+				  			<option value="${region.region_name}">${region.region_name}</option>
+				  		</c:forEach>
 			  		</select>
+			  		
 				</div>
 				<div class="mb-3">
 			  		<label for="" class="form-label">시간</label>
-			  		<input type="text" class="form-control" name="title" id="title" placeholder="시간">
+			  		<input type="text" class="form-control" name="working_time" id="working_time" placeholder="시간">
 				</div>
 				<div class="mb-5">
 			  		<label for="" class="form-label">모집인원</label>
-			  		<input type="number" class="form-control" name="title" id="title" placeholder="모집인원">
+			  		<input type="number" class="form-control" name="p_number" id="p_number" placeholder="모집인원">
 				</div>
 				
 				<h4 class="mt-2 fs-5">상세요건</h4>
 				<div class="mb-3">
 			  		<label for="" class="form-label">자격요건</label>
-			  		<textarea class="form-control" name="title" id="title" placeholder="자격요건를 자세히 적어주세요"></textarea>
+			  		<textarea class="form-control" name="qualification" id="qualification" placeholder="자격요건를 자세히 적어주세요"></textarea>
 				</div>
 				<div class="mb-3">
 			  		<label for="" class="form-label">전형절차</label>
-			  		<textarea class="form-control" name="title" id="title" placeholder="전형절차를 자세히 적어주세요"></textarea>
+			  		<textarea class="form-control" name="seprocedure" id="seprocedure" placeholder="전형절차를 자세히 적어주세요"></textarea>
+				</div>
+				<div class="mb-3">
+			  		<label for="" class="form-label">복지</label>
+			  		<textarea class="form-control" name="welfare" id="welfare" placeholder="복지내용을 자세히 적어주세요"></textarea>
 				</div>
 				<div class="mb-3">
 			  		<label for="" class="form-label">유의사항</label>
-			  		<textarea class="form-control" name="title" id="title" placeholder="유의사항을 자세히 적어주세요"></textarea>
+			  		<textarea class="form-control" name="notice" id="notice" placeholder="유의사항을 자세히 적어주세요"></textarea>
 				</div>
-				<input type="button" class="btn btn-jobs w-100"  value="저장하기">
+				<input type="submit" class="btn btn-jobs w-100"  value="저장하기">
         
         	</form>
         </div>

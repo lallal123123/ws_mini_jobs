@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.jobs.dao.ICompanyDao5963">
+
+<select id="getRegion" resultType="com.project.jobs.dto.Region">
+  SELECT * FROM region
+</select>
+
+<insert id="registRecruit" parameterType="com.project.jobs.dto.Recruit">
+	INSERT INTO recruit VALUES(0, #{recruit.com_no}, #{recruit.career}, #{recruit.education}, #{recruit.skill}, #{recruit.field},#{recruit.pay},#{recruit.location},#{recruit.working_time},#{recruit.rank}, #{recruit.title}, null, #{recruit.qualification},#{recruit.welfare},#{recruit.seprocedure},#{recruit.notice}, NOW(), #{recruit.deadline_date}, #{recruit.p_number})
+</insert>
+
+<select id="getComRecruitAllList" resultType="com.project.jobs.dto.Recruit">
+	SELECT * from recruit WHERE com_no= #{param};
+</select>
+</mapper>
