@@ -68,7 +68,7 @@
     					</div>
     					<div class="col-md-4 mb-3">
         					<label for="" class="form-label">취득일자</label>
-        					<input type="text" class="form-control" name="get_date" placeholder="취득일">
+        					<input type="date" class="form-control" name="get_date" placeholder="취득일">
     					</div>
 					</div>
 					<div><Strong> 경력사항</Strong> </div><br>
@@ -86,12 +86,12 @@
 					<div class="row">
     					<div class="col-md-6 mb-3">
         					<label for="" class="form-label">입사일</label>
-        					<input type="text" class="form-control" name="car_join_date" placeholder="0000-00-00">
+        					<input type="date" class="form-control" name="car_join_date" placeholder="0000-00-00">
     					</div>
     					
     					<div class="col-md-6 mb-3">
         					<label for="" class="form-label">퇴사일</label>
-        					<input type="text" class="form-control" name="quit_date" placeholder="0000-00-00">
+        					<input type="date" class="form-control" name="quit_date" placeholder="0000-00-00">
     					</div>
 					</div>
 					<div><strong>학력사항</strong></div><br>
@@ -112,11 +112,11 @@
 						<div class="row">
     						<div class="col-md-4 mb-3">
         						<label for="" class="form-label">입학일 </label>
-        						<input type="text" class="form-control" name="edu_join_date" placeholder="0000-00-00">
+        						<input type="date" class="form-control" name="edu_join_date" placeholder="0000-00-00">
     						</div>
     						<div class="col-md-4 mb-3">
         						<label for="" class="form-label">졸업일</label>
-        						<input type="text" class="form-control" name="graduation_date" placeholder="0000-00-00">
+        						<input type="date" class="form-control" name="graduation_date" placeholder="0000-00-00">
     						</div>
     						<div class="col-md-4 mb-3">
                  				<label for="" class="form-label">졸업여부</label>
@@ -158,7 +158,7 @@
 					
 					<div class="mb-3">
                  		<label for="" class="form-label">성장 과정</label>
-                 		<textarea class="form-control" name="Growth"></textarea>
+                 		<textarea class="form-control" name="growth"></textarea>
             		</div>
             		<input type="submit" class="btn btn-jobs w-100"  value="이력서 저장하기">
 
