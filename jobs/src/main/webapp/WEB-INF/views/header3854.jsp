@@ -22,8 +22,8 @@
 		  <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
 		</div>
 		<div class="float-end">
-			<a href="#" class="btn btn-jobs">로그인</a>
-			<a href="members/signup" class="btn btn-jobs">회원가입</a>
+			<a href="/members/loginForm" class="btn btn-jobs">로그인</a>
+			<a href="/members/signup" class="btn btn-jobs">회원가입</a>
 		</div>
 	</div>
 	</div>
