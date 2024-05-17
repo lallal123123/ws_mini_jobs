@@ -16,7 +16,7 @@ public class ChangMin_Controller {
     @Autowired
     private MemberService memberService;
     
-    @GetMapping("/")
+    @GetMapping("/index3854")
     public String index() {
     	return "index3854";
     }
