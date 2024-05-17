@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1> 커뮤니티 인덱스</h1>
 </body>
 </html>
