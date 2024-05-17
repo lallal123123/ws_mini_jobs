@@ -5,26 +5,26 @@
 
 <mapper namespace="com.project.jobs.dao.IMemberDao3854">
     <select id="getAllMembers" resultType="com.project.jobs.dto.Member">
-        SELECT * FROM members
+        SELECT * FROM member
     </select>
 
     <select id="getMemberById" parameterType="Long" resultType="com.project.jobs.dto.Member">
-        SELECT * FROM members WHERE mem_no = #{mem_no}
+        SELECT * FROM member WHERE mem_no = #{mem_no}
     </select>
 
     <insert id="insertMember" parameterType="com.project.jobs.dto.Member">
-        INSERT INTO members (mem_id, mem_pw, mem_name, mem_birth, mem_tel, mem_email, mem_gender, make_date)
+        INSERT INTO member (mem_id, mem_pw, mem_name, mem_birth, mem_tel, mem_email, mem_gender, make_date)
         VALUES (#{mem_id}, #{mem_pw}, #{mem_name}, #{mem_birth}, #{mem_tel}, #{mem_email}, #{mem_gender}, #{make_date})
     </insert>
 
     <update id="updateMember" parameterType="com.project.jobs.dto.Member">
-        UPDATE members
+        UPDATE member
         SET mem_id = #{mem_id}, mem_pw = #{mem_pw}, mem_name = #{mem_name}, mem_birth = #{mem_birth},
             mem_tel = #{mem_tel}, mem_email = #{mem_email}, mem_gender = #{mem_gender}, make_date = #{make_date}
         WHERE mem_no = #{mem_no}
     </update>
 
     <delete id="deleteMember" parameterType="Long">
-        DELETE FROM members WHERE mem_no = #{mem_no}
+        DELETE FROM member WHERE mem_no = #{mem_no}
     </delete>
 </mapper>
