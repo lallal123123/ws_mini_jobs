@@ -2,9 +2,20 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.jobs.dao.IMember_resume">
-<select id="choosejoblist" >
-	select * from duty
-</select>
+<mapper namespace="com.project.jobs.dao.IMember_resume8481">
+
+<insert id="site_resume_write">
+	INSERT INTO site_resume (s_resume_no, mem_no, hope_job, title, site_res_name, img_url, addr, part, military, etc, motive, personality, aspiration, Growth) 
+	VALUES (null, null, #{site_res_dto.hope_job}, #{site_res_dto.title}, #{site_res_dto.site_res_name}, #{site_res_dto.img_url}, #{site_res_dto.addr}, #{site_res_dto.part}, #{site_res_dto.military}, #{site_res_dto.etc}, #{site_res_dto.motive}, #{site_res_dto.personality}, #{site_res_dto.aspiration}, #{site_res_dto.Growth})
+</insert>
+<insert id="license_write">
+	INSERT INTO license (license_no, s_resume_no, license_name, agency, GET_date ) VALUES (null, null, #{lic_dto.license_name}, #{lic_dto.agency}, #{lic_dto.get_date})
+</insert>
+<insert id="career_write">
+	INSERT INTO career (career_no, s_resume_no, company, car_join_date, quit_date, main_part) VALUES(null, null, #{career_dto.company }, #{career_dto.car_join_date }, #{career_dto.quit_date }, #{career_dto.main_part })
+</insert>
+<insert id="education_write">
+	INSERT INTO education (education_no, s_resume_no, school, edu_join_date, graduation_date, graduation , grades, major) VALUES (null, null, #{edu_dto.school}, #{edu_dto.edu_join_date}, #{edu_dto.graduation_date}, #{edu_dto.graduation}, #{edu_dto.grades}, #{edu_dto.major}) 
+</insert>
 
 </mapper>

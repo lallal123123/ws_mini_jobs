@@ -31,7 +31,15 @@
 			<div class="col-9">
 				<div class="border p-3">
 
-			<form action="member_mypage_resume_write" method="post">
+				<form action="member_mypage_resume_write" method="post">
+					<div class="mb-3">
+                 		<label for="" class="form-label">희망직무</label>
+                 		<select class="form-select" name="hope_job" >
+    	            	  <option value="서울">서울</option>
+	            	      <option value="경기">경기</option>
+    	             	</select>
+	            	</div>
+									
 					<div class="mb-3">
 						<label for="" class="form-label">제목</label>
 						 <input type="text"	class="form-control" name="title" placeholder="이력서 제목">
@@ -48,18 +56,79 @@
 						<label for="" class="form-label">주소</label>
 						 <input type="text"	class="form-control" name="addr" placeholder="주소">
 					</div>
-					<div class="mb-3">
-						<label for="" class="form-label">자격증</label>
-						 <input type="text"	class="form-control" name="licence_name" placeholder="일단보류">
+					<div><strong>자격증</strong> </div><br>
+						<div class="row">
+    						<div class="col-md-4 mb-3">
+        						<label for="" class="form-label">자격증명</label>
+        						<input type="text" class="form-control" name="license_name" placeholder="자격증명">
+    					</div>
+    					<div class="col-md-4 mb-3">
+    	    				<label for="" class="form-label">발급기관</label>
+	        				<input type="text" class="form-control" name="agency" placeholder="기관">
+    					</div>
+    					<div class="col-md-4 mb-3">
+        					<label for="" class="form-label">취득일자</label>
+        					<input type="text" class="form-control" name="get_date" placeholder="취득일">
+    					</div>
 					</div>
-					<div class="mb-3">
-						<label for="" class="form-label">경력사항</label>
-						 <input type="text"	class="form-control" name="company" placeholder="일단보류">
+					<div><Strong> 경력사항</Strong> </div><br>
+					<div class="row">
+    					<div class="col-md-6 mb-3">
+        					<label for="" class="form-label">재직기관</label>
+        					<input type="text" class="form-control" name="company" placeholder="기관명">
+    					</div>
+    					<div class="col-md-6 mb-3">
+        					<label for="" class="form-label">주요업무</label>
+        					<input type="text" class="form-control" name="main_part" placeholder="업무내용">
+    					</div>
 					</div>
-					<div class="mb-3">
-						<label for="" class="form-label">학력사항</label>
-						 <input type="text"	class="form-control" name="school" placeholder="일단보류">
+
+					<div class="row">
+    					<div class="col-md-6 mb-3">
+        					<label for="" class="form-label">입사일</label>
+        					<input type="text" class="form-control" name="car_join_date" placeholder="0000-00-00">
+    					</div>
+    					
+    					<div class="col-md-6 mb-3">
+        					<label for="" class="form-label">퇴사일</label>
+        					<input type="text" class="form-control" name="quit_date" placeholder="0000-00-00">
+    					</div>
 					</div>
+					<div><strong>학력사항</strong></div><br>
+						<div class="row">
+    						<div class="col-md-6 mb-3">
+        						<label for="" class="form-label">학교명 </label>
+        						<input type="text" class="form-control" name="school">
+    						</div>
+    						<div class="col-md-4 mb-3">
+        						<label for="" class="form-label">전공</label>
+        						<input type="text" class="form-control" name="major">
+    						</div>
+    						<div class="col-md-2 mb-3">
+        						<label for="" class="form-label">학점</label>
+        						<input type="text" class="form-control" name="grades">
+    						</div>
+						</div>
+						<div class="row">
+    						<div class="col-md-4 mb-3">
+        						<label for="" class="form-label">입학일 </label>
+        						<input type="text" class="form-control" name="edu_join_date" placeholder="0000-00-00">
+    						</div>
+    						<div class="col-md-4 mb-3">
+        						<label for="" class="form-label">졸업일</label>
+        						<input type="text" class="form-control" name="graduation_date" placeholder="0000-00-00">
+    						</div>
+    						<div class="col-md-4 mb-3">
+                 				<label for="" class="form-label">졸업여부</label>
+        		         			<select class="form-select" name="graduation" >
+		    	            	  	<option value="0">졸업</option>
+	           		      			<option value="1">미졸업</option>
+    	             			</select>
+	            			</div>
+						</div>
+						
+												
+					
 					<div class="mb-3">
 						<label for="" class="form-label">지원분야</label>
 						 <input type="text"	class="form-control" name="part" placeholder="지원분야">
@@ -74,22 +143,22 @@
 					</div>
 					<div class="mb-3">
                  		<label for="" class="form-label">지원동기</label>
-                 		<textarea class="form-control" name="title" id="title"></textarea>
+                 		<textarea class="form-control" name=motive ></textarea>
             		</div>
 					
 					<div class="mb-3">
                  		<label for="" class="form-label">성격 장단점</label>
-                 		<textarea class="form-control" name="title" id="title"></textarea>
+                 		<textarea class="form-control" name="personality" ></textarea>
             		</div>
 					
 					<div class="mb-3">
                  		<label for="" class="form-label">입사 후 포부</label>
-                 		<textarea class="form-control" name="title" id="title"></textarea>
+                 		<textarea class="form-control" name="aspiration" ></textarea>
             		</div>
 					
 					<div class="mb-3">
                  		<label for="" class="form-label">성장 과정</label>
-                 		<textarea class="form-control" name="title" id="title"></textarea>
+                 		<textarea class="form-control" name="Growth"></textarea>
             		</div>
             		<input type="submit" class="btn btn-jobs w-100"  value="이력서 저장하기">
 

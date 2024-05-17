@@ -22,4 +22,6 @@ public class Site_resume {
 	private String personality; 
 	private String aspiration; 
 	private String growth; 
+	private String title;
+	private String site_res_name;
 }
