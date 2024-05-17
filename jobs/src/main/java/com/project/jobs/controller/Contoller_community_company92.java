@@ -1,14 +1,17 @@
 package com.project.jobs.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.jobs.dao.ICom_community_dao92;
 import com.project.jobs.dto.Com_community;
+import com.project.jobs.dto.Com_community_category;
 import com.project.jobs.dto.Com_reply;
 
 import jakarta.servlet.http.HttpSession;
@@ -35,7 +38,7 @@ public class Contoller_community_company92 {
 		model.addAttribute("list", list);
 		return "community/com/list";
 	}
-	/*
+	
 	@RequestMapping("/company/write_form")
 	public String com_write_form(Model model) {
 		List<Com_community_category> clist =dao.clist();
@@ -43,7 +46,7 @@ public class Contoller_community_company92 {
 		
 		return "community/com/write_form";
 	}
-	*/
+	
 	@RequestMapping("/company/write")
 	public String com_write(Com_community com_community , HttpSession session) {
 		session.setAttribute("com_no", 1L);
@@ -52,7 +55,7 @@ public class Contoller_community_company92 {
 		
 		return "redirect:list";
 	}
-	/*
+	
 	@RequestMapping("/company/modify_form")
 	public String com_write_form(@RequestParam("com_community_no") String no, Model model) {
 		List<Com_community_category> clist =dao.clist();
@@ -61,8 +64,8 @@ public class Contoller_community_company92 {
 		model.addAttribute("dto", dto);
 		return "community/com/modify_form";
 	}
-	*/
-	/*
+	
+	
 	@RequestMapping("/company/detail")
 	public String com_detail(@RequestParam("no") String no,Model model) {
 		Com_community dto = dao.detail92(no);
@@ -76,10 +79,11 @@ public class Contoller_community_company92 {
 		
 		return "community/com/detail";
 	}
-	*/
+	
 	@RequestMapping("/company/reply")
 	public String com_reply(Com_reply com_reply) {
 		
 		return "redirect:detail";
 	}
+	
 }
