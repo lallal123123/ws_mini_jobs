@@ -14,7 +14,7 @@
 <div class="container">
 <div class="row">
     <div class="col-3">
-        <div class="border p-3">
+        <div class="border p-3 rounded">
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
               <li class="nav-item">
@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="col-9">
-        <div class="border p-3">
+        <div class="border p-3 rounded">
         여기에는 메뉴에 따른 페이지를 구현해주세요
         </div>
     </div>

@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Recruit {
-
     private Long recruit_no; 
     private Long com_no;
     private String career;
@@ -27,7 +26,7 @@ public class Recruit {
     private String welfare;
     private String seprocedure;
     private String notice;  
-    private Date reg_date;
-    private Date deadline_date;
+    private String reg_date;
+    private String deadline_date;
     private int p_number; 
 }
