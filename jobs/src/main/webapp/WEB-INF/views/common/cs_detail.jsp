@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
               <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
+                <a href="../cs_list_99" class="nav-link active" aria-current="page">
                   문의·신고
                 </a>
               </li>
@@ -41,8 +42,12 @@
         	<div id="title">${dto.title }</div>
         	<div>내용</div>
         	<div id="content">${dto.content }</div>
-        	<a class="btn btn-light" href="../modify_form_99?cs_no=${dto.cs_no }" role="button">수정</a>
-        	<a class="btn btn-light" href="../delete_99?cs_no=${dto.cs_no }" role="button">삭제</a>
+        	<c:choose>
+        		<c:when test="${dto.mem_no == '1'}">
+        			<a class="btn btn-light" href="../modify_form_99?cs_no=${dto.cs_no }" role="button">수정</a>
+        			<a class="btn btn-light" href="../delete_99?cs_no=${dto.cs_no }" role="button">삭제</a>
+        		</c:when>
+        	</c:choose>
         	<hr>
         	<a class="btn btn-light" href="../cs_list_99" role="button">이전</a>
         	<a class="btn btn-light" href="#" role="button">TOP</a>

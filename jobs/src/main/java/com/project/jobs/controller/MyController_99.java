@@ -14,7 +14,7 @@ public class MyController_99 {
 	
 	@Autowired
 	private ICS_Dao_won cs_Dao;
-	
+	//문의 신고 컨트롤러
 	@RequestMapping("/common/index")
 	public String root() {
 		
@@ -80,6 +80,14 @@ public class MyController_99 {
 		cs_Dao.deleteDao_99(cs_no);
 		
 		return "redirect:/cs_list_99";
+	}
+	
+	//공지사항 컨트롤러
+	
+	@RequestMapping("/notice_list_99")
+	public String noticeList() {
+		
+		return "/common/notice_list";
 	}
 	
 }
