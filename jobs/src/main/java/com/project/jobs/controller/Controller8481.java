@@ -40,7 +40,7 @@ public class Controller8481 {
 	
 	@RequestMapping("/member_mypage_resume_write")
 	public String site_resume_wirte(Career car_dto, License lic_dto, Education edu_dto, Site_resume site_res_dto) {
-		
+		/*
 		if(car_dto.getCar_join_date()==null && car_dto.getQuit_date()==null) {
 			
 		}else {
@@ -48,8 +48,19 @@ public class Controller8481 {
 			dao.license_write(lic_dto);
 			dao.education_write(edu_dto);
 			dao.site_resume_write(site_res_dto);
+			
+			
 		}
-		return"redirect:/member/ex";//이력서 작성후 어디로 보낼지
+		*/
+		dao.site_resume_write(site_res_dto);
+		dao.career_write(car_dto);
+		dao.license_write(lic_dto);
+		dao.education_write(edu_dto);
+		
+	
+		
+		return "redirect:/member/index";//이력서 작성후 어디로 보낼지
+		
 	}
 	
 	
