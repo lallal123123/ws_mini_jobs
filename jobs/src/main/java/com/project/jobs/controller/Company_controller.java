@@ -1,6 +1,7 @@
 package com.project.jobs.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.jobs.dto.Company;
-import com.project.jobs.service.CompanyService;
+import com.project.jobs.service.CompanyService3854;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -20,7 +21,7 @@ import jakarta.servlet.http.HttpSession;
 public class Company_controller {
 
 	@Autowired
-	private CompanyService companyService;
+	private CompanyService3854 companyService;
 
 	@GetMapping
 	public String getAllCompanies(Model model) {
@@ -42,7 +43,7 @@ public class Company_controller {
 		return "member/loginForm";
 	}
 
-
+/*
     @PostMapping("/login")
     public String login(@ModelAttribute Company company, Model model, HttpSession session) {
         Company loginCompany = companyService.login(company.getCom_id(), company.getCom_pw());
@@ -55,6 +56,7 @@ public class Company_controller {
         }
     }
 
+*/
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
