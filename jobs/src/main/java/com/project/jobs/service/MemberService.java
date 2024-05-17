@@ -31,4 +31,8 @@ public class MemberService {
     public void deleteMember(Long mem_no) {
         memberDao.deleteMember(mem_no);
     }
+
+    public Member login(String mem_id, String mem_pw) {
+        return memberDao.findByMemIdAndMemPw(mem_id, mem_pw);
+    }
 }
