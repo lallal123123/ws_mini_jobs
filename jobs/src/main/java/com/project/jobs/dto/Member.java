@@ -19,5 +19,9 @@ public class Member {
 	private String mem_tel;
 	private String mem_email;
 	private String mem_gender;
-	private Date make_date; 
+	private Date make_date;
+	public void setMem_no(Long mem_no2) {
+		
+		
+	} 
 }

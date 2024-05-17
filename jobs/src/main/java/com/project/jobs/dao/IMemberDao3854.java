@@ -3,18 +3,22 @@ package com.project.jobs.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.project.jobs.dto.Member;
 
 @Mapper
 public interface IMemberDao3854 {
 
-	public void reg();
-	
-	
-	public List<Member> getAllList();
-	public Member getListById();
-	public void insertMember();
-	public void updateMember();
-	public void deleteMember();
+    void reg();
+
+    List<Member> getAllList();
+
+    Member getListById(@Param("mem_no") Long mem_no);
+
+    void insertMember(@Param("member") Member member);
+
+    void updateMember(@Param("member") Member member);
+
+    void deleteMember(@Param("mem_no") Long mem_no);
 }
