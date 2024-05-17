@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.project.jobs.dto.ComInfoJoinRecruit;
 import com.project.jobs.dto.Recruit;
 import com.project.jobs.dto.Region;
 
@@ -20,4 +21,7 @@ public interface ICompanyDao5963 {
 	
 	// 기업 번호로 공고 리스트 가져오기
 	public List<Recruit> getComRecruitAllList(int com_no);
+	
+	// 기업 번호로 공고와 기업 정보 조인 리스트
+	public List<ComInfoJoinRecruit> comInfoJoinRecruitList(@Param("com_no") int com_no);
 }
