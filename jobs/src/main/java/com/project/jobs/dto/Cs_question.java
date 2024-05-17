@@ -1,6 +1,9 @@
 package com.project.jobs.dto;
 
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +18,7 @@ public class Cs_question {
 	private Long mem_no;
 	private String title;
 	private String content;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date reg_date;
 	private String category;
 	private Boolean ch_private; 

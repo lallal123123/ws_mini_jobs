@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.jobs.dao.ICS_Dao_won">
+	<select id="getList_99">
+		SELECT * FROM cs_question
+	</select>
+	<select id="getlistDetail_99">
+		SELECT * FROM cs_question WHERE cs_no = #{cs_no}
+	</select>
+	<insert id="writeDao_99" >
+		INSERT INTO cs_question (mem_no, title, content, reg_date, category, ch_private)
+		VALUES (#{mem_no}, #{title}, #{content}, DATE(NOW()), #{category}, #{ch_private})
+	</insert>
+	<delete id="deleteDao_99">
+		DELETE FROM cs_question WHERE cs_no = #{cs_no}
+	</delete>
+	<update id="modifyDao_99">
+		UPDATE cs_question SET title = #{title}, content = #{content}, category = #{category}, ch_private = #{ch_private} WHERE cs_no = #{cs_no}
+	</update>
+</mapper>
