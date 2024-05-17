@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>jabs 휴먼 클라우드 이력관리플렛폼</title>
+<title>jobs 휴먼 클라우드 이력관리플렛폼</title>
 
 </head>
 <body>
@@ -12,7 +12,7 @@
 <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-       <img src="/images/common/logo.png" alt="로고">
+         <img class="header_logo_size" src="/images/common/logo.png" alt="로고">
       </a>
 
       <ul class="nav nav-pills">
