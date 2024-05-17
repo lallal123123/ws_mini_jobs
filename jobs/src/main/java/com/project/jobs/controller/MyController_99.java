@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.jobs.dao.ICS_Dao_won;
+import com.project.jobs.dto.Member;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MyController_99 {
@@ -40,9 +42,11 @@ public class MyController_99 {
 	}
 	
 	@RequestMapping("/cs_list_99")
-	public String list(Model model) {
-		
+	public String list(Model model, HttpSession session) {
+		Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+		Long mem_no = loggedInMember.getMem_no();
 		model.addAttribute("list", cs_Dao.getList_99());
+		model.addAttribute("mem_no", mem_no);
 		return "/common/cs_list";
 	}
 	
