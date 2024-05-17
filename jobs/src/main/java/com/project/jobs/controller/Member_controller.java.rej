@@ -1,9 +1,0 @@
-diff a/jobs/src/main/java/com/project/jobs/controller/Member_controller.java b/jobs/src/main/java/com/project/jobs/controller/Member_controller.java	(rejected hunks)
-@@ -0,6 +0,7 @@
- import org.springframework.beans.factory.annotation.Autowired;
- import org.springframework.stereotype.Controller;
- import org.springframework.ui.Model;
-+import org.springframework.web.bind.annotation.GetMapping;
- import org.springframework.web.bind.annotation.ModelAttribute;
- import org.springframework.web.bind.annotation.PathVariable;
- import org.springframework.web.bind.annotation.PostMapping;
