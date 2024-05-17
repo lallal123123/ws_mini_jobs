@@ -17,5 +17,6 @@ public class Mem_community {
 	private String content;
 	private Date reg_date;
 	private String category;
+	private long views;
 
 }

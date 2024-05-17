@@ -15,7 +15,8 @@ public class Com_community {
 	private Long com_no;
 	private String title; 
 	private String content; 
-	private Date redate;
-	private String category; 
+	private Date reg_date;
+	private String category;
+	private long views;
 
 }
