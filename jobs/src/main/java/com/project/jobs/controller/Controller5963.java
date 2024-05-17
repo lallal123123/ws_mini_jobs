@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.jobs.dto.Recruit;
 import com.project.jobs.dto.Region;
-import com.project.jobs.service.CompanyService;
 import com.project.jobs.service.CompanyService5963;
 
 
