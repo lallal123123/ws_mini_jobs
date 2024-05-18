@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.jobs.dto.Company;
 import com.project.jobs.service.CompanyService3854;
@@ -80,4 +82,10 @@ public class Company_controller {
 		companyService.deleteCompany(com_no);
 		return "redirect:/companies";
 	}
+	
+	 @GetMapping("/checkComId")
+	    @ResponseBody
+	    public boolean checkComId(@RequestParam("id") String com_id) {
+	        return companyService.isComIdExists(com_id);
+	    }
 }
