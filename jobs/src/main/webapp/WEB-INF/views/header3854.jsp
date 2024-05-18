@@ -22,12 +22,14 @@
                 <div class="float-end">
                     <c:choose>
                         <c:when test="${not empty sessionScope.loggedInMember}">
-                            <span class="btn btn-jobs">환영합니다, ${sessionScope.loggedInMember.mem_id}님!</span>
+                            <a href="/members/mypage" class="btn btn-jobs">마이 페이지</a>
                             <a href="/members/logout" class="btn btn-jobs">로그아웃</a>
+                            <span>환영합니다, ${sessionScope.loggedInMember.mem_id}님!</span>
                         </c:when>
                         <c:when test="${not empty sessionScope.loggedInCompany}">
-                            <span class="btn btn-jobs">환영합니다, ${sessionScope.loggedInCompany.com_id}님!</span>
+                            <a href="/companies/mypage" class="btn btn-jobs">마이 페이지</a>
                             <a href="/companies/logout" class="btn btn-jobs">로그아웃</a>
+                            <span>환영합니다, ${sessionScope.loggedInCompany.com_id}님!</span>
                         </c:when>
                         <c:otherwise>
                             <a href="/members/loginForm" class="btn btn-jobs">로그인</a>
@@ -37,9 +39,9 @@
                 </div>
             </div>
         </div>
-        <ul class="nav nav-pills nav-jobs mt-2">
+        <ul class="nav nav-pills nav-jobs mt-2 justify-content-end">
             <li class="nav-item"><a href="#" class="nav-link" aria-current="page">채용정보</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">공고켈린더</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">공고캘린더</a></li>
             <li class="nav-item"><a href="#" class="nav-link">기업정보</a></li>
             <li class="nav-item"><a href="#" class="nav-link">커뮤니티</a></li>
             <li class="nav-item"><a href="#" class="nav-link">고객센터</a></li>
@@ -48,4 +50,3 @@
 </header>
 </body>
 </html>
-

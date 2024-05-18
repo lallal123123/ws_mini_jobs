@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.jobs.dao.ICompanyDao3854">
+    
     <select id="getAllCompanies" resultType="com.project.jobs.dto.Company">
         SELECT * FROM company
     </select>
@@ -30,5 +31,11 @@
 
     <select id="findByComIdAndComPw" parameterType="map" resultType="com.project.jobs.dto.Company">
         SELECT * FROM company WHERE com_id = #{com_id} AND com_pw = #{com_pw}
+    </select>
+    
+    <select id="existsByComId" resultType="boolean" parameterType="String">
+        SELECT CASE WHEN COUNT(*) > 0 THEN TRUE ELSE FALSE END
+        FROM company
+        WHERE com_id = #{com_id}
     </select>
 </mapper>

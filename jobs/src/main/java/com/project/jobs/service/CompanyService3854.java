@@ -35,4 +35,8 @@ public class CompanyService3854 {
     public Company findByComIdAndComPw(String com_id, String com_pw) {
         return companyDao.findByComIdAndComPw(com_id, com_pw);
     }
+    
+    public boolean isComIdExists(String com_id) {
+        return companyDao.existsByComId(com_id);
+    }
 }
