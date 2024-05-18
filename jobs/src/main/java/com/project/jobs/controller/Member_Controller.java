@@ -86,20 +86,7 @@ public class Member_Controller {
         session.invalidate();
         return "redirect:/members/loginForm";
     }
-
-    @GetMapping("/edit/{mem_no}")
-    public String editMemberForm(@PathVariable("mem_no") Long mem_no, Model model) {
-        Member member = memberService.getMemberById(mem_no);
-        model.addAttribute("member", member);
-        return "member/editMyProfile3854"; // JSP 파일 경로 확인
-    }
-
-    @PostMapping("/update/{mem_no}")
-    public String updateMember(@PathVariable("mem_no") Long mem_no, @ModelAttribute Member member) {
-        member.setMem_no(mem_no);
-        memberService.updateMember(member);
-        return "redirect:/members/mypage";
-    }
+   
 
     @GetMapping("/delete/{mem_no}")
     public String deleteMember(@PathVariable("mem_no") Long mem_no) {
@@ -109,8 +96,9 @@ public class Member_Controller {
 
     @GetMapping("/checkId")
     @ResponseBody
-    public boolean checkId(@RequestParam("id") String id) {
-        return memberService.isIdExists(id);
+    public boolean checkId(@RequestParam("mem_id") String mem_id) {
+        System.out.println("Received mem_id: " + mem_id); // 디버그 출력
+        return memberService.isMemIdExists(mem_id);
     }
 
     @GetMapping("/mypage")
@@ -119,10 +107,41 @@ public class Member_Controller {
         if (loggedInMember != null) {
             model.addAttribute("member", loggedInMember);
             model.addAttribute("userName", loggedInMember.getMem_name());
+            model.addAttribute("mem_no", loggedInMember.getMem_no());
             return "member/mypage3854";
         } else {
             return "redirect:/members/loginForm";
         }
     }
+   
+    @GetMapping("/editProfile")
+    public String editLoggedInMemberForm(HttpSession session, Model model) {
+        Member loggedInMember = getLoggedInMember(session);
+        if (loggedInMember != null) {
+            model.addAttribute("member", loggedInMember);
+            return "member/myProfile3854";
+        } else {
+            return "redirect:/members/loginForm";
+        }
+    }
+    
+    
+    @PostMapping("/updateProfile")
+    public String updateLoggedInMember(@ModelAttribute Member member, HttpSession session) {
+        Member loggedInMember = getLoggedInMember(session);
+        if (loggedInMember != null) {
+            member.setMem_no(loggedInMember.getMem_no());
+            memberService.updateMember(member);
+            session.setAttribute("loggedInMember", member); // 업데이트된 회원 정보를 세션에 다시 저장
+            return "redirect:/members/mypage";
+        } else {
+            return "redirect:/members/loginForm";
+        }
+    }
+    
+    private Member getLoggedInMember(HttpSession session) {
+        return (Member) session.getAttribute("loggedInMember");
+    }
 }
+
 
