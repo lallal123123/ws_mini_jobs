@@ -20,5 +20,6 @@ public class Com_community {
 	private String s_reg_date;
 	private String category;
 	private long views;
+	private int secret;
 
 }

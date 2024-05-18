@@ -7,6 +7,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="list92" resultType="com.project.jobs.dto.Com_community" >
   select * from com_community
 </select>
+<select id="detail92" resultType="com.project.jobs.dto.Com_community" >
+	select * from com_community where com_community_no = #{no};
+</select>
+<insert id="write92">
+	insert into com_community values(null,#{dto.com_no},#{dto.title},#{dto.content},now(),#{dto.category},0,#{dto.secret})
+</insert>
+<update id="modify">
+	update com_community set title=#{dto.title},content=#{dto.content},
+	category=#{dto.category},secret=#{dto.secret},reg_date=now() 
+	where com_community_no=#{dto.com_community_no}
+</update>
+<delete id="delete">
+	delete from com_community where com_community_no=#{no}
+</delete>
+
+
+<insert id="insert_reply">
+	insert into com_reply values(null,#{dto.com_community_no},#{dto.com_no},#{dto.content},now())
+</insert>
+<select id="replyList" resultType="com.project.jobs.dto.Com_reply">
+	select * from com_reply where com_community_no = #{no} 
+</select>
+<delete id="delete_reply">
+	delete from com_reply where com_reply_no=#{no}
+</delete>
+
+
+<select id="com_id">
+	select com_id from company where com_no=#{no}
+</select>
+
+
+<select id="clist" resultType="com.project.jobs.dto.Com_community_category">
+	select * from com_community_category
+</select>
+
 
 
 </mapper>
