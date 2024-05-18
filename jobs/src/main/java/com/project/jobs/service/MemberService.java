@@ -1,6 +1,8 @@
 package com.project.jobs.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.project.jobs.dao.IMemberDao3854;
@@ -32,8 +34,13 @@ public class MemberService {
         memberDao.deleteMember(mem_no);
     }
 
-    public Member login(String mem_id, String mem_pw) {
-        return memberDao.findByMemIdAndMemPw(mem_id, mem_pw);
-    }
     
+    public boolean isIdExists(String id) {
+        return memberDao.existsByMemId(id);
+    }
+
+    public Member login(Member member) {
+        Optional<Member> loginMember = memberDao.findByMemIdAndMemPw(member.getMem_id(), member.getMem_pw());
+        return loginMember.orElse(null);
+    }
 }

@@ -21,4 +21,8 @@ public interface ICompanyDao3854 {
     Company findByComIdAndComPw(@Param("com_id") String com_id, @Param("com_pw") String com_pw);
     
     int countByComId(@Param("com_id") String com_id);
+    
+    boolean existsByComId(String com_id);
+
+	
 }
