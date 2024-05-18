@@ -48,6 +48,7 @@ public class CompanyService5963 {
 	
 	// 기업 소개 정보 등록
 	public void comInfoWrite(@Param("com_detail") Com_detail com_detail) {
+		
 		companyDao5963.comInfoWrite(com_detail);
 	};
 	
@@ -57,4 +58,9 @@ public class CompanyService5963 {
 		return comInfoDetail;
 	}
 	
+	// 기업 소개 정보 등록
+	public void comInfoModify(@Param("com_detail") Com_detail com_detail) {
+		companyDao5963.comInfoModify(com_detail);
+	};
+		
 }

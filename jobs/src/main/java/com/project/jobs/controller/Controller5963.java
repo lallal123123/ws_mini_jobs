@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.project.jobs.dto.ComInfoDetail;
 import com.project.jobs.dto.ComInfoJoinRecruit;
@@ -82,8 +83,7 @@ public class Controller5963 {
 	public String infoWriteForm(HttpServletRequest request,Model model) {
 		System.out.println("공고 소개 작성페이지 접속");
 		HttpSession session = request.getSession();
-		//System.out.println(session.getAttribute("loggedInCompany"));
-		model.addAttribute("company",session.getAttribute("loggedInCompany"));
+		model.addAttribute("company", session.getAttribute("loggedInCompany"));
 		
 		return "/company/mypage/info_write_form";
 	}
@@ -96,6 +96,30 @@ public class Controller5963 {
 		
 		return "redirect:/company/mypage/info_detail";
 	}
+	
+	// 기업 마이페이지 기업소개 수정 페이지 접속
+	@RequestMapping("/info_modify_form")
+	public String infoModifyForm(HttpServletRequest request, Model model) {
+		System.out.println("공고 소개 수정페이지 접속");
+		HttpSession session = request.getSession();
+		Company company = (Company) session.getAttribute("loggedInCompany");
+		Long com_no = company.getCom_no();
+		ComInfoDetail comInfoDetail = companyService.getComInfoDetail(com_no);
+		model.addAttribute("comInfoDetail", comInfoDetail);
+			
+		return "/company/mypage/info_modify_form";
+	}
+	
+	// 기업 마이페이지 기업소개 수정
+	@RequestMapping("/infoModify")
+	public String infoModify(Com_detail com_detail) {
+		System.out.println("공고 소개 수정 중");
+		companyService.comInfoModify(com_detail);
+			
+		return "redirect:/company/mypage/info_detail";
+	}
+	
+	
 	
 }
 
