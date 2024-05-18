@@ -3,6 +3,8 @@ package com.project.jobs.dao;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
 import com.project.jobs.dto.Company;
 
 @Mapper
@@ -18,11 +20,10 @@ public interface ICompanyDao3854 {
 
     void deleteCompany(Long com_no);
 
-    Company findByComIdAndComPw(@Param("com_id") String com_id, @Param("com_pw") String com_pw);
-    
     int countByComId(@Param("com_id") String com_id);
-    
-    boolean existsByComId(String com_id);
 
-	
+    boolean existsByComId(@Param("com_id") String com_id);
+
+   
+    Company findByComIdAndComPw(@Param("com_id") String com_id, @Param("com_pw") String com_pw);
 }
