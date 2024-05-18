@@ -85,6 +85,7 @@ public class Contoller_community_company92 {
 	
 	@RequestMapping("/company/detail")
 	public String com_detail(@RequestParam("no") String no,Model model) {
+		dao.viewsUp(no);
 		Com_community dto = dao.detail92(no);
 		 // 포맷 지정
 	     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

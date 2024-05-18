@@ -44,5 +44,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 
+<update id="viewsUp">
+	update com_community set views=views+1 where com_community_no = #{no}
+</update>
+
+
 
 </mapper>

@@ -28,7 +28,7 @@
 						<thead>
 							<tr>
 								<th>카테고리</th>
-								<th>제목+내용</th>
+								<th>제목</th>
 								<th>작성자</th>
 							</tr>
 						</thead>
