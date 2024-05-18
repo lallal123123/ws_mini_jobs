@@ -3,7 +3,9 @@ package com.project.jobs.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.jobs.dao.ICS_Dao99;
 import com.project.jobs.dto.Member;
@@ -45,9 +47,12 @@ public class Common_Controller99 {
 	@RequestMapping("/cs_list_99")
 	public String list(Model model, HttpSession session) {
 		Member member = (Member)session.getAttribute("loggedInMember");
-		String mem_id = member.getMem_id();
+		if(member != null) {
+			Long mem_no = member.getMem_no();
+			model.addAttribute("mem_no",mem_no);
+		}
+		
 		model.addAttribute("list", cs_Dao.getList_99());
-		model.addAttribute("mem_no",mem_id);
 		return "/common/cs_list";
 	}
 	
@@ -87,6 +92,12 @@ public class Common_Controller99 {
 		return "redirect:/cs_list_99";
 	}
 	
+	@GetMapping("/login_status_99")
+	@ResponseBody
+	public boolean checkLoginStatus(HttpSession session) {
+		
+		return session.getAttribute("loggedInMember") != null;
+	}
 	
 	
 }
