@@ -32,4 +32,7 @@ public interface ICompanyDao5963 {
 	
 	// 기업 소개 디테일 정보 가져오기
 	public ComInfoDetail getComInfoDetail(@Param("com_no") Long com_no);
+	
+	// 기업 소개 정보 수정
+	public void comInfoModify(@Param("com_detail") Com_detail com_detail);
 }

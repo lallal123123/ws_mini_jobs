@@ -121,6 +121,7 @@
 				<div class="col-md-9">${comInfoDetail.ideal_talent}</div>
 			</div>
         </div>
+		<a href="/company/mypage/info_modify_form" class="btn btn-jobs">수정하기</a>
     </div>
    
 </div>
