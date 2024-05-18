@@ -17,5 +17,6 @@ public class Notice {
 	private String title;
 	private String content;
 	private Date reg_date;
+	private String category;
 
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<footer class="py-5 my-5 border-top bg-jobs">
+<footer class="py-5 my-5 border-top bg-jobs fixed-bottom">
   <div class="container">
   	<div class="row text-light">
   		<div class="col-12 pb-2 mb-2">
@@ -17,7 +17,7 @@
 	  		<a href="#" class="nav-link link-light d-inline me-4">이용약관</a>
 	  		<a href="#" class="nav-link link-light d-inline me-4">개인정보처리방침</a>
 	  		<a href="#" class="nav-link link-light d-inline me-4">제휴 및 광고문의</a>
-	  		<a href="#" class="nav-link link-light d-inline">고객센터</a> 	
+	  		<a href="/cs_list_99" class="nav-link link-light d-inline">고객센터</a> 	
 	  		<hr class="border-white">	
   		</div>
 	    <div class="col-2 mb-3">
