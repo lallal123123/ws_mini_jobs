@@ -24,7 +24,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link link-body-emphasis">
+                <a href="../admin/notice_list_99" class="nav-link link-body-emphasis">
                  공지사항
                 </a>
               </li>   
@@ -50,14 +50,18 @@
 			  	<tr>
 			      <th scope="row">${status.count }</th>
 			      <td>${list.category }</td>
-			      <c:choose>
-			      	<c:when test="${list.ch_private != '1' && list.mem_no != ${mem_no}}">
-			      		<td>비밀글입니다</td>
-			      	</c:when>
-			      	<c:otherwise>
-			      		<td><a href="cs_detail_99?cs_no=${list.cs_no }">${list.title }</a></td>
-			      	</c:otherwise>
-			      </c:choose>
+				  <td>${list.mem_no }</td>
+				  <td>${mem_id}</td>
+				  <td>${id }</td>				  
+				  <c:choose>
+					<c:when test="${list.ch_private == 'false' and list.mem_no ne sessionScope.loggedInMember.mem_no}">
+						<td>비밀글입니다</td>
+					</c:when>
+					<c:otherwise>
+						<td><a href="cs_detail_99?cs_no=${list.cs_no}">${list.title}</a></td>
+					</c:otherwise>
+				</c:choose>
+				
 			      <td>${list.reg_date }</td>
 			    </tr>
 			  </c:forEach>
