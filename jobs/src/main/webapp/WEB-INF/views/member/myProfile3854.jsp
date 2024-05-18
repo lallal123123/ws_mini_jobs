@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit My Profile</title>
+    <title>내 정보 수정</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -51,7 +51,7 @@
 <body>
     <div class="container">
         <h1>내 정보 수정</h1>
-        <form action="<c:url value='/members/update/${member.mem_no}'/>" method="post">
+        <form action="<c:url value='/members/updateProfile'/>" method="post">
             <div class="form-group">
                 <label for="mem_id">아이디</label>
                 <input type="text" id="mem_id" name="mem_id" value="${member.mem_id}" readonly>

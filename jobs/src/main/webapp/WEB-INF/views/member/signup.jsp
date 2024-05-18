@@ -145,7 +145,7 @@ $(document).ready(function() {
         $.ajax({
             url: '${pageContext.request.contextPath}/members/checkId',
             type: 'GET',
-            data: { id: mem_id },
+            data: { mem_id: mem_id },
             success: function(response) {
                 if(response) {
                     $('#idCheckResultMember').text('아이디가 이미 존재합니다.').css('color', 'red');
@@ -161,7 +161,7 @@ $(document).ready(function() {
         $.ajax({
             url: '${pageContext.request.contextPath}/companies/checkComId',
             type: 'GET',
-            data: { id: com_id },
+            data: { com_id: com_id },
             success: function(response) {
                 if(response) {
                     $('#idCheckResultCompany').text('아이디가 이미 존재합니다.').css('color', 'red');

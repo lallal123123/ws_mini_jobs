@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.project.jobs.dao.IMemberDao3854;
 import com.project.jobs.dto.Member;
 
@@ -34,9 +35,8 @@ public class MemberService {
         memberDao.deleteMember(mem_no);
     }
 
-    
-    public boolean isIdExists(String id) {
-        return memberDao.existsByMemId(id);
+    public boolean isMemIdExists(String mem_id) {
+        return memberDao.existsByMemId(mem_id);
     }
 
     public Member login(Member member) {

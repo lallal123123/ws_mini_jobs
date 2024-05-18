@@ -12,8 +12,8 @@
         <h1>My Page</h1>
     </header>
     <div>
-        <h2>${member.mem_name} 님</h2>
-        <a href="${pageContext.request.contextPath}/members/editProfile">내 정보 수정</a>
+        <h2>${member.com_name} 님</h2>
+        <a href="${pageContext.request.contextPath}/companies/editProfile">내 정보 수정</a>
     </div>
 </body>
 </html>
