@@ -31,12 +31,12 @@ public class CompanyService3854 {
     public void deleteCompany(Long com_no) {
         companyDao.deleteCompany(com_no);
     }
-
-    public Company findByComIdAndComPw(String com_id, String com_pw) {
-        return companyDao.findByComIdAndComPw(com_id, com_pw);
-    }
     
     public boolean isComIdExists(String com_id) {
         return companyDao.existsByComId(com_id);
+    }
+    
+    public Company login(Company company) {
+        return companyDao.findByComIdAndComPw(company.getCom_id(), company.getCom_pw());
     }
 }

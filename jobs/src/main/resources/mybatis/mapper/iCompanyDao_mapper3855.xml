@@ -4,38 +4,39 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.jobs.dao.ICompanyDao3854">
-    
     <select id="getAllCompanies" resultType="com.project.jobs.dto.Company">
         SELECT * FROM company
     </select>
 
-    <select id="getCompanyById" parameterType="long" resultType="com.project.jobs.dto.Company">
+    <select id="getCompanyById" parameterType="Long" resultType="com.project.jobs.dto.Company">
         SELECT * FROM company WHERE com_no = #{com_no}
     </select>
 
     <insert id="insertCompany" parameterType="com.project.jobs.dto.Company">
-        INSERT INTO company (com_id, com_pw, com_name, com_size, com_ceo, com_addr, com_companynum, com_tel, com_email, com_url, make_date)
-        VALUES (#{com_id}, #{com_pw}, #{com_name}, #{com_size}, #{com_ceo}, #{com_addr}, #{com_companynum}, #{com_tel}, #{com_email}, #{com_url}, #{make_date})
+        INSERT INTO company (com_id, com_pw, com_name, com_birth, com_tel, com_email, com_gender, make_date)
+        VALUES (#{com_id}, #{com_pw}, #{com_name}, #{com_birth}, #{com_tel}, #{com_email}, #{com_gender}, #{make_date})
     </insert>
 
     <update id="updateCompany" parameterType="com.project.jobs.dto.Company">
         UPDATE company
-        SET com_id = #{com_id}, com_pw = #{com_pw}, com_name = #{com_name}, com_size = #{com_size}, com_ceo = #{com_ceo}, com_addr = #{com_addr},
-            com_companynum = #{com_companynum}, com_tel = #{com_tel}, com_email = #{com_email}, com_url = #{com_url}, make_date = #{make_date}
+        SET com_id = #{com_id}, com_pw = #{com_pw}, com_name = #{com_name}, com_birth = #{com_birth},
+            com_tel = #{com_tel}, com_email = #{com_email}, com_gender = #{com_gender}, make_date = #{make_date}
         WHERE com_no = #{com_no}
     </update>
 
-    <delete id="deleteCompany" parameterType="long">
+    <delete id="deleteCompany" parameterType="Long">
         DELETE FROM company WHERE com_no = #{com_no}
     </delete>
 
+    <select id="countByComId" parameterType="String" resultType="int">
+        SELECT COUNT(*) FROM company WHERE com_id = #{com_id}
+    </select>
+
+    <select id="existsByComId" parameterType="String" resultType="boolean">
+        SELECT CASE WHEN COUNT(*) > 0 THEN TRUE ELSE FALSE END FROM company WHERE com_id = #{com_id}
+    </select>
+
     <select id="findByComIdAndComPw" parameterType="map" resultType="com.project.jobs.dto.Company">
         SELECT * FROM company WHERE com_id = #{com_id} AND com_pw = #{com_pw}
-    </select>
-    
-    <select id="existsByComId" resultType="boolean" parameterType="String">
-        SELECT CASE WHEN COUNT(*) > 0 THEN TRUE ELSE FALSE END
-        FROM company
-        WHERE com_id = #{com_id}
     </select>
 </mapper>
