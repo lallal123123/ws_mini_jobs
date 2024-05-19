@@ -40,4 +40,25 @@
     <select id="findByComIdAndComPw" parameterType="map" resultType="com.project.jobs.dto.Company">
         SELECT * FROM company WHERE com_id = #{com_id} AND com_pw = #{com_pw}
     </select>
+	
+	 <select id="isInterestCompany" parameterType="map" resultType="boolean">
+        SELECT COUNT(*) > 0 FROM com_interest
+        WHERE mem_no = #{mem_no} AND com_no = #{com_no}
+    </select>
+
+    <insert id="addInterestCompany" parameterType="map">
+        INSERT INTO com_interest (mem_no, com_no)
+        VALUES (#{mem_no}, #{com_no})
+    </insert>
+
+    <delete id="removeInterestCompany" parameterType="map">
+        DELETE FROM com_interest
+        WHERE mem_no = #{mem_no} AND com_no = #{com_no}
+    </delete>
+
+    <select id="getInterestCompanies" parameterType="long" resultType="com.project.jobs.dto.Company">
+        SELECT c.* FROM company c
+        INNER JOIN com_interest ci ON c.com_no = ci.com_no
+        WHERE ci.mem_no = #{mem_no}
+    </select>
 </mapper>

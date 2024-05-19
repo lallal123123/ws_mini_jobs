@@ -22,7 +22,14 @@
                 <div class="float-end">
                     <c:choose>
                         <c:when test="${not empty sessionScope.loggedInMember}">
-                            <a href="/members/mypage" class="btn btn-jobs">마이 페이지</a>
+                            <c:choose>
+                                <c:when test="${sessionScope.isAdmin}">
+                                    <a href="/admin/dashboard" class="btn btn-jobs">관리자 모드</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="/members/mypage" class="btn btn-jobs">마이 페이지</a>
+                                </c:otherwise>
+                            </c:choose>
                             <a href="/members/logout" class="btn btn-jobs">로그아웃</a>
                             <span>환영합니다, ${sessionScope.loggedInMember.mem_id}님!</span>
                         </c:when>
