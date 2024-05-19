@@ -24,13 +24,14 @@
 				<div class="border p-3">
 					<h1>커뮤니티 게시글 작성</h1>
 
-					<form action="" method="post">
+					<form action="write" method="post">
 						<div class="mb-3">
-							<label for="" class="form-label">카테고리</label> <select
-								class="form-control" name="category">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
+							<label for="" class="form-label">카테고리</label> 
+							<select class="form-control" name="category">
+								<option value="">선택해주세요</option>
+								<c:forEach var="dto" items="${clist}">									
+									<option value="${dto.ch_category}">${dto.ch_category}</option>
+								</c:forEach>
 							</select>
 						</div>
 
@@ -49,7 +50,7 @@
   							<input type="radio"  name="secret" value="1">
   							<label for="option1">비공개</label>
 						</div>
-						<input type="button" class="btn btn-jobs w-100" value="저장">
+						<button class="btn btn-jobs w-100">등록하기</button>
 
 
 

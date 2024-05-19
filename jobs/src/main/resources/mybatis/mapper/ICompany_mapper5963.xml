@@ -22,4 +22,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	JOIN recruit r ON r.com_no = c.com_no
 	WHERE c.com_no = #{param};
 </select>
+
+<insert id="comInfoWrite" parameterType="com.project.jobs.dto.Com_detail">
+	INSERT INTO com_detail VALUES(0, #{com_detail.com_no}, #{com_detail.introduction}, #{com_detail.img_url}, #{com_detail.pension}, #{com_detail.compensation} ,#{com_detail.facilities},#{com_detail.policy}, #{com_detail.convenience}, #{com_detail.sectors},#{com_detail.p_number}, #{com_detail.establishment}, #{com_detail.history}, #{com_detail.ideal_talent})
+</insert>
+
+<insert id="comInfoModify" parameterType="com.project.jobs.dto.Com_detail">
+UPDATE com_detail SET introduction=#{com_detail.introduction}, img_url=#{com_detail.img_url}, pension=#{com_detail.pension}, compensation=#{com_detail.compensation}, facilities=#{com_detail.facilities},
+policy=#{com_detail.policy}, convenience=#{com_detail.convenience}, sectors=#{com_detail.sectors}, p_number=#{com_detail.p_number}, establishment=#{com_detail.establishment}  WHERE com_no= #{com_detail.com_no};
+</insert>
+
+
+<select id="getComInfoDetail" resultType="com.project.jobs.dto.ComInfoDetail">
+SELECT c.com_no, c.com_name, c.com_size, c.com_ceo, c.com_addr, c.com_tel, c.com_url, cd.com_detail_no, cd.introduction, cd.img_url, cd.pension,
+cd.compensation, cd.facilities, cd.policy, cd.convenience, cd.sectors, cd.p_number, cd.establishment, cd.history, cd.ideal_talent FROM company c
+JOIN com_detail cd
+ON c.com_no = cd.com_no WHERE c.com_no=#{com_no};
+</select>
 </mapper>

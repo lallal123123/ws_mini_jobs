@@ -28,15 +28,21 @@
 						<thead>
 							<tr>
 								<th>카테고리</th>
-								<th>제목+내용</th>
+								<th>제목</th>
+								<th>작성자</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="dto" items="${list }">
 								<tr>
 									<td>${dto.category }</td>
-									<td>${dto.title }<br> ${dto.content }
-									</td>
+									<td><a href="detail?no=${dto.com_community_no}"> ${dto.title } </a></td>
+									<c:if test="${dto.secret eq 0}">
+										<td>${dto.com_id}</td>
+									</c:if>
+									<c:if test="${dto.secret eq 1}">
+										<td>비공개</td>
+									</c:if>
 								</tr>
 							</c:forEach>
 						</tbody>

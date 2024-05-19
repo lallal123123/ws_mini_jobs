@@ -3,19 +3,22 @@ package com.project.jobs.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.project.jobs.dao.ICS_Dao_won;
+import com.project.jobs.dao.ICS_Dao99;
 import com.project.jobs.dto.Member;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class MyController_99 {
+public class Common_Controller99 {
 	
 	@Autowired
-	private ICS_Dao_won cs_Dao;
+	private ICS_Dao99 cs_Dao;
+	
 	//문의 신고 컨트롤러
 	@RequestMapping("/common/index")
 	public String root() {
@@ -43,10 +46,13 @@ public class MyController_99 {
 	
 	@RequestMapping("/cs_list_99")
 	public String list(Model model, HttpSession session) {
-		Member loggedInMember = (Member) session.getAttribute("loggedInMember");
-		Long mem_no = loggedInMember.getMem_no();
+		Member member = (Member)session.getAttribute("loggedInMember");
+		if(member != null) {
+			Long mem_no = member.getMem_no();
+			model.addAttribute("mem_no",mem_no);
+		}
+		
 		model.addAttribute("list", cs_Dao.getList_99());
-		model.addAttribute("mem_no", mem_no);
 		return "/common/cs_list";
 	}
 	
@@ -86,12 +92,12 @@ public class MyController_99 {
 		return "redirect:/cs_list_99";
 	}
 	
-	//공지사항 컨트롤러
-	
-	@RequestMapping("/notice_list_99")
-	public String noticeList() {
+	@GetMapping("/login_status_99")
+	@ResponseBody
+	public boolean checkLoginStatus(HttpSession session) {
 		
-		return "/common/notice_list";
+		return session.getAttribute("loggedInMember") != null;
 	}
+	
 	
 }

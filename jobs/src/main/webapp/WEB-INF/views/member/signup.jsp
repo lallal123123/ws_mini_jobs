@@ -9,10 +9,29 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding-top: 20px;
+        }
+        .form-group {
+            position: relative;
+        }
+        .id-check-result {
+            position: absolute;
+            top: 35px;
+            right: 10px;
+            color: red;
+        }
+        .form-control {
+            max-width: 100%;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h2>회원가입</h2>
+<div class="container form-container">
+    <h2 class="text-center">회원가입</h2>
     <ul class="nav nav-tabs" id="signupTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="member-tab" data-toggle="tab" href="#member" role="tab" aria-controls="member" aria-selected="true">회원가입</a>
@@ -29,7 +48,7 @@
                     <label for="mem_id">아이디</label>
                     <form:input path="mem_id" id="mem_id" cssClass="form-control"/>
                     <button type="button" id="checkMemIdBtn" class="btn btn-secondary">중복 체크</button>
-                    <span id="idCheckResultMember"></span>
+                    <span id="idCheckResultMember" class="id-check-result"></span>
                 </div>
                 <div class="form-group">
                     <label for="mem_pw">비밀번호</label>
@@ -52,11 +71,14 @@
                     <form:input path="mem_email" id="mem_email" cssClass="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label for="mem_gender">성별</label>
-                    <form:input path="mem_gender" id="mem_gender" cssClass="form-control"/>
+                    <label for="mem_gender">성별</label><br/>
+                    <form:radiobutton path="mem_gender" value="male" id="gender_male"/>
+                    <label for="gender_male">남성</label>
+                    <form:radiobutton path="mem_gender" value="female" id="gender_female"/>
+                    <label for="gender_female">여성</label>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">회원가입</button>
+                    <button type="submit" class="btn btn-primary">일반 회원가입</button>
                 </div>
             </form:form>
         </div>
@@ -67,7 +89,7 @@
                     <label for="com_id">아이디</label>
                     <form:input path="com_id" id="com_id" cssClass="form-control"/>
                     <button type="button" id="checkComIdBtn" class="btn btn-secondary">중복 체크</button>
-                    <span id="idCheckResultCompany"></span>
+                    <span id="idCheckResultCompany" class="id-check-result"></span>
                 </div>
                 <div class="form-group">
                     <label for="com_pw">비밀번호</label>
@@ -111,7 +133,7 @@
             </form:form>
         </div>
     </div>
-    <a href="${pageContext.request.contextPath}/members/index">메인으로 돌아가기</a>
+    <a href="${pageContext.request.contextPath}/members/index" class="btn btn-link">메인으로 돌아가기</a>
 </div>
 <!-- Bootstrap JS and dependencies -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
@@ -123,7 +145,7 @@ $(document).ready(function() {
         $.ajax({
             url: '${pageContext.request.contextPath}/members/checkId',
             type: 'GET',
-            data: { id: mem_id },
+            data: { mem_id: mem_id },
             success: function(response) {
                 if(response) {
                     $('#idCheckResultMember').text('아이디가 이미 존재합니다.').css('color', 'red');
@@ -137,9 +159,9 @@ $(document).ready(function() {
     $('#checkComIdBtn').click(function() {
         var com_id = $('#com_id').val();
         $.ajax({
-            url: '${pageContext.request.contextPath}/members/checkId',
+            url: '${pageContext.request.contextPath}/companies/checkComId',
             type: 'GET',
-            data: { id: com_id },
+            data: { com_id: com_id },
             success: function(response) {
                 if(response) {
                     $('#idCheckResultCompany').text('아이디가 이미 존재합니다.').css('color', 'red');
@@ -153,4 +175,3 @@ $(document).ready(function() {
 </script>
 </body>
 </html>
-

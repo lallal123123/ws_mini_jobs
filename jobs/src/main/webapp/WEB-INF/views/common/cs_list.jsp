@@ -9,7 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
 </head>
-<body>
+<body data-logged-in="${sessionScope.loggedInMember != null}">
 <jsp:include page="../header.jsp"></jsp:include>
 <!-- 작업공간 영역 -->
 <div class="container">
@@ -24,7 +24,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link link-body-emphasis">
+                <a href="../admin/notice_list_99" class="nav-link link-body-emphasis">
                  공지사항
                 </a>
               </li>   
@@ -34,7 +34,7 @@
     
     <div class="col-9">
         <div class="border p-3">
-        	<a class="btn btn-light" href="../write_Form_99" role="button">문의·신고 글 작성하기</a>
+        	<a class="btn btn-light" href="../write_Form_99" role="button" onclick="return isLoggedIn()">문의·신고 글 작성하기</a>
         	<table class="table">
 			  <thead>
 			    <tr>
@@ -50,14 +50,18 @@
 			  	<tr>
 			      <th scope="row">${status.count }</th>
 			      <td>${list.category }</td>
-			      <c:choose>
-			      	<c:when test="${list.ch_private != '1' && list.mem_no != ${mem_no}}">
-			      		<td>비밀글입니다</td>
-			      	</c:when>
-			      	<c:otherwise>
-			      		<td><a href="cs_detail_99?cs_no=${list.cs_no }">${list.title }</a></td>
-			      	</c:otherwise>
-			      </c:choose>
+				  <td>${list.mem_no }</td>
+				  <td>memno : ${mem_no}</td>
+				  <td>${list.mem_no }</td>				  
+				  <c:choose>
+					<c:when test="${list.ch_private == true and list.mem_no ne mem_no}">
+						<td><a href="cs_detail_99?cs_no=${list.cs_no}">${list.title}</a></td>
+					</c:when>
+					<c:otherwise>
+						<td>비밀글입니다</td>
+					</c:otherwise>
+				</c:choose>
+				
 			      <td>${list.reg_date }</td>
 			    </tr>
 			  </c:forEach>

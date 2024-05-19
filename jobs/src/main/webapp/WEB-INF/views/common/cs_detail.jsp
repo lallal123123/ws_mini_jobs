@@ -43,7 +43,7 @@
         	<div>내용</div>
         	<div id="content">${dto.content }</div>
         	<c:choose>
-        		<c:when test="${dto.mem_no == session.loggedInMember}">
+        		<c:when test="${dto.mem_no == session.loggedInMember.mem_no}">
         			<a class="btn btn-light" href="../modify_form_99?cs_no=${dto.cs_no }" role="button">수정</a>
         			<a class="btn btn-light" href="../delete_99?cs_no=${dto.cs_no }" role="button">삭제</a>
         		</c:when>

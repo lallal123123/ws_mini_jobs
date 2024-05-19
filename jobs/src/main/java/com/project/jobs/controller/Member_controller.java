@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.jobs.dto.Company;
@@ -20,7 +21,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/members")
-public class Member_Controller {
+public class Member_controller {
 
 	@Autowired
 	private MemberService memberService;
@@ -56,7 +57,7 @@ public class Member_Controller {
 	}
 
 	@GetMapping("/{mem_no}")
-	public String getMemberById(@PathVariable Long mem_no, Model model) {
+	public String getMemberById(@PathVariable("mem_no") Long mem_no, Model model) {
 		Member member = memberService.getMemberById(mem_no);
 		model.addAttribute("member", member);
 		return "memberDetail";
@@ -70,15 +71,21 @@ public class Member_Controller {
 
 	@PostMapping("/login")
 	public String login(@ModelAttribute Member member, Model model, HttpSession session) {
-		Member loginMember = memberService.login(member.getMem_id(), member.getMem_pw());
-		if (loginMember != null) {
-			session.setAttribute("loggedInMember", loginMember);
-			return "redirect:/members/index";
-		} else {
-			model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
-			return "redirect:/members/loginForm";
-		}
+	    Member loginMember = memberService.login(member);
+	    if (loginMember != null) {
+	        session.setAttribute("loggedInMember", loginMember);
+	        if ("manager3854".equals(loginMember.getMem_id())) {
+	            session.setAttribute("isAdmin", true);
+	        } else {
+	            session.setAttribute("isAdmin", false);
+	        }
+	        return "redirect:/members/index";
+	    } else {
+	        model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
+	        return "redirect:/members/loginForm";
+	    }
 	}
+
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
@@ -86,29 +93,57 @@ public class Member_Controller {
 		return "redirect:/members/loginForm";
 	}
 
-	@GetMapping("/edit/{mem_no}")
-	public String editMemberForm(@PathVariable Long mem_no, Model model) {
-		Member member = memberService.getMemberById(mem_no);
-		model.addAttribute("member", member);
-		return "editMember";
-	}
-
-	@PostMapping("/update/{mem_no}")
-	public String updateMember(@PathVariable Long mem_no, @ModelAttribute Member member) {
-		member.setMem_no(mem_no);
-		memberService.updateMember(member);
-		return "redirect:/members";
-	}
-
 	@GetMapping("/delete/{mem_no}")
-	public String deleteMember(@PathVariable Long mem_no) {
+	public String deleteMember(@PathVariable("mem_no") Long mem_no) {
 		memberService.deleteMember(mem_no);
 		return "redirect:/members";
 	}
 
 	@GetMapping("/checkId")
 	@ResponseBody
-	public boolean checkId(String id) {
-		return memberService.isIdExists(id);
+	public boolean checkId(@RequestParam("mem_id") String mem_id) {
+		System.out.println("Received mem_id: " + mem_id); // 디버그 출력
+		return memberService.isMemIdExists(mem_id);
+	}
+
+	@GetMapping("/mypage")
+	public String mypage(HttpSession session, Model model) {
+		Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+		if (loggedInMember != null) {
+			model.addAttribute("member", loggedInMember);
+			model.addAttribute("userName", loggedInMember.getMem_name());
+			model.addAttribute("mem_no", loggedInMember.getMem_no());
+			return "member/mypage3854";
+		} else {
+			return "redirect:/members/loginForm";
+		}
+	}
+
+	@GetMapping("/editProfile")
+	public String editLoggedInMemberForm(HttpSession session, Model model) {
+		Member loggedInMember = getLoggedInMember(session);
+		if (loggedInMember != null) {
+			model.addAttribute("member", loggedInMember);
+			return "member/myProfile3854";
+		} else {
+			return "redirect:/members/loginForm";
+		}
+	}
+
+	@PostMapping("/updateProfile")
+	public String updateLoggedInMember(@ModelAttribute Member member, HttpSession session) {
+		Member loggedInMember = getLoggedInMember(session);
+		if (loggedInMember != null) {
+			member.setMem_no(loggedInMember.getMem_no());
+			memberService.updateMember(member);
+			session.setAttribute("loggedInMember", member); // 업데이트된 회원 정보를 세션에 다시 저장
+			return "redirect:/members/mypage";
+		} else {
+			return "redirect:/members/loginForm";
+		}
+	}
+
+	private Member getLoggedInMember(HttpSession session) {
+		return (Member) session.getAttribute("loggedInMember");
 	}
 }

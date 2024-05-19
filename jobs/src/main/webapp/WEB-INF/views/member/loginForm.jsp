@@ -8,10 +8,22 @@
     <title>로그인</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            max-width: 500px;
+            margin: 50px auto;
+        }
+        .form-control {
+            max-width: 100%;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h2>로그인</h2>
+<div class="container form-container">
+    <h2 class="text-center">로그인</h2>
     <ul class="nav nav-tabs" id="loginTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="member-tab" data-toggle="tab" href="#member" role="tab" aria-controls="member" aria-selected="true">회원 로그인</a>
@@ -64,7 +76,7 @@
             </form:form>
         </div>
     </div>
-    <a href="${pageContext.request.contextPath}/members/index">메인으로 돌아가기</a>
+    <a href="${pageContext.request.contextPath}/members/index" class="btn btn-link text-center d-block mt-3">메인으로 돌아가기</a>
 </div>
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
