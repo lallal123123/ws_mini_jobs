@@ -26,12 +26,30 @@ public class Company_controller {
 	@Autowired
 	private CompanyService3854 companyService;
 
-	@GetMapping
-	public String getAllCompanies(Model model) {
-		List<Company> companies = companyService.getAllCompanies();
-		model.addAttribute("companies", companies);
-		return "companyList";
-	}
+	 @GetMapping
+	    public String getAllCompanies(Model model, HttpSession session) {
+	        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+	        Long mem_no = loggedInMember != null ? loggedInMember.getMem_no() : null;
+	        List<Company> companies = companyService.getAllCompaniesWithInterests(mem_no);
+	        model.addAttribute("companies", companies);
+	        return "com_list";
+	    }
+
+	    @PostMapping("/toggleInterest/{com_no}")
+	    @ResponseBody
+	    public String toggleInterest(@PathVariable Long com_no, HttpSession session) {
+	        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+	        boolean isInterest = companyService.toggleInterestCompany(loggedInMember.getMem_no(), com_no);
+	        return "{\"success\": true, \"isInterest\": " + isInterest + "}";
+	    }
+
+	    @GetMapping("/interestCompanies")
+	    public String getInterestCompanies(Model model, HttpSession session) {
+	        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+	        List<Company> interestCompanies = companyService.getInterestCompanies(loggedInMember.getMem_no());
+	        model.addAttribute("interestCompanies", interestCompanies);
+	        return "member/com_interest_list";
+	    }
 
 	@GetMapping("/{com_no}")
 	public String getCompanyById(@PathVariable Long com_no, Model model) {
@@ -72,7 +90,11 @@ public class Company_controller {
 
 	@GetMapping("/checkComId")
 	@ResponseBody
-	public boolean checkComId(@RequestParam("id") String com_id) {
+	public boolean checkComId(@RequestParam(value = "com_id", required = false) String com_id) {
+		if (com_id == null || com_id.trim().isEmpty()) {
+			
+			return false;
+		}
 		return companyService.isComIdExists(com_id);
 	}
 	

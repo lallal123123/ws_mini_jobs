@@ -14,6 +14,8 @@
     <div>
         <h2>${member.mem_name} 님</h2>
         <a href="${pageContext.request.contextPath}/members/editProfile">내 정보 수정</a>
+        <br>
+        <a href="${pageContext.request.contextPath}/companies/interestCompanies">관심기업 리스트</a>
     </div>
 </body>
 </html>
