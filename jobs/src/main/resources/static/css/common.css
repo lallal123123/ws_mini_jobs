@@ -39,6 +39,15 @@ body{
 .search-box{
 	width:250px;
 }
+.img_box{
+	height:200px;
+	border-radius:5px;
+	overflow:hidden;
+}
+.img_box img{
+	width:100%;
+	height:auto;
+}
 
 
 .btn-jobs-community {

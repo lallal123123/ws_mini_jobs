@@ -49,7 +49,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-9">
+    <div class="col-9 mb-5">
 	    <p class="text-secondary d-flex">
 	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
 	    	<a href="#" class="nav-link text-secondary">기업 소개 관리</a> <span class="mx-3">></span>
@@ -58,7 +58,7 @@
     
         <div class="border p-5 rounded">
         
-        	<form action="/company/mypage/infoModify" method="post">
+        	<form id="info_modify_form" action="/company/mypage/infoModify" method="post" enctype="multipart/form-data" onsubmit="return numberCheck()">
         		<input type="hidden" name="com_no" value="${comInfoDetail.com_no}">
 				<div class="mb-3">
 					<label for="" class="form-label">소개글</label>
@@ -131,7 +131,24 @@
 </div>
 <!-- 작업공간 영역 끝 -->
 <jsp:include page="../../footer.jsp"></jsp:include>
+<script>
+const info_write_form=document.querySelector("#info_modify_form");
+const establishment=document.querySelector("#establishment");
+const p_number=document.querySelector("#p_number");
 
+function numberCheck(){
+	
+	if(establishment.value.length == 0){
+		establishment.value = 0;
+	}
+	if(p_number.value.length == 0){
+		p_number.value = 0;
+	}
+	//alert(establishment.value);
+	//alert(p_number.value);
+	
+};
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
