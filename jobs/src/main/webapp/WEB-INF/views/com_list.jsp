@@ -5,34 +5,31 @@
 <head>
 <meta charset="UTF-8">
 <title>기업 리스트</title>
-<script>
-    function toggleInterest(com_no, starElement) {
-        var action = starElement.classList.contains('interested') ? 'remove' : 'add';
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '${pageContext.request.contextPath}/companies/toggleInterest', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                if (action === 'add') {
-                    starElement.classList.add('interested');
-                    starElement.innerText = '★';
-                } else {
-                    starElement.classList.remove('interested');
-                    starElement.innerText = '☆';
-                }
-            }
-        };
-        xhr.send('com_no=' + com_no + '&action=' + action);
-    }
-</script>
 <style>
-    .star {
+    .detail-button {
+        display: inline-block;
+        padding: 5px 10px;
+        font-size: 14px;
+        color: white;
+        background-color: blue;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
         cursor: pointer;
-        font-size: 20px;
-        color: gold;
     }
-    .interested {
-        color: red;
+    .back-to-main {
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 5px 10px;
+        font-size: 14px;
+        color: white;
+        background-color: green;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
     }
 </style>
 </head>
@@ -40,36 +37,32 @@
 <header>
     <h1>기업 리스트</h1>
 </header>
+
+
+
+
 <table>
     <thead>
         <tr>
+            <th>기업 번호</th>
             <th>회사명</th>
             <th>대표자</th>
             <th>주소</th>
-            <th>관심 기업</th>
+            <th>기업상세</th>
         </tr>
     </thead>
     <tbody>
         <c:forEach var="company" items="${companies}">
             <tr>
+                <td>${company.com_no}</td>
                 <td>${company.com_name}</td>
                 <td>${company.com_ceo}</td>
                 <td>${company.com_addr}</td>
-                <td>
-                    <span class="star ${company.interest ? 'interested' : ''}" onclick="toggleInterest(${company.com_no}, this)">
-                        <c:choose>
-                            <c:when test="${company.interest}">
-                                ★
-                            </c:when>
-                            <c:otherwise>
-                                ☆
-                            </c:otherwise>
-                        </c:choose>
-                    </span>
-                </td>
+                <td><a href="${pageContext.request.contextPath}/companies/${company.com_no}" class="detail-button">기업상세</a></td>
             </tr>
         </c:forEach>
     </tbody>
 </table>
+<a href="${pageContext.request.contextPath}/members/index" class="back-to-main">메인페이지로 돌아가기</a>
 </body>
 </html>
