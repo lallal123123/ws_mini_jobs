@@ -58,7 +58,7 @@
     
         <div class="border p-5 rounded">
         
-        	<form id="info_write_form" action="/company/mypage/infoWrite" method="post" onsubmit="return numberCheck()">
+        	<form id="info_write_form" action="/company/mypage/infoWrite" method="post" enctype="multipart/form-data" onsubmit="return numberCheck()">
         		<input type="hidden" name="com_no" value="${company.com_no}">
 				<div class="mb-3">
 					<label for="" class="form-label">소개글</label>
