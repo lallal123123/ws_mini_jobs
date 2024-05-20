@@ -1,9 +1,10 @@
 package com.project.jobs.dto;
 
+import org.modelmapper.ModelMapper;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.modelmapper.ModelMapper;
 
 @AllArgsConstructor
 @NoArgsConstructor
