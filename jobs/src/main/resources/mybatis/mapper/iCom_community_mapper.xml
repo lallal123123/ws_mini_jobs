@@ -63,6 +63,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <!-- 인기글 -->
+<select id="chList" resultType="com.project.jobs.dto.Com_community">
+	select * from com_community where category=#{category} order by com_community_no desc LIMIT #{start},#{cnt}
+</select>
+
+<!-- 카테고리별 게시글 리스트 -->
 <select id="hotList" resultType="com.project.jobs.dto.Com_community">
 	select * from com_community order by views desc LIMIT #{start},#{cnt}
 </select>

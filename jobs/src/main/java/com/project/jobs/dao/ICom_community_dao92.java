@@ -39,5 +39,7 @@ public interface ICom_community_dao92 {
 	//인기글
 	public List<Com_community> hotList(@Param("start") Long start,@Param("cnt") Long cnt);//
 	
+	//카테고리별
+	public List<Com_community> chList(@Param("category") String category,@Param("start") Long start,@Param("cnt") Long cnt);
 
  }
