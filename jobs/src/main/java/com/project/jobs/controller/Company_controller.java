@@ -33,7 +33,7 @@ public class Company_controller {
         model.addAttribute("companies", companies);
         return "com_list";
     }
-
+   
     @PostMapping("/toggleInterest")
     @ResponseBody
     public String toggleInterest(@RequestParam("com_no") Long com_no, @RequestParam("action") String action, HttpSession session) {
@@ -41,9 +41,13 @@ public class Company_controller {
         if (loggedInMember != null) {
             Long mem_no = loggedInMember.getMem_no();
             if ("add".equals(action)) {
-                companyService.addInterestCompany(mem_no, com_no);
+                if (!companyService.isInterestCompany(mem_no, com_no)) {
+                    companyService.addInterestCompany(mem_no, com_no);
+                }
             } else if ("remove".equals(action)) {
-                companyService.removeInterestCompany(mem_no, com_no);
+                if (companyService.isInterestCompany(mem_no, com_no)) {
+                    companyService.removeInterestCompany(mem_no, com_no);
+                }
             }
             return "success";
         }
@@ -58,12 +62,20 @@ public class Company_controller {
         return "member/com_interest_list";
     }
 
+
     @GetMapping("/{com_no}")
-    public String getCompanyById(@PathVariable Long com_no, Model model) {
+    public String getCompanyById(@PathVariable("com_no") Long com_no, Model model, HttpSession session) {
+        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+        Long mem_no = loggedInMember != null ? loggedInMember.getMem_no() : null;
         Company company = companyService.getCompanyById(com_no);
+        if (mem_no != null) {
+            boolean isInterest = companyService.isInterestCompany(mem_no, com_no);
+            company.setInterest(isInterest);
+        }
         model.addAttribute("company", company);
-        return "companyDetail";
+        return "com_interest_detail";
     }
+
 
     @PostMapping("/insertCompany")
     public String insertCompany(@ModelAttribute Company company) {
@@ -90,7 +102,7 @@ public class Company_controller {
     }
 
     @GetMapping("/delete/{com_no}")
-    public String deleteCompany(@PathVariable Long com_no) {
+    public String deleteCompany(@PathVariable("com_no") Long com_no) {
         companyService.deleteCompany(com_no);
         return "redirect:/companies";
     }
@@ -116,6 +128,8 @@ public class Company_controller {
             return "redirect:/members/loginForm";
         }
     }
+
+
 
     @GetMapping("/editProfile")
     public String editLoggedInCompanyForm(HttpSession session, Model model) {
