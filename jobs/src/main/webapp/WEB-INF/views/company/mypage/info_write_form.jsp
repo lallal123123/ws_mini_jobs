@@ -49,7 +49,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-9">
+    <div class="col-9 mb-5">
 	    <p class="text-secondary d-flex">
 	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
 	    	<a href="#" class="nav-link text-secondary">기업 소개 관리</a> <span class="mx-3">></span>
