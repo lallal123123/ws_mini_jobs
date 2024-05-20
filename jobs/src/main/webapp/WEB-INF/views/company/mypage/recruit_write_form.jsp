@@ -58,7 +58,7 @@
     
         <div class="border p-5 rounded">
         
-        	<form action="/company/mypage/registRecruit" method="post">
+        	<form id="recruit_write_form" action="/company/mypage/registRecruit" method="post" onsubmit="return numberCheck()">
         		<input type="text" name="com_no" value="1">
         		<div class="mb-3">
 			  		<label for="" class="form-label">공고제목</label>
@@ -152,7 +152,24 @@
 </div>
 <!-- 작업공간 영역 끝 -->
 <jsp:include page="../../footer.jsp"></jsp:include>
+<script>
+const info_write_form=document.querySelector("#recruit_write_form");
+const pay=document.querySelector("#pay");
+const p_number=document.querySelector("#p_number");
 
+function numberCheck(){
+	
+	if(pay.value.length == 0){
+		pay.value = 0;
+	}
+	if(p_number.value.length == 0){
+		p_number.value = 0;
+	}
+	//alert(establishment.value);
+	//alert(p_number.value);
+	
+};
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
