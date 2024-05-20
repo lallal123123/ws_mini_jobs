@@ -13,11 +13,14 @@ import com.project.jobs.dto.Career;
 import com.project.jobs.dto.Education;
 import com.project.jobs.dto.License;
 import com.project.jobs.dto.Site_resume;
+import com.project.jobs.service.Site_resumeService8481;
 
 @Controller
 public class Controller8481 {
 	@Autowired
 	IMember_resume8481 dao;
+	@Autowired
+	Site_resumeService8481 srs;
 	
 	@RequestMapping("/member/index")
 	public String index() {
@@ -40,24 +43,21 @@ public class Controller8481 {
 	
 	@RequestMapping("/member_mypage_resume_write")
 	public String site_resume_wirte(Career car_dto, License lic_dto, Education edu_dto, Site_resume site_res_dto) {
-		/*
-		if(car_dto.getCar_join_date()==null && car_dto.getQuit_date()==null) {
-			
-		}else {
-			dao.career_write(car_dto);
-			dao.license_write(lic_dto);
-			dao.education_write(edu_dto);
-			dao.site_resume_write(site_res_dto);
-			
-			
-		}
-		*/
-		dao.site_resume_write(site_res_dto);
-		dao.career_write(car_dto);
-		dao.license_write(lic_dto);
-		dao.education_write(edu_dto);
 		
-	
+		//mapper를 이용한 이력서 입력(fk값이 아직 들어가지않음 2024-05-20 시점)
+		//dao.site_resume_write(site_res_dto);
+		//dao.career_write(car_dto);
+		//dao.license_write(lic_dto);
+		//dao.education_write(edu_dto);
+		
+		//Service를 사용해 fk값을 넣는방법 시도(2024-05-20) - 디비에 값이4번 들어감
+		//dao.site_resume_write(site_res_dto);
+		//srs.insertFkforLicense(site_res_dto, lic_dto);
+		//srs.insertFkforCareer(site_res_dto, car_dto);
+		//srs.insertFkforEducation(site_res_dto, edu_dto);
+		
+		//4번들어간 문제를 수정한 작업
+		srs.insertfk(site_res_dto, lic_dto, car_dto, edu_dto);
 		
 		return "redirect:/member/index";//이력서 작성후 어디로 보낼지
 		

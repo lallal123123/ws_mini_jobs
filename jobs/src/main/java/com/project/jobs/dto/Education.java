@@ -18,10 +18,10 @@ public class Education {
 	private Long s_resume_no;
 	private String school;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date edu_join_date;
+	private String edu_join_date;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date graduation_date;
-	private Boolean graduation; 
+	private String graduation_date;
+	private int graduation; 
 	private int grades;
 	private String major;
 	private Long mem_no;

@@ -18,9 +18,9 @@ public class Career {
 	private Long s_resume_no;
 	private String company;
 	 @DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date car_join_date;
+	private String car_join_date;
 	 @DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date quit_date;
+	private String quit_date;
 	private String main_part;
 	private Long mem_no;
 }
