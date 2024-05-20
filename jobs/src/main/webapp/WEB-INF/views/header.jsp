@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>jobs 휴먼 클라우드 이력관리플렛폼</title>
 </head>
-<body>
+
 <header class="py-3 mb-4 border-bottom">
     <div class="container">
         <div class="d-flex flex-wrap justify-content-center">
@@ -55,5 +55,5 @@
         </ul>
     </div>
 </header>
-</body>
+
 </html>
