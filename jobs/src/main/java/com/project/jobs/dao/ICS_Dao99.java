@@ -14,4 +14,6 @@ public interface ICS_Dao99 {
 	public void writeDao_99(@Param("mem_no") String mem_no, @Param("title") String title, @Param("content") String content, @Param("category") String category, @Param("ch_private") String ch_private);
 	public void deleteDao_99(@Param("cs_no") String cs_no);
 	public void modifyDao_99(@Param("title") String title, @Param("content") String content, @Param("category") String category, @Param("ch_private") String ch_private, @Param("cs_no") String cs_no);
+	public void writeRequestDao_99(@Param("cs_no") String cs_no, @Param("content") String content, @Param("title") String title);
+	
 }

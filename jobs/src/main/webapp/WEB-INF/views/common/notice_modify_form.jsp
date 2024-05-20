@@ -19,29 +19,42 @@
             <!-- 여기에 메뉴를 나열해주세요 -->
               <li class="nav-item">
                 <a href="../cs_list_99" class="nav-link active" aria-current="page">
-                  문의·신고
+                  My home
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link link-body-emphasis">
-                 공지사항
-                </a>
-              </li>   
+                <div class="nav-link link-body-emphasis">
+                 개인회원 관리
+                </div>
+              </li>
+              <li>
+                <div class="nav-link link-body-emphasis">
+                 기업회원 관리
+                </div>
+              </li> 
+              <li>
+                <div class="nav-link link-body-emphasis">
+                 고객센터 관리
+                </div>
+              </li> 
+              <li>
+                <div class="nav-link link-body-emphasis">
+                 공지사항 관리
+                </div>
+              </li>       
                 </ul>
         </div>
     </div>
     
     <div class="col-9">
         <div class="border p-3">
-        	<form action="/modify_99?cs_no=${dto.cs_no }" method="post" onsubmit="return csRegForm()">
-		    	<h3 style="text-align:center;">문의·신고 수정</h3>
-	      		<div>문의·신고 종류(필수)</div>
+        	<form action="../notice_modify_99?notice_no=${dto.notice_no }" method="post" onsubmit="return noticeRegForm()">
+		    	<h3 style="text-align:center;">공지사항 작성</h3>
+	      		<div>공지사항 종류(필수)</div>
 			  	<select class="form-select" name="category" id="category">
 			  	<option value="">선택하세요</option>
-			  	<option value="서비스 이용 문의" ${dto.category  == '서비스 이용 문의' ? 'selected' : ''}>서비스 이용 문의</option>
-			  	<option value="불량정보·오류 신고" ${dto.category  == '불량정보·오류 신고' ? 'selected' : ''}>불량정보·오류 신고</option>
-			  	<option value="서비스 제안·칭찬" ${dto.category  == '서비스 제안·칭찬' ? 'selected' : ''}>서비스 제안·칭찬</option>
-			  	<option value="커뮤니티 관련사항" ${dto.category  == '커뮤니티 관련사항' ? 'selected' : ''}>커뮤니티 관련사항</option>
+			  	<option value="공지" ${dto.category == '공지' ? 'selected' : '' }>공지</option>
+			  	<option value="서비스 오픈" ${dto.category == '서비스 오픈' ? 'selected' : '' }>서비스 오픈</option>
 			  	</select>
 	 			<div class="mb-3">
                 	<label for="" class="form-label">제목</label>
@@ -49,9 +62,7 @@
                 	<label for="" class="form-label">내용</label>
                 	<textarea class="form-control" name="content" id="content" placeholder="내용">${dto.content }</textarea>
            		</div>
-           		<div>글 비공개 여부</div>
-	 			<input type="radio" value="1" ${dto.ch_private == '1' ? 'checked' : ''} name="ch_private" id="public">공개
-	 			<input type="radio" value="0" ${dto.ch_private == '1' ? 'checked' : ''} name="ch_private" id="private">비공개<br>
+           		
            		<input type="submit" class="btn btn-jobs w-100" value="등록하기">
 			</form>
         </div>
@@ -61,7 +72,7 @@
 <!-- 작업공간 영역 끝 -->
 <jsp:include page="../footer.jsp"></jsp:include>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="../js/csScript.js"></script>
+<script src="../js/noticeScript.js"></script>
 </body>
 </html>
 </body>

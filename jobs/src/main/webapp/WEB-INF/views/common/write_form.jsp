@@ -8,7 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 <jsp:include page="../header.jsp"></jsp:include>
 <!-- 작업공간 영역 -->
 <a href="../cs_list_99">목록보기</a>
@@ -44,7 +44,6 @@
 			  	<option value="서비스 제안·칭찬">서비스 제안·칭찬</option>
 			  	<option value="커뮤니티 관련사항">커뮤니티 관련사항</option>
 			  	</select>
-			  	<input type="text" name="mem_no" value="1">
 	 			<div class="mb-3">
                 	<label for="" class="form-label">제목</label>
                 	<textarea class="form-control" name="title" id="title" placeholder="제목"></textarea>
@@ -56,6 +55,7 @@
 	 			<input type="radio" value="0" name="ch_private" id="private">비공개<br>
            		<input type="submit" class="btn btn-jobs w-100" value="등록하기">
 			</form>
+			<a class="btn btn-light" href="../cs_list_99" role="button">이전</a>
         </div>
     </div>
 </div>

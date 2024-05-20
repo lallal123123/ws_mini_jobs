@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.jobs.dao.INotice_Dao99">
+	<!-- 고객센터 문의 신고 -->
+	<select id="getnoticeList_99">
+		SELECT * FROM notice
+	</select>
+	<insert id="noticeWrite_99" >
+		INSERT INTO notice (mem_no, title, content, reg_date, category)
+		VALUES (#{mem_no}, #{title}, #{content}, DATE(NOW()), #{category})
+	</insert>
+	
+	<select id="getnoticeDetail_99">
+		SELECT * FROM notice WHERE notice_no = #{notice_no}
+	</select>
+	
+	<delete id="noticeDeleteDao_99">
+		DELETE FROM notice WHERE notice_no = #{notice_no}
+	</delete>
+	<update id="noticeModify_99">
+		UPDATE notice SET title = #{title}, content = #{content}, category = #{category} WHERE notice_no = #{notice_no}
+	</update>
+		 
+</mapper>

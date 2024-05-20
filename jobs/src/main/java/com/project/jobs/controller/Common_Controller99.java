@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.jobs.dao.ICS_Dao99;
+import com.project.jobs.dao.INotice_Dao99;
 import com.project.jobs.dto.Member;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -57,7 +58,14 @@ public class Common_Controller99 {
 	}
 	
 	@RequestMapping("/cs_detail_99")
-	public String listDetail(HttpServletRequest request, Model model) {
+	public String listDetail(HttpServletRequest request, Model model, HttpSession session) {
+		Member member = (Member)session.getAttribute("loggedInMember");
+		
+		if(member != null) {
+			Long mem_no = member.getMem_no();
+			model.addAttribute("mem_no",mem_no);
+		}
+		
 		String cs_no = request.getParameter("cs_no");
 		model.addAttribute("dto", cs_Dao.getlistDetail_99(cs_no));
 		return "/common/cs_detail";
@@ -98,6 +106,41 @@ public class Common_Controller99 {
 		
 		return session.getAttribute("loggedInMember") != null;
 	}
+	
+	//공지사항
+	@Autowired
+	private INotice_Dao99 noticeDao;
+	
+	@RequestMapping("/notice_list_99")
+	public String noticeList(Model model, HttpSession session) {
+		Member member = (Member)session.getAttribute("loggedInMember");
+		if(member != null) {
+			Long mem_no = member.getMem_no();
+			model.addAttribute("mem_no",mem_no);
+		}
+		
+		model.addAttribute("list", noticeDao.getnoticeList_99());
+		return "/common/notice_list";
+	}
+	
+	@RequestMapping("/noticeDetail_99")
+	public String noticeDetail(Model model, HttpServletRequest request, HttpSession session) {
+		Member member = (Member)session.getAttribute("loggedInMember");
+		
+		if(member != null) {
+			Long mem_no = member.getMem_no();
+			model.addAttribute("mem_no",mem_no);
+		}
+		String notice_no = request.getParameter("notice_no");
+		model.addAttribute("dto", noticeDao.getnoticeDetail_99(notice_no));
+		return "/common/notice_detail";
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 }
