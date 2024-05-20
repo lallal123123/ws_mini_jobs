@@ -1,64 +1,75 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.jobs.dao.ICompanyDao3854">
-    <select id="getAllCompanies" resultType="com.project.jobs.dto.Company">
-        SELECT * FROM company
-    </select>
+	<select id="getAllCompanies" resultType="com.project.jobs.dto.Company">
+		SELECT * FROM company
+	</select>
 
-    <select id="getCompanyById" parameterType="Long" resultType="com.project.jobs.dto.Company">
-        SELECT * FROM company WHERE com_no = #{com_no}
-    </select>
+	<select id="getCompanyById" parameterType="Long"
+		resultType="com.project.jobs.dto.Company">
+		SELECT * FROM company WHERE com_no = #{com_no}
+	</select>
 
- <insert id="insertCompany" parameterType="com.project.jobs.dto.Company">
-        INSERT INTO company (com_id, com_pw, com_name, com_size, com_ceo, com_addr, com_companynum, com_tel, com_email, com_url, make_date)
-        VALUES (#{com_id}, #{com_pw}, #{com_name}, #{com_size}, #{com_ceo}, #{com_addr}, #{com_companynum}, #{com_tel}, #{com_email}, #{com_url}, #{make_date})
-    </insert>
+	<insert id="insertCompany" parameterType="com.project.jobs.dto.Company">
+		INSERT INTO company (com_id, com_pw, com_name, com_size, com_ceo,
+		com_addr, com_companynum, com_tel, com_email, com_url, make_date)
+		VALUES (#{com_id}, #{com_pw}, #{com_name}, #{com_size}, #{com_ceo},
+		#{com_addr}, #{com_companynum}, #{com_tel}, #{com_email}, #{com_url},
+		#{make_date})
+	</insert>
 
-    <update id="updateCompany" parameterType="com.project.jobs.dto.Company">
-        UPDATE company
-        SET com_id = #{com_id}, com_pw = #{com_pw}, com_name = #{com_name}, com_size = #{com_size},
-            com_ceo = #{com_ceo}, com_addr = #{com_addr}, com_companynum = #{com_companynum},
-            com_tel = #{com_tel}, com_email = #{com_email}, com_url = #{com_url}, make_date = #{make_date}
-        WHERE com_no = #{com_no}
-    </update>
+	<update id="updateCompany" parameterType="com.project.jobs.dto.Company">
+		UPDATE company
+		SET com_id = #{com_id}, com_pw = #{com_pw}, com_name = #{com_name},
+		com_size = #{com_size},
+		com_ceo = #{com_ceo}, com_addr = #{com_addr}, com_companynum =
+		#{com_companynum},
+		com_tel = #{com_tel}, com_email = #{com_email}, com_url = #{com_url},
+		make_date = #{make_date}
+		WHERE com_no = #{com_no}
+	</update>
 
-    <delete id="deleteCompany" parameterType="Long">
-        DELETE FROM company WHERE com_no = #{com_no}
-    </delete>
+	<delete id="deleteCompany" parameterType="Long">
+		DELETE FROM company WHERE com_no = #{com_no}
+	</delete>
 
-    <select id="countByComId" parameterType="String" resultType="int">
-        SELECT COUNT(*) FROM company WHERE com_id = #{com_id}
-    </select>
+	<select id="countByComId" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM company WHERE com_id = #{com_id}
+	</select>
 
-    <select id="existsByComId" parameterType="String" resultType="boolean">
-        SELECT CASE WHEN COUNT(*) > 0 THEN TRUE ELSE FALSE END FROM company WHERE com_id = #{com_id}
-    </select>
+	<select id="existsByComId" parameterType="String" resultType="boolean">
+		SELECT CASE WHEN COUNT(*) > 0 THEN TRUE ELSE FALSE END FROM company
+		WHERE com_id = #{com_id}
+	</select>
 
-    <select id="findByComIdAndComPw" parameterType="map" resultType="com.project.jobs.dto.Company">
-        SELECT * FROM company WHERE com_id = #{com_id} AND com_pw = #{com_pw}
-    </select>
-	
-	 <select id="isInterestCompany" parameterType="map" resultType="boolean">
-        SELECT COUNT(*) > 0 FROM com_interest
-        WHERE mem_no = #{mem_no} AND com_no = #{com_no}
-    </select>
+	<select id="findByComIdAndComPw" parameterType="map"
+		resultType="com.project.jobs.dto.Company">
+		SELECT * FROM company WHERE com_id = #{com_id} AND com_pw = #{com_pw}
+	</select>
 
+ <!-- 관심 기업 추가 -->
     <insert id="addInterestCompany" parameterType="map">
-        INSERT INTO com_interest (mem_no, com_no)
-        VALUES (#{mem_no}, #{com_no})
+        INSERT INTO com_interest (mem_no, com_no, status) VALUES (#{mem_no}, #{com_no}, TRUE)
     </insert>
 
+    <!-- 관심 기업 삭제 -->
     <delete id="removeInterestCompany" parameterType="map">
-        DELETE FROM com_interest
-        WHERE mem_no = #{mem_no} AND com_no = #{com_no}
+        DELETE FROM com_interest WHERE mem_no = #{mem_no} AND com_no = #{com_no}
     </delete>
 
-    <select id="getInterestCompanies" parameterType="long" resultType="com.project.jobs.dto.Company">
+    <!-- 관심 기업 목록 조회 -->
+    <select id="getInterestCompanies" parameterType="Long"
+            resultType="com.project.jobs.dto.Company">
         SELECT c.* FROM company c
-        INNER JOIN com_interest ci ON c.com_no = ci.com_no
-        WHERE ci.mem_no = #{mem_no}
+        JOIN com_interest ci ON c.com_no = ci.com_no
+        WHERE ci.mem_no = #{mem_no} AND ci.status = TRUE
+    </select>
+
+    <!-- 관심 기업 여부 확인 -->
+    <select id="isInterestCompany" parameterType="map" resultType="boolean">
+        SELECT CASE WHEN COUNT(*) > 0 THEN TRUE ELSE FALSE END
+        FROM com_interest
+        WHERE mem_no = #{mem_no} AND com_no = #{com_no} AND status = TRUE
     </select>
 </mapper>

@@ -26,11 +26,11 @@ public interface ICompanyDao3854 {
 
     Company findByComIdAndComPw(@Param("com_id") String com_id, @Param("com_pw") String com_pw);
         
-    boolean isInterestCompany(@Param("mem_no") Long mem_no, @Param("com_no") Long com_no);
-
     void addInterestCompany(@Param("mem_no") Long mem_no, @Param("com_no") Long com_no);
 
     void removeInterestCompany(@Param("mem_no") Long mem_no, @Param("com_no") Long com_no);
 
     List<Company> getInterestCompanies(@Param("mem_no") Long mem_no);
+    
+    boolean isInterestCompany(@Param("mem_no") Long mem_no, @Param("com_no") Long com_no);
 }
