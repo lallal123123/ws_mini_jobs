@@ -92,6 +92,9 @@ public class Controller5963 {
 	@RequestMapping("/infoWrite")
 	public String infoWrite(Com_detail com_detail) {
 		System.out.println("공고 소개 작성 중");
+		System.out.println(com_detail.getEstablishment());
+		
+		
 		companyService.comInfoWrite(com_detail);
 		
 		return "redirect:/company/mypage/info_detail";
