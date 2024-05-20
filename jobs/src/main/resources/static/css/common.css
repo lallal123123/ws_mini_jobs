@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body{
+	min-height:100vh;
+	position:relative;
+}
 .header_logo_size{
     width:150px;
     height:auto;
