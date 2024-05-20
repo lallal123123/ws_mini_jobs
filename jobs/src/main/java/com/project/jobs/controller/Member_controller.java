@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.jobs.dto.Company;
 import com.project.jobs.dto.Member;
+import com.project.jobs.service.CompanyService3854;
 import com.project.jobs.service.MemberService;
 
 import jakarta.servlet.http.HttpSession;
@@ -25,6 +26,9 @@ public class Member_controller {
 
 	@Autowired
 	private MemberService memberService;
+	
+	 @Autowired
+	    private CompanyService3854 companyService;
 
 	@GetMapping("/index")
 	public String index3854(Model model, HttpSession session) {
@@ -71,21 +75,20 @@ public class Member_controller {
 
 	@PostMapping("/login")
 	public String login(@ModelAttribute Member member, Model model, HttpSession session) {
-	    Member loginMember = memberService.login(member);
-	    if (loginMember != null) {
-	        session.setAttribute("loggedInMember", loginMember);
-	        if ("manager3854".equals(loginMember.getMem_id())) {
-	            session.setAttribute("isAdmin", true);
-	        } else {
-	            session.setAttribute("isAdmin", false);
-	        }
-	        return "redirect:/members/index";
-	    } else {
-	        model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
-	        return "redirect:/members/loginForm";
-	    }
+		Member loginMember = memberService.login(member);
+		if (loginMember != null) {
+			session.setAttribute("loggedInMember", loginMember);
+			if ("manager3854".equals(loginMember.getMem_id())) {
+				session.setAttribute("isAdmin", true);
+			} else {
+				session.setAttribute("isAdmin", false);
+			}
+			return "redirect:/members/index";
+		} else {
+			model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
+			return "redirect:/members/loginForm";
+		}
 	}
-
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
@@ -106,19 +109,22 @@ public class Member_controller {
 		return memberService.isMemIdExists(mem_id);
 	}
 
-	@GetMapping("/mypage")
-	public String mypage(HttpSession session, Model model) {
-		Member loggedInMember = (Member) session.getAttribute("loggedInMember");
-		if (loggedInMember != null) {
-			model.addAttribute("member", loggedInMember);
-			model.addAttribute("userName", loggedInMember.getMem_name());
-			model.addAttribute("mem_no", loggedInMember.getMem_no());
-			return "member/mypage3854";
-		} else {
-			return "redirect:/members/loginForm";
-		}
-	}
-
+	  @GetMapping("/mypage")
+	    public String mypage(HttpSession session, Model model) {
+	        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+	        if (loggedInMember != null) {
+	            model.addAttribute("member", loggedInMember);
+	            model.addAttribute("userName", loggedInMember.getMem_name());
+	            model.addAttribute("mem_no", loggedInMember.getMem_no());
+	            
+	            List<Company> interestCompanies = companyService.getInterestCompanies(loggedInMember.getMem_no());
+	            model.addAttribute("interestCompanies", interestCompanies);
+	            
+	            return "member/mypage3854";
+	        } else {
+	            return "redirect:/members/loginForm";
+	        }
+	    }
 	@GetMapping("/editProfile")
 	public String editLoggedInMemberForm(HttpSession session, Model model) {
 		Member loggedInMember = getLoggedInMember(session);

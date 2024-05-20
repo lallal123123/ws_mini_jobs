@@ -3,54 +3,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>관심기업 리스트</title>
-    <style>
-        .star {
-            cursor: pointer;
-            font-size: 24px;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>마이 페이지</title>
+<script>
+    function toggleInterest(com_no, starElement) {
+        var action = starElement.classList.contains('interested') ? 'remove' : 'add';
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '${pageContext.request.contextPath}/companies/toggleInterest', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                if (action === 'add') {
+                    starElement.classList.add('interested');
+                    starElement.innerText = '★';
+                } else {
+                    starElement.classList.remove('interested');
+                    starElement.innerText = '☆';
+                }
+            }
+        };
+        xhr.send('com_no=' + com_no + '&action=' + action);
+    }
+</script>
+<style>
+    .star {
+        cursor: pointer;
+        font-size: 20px;
+        color: gold;
+    }
+    .interested {
+        color: red;
+    }
+</style>
 </head>
 <body>
-    <header>
-        <h1>관심기업 리스트</h1>
-    </header>
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>기업 번호</th>
-                    <th>기업 이름</th>
-                    <th>상세 보기</th>
-                    <th>관심 해제</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="company" items="${interestCompanies}">
-                    <tr>
-                        <td>${company.com_no}</td>
-                        <td>${company.com_name}</td>
-                        <td><a href="${pageContext.request.contextPath}/companies/${company.com_no}">상세 보기</a></td>
-                        <td>
-                            <span class="star" onclick="toggleInterest(${company.com_no}, this)">★</span>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-    </main>
-    <script>
-        function toggleInterest(companyId, starElement) {
-            fetch('${pageContext.request.contextPath}/companies/toggleInterest/' + companyId, {
-                method: 'POST'
-            }).then(response => response.json())
-              .then(data => {
-                  if (data.success) {
-                      location.reload();
-                  }
-              });
-        }
-    </script>
+<header>
+    <h1>마이 페이지</h1>
+</header>
+<h2>관심 기업 목록</h2>
+<table>
+    <thead>
+        <tr>
+            <th>회사명</th>
+            <th>대표자</th>
+            <th>주소</th>
+            <th>관심 기업</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach var="company" items="${interestCompanies}">
+            <tr>
+                <td>${company.com_name}</td>
+                <td>${company.com_ceo}</td>
+                <td>${company.com_addr}</td>
+                <td>
+                    <span class="star interested" onclick="toggleInterest(${company.com_no}, this)">
+                        ★
+                    </span>
+                </td>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>
 </body>
 </html>
