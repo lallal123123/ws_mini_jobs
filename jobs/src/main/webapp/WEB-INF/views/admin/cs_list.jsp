@@ -19,11 +19,20 @@
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
             	<li class="nav-item">
-	                <a href="../cs_list_99" class="nav-link active" aria-current="page">문의·신고</a>
-	            </li>
-	            <li>
-                	<a href="../notice_list_99" class="nav-link link-body-emphasis">공지사항</a>
-              	</li>
+                	<a href="../cs_list_99" class="nav-link active" aria-current="page">My home</a>
+            	</li>
+              <li>
+                <div class="nav-link link-body-emphasis">개인회원 관리</div>
+              </li>
+              <li>
+                <div class="nav-link link-body-emphasis">기업회원 관리</div>
+              </li> 
+              <li>
+                <div class="nav-link link-body-emphasis">고객센터 관리</div>
+              </li> 
+              <li>
+                <div class="nav-link link-body-emphasis">공지사항 관리</div>
+              </li>
             </ul>
         </div>
     </div>

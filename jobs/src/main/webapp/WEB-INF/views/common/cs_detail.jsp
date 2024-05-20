@@ -13,7 +13,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 <jsp:include page="../header.jsp"></jsp:include>
 <!-- 작업공간 영역 -->
 <div class="container">
@@ -28,7 +28,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link link-body-emphasis">
+                <a href="../notice_list_99" class="nav-link link-body-emphasis">
                  공지사항
                 </a>
               </li>   
@@ -42,12 +42,10 @@
         	<div id="title">${dto.title }</div>
         	<div>내용</div>
         	<div id="content">${dto.content }</div>
-        	<c:choose>
-        		<c:when test="${dto.mem_no == session.loggedInMember.mem_no}">
-        			<a class="btn btn-light" href="../modify_form_99?cs_no=${dto.cs_no }" role="button">수정</a>
-        			<a class="btn btn-light" href="../delete_99?cs_no=${dto.cs_no }" role="button">삭제</a>
-        		</c:when>
-        	</c:choose>
+        	<c:if test="${dto.mem_no == mem_no}">
+       			<a class="btn btn-light" href="../modify_form_99?cs_no=${dto.cs_no }" role="button">수정</a>
+       			<a class="btn btn-light" href="../delete_99?cs_no=${dto.cs_no }" role="button">삭제</a>
+        	</c:if>
         	<hr>
         	<a class="btn btn-light" href="../cs_list_99" role="button">이전</a>
         	<a class="btn btn-light" href="#" role="button">TOP</a>
