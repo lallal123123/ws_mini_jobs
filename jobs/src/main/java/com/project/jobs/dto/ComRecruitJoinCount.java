@@ -4,12 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Recruit {
-    private Long recruit_no; 
+public class ComRecruitJoinCount {
+
+	private Long recruit_no; 
     private Long com_no;
     private String career;
     private String education;
@@ -27,6 +27,7 @@ public class Recruit {
     private String notice;  
     private String reg_date;
     private String deadline_date;
-    private int p_number; 
+    private int p_number;
     private int mem_count;
+	
 }

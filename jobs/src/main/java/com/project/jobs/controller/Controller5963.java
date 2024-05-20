@@ -10,13 +10,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.jobs.dao.ICompanyDao3854;
 import com.project.jobs.dto.ComInfoDetail;
-import com.project.jobs.dto.ComInfoJoinRecruit;
+import com.project.jobs.dto.ComRecruitJoinCount;
 import com.project.jobs.dto.Com_detail;
 import com.project.jobs.dto.Com_detail_file;
 import com.project.jobs.dto.Company;
+import com.project.jobs.dto.Mem_recruit;
 import com.project.jobs.dto.Recruit;
 import com.project.jobs.dto.Region;
 import com.project.jobs.service.CompanyService5963;
@@ -57,19 +59,29 @@ public class Controller5963 {
 	}
 	
 	//com_no로 공고 리스트
-	@RequestMapping("/getComInfoJoinRecruitAllListt")
-	public String getComInfoJoinRecruitAllList(Long com_no, Model model) {
+	@RequestMapping("/getComRecruitList")
+	public String getComRecruitList(HttpServletRequest request, Model model) {
 		System.out.println("공고 번호로 리스트 출력 접근");
-		System.out.println("com_no: " + com_no);
-	
-		//List<Recruit> comRecruitAllList = companyService.getComRecruitAllList(com_no);
-		//model.addAttribute("list", comRecruitAllList);
-		List<ComInfoJoinRecruit> comInfoJoinRecruitAllList = companyService.comInfoJoinRecruitList(com_no);
-		model.addAttribute("comInfoJoinRecruitAllList", comInfoJoinRecruitAllList);
+		HttpSession session = request.getSession();
+		Company company = (Company) session.getAttribute("loggedInCompany");
+		Long com_no = company.getCom_no();
 		
+		List<Recruit> recruitList = companyService.getComRecruitList(com_no);
+		System.out.println(recruitList);
+	
+		
+		for(int i=0; i<recruitList.size(); i++) {
+			Recruit recruit = recruitList.get(i); 
+	        List<Mem_recruit> result = companyService.getMemCount(recruit.getRecruit_no());
+	        int memCount = result.size();
+	        System.out.println("getMemCount" + memCount);
+	        
+	        recruit.setMem_count(memCount);
+		}
+		model.addAttribute("recruitList", recruitList);
+		model.addAttribute("company", company);
 		return "/company/mypage/recruit_list";
 	}
-	
 	
 	// 기업 마이페이지 기업소개 디테일 페이지 접속
 	@RequestMapping("/info_detail")
