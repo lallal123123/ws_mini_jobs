@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.jobs.dao.IMember_resume8481">
 
-<insert id="site_resume_write">
+<insert id="site_resume_write" useGeneratedKeys="true" keyProperty="s_resume_no">
 	INSERT INTO site_resume (s_resume_no, mem_no, hope_job, title, site_res_name, img_url, addr, part, military, etc, motive, personality, aspiration, growth) 
 	VALUES (null, null, #{site_res_dto.hope_job}, #{site_res_dto.title}, #{site_res_dto.site_res_name}, #{site_res_dto.img_url}, #{site_res_dto.addr}, #{site_res_dto.part}, #{site_res_dto.military}, #{site_res_dto.etc}, #{site_res_dto.motive}, #{site_res_dto.personality}, #{site_res_dto.aspiration}, #{site_res_dto.growth})
 </insert>
