@@ -46,30 +46,28 @@ public class CompanyService3854 {
 		return companyDao.findByComIdAndComPw(company.getCom_id(), company.getCom_pw());
 	}
 
-	public List<Company> getAllCompaniesWithInterests(Long mem_no) {
-		List<Company> companies = companyDao.getAllCompanies();
-		for (Company company : companies) {
-			boolean isInterest = companyDao.isInterestCompany(mem_no, company.getCom_no());
-			company.setInterest(isInterest);
-		}
-		return companies;
-	}
+	 public List<Company> getAllCompaniesWithInterests(Long mem_no) {
+	        List<Company> companies = companyDao.getAllCompanies();
+	        for (Company company : companies) {
+	            boolean isInterest = companyDao.isInterestCompany(mem_no, company.getCom_no());
+	            company.setInterest(isInterest); 
+	        }
+	        return companies;
+	    }
+	 
+    public void addInterestCompany(Long mem_no, Long com_no) {
+        companyDao.addInterestCompany(mem_no, com_no);
+    }
 
-	public boolean isInterestCompany(Long mem_no, Long com_no) {
-		return companyDao.isInterestCompany(mem_no, com_no);
-	}
+    public void removeInterestCompany(Long mem_no, Long com_no) {
+        companyDao.removeInterestCompany(mem_no, com_no);
+    }
 
-	public boolean toggleInterestCompany(Long mem_no, Long com_no) {
-		if (isInterestCompany(mem_no, com_no)) {
-			companyDao.removeInterestCompany(mem_no, com_no);
-			return false;
-		} else {
-			companyDao.addInterestCompany(mem_no, com_no);
-			return true;
-		}
-	}
-
-	public List<Company> getInterestCompanies(Long mem_no) {
-		return companyDao.getInterestCompanies(mem_no);
-	}
+    public List<Company> getInterestCompanies(Long mem_no) {
+        return companyDao.getInterestCompanies(mem_no);
+    }
+    
+    public boolean isInterestCompany(Long mem_no, Long com_no) {
+        return companyDao.isInterestCompany(mem_no, com_no);
+    }
 }

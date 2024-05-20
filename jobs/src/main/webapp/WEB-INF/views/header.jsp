@@ -22,16 +22,12 @@
                 <div class="float-end">
                     <c:choose>
                         <c:when test="${not empty sessionScope.loggedInMember}">
-                            <c:choose>
-                                <c:when test="${sessionScope.isAdmin}">
-                                    <a href="/admin/dashboard" class="btn btn-jobs">관리자 모드</a>
-                                </c:when>
-                                <c:otherwise>
-                                    <a href="/members/mypage" class="btn btn-jobs">마이 페이지</a>
-                                </c:otherwise>
-                            </c:choose>
+                            <a href="/members/mypage" class="btn btn-jobs">마이 페이지</a>
                             <a href="/members/logout" class="btn btn-jobs">로그아웃</a>
                             <span>환영합니다, ${sessionScope.loggedInMember.mem_id}님!</span>
+                            <c:if test="${sessionScope.isAdmin == true}">
+                                <a href="/admin/dashboard" class="btn btn-jobs">관리자 모드</a>
+                            </c:if>
                         </c:when>
                         <c:when test="${not empty sessionScope.loggedInCompany}">
                             <a href="/companies/mypage" class="btn btn-jobs">마이 페이지</a>
@@ -49,9 +45,9 @@
         <ul class="nav nav-pills nav-jobs mt-2 justify-content-end">
             <li class="nav-item"><a href="#" class="nav-link" aria-current="page">채용정보</a></li>
             <li class="nav-item"><a href="#" class="nav-link">공고캘린더</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">기업정보</a></li>
+            <li class="nav-item"><a href="${pageContext.request.contextPath}/companies" class="nav-link">기업정보</a></li>
             <li class="nav-item"><a href="#" class="nav-link">커뮤니티</a></li>
-            <li class="nav-item"><a href="/cs_list_99" class="nav-link">고객센터</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">고객센터</a></li>
         </ul>
     </div>
 </header>
