@@ -14,6 +14,8 @@ import com.project.jobs.dto.Com_community;
 import com.project.jobs.dto.Com_community_category;
 import com.project.jobs.dto.Com_reply;
 import com.project.jobs.dto.Company;
+import com.project.jobs.dto.Pagination;
+import com.project.jobs.service.CommunityPagination92;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -22,23 +24,41 @@ import jakarta.servlet.http.HttpSession;
 public class Contoller_community_company92 {
 
 	
+	
 	@Autowired
 	ICom_community_dao92 dao;
+	
+	@Autowired
+	CommunityPagination92 cp;
 	
 	@RequestMapping("/")
 	public String root() {
 		return "community/ex";
 	}
 	
+	@RequestMapping("/company/main")
+	public String main(Model model) {
+		Long cnt = dao.countAll();
+		List<Com_community> hList =dao.hotList(0L, 5L);
+		model.addAttribute("hList", hList);
+		model.addAttribute("cnt",cnt);
+		return "community/com/main";
+	}
+	
+	
+	
 	@RequestMapping("/company/list")
 	public String com_list(Model model) {
+		//페이지관련
+		Long memoCnt = dao.countAll();
 		
-		
-		List<Com_community> list =dao.list92();
+		List<Com_community> list;
+		list = dao.list92(0L,10L);
 		for(Com_community dto : list) {
 			dto.setCom_id(dao.com_id(dto.getCom_no()));
 		}
 		model.addAttribute("list", list);
+		model.addAttribute("pagination", cp.list(1L,memoCnt));
 		return "community/com/list";
 	}
 	
@@ -115,5 +135,120 @@ public class Contoller_community_company92 {
 	public String com_delete_reply(@RequestParam("no") String no, @RequestParam("community_no") String cno) {
 		dao.delete_reply(no);
 		return "redirect:detail?no="+cno;
+	}
+	
+	
+	
+	@RequestMapping("/company/list1")
+	public String list(@RequestParam("page") String page_, Model model) {
+		Long page = Long.parseLong(page_);
+		//필요한 메모 리스트
+		List<Com_community> list;
+		list = dao.list92((page-1)*10,10L);
+		for(Com_community dto : list) {
+			dto.setCom_id(dao.com_id(dto.getCom_no()));
+		}
+		model.addAttribute("list", list);
+		Long memoCnt = dao.countAll();
+		model.addAttribute("pagination", cp.list(page,memoCnt));
+
+		return "community/com/list";
+	}
+
+	@RequestMapping("/company/pageNext")
+	public String pageNext(@RequestParam("pageBlock") String pageBlock_, Model model) {
+		Long memoCnt = dao.countAll();
+		Long pageBlock = Long.parseLong(pageBlock_);
+		Pagination pa= cp.pageNext(pageBlock,memoCnt);
+		List<Com_community> list;
+		list = dao.list92((pa.getPage()-1)*10,10L);
+		for(Com_community dto : list) {
+			dto.setCom_id(dao.com_id(dto.getCom_no()));
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("pagination", pa);
+		return "community/com/list";
+	}
+
+	@RequestMapping("/company/pagePre")
+	public String pagePre(@RequestParam("pageBlock") String pageBlock_, Model model) {
+		Long memoCnt = dao.countAll();
+		Long pageBlock = Long.parseLong(pageBlock_);
+		Pagination pa= cp.pagePre(pageBlock,memoCnt);
+		List<Com_community> list;
+		list = dao.list92((pa.getPage()-1)*10,10L);
+		for(Com_community dto : list) {
+			dto.setCom_id(dao.com_id(dto.getCom_no()));
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("pagination", pa);
+
+
+		return "community/com/list";
+	}
+	
+	@RequestMapping("/company/search")
+	public String search(@RequestParam("search") String search, Model model) {
+		//페이지관련
+				Long memoCnt = dao.searchCount(search);
+				
+				List<Com_community> list;
+				list = dao.searchList(0L,10L,search);
+				for(Com_community dto : list) {
+					dto.setCom_id(dao.com_id(dto.getCom_no()));
+				}
+				model.addAttribute("list", list);
+				model.addAttribute("pagination", cp.list(1L,memoCnt));
+				model.addAttribute("search", search);
+				return "community/com/list";
+	}
+	@RequestMapping("/company/list1S")
+	public String list(@RequestParam("page") String page_,@RequestParam("search") String search, Model model) {
+		Long page = Long.parseLong(page_);
+		//필요한 메모 리스트
+		List<Com_community> list;
+		list = dao.searchList((page-1)*10,10L,search);
+		for(Com_community dto : list) {
+			dto.setCom_id(dao.com_id(dto.getCom_no()));
+		}
+		model.addAttribute("list", list);
+		Long memoCnt = dao.searchCount(search);
+		model.addAttribute("pagination", cp.list(page,memoCnt));
+		model.addAttribute("search",search);
+
+		return "community/com/list";
+	}
+	
+	@RequestMapping("/company/pagePreS")
+	public String pagePre(@RequestParam("pageBlock") String pageBlock_,@RequestParam("search") String search, Model model) {
+		Long memoCnt = dao.searchCount(search);
+		Long pageBlock = Long.parseLong(pageBlock_);
+		Pagination pa= cp.pagePre(pageBlock,memoCnt);
+		List<Com_community> list;
+		list = dao.searchList((pa.getPage()-1)*10,10L,search);
+		for(Com_community dto : list) {
+			dto.setCom_id(dao.com_id(dto.getCom_no()));
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("pagination", pa);
+		model.addAttribute("search", search);
+
+
+		return "community/com/list";
+	}
+	@RequestMapping("/company/pageNextS")
+	public String pageNext(@RequestParam("pageBlock") String pageBlock_,@RequestParam("search") String search, Model model) {
+		Long memoCnt = dao.searchCount(search);
+		Long pageBlock = Long.parseLong(pageBlock_);
+		Pagination pa= cp.pageNext(pageBlock,memoCnt);
+		List<Com_community> list;
+		list = dao.searchList((pa.getPage()-1)*10,10L,search);
+		for(Com_community dto : list) {
+			dto.setCom_id(dao.com_id(dto.getCom_no()));
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("pagination", pa);
+		model.addAttribute("search", search);
+		return "community/com/list";
 	}
 }

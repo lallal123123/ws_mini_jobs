@@ -21,5 +21,6 @@ public class Com_community {
 	private String category;
 	private long views;
 	private int secret;
+	private long replyCnt;
 
 }
