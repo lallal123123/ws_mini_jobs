@@ -58,7 +58,7 @@
     
         <div class="border p-5 rounded">
         
-        	<form id="info_write_form" action="/company/mypage/infoWrite" method="post">
+        	<form id="info_write_form" action="/company/mypage/infoWrite" method="post" onsubmit="return numberCheck()">
         		<input type="hidden" name="com_no" value="${company.com_no}">
 				<div class="mb-3">
 					<label for="" class="form-label">소개글</label>
@@ -135,22 +135,18 @@
 const info_write_form=document.querySelector("#info_write_form");
 const establishment=document.querySelector("#establishment");
 const p_number=document.querySelector("#p_number");
-parseInt(establishment.value);
-parseInt(p_number.value);
+
 function numberCheck(){
 	
-	const num_check=/^[0-9]*$/;
-	if(num_check.test(establishment.value)){
-		console.log("숫자로 확인됨");
-	}else{
-		console.log("숫자로 아님");
-	}
 	if(establishment.value.length == 0){
 		establishment.value = 0;
 	}
 	if(p_number.value.length == 0){
 		p_number.value = 0;
 	}
+	//alert(establishment.value);
+	//alert(p_number.value);
+	
 };
 </script>
 
