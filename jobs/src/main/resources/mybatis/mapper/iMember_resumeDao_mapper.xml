@@ -18,4 +18,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	INSERT INTO education (education_no, s_resume_no, school, edu_join_date, graduation_date, graduation , grades, major) VALUES (null, #{site_res_dto.s_resume_no}, #{edu_dto.school}, #{edu_dto.edu_join_date}, #{edu_dto.graduation_date}, #{edu_dto.graduation}, #{edu_dto.grades}, #{edu_dto.major}) 
 </insert>
 
+<insert id="">
+
+</insert>
+
 </mapper>

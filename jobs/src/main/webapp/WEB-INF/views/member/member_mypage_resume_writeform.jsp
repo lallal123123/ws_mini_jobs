@@ -11,6 +11,22 @@
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
+
+<script>
+    function toggleTitleInput() {
+        var selectBox = document.getElementsByName("hope_job")[0];
+        var titleInput = document.getElementById("titleInput");
+
+        if (selectBox.value === "개발-데이터") {
+            titleInput.style.display = "block";
+        } else {
+            titleInput.style.display = "none";
+        }
+    }
+</script>
+
+
+
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
@@ -20,26 +36,36 @@
 			<div class="col-3">
 				<div class="border p-3">
 					<ul class="nav nav-pills flex-column mb-auto">
-						<!-- 여기에 메뉴를 나열해주세요 -->
-						<li class="nav-item"><a href="#" class="nav-link active"
-							aria-current="page"> 메뉴1 </a></li>
+						<!-- 여기에 메뉴를 나열해주세요 사이드바-->
+						<li class="nav-item"><a href="#" class="nav-link active" aria-current="page"> 메뉴1 </a></li>
 						<li><a href="#" class="nav-link link-body-emphasis"> 메뉴2
 						</a></li>
 					</ul>
 				</div>
 			</div>
+			<!-- 여긴 내용 -->
+			
 			<div class="col-9">
 				<div class="border p-3">
 
-				<form action="member_mypage_resume_write" method="post">
+				<form id="resumeForm" action="member_mypage_resume_write" method="post" enctype="multipart/form-data">
 					<div class="mb-3">
-                 		<label for="" class="form-label">희망직무</label>
-                 		<select class="form-select" name="hope_job" >
-    	            	  <option value="서울">서울</option>
-	            	      <option value="경기">경기</option>
-    	             	</select>
-	            	</div>
+                        <label for="" class="form-label">희망직무</label>
+                        <select class="form-select" name="hope_job" onchange="toggleTitleInput()">
+                            <option value="디자인">디자인</option>
+                            <option value="교육">교육</option>
+                            <option value="개발-데이터">개발-데이터</option>
+                            <option value="공공-복지">공공-복지</option>
+                            <option value="미디어-문화-스포츠">미디어-문화-스포츠</option>
+                        </select>
+                    </div>
+	            	
+	            	<div class="mb-3" id="titleInput" style="display: none;">
+                        <label for="" class="form-label">기술스택</label>
+                        <input type="text" class="form-control" name="title" placeholder="이력서 제목">
+                    </div>
 									
+												
 					<div class="mb-3">
 						<label for="" class="form-label">제목</label>
 						 <input type="text"	class="form-control" name="title" placeholder="이력서 제목">
@@ -106,7 +132,7 @@
     						</div>
     						<div class="col-md-2 mb-3">
         						<label for="" class="form-label">학점</label>
-        						<input type="text" class="form-control" name="grades">
+        						<input type="text" class="form-control" name="grades" id="grades">
     						</div>
 						</div>
 						<div class="row">
@@ -127,6 +153,7 @@
 	            			</div>
 						</div>
 						
+					
 												
 					
 					<div class="mb-3">
@@ -134,9 +161,12 @@
 						 <input type="text"	class="form-control" name="part" placeholder="지원분야">
 					</div>
 					<div class="mb-3">
-						<label for="" class="form-label">병역사항</label>
-						<input type="text"	class="form-control" name="military" placeholder="필/미필">
-					</div>
+                               <label for="" class="form-label">병역사항</label>
+                                 <select class="form-select" name="military" >
+                                  <option value="필">필</option>
+                                   <option value="미필">미필</option>
+                               </select>
+                          </div>
 					<div class="mb-3">
   						<label for="formFileMultiple" class="form-label">기타첨부자료</label>
   						<input class="form-control" type="file" name="etc" multiple>
@@ -164,8 +194,8 @@
 
 					</form>
 
-				</div>	<!-- 끝나는 부분 -->
-			</div>
+				</div>	
+			</div><!-- 끝나는 부분 -->
 
 
 		</div>
@@ -177,5 +207,20 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
+		
+	   <script>
+		document.getElementById('resumeForm').addEventListener('submit', function(event) {
+			var gradesInput = document.getElementById('grades');
+			if (!gradesInput.value) {
+				alert('학점을 입력하세요.');
+				gradesInput.focus();
+				event.preventDefault();
+			}
+		});
+	</script>
+   
+
+		
+		
 </body>
 </html>
