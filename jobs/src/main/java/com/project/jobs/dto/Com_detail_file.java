@@ -1,19 +1,17 @@
 package com.project.jobs.dto;
 
-import lombok.AllArgsConstructor;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.modelmapper.ModelMapper;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
-public class Com_detail {
-
+public class Com_detail_file {
+	
 	private Long com_detail_no;
 	private Long com_no;
 	private String introduction;
-	private String img_url;
+	private MultipartFile img_url;
 	private String pension;
 	private String compensation;
 	private String facilities;
@@ -25,9 +23,9 @@ public class Com_detail {
 	private String history;
 	private String ideal_talent;
 	
-	private static ModelMapper modelMapper = new ModelMapper();
 	
-	public static Com_detail of(Com_detail_file com_detail_file) {
-		return modelMapper.map(com_detail_file, Com_detail.class);
+	public String getFileName() {
+		return img_url.getOriginalFilename();
 	}
+	
 }
