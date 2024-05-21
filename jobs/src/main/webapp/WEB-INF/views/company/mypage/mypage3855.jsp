@@ -19,6 +19,9 @@
         <div class="border p-3 rounded">
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
+                 	<h1>My Page</h1>
+            <h2>${member.com_name} 님</h2>
+
 <body>
     
         <h1>My Page</h1>
