@@ -11,6 +11,6 @@ public class Admin_totalRegistrations {
 	
 	private String year;
 	private String month;
-	private String totalRegistrations;
+	private String total;
 	private String member_type;
 }
