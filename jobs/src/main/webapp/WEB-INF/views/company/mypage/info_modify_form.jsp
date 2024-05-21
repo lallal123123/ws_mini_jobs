@@ -24,19 +24,19 @@
                 	</a>
               	</li>
               	<li>
-                	<a href="#" class="nav-link link-body-emphasis  border-bottom rounded-0">
+                	<a href="/company/mypage/info_detail" class="nav-link link-body-emphasis  border-bottom rounded-0">
                  	기업 소개 관리
                 	</a>
               	</li> 
               	<li>
               		<div class="accordion" id="accordionPanelsStayOpenExample">
 			      		<a class="nav-link link-body-emphasis text-weight-bold border-bottom rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-			        		구인 공고 관리
+			        		채용 공고 관리
 			      		</a>
 			   	  		<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
 			      			<div class="accordion-body py-0 pe-0">
-			       				<a href="#" class="d-block nav-link link-body-emphasis border-bottom rounded-0">구인 공고 리스트</a>
-			       				<a href="#" class="d-block nav-link link-body-emphasis border-bottom rounded-0">구인 공고 작성</a>
+			       				<a href="/company/mypage/getComRecruitList" class="d-block nav-link link-body-emphasis border-bottom rounded-0">채용 공고 리스트</a>
+			       				<a href="/company/mypage/recruit_write_form" class="d-block nav-link link-body-emphasis border-bottom rounded-0">채용 공고 작성</a>
 			      			</div>
 			    		</div>
 			 		</div> 

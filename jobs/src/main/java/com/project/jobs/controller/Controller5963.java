@@ -37,11 +37,12 @@ public class Controller5963 {
 	
 	//공고 등록 폼 이동
 	@RequestMapping("/recruit_write_form")
-	public String recruitWriteForm(Model model) {
+	public String recruitWriteForm(HttpServletRequest request, Model model) {
 	    System.out.println("공고 등록 폼에 접근");
 	    List<Region> regionList = companyService.getRegion();
 	    model.addAttribute("regionList", regionList);
-	
+	    HttpSession session = request.getSession();
+		model.addAttribute("company", session.getAttribute("loggedInCompany"));
 	    return "company/mypage/recruit_write_form";
 	}
 
@@ -55,7 +56,7 @@ public class Controller5963 {
 		companyService.registRecruit(recruit);
 		model.addAttribute("com_no", recruit.getCom_no());
 		
-		return "/company/mypage/getComRecruitAllList";
+		return "redirect:/company/mypage/getComRecruitList";
 	}
 	
 	//com_no로 공고 리스트
