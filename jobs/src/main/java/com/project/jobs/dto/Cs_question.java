@@ -22,4 +22,5 @@ public class Cs_question {
 	private Date reg_date;
 	private String category;
 	private Boolean ch_private; 
+	private String answerStatus;
 }

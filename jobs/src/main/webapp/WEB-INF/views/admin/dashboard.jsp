@@ -28,7 +28,7 @@
                 </a>
               </li>
               <li>
-                <a href="/admin/companies" div class="nav-link link-body-emphasis">
+                <a href="/admin/companies" class="nav-link link-body-emphasis">
                  기업회원 관리
                 </a>
               </li> 
@@ -43,7 +43,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" div class="nav-link link-body-emphasis">
+                <a href="#" class="nav-link link-body-emphasis">
                  신고 접수된 건
                 </a>
               </li>    
@@ -54,7 +54,7 @@
     <div class="col-9">
         <div class="border p-3">
         <h1>관리자 대시보드</h1>
-	    
+	    	<h3>QnA</h3>
         </div>
     </div>
 </div>

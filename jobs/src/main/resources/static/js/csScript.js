@@ -21,6 +21,18 @@ function csRegForm(){
 	return true;
 };
 
+function requestRegForm(){
+	var title = document.getElementById("title").value;
+	var content = document.getElementById("content").value;
+	
+	if(title === "" || content === ""){
+		alert("빈칸을 입력해주세요.");
+		return false;
+	};
+	
+	return true;
+};
+
 function isLoggedIn(callback) {
 	fetch('/login_status_99')
 	.then(response => response.json())

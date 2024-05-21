@@ -5,7 +5,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.project.jobs.dao.ICS_Dao99">
 	<!-- 고객센터 문의 신고 -->
 	<select id="getList_99">
-		SELECT * FROM cs_question
+		SELECT q.cs_no, q.mem_no, q.title, q.content, q.reg_date, q.category, q.ch_private,
+		case when r.cs_no IS NULL then '미답변' ELSE '답변완료' end AS answerStatus
+		FROM cs_question q
+		LEFT JOIN cs_request r
+		ON q.cs_no = r.cs_no
+		order by cs_no DESC
+	</select>
+	<select id="getCsWriterId_99">
+		SELECT m.mem_id
+		FROM cs_question q
+		JOIN member m
+		ON q.mem_no = m.mem_no
+		WHERE q.cs_no = #{cs_no}
 	</select>
 	<select id="getlistDetail_99">
 		SELECT * FROM cs_question WHERE cs_no = #{cs_no}
@@ -20,12 +32,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="modifyDao_99">
 		UPDATE cs_question SET title = #{title}, content = #{content}, category = #{category}, ch_private = #{ch_private} WHERE cs_no = #{cs_no}
 	</update>
+	<select id="csSerchData_99">
+		SELECT * FROM cs_question WHERE title LIKE concat('%', #{searchData}, '%') order by cs_no DESC
+	</select>
+	<select id="csCategory_99">
+		SELECT * FROM cs_question WHERE category = #{category}
+	</select>
 	<!-- 문의 답변 -->
 	<insert id="writeRequestDao_99">
 		INSERT INTO cs_request (cs_no, content, reg_date, title)
 		VALUES (#{cs_no}, #{content}, DATE(NOW()), #{title})
 	</insert>
 	<select id="getRequestDao_99">
-		SELECT * FROM cs_request WHERE cs_no = #{cs_no}
+		SELECT request_no, cs_no, title, content, reg_date FROM cs_request WHERE cs_no = #{cs_no}
 	</select>
+	<update id="requestModify_99">
+		UPDATE cs_request SET title = #{title}, content = #{content}, reg_date = DATE(NOW()) WHERE cs_no = #{cs_no}
+	</update>
 </mapper>

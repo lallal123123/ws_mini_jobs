@@ -18,7 +18,7 @@
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
               <li class="nav-item">
-                <a href="../cs_list_99" class="nav-link active" aria-current="page">
+                <a href="../cs_list_99" class="nav-link link-body-emphasis">
                   My home
                 </a>
               </li>
@@ -38,9 +38,14 @@
                 </div>
               </li> 
               <li>
-                <div class="nav-link link-body-emphasis">
+                <div class="nav-link active" aria-current="page">
                  공지사항 관리
                 </div>
+              </li>
+              <li>
+                <a href="#" class="nav-link link-body-emphasis">
+                 신고 접수된 건
+                </a>
               </li>    
              </ul>
         </div>
@@ -65,7 +70,7 @@
            		
            		<input type="submit" class="btn btn-jobs w-100" value="등록하기">
 			</form>
-			<a class="btn btn-light" href="../notice_list_99" role="button">이전</a>
+			<a class="btn btn-light" href="../admin99/notice_list_99" role="button">이전</a>
         </div>
     </div>
 </div>

@@ -33,7 +33,7 @@
                 </a>
               </li>
               <li>
-                <a href="/admin/companies" div class="nav-link link-body-emphasis">
+                <a href="/admin/companies"  class="nav-link link-body-emphasis">
                  기업회원 관리
                 </a>
               </li> 
@@ -48,7 +48,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link link-body-emphasis">
+                <a href="#" class="nav-link link-body-emphasis" class="nav-link link-body-emphasis">
                  신고 접수된 건
                 </a>
               </li>   
@@ -64,23 +64,22 @@
         	<br>
         	<div>제목</div>
         	<div id="title">${dto.title }</div>
+        	<br>
         	<div>내용</div>
         	<div id="content">${dto.content }</div>
+        	<br>
        		<a class="btn btn-light" href="../delete_99?cs_no=${dto.cs_no }" role="button">삭제</a>
         	<hr>
-        	<form action="../admin99/cs_request_99?cs_no=${dto.cs_no }" method="post" onsubmit="return requestRegForm()">
+        	<div>답변 제목</div>
+        	<div>${requestDto.title }</div>
         	<br>
-        	<div class="mb-3">
-                	<label for="" class="form-label">답변 제목</label>
-                	<textarea class="form-control" name="title" id="title" placeholder="제목을 입력해주세요..."></textarea>
-                	<label for="" class="form-label">답변 내용</label>
-                	<textarea class="form-control" name="content" id="content" placeholder="명확한 답변을 해주세요..."></textarea>
-           	</div>
-           	<input type="submit" class="btn btn-jobs w-100" value="등록하기">
+        	<div>답변 내용</div>
+        	<div>${requestDto.content }</div>
            	<br>
+           	
+        	<a class="btn btn-light" href="../admin99/cs_request_modifyForm_99?request_no=${requestDto.request_no }&cs_no=${requestDto.cs_no}" role="button">답변 수정하기</a>
         	<a class="btn btn-light" href="../admin99/cs_list_99" role="button">이전</a>
         	<a class="btn btn-light" href="#" role="button">TOP</a>
-        	</form>
         </div>
     </div>
 </div>
@@ -88,6 +87,5 @@
 <!-- 작업공간 영역 끝 -->
 <jsp:include page="../footer.jsp"></jsp:include>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="../js/csScript.js"></script>
 </body>
 </html>

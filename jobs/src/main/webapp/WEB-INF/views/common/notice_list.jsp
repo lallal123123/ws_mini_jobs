@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +33,10 @@
     <div class="col-9">
         <div class="border p-3">
         <h3 style="text-align:center;">공지사항</h3>
+        <form class="d-flex" action="/noticeSearchData_99">
+	      <input class="form-control me-2" value="${noticeSearchData }" type="search" name="searchData" placeholder="Search" aria-label="Search" style="width: 150px;">
+	      <button class="btn btn-light" type="submit">Search</button>
+	    </form>
         	<c:choose>
         		<c:when test="${mem_no == '3'}">
         			<a class="btn btn-light" href="../admin99/notice_write_form_99" role="button" onclick="return isLoggedIn()">공지사항 작성하기</a>
@@ -55,7 +61,9 @@
 			      <td scope="row">${status.count }</td>
 			      <td>${list.category }</td>
 				  <td><a href="../noticeDetail_99?notice_no=${list.notice_no }">${list.title }</a></td>
-			      <td>${list.reg_date }</td>
+			      <td>
+			      	<fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd"/>
+			      </td>
 			    </tr>
 			  </c:forEach>
 			  </tbody>
