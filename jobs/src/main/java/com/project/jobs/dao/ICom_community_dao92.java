@@ -20,18 +20,18 @@ public interface ICom_community_dao92 {
 	public void delete(@Param("no") String no);//
 	public long countAll();
 	//기업번호 별 게시글
-	public List<Com_community> listByNo(@Param("no") long no);
-	public List<Com_community> listByNo3(@Param("start")Long start,@Param("cnt") Long cnt,@Param("no") long no);
+	public List<Com_community> listByComNo(@Param("no") long no);
+	public List<Com_community> listByComNo3(@Param("start")Long start,@Param("cnt") Long cnt,@Param("no") long no);
 	//검색
 	public List<Com_community> searchList(@Param("start") Long start,@Param("cnt") Long cnt,@Param("search") String search);//
 	public long searchCount(@Param("search") String search);
 	
 	//댓글
 	public void insert_reply(@Param("dto") Com_reply dto);//
-	public List<Com_reply> replyList(@Param("no") String no);//
+	public List<Com_reply> replyByNo(@Param("no") String no);//
 	public void delete_reply(@Param("no") String no);//
 	//기업번호 별 댓글
-	public List<Com_reply> replyListByNo(@Param("no") long no);
+	public List<Com_reply> replyListByComNo(@Param("no") long no);
 	//카테고리
 	public List<Com_community_category> clist();//
 	public String com_id(@Param("no") Long no);//

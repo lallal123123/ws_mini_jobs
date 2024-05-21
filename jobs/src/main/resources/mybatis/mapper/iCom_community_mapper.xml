@@ -26,22 +26,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <!-- com_no로 게시글,댓글 -->
-<select id="listByNo" resultType="com.project.jobs.dto.Com_community">
+<select id="listByComNo" resultType="com.project.jobs.dto.Com_community">
 	select * from com_community where com_no = #{no}
 </select>
-<select id="listByNo3" resultType="com.project.jobs.dto.Com_community">
+<select id="listByComNo3" resultType="com.project.jobs.dto.Com_community">
 	select * from com_community where com_no = #{no} order by com_community_no desc LIMIT #{start},#{cnt}
 </select>
-<select id="replyListByNo" resultType="com.project.jobs.dto.Com_reply">
+<select id="replyListByComNo" resultType="com.project.jobs.dto.Com_reply">
 	select * from com_reply where com_no = #{no}
 </select>
 <!-- 댓글 -->
 <insert id="insert_reply">
 	insert into com_reply values(null,#{dto.com_community_no},#{dto.com_no},#{dto.content},now())
 </insert>
-<select id="replyList" resultType="com.project.jobs.dto.Com_reply">
+<select id="replyByNo" resultType="com.project.jobs.dto.Com_reply">
 	select * from com_reply where com_community_no = #{no} 
 </select>
+
 <delete id="delete_reply">
 	delete from com_reply where com_reply_no=#{no}
 </delete>

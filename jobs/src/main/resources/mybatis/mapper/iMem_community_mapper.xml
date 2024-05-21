@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.jobs.dao.IMem_community_dao92">
+<!-- 전체글 -->
+<select id="list92" resultType="com.project.jobs.dto.Mem_community" >
+  select * from mem_community order by mem_community_no desc LIMIT #{start},#{cnt}
+</select>
+<select id="detail92" resultType="com.project.jobs.dto.Mem_community" >
+	select * from mem_community where mem_community_no = #{no};
+</select>
+<insert id="write92">
+	insert into mem_community values(null,#{dto.mem_no},#{dto.title},#{dto.content},now(),#{dto.category},0,#{dto.secret})
+</insert>
+<update id="modify">
+	update mem_community set title=#{dto.title},content=#{dto.content},
+	category=#{dto.category},secret=#{dto.secret},reg_date=now() 
+	where mem_community_no=#{dto.mem_community_no}
+</update>
+<delete id="delete">
+	delete from mem_community where mem_community_no=#{no}
+</delete>
+<select id="countAll">
+	select count(*) from mem_community
+</select>
+
+<!-- com_no로 게시글,댓글 -->
+<select id="listByMemNo" resultType="com.project.jobs.dto.Mem_community">
+	select * from mem_community where mem_no = #{no}
+</select>
+<select id="listByMemNo3" resultType="com.project.jobs.dto.Mem_community">
+	select * from mem_community where mem_no = #{no} order by mem_community_no desc LIMIT #{start},#{cnt}
+</select>
+<select id="replyListByMemNo" resultType="com.project.jobs.dto.Mem_reply">
+	select * from mem_reply where mem_no = #{no}
+</select>
+<!-- 댓글 -->
+<insert id="insert_reply">
+	insert into mem_reply values(null,#{dto.mem_community_no},#{dto.mem_no},#{dto.content},now())
+</insert>
+<select id="replyByNo" resultType="com.project.jobs.dto.Mem_reply">
+	select * from mem_reply where mem_community_no = #{no} 
+</select>
+
+<delete id="delete_reply">
+	delete from mem_reply where mem_reply_no=#{no}
+</delete>
+
+
+<!-- com_no로com_id 찾기 -->
+<select id="com_id">
+	select mem_id from member where mem_no=#{no}
+</select>
+
+<!-- 카테고리 -->
+<select id="clist" resultType="com.project.jobs.dto.Mem_community_category">
+	select * from mem_community_category
+</select>
+
+<!-- 본사람 카운트 -->
+<update id="viewsUp">
+	update mem_community set views=views+1 where mem_community_no = #{no}
+</update>
+
+<!-- 검색 -->
+<select id="searchList" resultType="com.project.jobs.dto.Mem_community" >
+  select * from mem_community where content LIKE CONCAT('%', #{search}, '%') order by mem_community_no desc LIMIT #{start},#{cnt} 
+</select>
+
+<select id="searchCount">
+	select count(*) from mem_community where content LIKE CONCAT('%', #{search}, '%')
+</select>
+
+
+<!-- 인기글 -->
+<select id="chList" resultType="com.project.jobs.dto.Mem_community">
+	select * from mem_community where category=#{category} order by mem_community_no desc LIMIT #{start},#{cnt}
+</select>
+<select id="chListCount">
+	select count(*) from mem_community where category=#{category}
+</select>
+
+<!-- 카테고리별 게시글 리스트 -->
+<select id="hotList" resultType="com.project.jobs.dto.Mem_community">
+	select * from mem_community order by views desc LIMIT #{start},#{cnt}
+</select>
+
+</mapper>

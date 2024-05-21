@@ -13,7 +13,7 @@ public class Mem_community {
 	
 	private Long mem_community_no;
 	private Long mem_no;
-	private String com_id;
+	private String mem_id;
 	private String title;
 	private String content;
 	private Date reg_date;

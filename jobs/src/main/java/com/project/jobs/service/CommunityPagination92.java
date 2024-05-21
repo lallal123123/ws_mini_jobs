@@ -1,12 +1,7 @@
 package com.project.jobs.service;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.jobs.dto.Com_community;
 import com.project.jobs.dto.Pagination;
 
 @Service

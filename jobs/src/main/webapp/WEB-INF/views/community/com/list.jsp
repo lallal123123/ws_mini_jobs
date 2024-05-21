@@ -13,12 +13,12 @@
 	crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
 <style>
-
 #searchBox {
-    text-align: center;
+	text-align: center;
 }
+
 #pageBox {
-    text-align: center;
+	text-align: center;
 }
 </style>
 </head>
@@ -34,14 +34,14 @@
 
 					<a href="write_form">게시글 작성하기</a><br>
 					<form action="list" method="post">
-						<label for="" class="form-label">카테고리</label> 
-							<select class="form-control" name="category">
-								<option value="">선택해주세요</option>
-								<c:forEach var="dto" items="${clist}">									
-									<option class="option_category" value="${dto.ch_category}">${dto.ch_category}</option>
-								</c:forEach>
-							</select>
-							<button>보기</button>
+						<label for="" class="form-label">카테고리</label> <select
+							class="form-control" name="category">
+							<option value="">선택해주세요</option>
+							<c:forEach var="dto" items="${clist}">
+								<option class="option_category" value="${dto.ch_category}">${dto.ch_category}</option>
+							</c:forEach>
+						</select>
+						<button>보기</button>
 					</form>
 					<table class="table">
 						<thead>
@@ -82,7 +82,7 @@
 									 ${x }
 								</c:if>
 								<c:if test="${x ne pagination.page}">
-									<c:if test="${search eq null && category eq null && com_no eq null} ">
+									 <c:if test="${search eq null && category eq null && com_no eq null} ">
 										<a href="list?page=${x }">${x }</a>
 									</c:if>
 									<c:if test="${category ne null }">
@@ -105,11 +105,11 @@
 									 ${x }
 	 							</c:if>
 								<c:if test="${x ne pagination.page}">
-									<c:if test="${search eq null && category eq null && com_no eq null} ">
+									 <c:if test="${search eq null && category eq null && com_no eq null} ">
 										<a href="list?page=${x }">${x }</a>
 									</c:if>
 									<c:if test="${category ne null }">
-										<a href="list?page=${x }&category=${catagory}">${x }</a>
+										<a href="list?page=${x }&category=${category}">${x }</a>
 									</c:if>
 									<c:if test="${search ne null }">
 										<a href="list?page=${x }&search=${search}">${x }</a>
@@ -125,10 +125,10 @@
 							<button id="nextBtn" onclick="next()">[다음]</button>
 						</c:if>
 					</div>
-					<div id="searchBox" >
+					<div id="searchBox">
 						<form action="list" method="post">
-							<input type="text"  name="search">
-							<button>검색</button>
+							<input type="text" name="search">
+							<button>내용검색</button>
 						</form>
 					</div>
 
@@ -146,6 +146,7 @@
 
 	<script>
 		//alert("${pageBlock}");
+		
 		function next() {
 			if("${search}" == ""&& "${category}" ==""){
 				location.href = "pageNext?pageBlock=${pagination.pageBlock }";

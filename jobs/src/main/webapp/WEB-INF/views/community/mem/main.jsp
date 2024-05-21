@@ -97,16 +97,16 @@ display: inline-block;
 							<table id="hotListTable" class="border p-3">
 								<c:forEach var="dto" items="${ hList}">
 									<tr>
-										<td id="td1"><a href="detail?no=${dto.com_community_no }"> ${dto.title }</a></td>
+										<td id="td1"><a href="detail?no=${dto.mem_community_no }"> ${dto.title }</a></td>
 										<td id="td2"><i class="bi bi-wechat" ></i>  ${dto.replyCnt }  </td>
 										<td id="td3"><img src="${pageContext.request.contextPath}/images/common/eye_icon.png" alt="사람눈" width="30px" height="30px">  ${dto.views }</td>
 									</tr>
 								</c:forEach>
 							</table>
-						</span> <span class="top border p-3" id="info"> <span id="img">사진공간</span><span id="com_id">${loggedInCompany.com_id }님</span><br>
+						</span> <span class="top border p-3" id="info"> <span id="img">사진공간</span><span id="com_id">${loggedInMember.mem_id }님</span><br>
 							<a href="write_form"> <button>게시글작성</button></a><br>
-							<div>내가 작성한 글 <a href="list?com_no=${loggedInCompany.com_no }">${cntComWrite }개</a></div><br>
-							내가 작성한 댓글 ${cntComReply }개
+							<div>내가 작성한 글 <a href="list?mem_no=${loggedInMember.mem_no }">${cntMemWrite }개</a></div><br>
+							내가 작성한 댓글 ${cntMemReply }개
 
 						</span>
 					</div>
@@ -128,7 +128,7 @@ display: inline-block;
 
 									<c:forEach var="dto" items="${chList}">
 										<tr>
-											<td><a href="detail?no=${dto.com_community_no }">${dto.title }</a></td>
+											<td><a href="detail?no=${dto.mem_community_no }">${dto.title }</a></td>
 											<td><i class="bi bi-wechat"></i>${dto.replyCnt }</td>
 											<td>${dto.views }</td>
 										</tr>

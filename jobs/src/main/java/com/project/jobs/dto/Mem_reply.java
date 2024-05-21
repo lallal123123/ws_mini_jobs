@@ -13,7 +13,8 @@ public class Mem_reply {
 	private Long mem_reply_no;
 	private Long mem_community_no;
 	private Long mem_no;
+	private String mem_id;
 	private String content;
-	private Date reg_date;
-
+	private Date regdate;
+	private String s_regdate;
 }
