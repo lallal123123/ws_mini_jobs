@@ -20,10 +20,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="modifyDao_99">
 		UPDATE cs_question SET title = #{title}, content = #{content}, category = #{category}, ch_private = #{ch_private} WHERE cs_no = #{cs_no}
 	</update>
+	<!-- 문의 답변 -->
 	<insert id="writeRequestDao_99">
 		INSERT INTO cs_request (cs_no, content, reg_date, title)
 		VALUES (#{cs_no}, #{content}, DATE(NOW()), #{title})
 	</insert>
-	
-		
+	<select id="getRequestDao_99">
+		SELECT * FROM cs_request WHERE cs_no = #{cs_no}
+	</select>
 </mapper>
