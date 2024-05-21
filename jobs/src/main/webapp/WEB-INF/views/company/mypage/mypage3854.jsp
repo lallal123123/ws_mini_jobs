@@ -9,6 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
 </head>
+<<<<<<< HEAD
 <body class="d-flex flex-column h-100">
 <jsp:include page="../../header.jsp"></jsp:include>
 <!-- 작업공간 영역 -->
@@ -20,6 +21,12 @@
             <!-- 여기에 메뉴를 나열해주세요 -->
                  	<h1>My Page</h1>
             <h2>${member.com_name} 님</h2>
+=======
+<body>
+    
+        <h1>My Page</h1>
+            <h2>${company.com_name} 님</h2>
+>>>>>>> 760d961 (로그인시 알람을 알수 있는 아이콘이 표시되고 이벤트 발생시 숫자 가 표시되며 클릭하면 정보를 볼 수 있다.)
         <a href="${pageContext.request.contextPath}/companies/editProfile">내 정보 수정</a>
             	<li class="nav-item">
                 	<a href="/companies/mypage" class="nav-link link-body-emphasis border-bottom rounded-0" aria-current="page">

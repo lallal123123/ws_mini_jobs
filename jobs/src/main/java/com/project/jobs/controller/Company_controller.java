@@ -120,9 +120,9 @@ public class Company_controller {
     public String mypage(HttpSession session, Model model) {
         Company loggedInCompany = (Company) session.getAttribute("loggedInCompany");
         if (loggedInCompany != null) {
-            model.addAttribute("member", loggedInCompany);
+            model.addAttribute("company", loggedInCompany);
             model.addAttribute("userName", loggedInCompany.getCom_name());
-            model.addAttribute("mem_no", loggedInCompany.getCom_no());
+            model.addAttribute("com_no", loggedInCompany.getCom_no());
             return "company/mypage/mypage3854";
         } else {
             return "redirect:/members/loginForm";

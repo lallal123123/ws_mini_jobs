@@ -1,0 +1,13 @@
+diff a/jobs/src/main/java/com/project/jobs/controller/Company_controller.java b/jobs/src/main/java/com/project/jobs/controller/Company_controller.java	(rejected hunks)
+@@ -123,9 +123,9 @@
+     public String mypage(HttpSession session, Model model) {
+         Company loggedInCompany = (Company) session.getAttribute("loggedInCompany");
+         if (loggedInCompany != null) {
+-            model.addAttribute("member", loggedInCompany);
++            model.addAttribute("company", loggedInCompany);
+             model.addAttribute("userName", loggedInCompany.getCom_name());
+-            model.addAttribute("mem_no", loggedInCompany.getCom_no());
++            model.addAttribute("com_no", loggedInCompany.getCom_no());
+             return "company/mypage/mypage3854";
+         } else {
+             return "redirect:/members/loginForm";

@@ -75,20 +75,23 @@ public class Member_controller {
 
 	@PostMapping("/login")
 	public String login(@ModelAttribute Member member, Model model, HttpSession session) {
-		Member loginMember = memberService.login(member);
-		if (loginMember != null) {
-			session.setAttribute("loggedInMember", loginMember);
-			if ("manager3854".equals(loginMember.getMem_id())) {
-				session.setAttribute("isAdmin", true);
-			} else {
-				session.setAttribute("isAdmin", false);
-			}
-			return "redirect:/members/index";
-		} else {
-			model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
-			return "redirect:/members/loginForm";
-		}
+	    Member loginMember = memberService.login(member);
+	    if (loginMember != null) {
+	        session.setAttribute("loggedInMember", loginMember);
+	        if ("manager3854".equals(loginMember.getMem_id())) {
+	            session.setAttribute("isAdmin", true);
+	        } else {
+	            session.setAttribute("isAdmin", false);
+	        }
+	        return "redirect:/members/index";
+	    } else {
+	        model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
+	        model.addAttribute("member", new Member());
+	        model.addAttribute("company", new Company()); 
+	        return "member/loginForm"; 
+	    }
 	}
+
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {

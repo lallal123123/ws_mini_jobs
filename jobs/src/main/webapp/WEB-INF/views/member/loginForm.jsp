@@ -19,6 +19,11 @@
         .btn-primary {
             width: 100%;
         }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -47,11 +52,11 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">로그인</button>
                 </div>
-                <div>
-                    <c:if test="${not empty error}">
-                        <span style="color: red;">${error}</span>
-                    </c:if>
-                </div>
+                <c:if test="${not empty error}">
+                    <div class="error-message">
+                        <span>${error}</span>
+                    </div>
+                </c:if>
             </form:form>
         </div>
         <!-- 기업 로그인 폼 -->
@@ -68,11 +73,11 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">로그인</button>
                 </div>
-                <div>
-                    <c:if test="${not empty error}">
-                        <span style="color: red;">${error}</span>
-                    </c:if>
-                </div>
+                <c:if test="${not empty error}">
+                    <div class="error-message">
+                        <span>${error}</span>
+                    </div>
+                </c:if>
             </form:form>
         </div>
     </div>

@@ -73,66 +73,83 @@
     th {
         background-color: #f2f2f2;
     }
+    .footer {
+        background-color: #f8f9fa;
+        text-align: center;
+        padding: 10px 0;
+        border-top: 1px solid #ddd;
+        margin-top: auto; /* 화면의 하단에 붙게 설정 */
+    }
+    .content {
+        flex: 1 0 auto; /* 남은 공간을 차지하도록 설정 */
+    }
 </style>
 </head>
 <body class="d-flex flex-column h-100">
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
-<header>
-    <h1 class="text-center">${company.com_name} 상세 정보</h1>
-</header>
-<div class="table-container">
-    <table>
-        <tr>
-            <th>기업 번호</th>
-            <td>${company.com_no}</td>
-        </tr>
-        <tr>
-            <th>회사명</th>
-            <td>${company.com_name}</td>
-        </tr>
-        <tr>
-            <th>대표자</th>
-            <td>${company.com_ceo}</td>
-        </tr>
-        <tr>
-            <th>주소</th>
-            <td>${company.com_addr}</td>
-        </tr>
-        <tr>
-            <th>회사 번호</th>
-            <td>${company.com_companynum}</td>
-        </tr>
-        <tr>
-            <th>전화번호</th>
-            <td>${company.com_tel}</td>
-        </tr>
-        <tr>
-            <th>이메일</th>
-            <td>${company.com_email}</td>
-        </tr>
-        <tr>
-            <th>웹사이트</th>
-            <td>${company.com_url}</td>
-        </tr>
-        <tr>
-            <th>관심 기업 등록|해제</th>
-            <td>
-                <span class="star ${company.interest ? 'interested' : ''}" onclick="toggleInterest(${company.com_no}, this)">
-                    <c:choose>
-                        <c:when test="${company.interest}">
-                            ★
-                        </c:when>
-                        <c:otherwise>
-                            ☆
-                        </c:otherwise>
-                    </c:choose>
-                </span>
-            </td>
-        </tr>
-    </table>
-    <a href="${pageContext.request.contextPath}/companies" class="back-to-main">이전으로 돌아가기</a>
+<div class="content">
+    <header>
+        <h1 class="text-center">${company.com_name} 상세 정보</h1>
+    </header>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>기업 번호</th>
+                <td>${company.com_no}</td>
+            </tr>
+            <tr>
+                <th>회사명</th>
+                <td>${company.com_name}</td>
+            </tr>
+            <tr>
+                <th>대표자</th>
+                <td>${company.com_ceo}</td>
+            </tr>
+            <tr>
+                <th>주소</th>
+                <td>${company.com_addr}</td>
+            </tr>
+            <tr>
+                <th>회사 번호</th>
+                <td>${company.com_companynum}</td>
+            </tr>
+            <tr>
+                <th>전화번호</th>
+                <td>${company.com_tel}</td>
+            </tr>
+            <tr>
+                <th>이메일</th>
+                <td>${company.com_email}</td>
+            </tr>
+            <tr>
+                <th>웹사이트</th>
+                <td>${company.com_url}</td>
+            </tr>
+            <c:if test="${not empty sessionScope.loggedInMember || sessionScope.isAdmin == true}">
+                <tr>
+                    <th>관심 기업 등록|해제</th>
+                    <td>
+                        <span class="star ${company.interest ? 'interested' : ''}" onclick="toggleInterest(${company.com_no}, this)">
+                            <c:choose>
+                                <c:when test="${company.interest}">
+                                    ★
+                                </c:when>
+                                <c:otherwise>
+                                    ☆
+                                </c:otherwise>
+                            </c:choose>
+                        </span>
+                    </td>
+                </tr>
+            </c:if>
+        </table>
+        <a href="${pageContext.request.contextPath}/companies" class="back-to-main">이전으로 돌아가기</a>
+    </div>
 </div>
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
+<div class="footer">
+    <span>Footer content here</span>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

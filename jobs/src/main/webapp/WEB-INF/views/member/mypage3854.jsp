@@ -46,9 +46,9 @@
             </div>
             <div class="col-9">
                 <p class="text-secondary d-flex">
-                    <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
-                    <a href="#" class="nav-link text-secondary">구인 공고 관리</a> <span class="mx-3">></span>
-                    <a href="" class="nav-link text-black fw-bolder">구인 공고 작성</a>
+                    <a href="#" class="nav-link text-secondary">홈</a> <span class="mx-3">></span>
+                    <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3"></span>
+                  
                 </p>
             </div>
         </div>
