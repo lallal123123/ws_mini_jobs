@@ -9,6 +9,8 @@ import com.project.jobs.dto.Admin_totalRegistrations;
 
 @Mapper
 public interface IAdminDao99 {
-	public List<Admin_totalRegistrations> getRegistrations();
-	
+	public Admin_totalRegistrations getCurrentMemRegist();
+	public Admin_totalRegistrations getPastMemRegist();
+	public Admin_totalRegistrations getCurrentComRegist();
+	public Admin_totalRegistrations getPastComRegist();
 }

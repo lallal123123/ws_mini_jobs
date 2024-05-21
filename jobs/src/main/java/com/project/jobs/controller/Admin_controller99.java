@@ -22,7 +22,10 @@ public class Admin_controller99 {
 	
 	@RequestMapping("/getTotalRegistrations")
 	public String TotalRegistrations(Model model) {
-		model.addAttribute("registrations", adminDao.getRegistrations());
+		model.addAttribute("currentMemRegist", adminDao.getCurrentMemRegist());
+		model.addAttribute("pastMemRegist", adminDao.getPastMemRegist());
+		model.addAttribute("currentComRegist", adminDao.getCurrentComRegist());
+		model.addAttribute("pastComRegist", adminDao.getPastComRegist());
 		return "/admin/dashboard";
 	}
 	
