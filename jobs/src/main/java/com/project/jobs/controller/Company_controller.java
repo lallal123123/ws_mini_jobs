@@ -25,14 +25,14 @@ public class Company_controller {
     @Autowired
     private CompanyService3854 companyService;
 
-   /* @GetMapping
+    @GetMapping
     public String getAllCompanies(Model model, HttpSession session) {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
         Long mem_no = loggedInMember != null ? loggedInMember.getMem_no() : null;
         List<Company> companies = companyService.getAllCompaniesWithInterests(mem_no);
         model.addAttribute("companies", companies);
         return "com_list";
-    }*/
+    }
    
     @PostMapping("/toggleInterest")
     @ResponseBody
@@ -83,7 +83,7 @@ public class Company_controller {
         return "redirect:/members/loginForm";
     }
 
-   /* @PostMapping("/login")
+    @PostMapping("/login")
     public String login(@ModelAttribute Company company, Model model, HttpSession session) {
         Company loginCompany = companyService.login(company);
         if (loginCompany != null) {
@@ -93,7 +93,7 @@ public class Company_controller {
             model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
             return "redirect:/members/loginForm";
         }
-    }*/
+    }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
