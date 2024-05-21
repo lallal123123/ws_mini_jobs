@@ -46,15 +46,7 @@ public class CompanyService3854 {
     }
 
 
-	/*public Company login(Company company) {
-		System.out.println("service id : " + company.getCom_id());
-		Company result = companyDao.findByComIdAndComPw(company.getCom_id(), company.getCom_pw());
-		
-		
-		System.out.println("service : " + result);
-		return result;
-	}
-
+	
     public Company login(Company company) {
         return companyDao.findByComIdAndComPw(company.getCom_id(), company.getCom_pw());
     }
@@ -66,7 +58,7 @@ public class CompanyService3854 {
             company.setInterest(isInterest); 
         }
         return companies;
-    }*/
+    }
 
 
     public void addInterestCompany(Long mem_no, Long com_no) {

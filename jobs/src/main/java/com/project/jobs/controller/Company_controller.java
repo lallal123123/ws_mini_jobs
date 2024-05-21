@@ -83,7 +83,7 @@ public class Company_controller {
         return "redirect:/members/loginForm";
     }
 
-   /* @PostMapping("/login")
+    @PostMapping("/login")
     public String login(@ModelAttribute Company company, Model model, HttpSession session) {
         Company loginCompany = companyService.login(company);
         if (loginCompany != null) {
@@ -93,7 +93,7 @@ public class Company_controller {
             model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
             return "redirect:/members/loginForm";
         }
-    }*/
+    }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
