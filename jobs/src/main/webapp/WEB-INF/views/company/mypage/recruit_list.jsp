@@ -110,7 +110,7 @@
 					        </c:when>         
 					        <c:otherwise>
 					        	<a class="btn btn-secondary" href="/company/mypage/deleteRecruit?recruit_no=${recruit.recruit_no }">삭제</a>
-					        	<a class="btn btn-jobs me-2" href="">수정</a>
+					        	<a class="btn btn-jobs me-2" href="/company/mypage/recruit_modify_form?recruit_no=${recruit.recruit_no }">수정</a>
 					        </c:otherwise>
 					    </c:choose> 
 	        		</div>

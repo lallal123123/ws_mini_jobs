@@ -64,6 +64,33 @@ public class Controller5963 {
 		return "redirect:/company/mypage/getComRecruitList";
 	}
 	
+
+    //공고 수정 페이지 접속하기
+    @RequestMapping("/recruit_modify_form")
+    public String recruitModifyForm(HttpServletRequest request, @RequestParam("recruit_no")Long recruit_no, Model model) {
+        System.out.println("공고 수정하기 접근");
+        List<Region> regionList = companyService.getRegion();
+	    model.addAttribute("regionList", regionList);
+        Recruit recruit = companyService.getRecruit(recruit_no);
+        model.addAttribute("recruit", recruit);
+        HttpSession session = request.getSession();
+		model.addAttribute("company", session.getAttribute("loggedInCompany"));
+    
+        return "/company/mypage/recruit_modify_form";
+    }
+    
+    //공고 수정하기
+    @RequestMapping("/modifyRecruit")
+    public String modifyRecruit(Recruit recruit, Model model) {
+        System.out.println("공고 수정하기 접근");
+        
+       
+        
+        companyService.modifyRecruit(recruit);
+        model.addAttribute("com_no", recruit.getCom_no());
+        return "redirect:/company/mypage/getComRecruitList";
+    }
+	
 	//공고 삭제하기
 	@RequestMapping("/deleteRecruit")
 	public String deleteRecruit(@RequestParam("recruit_no")Long recruit_no, Model model) {
