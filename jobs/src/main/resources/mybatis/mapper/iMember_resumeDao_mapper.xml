@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <insert id="site_resume_write" useGeneratedKeys="true" keyProperty="s_resume_no">
 	INSERT INTO site_resume (s_resume_no, mem_no, hope_job, title, site_res_name, img_url, addr, part, military, etc, motive, personality, aspiration, growth) 
-	VALUES (null, null, #{site_res_dto.hope_job}, #{site_res_dto.title}, #{site_res_dto.site_res_name}, #{site_res_dto.img_url}, #{site_res_dto.addr}, #{site_res_dto.part}, #{site_res_dto.military}, #{site_res_dto.etc}, #{site_res_dto.motive}, #{site_res_dto.personality}, #{site_res_dto.aspiration}, #{site_res_dto.growth})
+	VALUES (null, #{site_res_dto.mem_no}, #{site_res_dto.hope_job}, #{site_res_dto.title}, #{site_res_dto.site_res_name}, #{site_res_dto.img_url}, #{site_res_dto.addr}, #{site_res_dto.part}, #{site_res_dto.military}, #{site_res_dto.etc}, #{site_res_dto.motive}, #{site_res_dto.personality}, #{site_res_dto.aspiration}, #{site_res_dto.growth})
 </insert>
 <insert id="license_write">
 	INSERT INTO license (license_no, s_resume_no, license_name, agency, GET_date ) VALUES (null, #{res_dto.s_resume_no}, #{lic_dto.license_name}, #{lic_dto.agency}, #{lic_dto.get_date})
@@ -19,7 +19,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </insert>
 
 <insert id="insert_free_resume">
-	INSERT INTO free_resume(title, url, FILE) values(#{free_dto.title}, #{free_dto.url}, #{free_dto.FILE})
+	INSERT INTO free_resume(mem_no, title, url, file) values(#{free_dto.mem_no}, #{free_dto.title}, #{free_dto.url}, #{free_dto.file})
 </insert>
+
+<select id="getSiteResumeList">
+	SELECT * FROM site_resume WHERE mem_no = #{mem_no}
+</select>
+<select id="getFreeResumeList">
+	SELECT * FROM free_resume WHERE mem_no = #{mem_no}
+</select>
 
 </mapper>

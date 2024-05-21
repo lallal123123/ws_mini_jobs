@@ -17,6 +17,14 @@ public class Free_resume {
 	private String url;
 	private String file;
 	
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
+	
+	
 	private static ModelMapper modelMapper = new ModelMapper();
 	
 	public static Free_resume of(Free_resume_file free_resume_file) {

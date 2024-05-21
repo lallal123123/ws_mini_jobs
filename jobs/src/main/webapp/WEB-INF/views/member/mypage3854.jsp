@@ -32,14 +32,17 @@
                         <li>
                             <a href="#" class="nav-link link-body-emphasis border-bottom rounded-0">스크랩 구직자</a>
                         </li> 
-                        <div class="accordion" id="accordionPanelsStayOpenExample">
-                            <a href="#">이력서</a>
-                        </div>   
+                        <li class="nav-item">
+                            <a href="#" class="nav-link link-body-emphasis border-bottom rounded-0" aria-current="page">이력서</a>
+                        </li>
                         <li>
                             <a href="${pageContext.request.contextPath}/resume/member_mypage_resume_writeform">사이트 이력서</a>
                         </li>
                         <li>
                             <a href="${pageContext.request.contextPath}/resume/member_mypage_resume_freeform">자유 이력서</a>
+                        </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/resume/member_mypage_resume_list">이력서 리스트</a>
                         </li>
                     </ul>
                 </div>

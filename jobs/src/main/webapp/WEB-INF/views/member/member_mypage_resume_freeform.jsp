@@ -32,7 +32,8 @@
 			<div class="col-9">
 				<div class="border p-3">
 
-				<form action="member_mypage_resume_free" method="post" enctype="multipart/form-data">
+				<form action="member_mypage_resume_free" id="myButton" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="mem_no" value="${member.mem_no}">
 					<div class="mb-3">
 						<label for="" class="form-label">제목</label> 
 						<input type="text" class="form-control" name="title" placeholder="이력서 제목">
