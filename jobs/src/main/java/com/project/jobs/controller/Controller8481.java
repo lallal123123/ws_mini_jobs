@@ -20,7 +20,7 @@ import com.project.jobs.dto.Site_resume_file;
 import com.project.jobs.service.Site_resumeService8481;
 
 @Controller
-@RequestMapping("/members")
+@RequestMapping("/resume")
 public class Controller8481 {
 	@Autowired
 	IMember_resume8481 dao;
