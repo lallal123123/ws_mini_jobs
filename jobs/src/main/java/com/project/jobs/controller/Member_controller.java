@@ -36,7 +36,7 @@ public class Member_controller {
 		if (loggedInMember != null) {
 			model.addAttribute("welcomeMessage", "환영합니다, " + loggedInMember.getMem_id() + "!");
 		}
-		return "index3854"; // index3854 페이지로 이동
+		return "index"; // index3854 페이지로 이동
 	}
 
 	@RequestMapping("/signup")

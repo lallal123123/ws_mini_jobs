@@ -14,49 +14,38 @@
 <!-- 작업공간 영역 -->
 <div class="container">
 <div class="row">
-	<div class="col-3">
-        <div class="border p-3 rounded">
-            <ul class="nav nav-pills flex-column mb-auto">
-            <!-- 여기에 메뉴를 나열해주세요 -->
-            	<li class="nav-item">
-                	<a href="#" class="nav-link link-body-emphasis border-bottom rounded-0" aria-current="page">
-                  	My 홈
-                	</a>
-              	</li>
-              	<li>
-                	<a href="#" class="nav-link link-body-emphasis  border-bottom rounded-0">
-                 	회원정보 수정
-                	</a>
-              	</li> 
-              	<li>
-              		<div class="accordion" id="accordionPanelsStayOpenExample">
-			      		<a class="nav-link link-body-emphasis text-weight-bold border-bottom rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-			        		관심기업리스트
-			      		</a>
-			   	  	
-			 		</div> 
-              	</li>   
-              	<li>
-                	<a href="#" class="nav-link link-body-emphasis  border-bottom rounded-0">
-                	스크랩 구직자 
-                	</a>
-              	</li>   
-            </ul>
-        </div>
-    </div>
-    <div class="col-9">
-	    <p class="text-secondary d-flex">
-	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
-	    	<a href="#" class="nav-link text-secondary">구인 공고 관리</a> <span class="mx-3">></span>
-	    	<a href="" class="nav-link text-black fw-bolder">구인 공고 작성</a>
-	    </p>
-    
-        </div>
-</div>
-</div>
+	<h1>기업 리스트</h1>
+</header>
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>기업 번호</th>
+            <th>회사명</th>
+            <th>대표자</th>
+            <th>주소</th>
+            <th>기업상세</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach var="company" items="${companies}">
+            <tr>
+                <td>${company.com_no}</td>
+                <td>${company.com_name}</td>
+                <td>${company.com_ceo}</td>
+                <td>${company.com_addr}</td>
+                <td><a href="${pageContext.request.contextPath}/companies/${company.com_no}" class="detail-button">기업상세</a></td>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>
+<a href="${pageContext.request.contextPath}/members/index" class="back-to-main">메인페이지로 돌아가기</a>
 <!-- 작업공간 영역 끝 -->
 <jsp:include page="../../footer.jsp"></jsp:include>
-
+<body class="d-flex flex-column h-100"></body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
