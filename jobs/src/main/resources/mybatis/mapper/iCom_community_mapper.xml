@@ -29,6 +29,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="listByNo" resultType="com.project.jobs.dto.Com_community">
 	select * from com_community where com_no = #{no}
 </select>
+<select id="listByNo3" resultType="com.project.jobs.dto.Com_community">
+	select * from com_community where com_no = #{no} order by com_community_no desc LIMIT #{start},#{cnt}
+</select>
 <select id="replyListByNo" resultType="com.project.jobs.dto.Com_reply">
 	select * from com_reply where com_no = #{no}
 </select>

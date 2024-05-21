@@ -45,8 +45,8 @@
 						</div>
 						<div class="mb-3">
 							<label for="" class="form-label">작성자 비공개 여부</label>
-							<input type="radio" name="secret" value="0">
-  							<label for="option1">공개</label>
+							<input type="radio" name="secret" value="0" checked>
+  							<label for="option1" >공개</label>
   							<input type="radio"  name="secret" value="1">
   							<label for="option1">비공개</label>
 						</div>

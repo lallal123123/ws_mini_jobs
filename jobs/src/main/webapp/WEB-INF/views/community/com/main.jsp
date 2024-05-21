@@ -94,7 +94,7 @@ width:20%;
 							</table>
 						</span> <span class="top border p-3" id="info"> <span>사진공간</span><span>${loggedInCompany.com_id }님</span><br>
 							<a href="write_form"> <button>게시글작성</button></a><br>
-							내가 작성한 글 ${cntComWrite }개<br>
+							내가 작성한 글 <a href="list?com_no=${loggedInCompany.com_no }">${cntComWrite }개</a><br>
 							내가 작성한 댓글 ${cntComReply }개
 
 						</span>

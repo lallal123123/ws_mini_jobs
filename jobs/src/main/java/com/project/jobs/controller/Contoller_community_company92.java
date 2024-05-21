@@ -76,7 +76,8 @@ public class Contoller_community_company92 {
 	@RequestMapping("/company/list")
 	public String list(@RequestParam(name = "page", required = false) String page_,
 			@RequestParam(name = "search", required = false) String search,
-			@RequestParam(name = "category", required = false) String category, Model model) {
+			@RequestParam(name = "category", required = false) String category,
+			@RequestParam(name = "com_no",required = false) String com_no, Model model) {
 		List<Com_community_category> clist = dao.clist();
 		model.addAttribute("clist", clist);
 		Long page = 0L;
@@ -91,7 +92,9 @@ public class Contoller_community_company92 {
 			list = dao.searchList((page - 1) * 10, 10L, search);
 		} else if (category != null) {
 			list = dao.chList(category, (page - 1) * 10, 10L);
-		} else {
+		}else if(com_no !=null) {
+			list = dao.listByNo3((page - 1) * 10, 10L,Long.parseLong(com_no));
+		}else {
 			list = dao.list92((page - 1) * 10, 10L);
 		}
 
@@ -104,6 +107,8 @@ public class Contoller_community_company92 {
 			memoCnt = dao.searchCount(search);
 		} else if (category != null) {
 			memoCnt = dao.chListCount(category);
+		}else if (com_no != null) {
+			memoCnt = (long)dao.listByNo(Long.parseLong(com_no)).size();
 		} else {
 			memoCnt = dao.countAll();
 		}
@@ -111,13 +116,15 @@ public class Contoller_community_company92 {
 		model.addAttribute("page", page);
 		model.addAttribute("search", search);
 		model.addAttribute("category", category);
+		model.addAttribute("com_no", com_no);
 		return "community/com/list";
 	}
 
 	@RequestMapping("/company/pageNext")
 	public String pageNext(@RequestParam("pageBlock") String pageBlock_,
 			@RequestParam(name = "search", required = false) String search,
-			@RequestParam(name = "category", required = false) String category, Model model) {
+			@RequestParam(name = "category", required = false) String category,
+			@RequestParam(name = "com_no",required = false) String com_no,Model model) {
 		List<Com_community_category> clist = dao.clist();
 		model.addAttribute("clist", clist);
 
@@ -127,6 +134,8 @@ public class Contoller_community_company92 {
 			memoCnt = dao.searchCount(search);
 		} else if (category != null) {
 			memoCnt = dao.chListCount(category);
+		}else if (com_no != null) {
+			memoCnt = (long)dao.listByNo(Long.parseLong(com_no)).size();
 		} else {
 			memoCnt = dao.countAll();
 		}
@@ -137,6 +146,8 @@ public class Contoller_community_company92 {
 			list = dao.searchList((pa.getPage() - 1) * 10, 10L, search);
 		} else if (category != null) {
 			list = dao.chList(category, (pa.getPage() - 1) * 10, 10L);
+		}else if(com_no !=null) {
+			list = dao.listByNo3((pa.getPage() - 1) * 10, 10L,Long.parseLong(com_no));
 		} else {
 			list = dao.list92((pa.getPage() - 1) * 10, 10L);
 		}
@@ -147,13 +158,15 @@ public class Contoller_community_company92 {
 		model.addAttribute("pagination", pa);
 		model.addAttribute("search", search);
 		model.addAttribute("category", category);
+		model.addAttribute("com_no", com_no);
 		return "community/com/list";
 	}
 
 	@RequestMapping("/company/pagePre")
 	public String pagePre(@RequestParam("pageBlock") String pageBlock_,
 			@RequestParam(name = "search", required = false) String search,
-			@RequestParam(name = "category", required = false) String category, Model model) {
+			@RequestParam(name = "category", required = false) String category,
+			@RequestParam(name = "com_no",required = false) String com_no,Model model) {
 		List<Com_community_category> clist = dao.clist();
 		model.addAttribute("clist", clist);
 		Long memoCnt;
@@ -161,6 +174,8 @@ public class Contoller_community_company92 {
 			memoCnt = dao.searchCount(search);
 		} else if (category != null) {
 			memoCnt = dao.chListCount(category);
+		}else if (com_no != null) {
+			memoCnt = (long)dao.listByNo(Long.parseLong(com_no)).size();
 		} else {
 			memoCnt = dao.countAll();
 		}
@@ -172,6 +187,8 @@ public class Contoller_community_company92 {
 			list = dao.searchList((pa.getPage() - 1) * 10, 10L, search);
 		} else if (category != null) {
 			list = dao.chList(category, (pa.getPage() - 1) * 10, 10L);
+		}else if(com_no !=null) {
+			list = dao.listByNo3((pa.getPage() - 1) * 10, 10L,Long.parseLong(com_no));
 		} else {
 			list = dao.list92((pa.getPage() - 1) * 10, 10L);
 		}
@@ -183,6 +200,7 @@ public class Contoller_community_company92 {
 		model.addAttribute("pagination", pa);
 		model.addAttribute("search", search);
 		model.addAttribute("category", category);
+		model.addAttribute("com_no", com_no);
 
 		return "community/com/list";
 	}

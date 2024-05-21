@@ -21,6 +21,7 @@ public interface ICom_community_dao92 {
 	public long countAll();
 	//기업번호 별 게시글
 	public List<Com_community> listByNo(@Param("no") long no);
+	public List<Com_community> listByNo3(@Param("start")Long start,@Param("cnt") Long cnt,@Param("no") long no);
 	//검색
 	public List<Com_community> searchList(@Param("start") Long start,@Param("cnt") Long cnt,@Param("search") String search);//
 	public long searchCount(@Param("search") String search);

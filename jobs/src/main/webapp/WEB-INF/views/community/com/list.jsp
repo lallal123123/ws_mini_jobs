@@ -82,7 +82,7 @@
 									 ${x }
 								</c:if>
 								<c:if test="${x ne pagination.page}">
-									<c:if test="${search eq null && category eq null}">
+									<c:if test="${search eq null && category eq null && com_no eq null} ">
 										<a href="list?page=${x }">${x }</a>
 									</c:if>
 									<c:if test="${category ne null }">
@@ -90,6 +90,9 @@
 									</c:if>
 									<c:if test="${search ne null }">
 										<a href="list?page=${x }&search=${search}">${x }</a>
+									</c:if>
+									<c:if test="${com_no ne null }">
+										<a href="list?page=${x }&com_no=${com_no}">${x }</a>
 									</c:if>
 								</c:if>
 							</c:forEach>
@@ -102,7 +105,7 @@
 									 ${x }
 	 							</c:if>
 								<c:if test="${x ne pagination.page}">
-									<c:if test="${search eq null  && category eq null}">
+									<c:if test="${search eq null && category eq null && com_no eq null} ">
 										<a href="list?page=${x }">${x }</a>
 									</c:if>
 									<c:if test="${category ne null }">
@@ -110,6 +113,9 @@
 									</c:if>
 									<c:if test="${search ne null }">
 										<a href="list?page=${x }&search=${search}">${x }</a>
+									</c:if>
+									<c:if test="${com_no ne null }">
+										<a href="list?page=${x }&com_no=${com_no}">${x }</a>
 									</c:if>
 								</c:if>
 							</c:forEach>
@@ -147,6 +153,8 @@
 				location.href = "pageNext?pageBlock=${pagination.pageBlock }&search=${search}";
 			}else if("${category}" !== ""){
 				location.href = "pageNext?pageBlock=${pagination.pageBlock }&category=${category}";
+			}else if("${com_no}" !== ""){
+				location.href = "pageNext?pageBlock=${pagination.pageBlock }&com_no=${com_no}";
 			}
 			
 		}
@@ -158,6 +166,8 @@
 				location.href = "pagePre?pageBlock=${pagination.pageBlock }&search=${search}";
 			}else if("${category}" !== ""){
 				location.href = "pagePre?pageBlock=${pagination.pageBlock }&category=${category}";
+			}else if("${com_no}" !== ""){
+				location.href = "pagePre?pageBlock=${pagination.pageBlock }&com_no=${com_no}";
 			}
 		}
 		
