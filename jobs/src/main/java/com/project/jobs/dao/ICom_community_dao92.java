@@ -43,5 +43,4 @@ public interface ICom_community_dao92 {
 	
 	//카테고리별
 	public List<Com_community> chList(@Param("category") String category,@Param("start") Long start,@Param("cnt") Long cnt);
-
- }
+	public long chListCount(@Param("category") String category); }

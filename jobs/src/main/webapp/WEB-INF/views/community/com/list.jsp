@@ -32,7 +32,17 @@
 				<div class="border p-3">
 					<h1>게시글 전체 방</h1>
 
-					<a href="write_form">게시글 작성하기</a>
+					<a href="write_form">게시글 작성하기</a><br>
+					<form action="list" method="post">
+						<label for="" class="form-label">카테고리</label> 
+							<select class="form-control" name="category">
+								<option value="">선택해주세요</option>
+								<c:forEach var="dto" items="${clist}">									
+									<option class="option_category" value="${dto.ch_category}">${dto.ch_category}</option>
+								</c:forEach>
+							</select>
+							<button>보기</button>
+					</form>
 					<table class="table">
 						<thead>
 							<tr>
@@ -72,11 +82,14 @@
 									 ${x }
 								</c:if>
 								<c:if test="${x ne pagination.page}">
-									<c:if test="${search eq null }">
-										<a href="list1?page=${x }">${x }</a>
+									<c:if test="${search eq null && category eq null}">
+										<a href="list?page=${x }">${x }</a>
+									</c:if>
+									<c:if test="${category ne null }">
+										<a href="list?page=${x }&category=${category}">${x }</a>
 									</c:if>
 									<c:if test="${search ne null }">
-										<a href="list1S?page=${x }&search=${search}">${x }</a>
+										<a href="list?page=${x }&search=${search}">${x }</a>
 									</c:if>
 								</c:if>
 							</c:forEach>
@@ -89,11 +102,14 @@
 									 ${x }
 	 							</c:if>
 								<c:if test="${x ne pagination.page}">
-									<c:if test="${search eq null }">
-										<a href="list1?page=${x }">${x }</a>
+									<c:if test="${search eq null  && category eq null}">
+										<a href="list?page=${x }">${x }</a>
+									</c:if>
+									<c:if test="${category ne null }">
+										<a href="list?page=${x }&category=${catagory}">${x }</a>
 									</c:if>
 									<c:if test="${search ne null }">
-										<a href="list1S?page=${x }&search=${search}">${x }</a>
+										<a href="list?page=${x }&search=${search}">${x }</a>
 									</c:if>
 								</c:if>
 							</c:forEach>
@@ -104,7 +120,7 @@
 						</c:if>
 					</div>
 					<div id="searchBox" >
-						<form action="search" method="post">
+						<form action="list" method="post">
 							<input type="text"  name="search">
 							<button>검색</button>
 						</form>
@@ -125,21 +141,35 @@
 	<script>
 		//alert("${pageBlock}");
 		function next() {
-			if(${search == null}){
+			if("${search}" == ""&& "${category}" ==""){
 				location.href = "pageNext?pageBlock=${pagination.pageBlock }";
-			}else{
-				location.href = "pageNextS?pageBlock=${pagination.pageBlock }&search=${search}";
+			}else if("${search}" !== ""){
+				location.href = "pageNext?pageBlock=${pagination.pageBlock }&search=${search}";
+			}else if("${category}" !== ""){
+				location.href = "pageNext?pageBlock=${pagination.pageBlock }&category=${category}";
 			}
 			
 		}
 
 		function pre() {
-			if(${search == null}){
+			if("${search}" == ""&& "${category}" ==""){
 			location.href = "pagePre?pageBlock=${pagination.pageBlock }";
-			}else{
-				location.href = "pagePreS?pageBlock=${pagination.pageBlock }&search=${search}";
+			}else if("${search}" !== ""){
+				location.href = "pagePre?pageBlock=${pagination.pageBlock }&search=${search}";
+			}else if("${category}" !== ""){
+				location.href = "pagePre?pageBlock=${pagination.pageBlock }&category=${category}";
 			}
 		}
+		
+		document.addEventListener("DOMContentLoaded", function() {
+            let c_options = document.querySelectorAll(".option_category");
+            c_options.forEach(option => {
+                if (option.value == "${category}") {
+                    option.selected = true;
+                }
+            });
+            
+        });
 	</script>
 </body>
 </html>

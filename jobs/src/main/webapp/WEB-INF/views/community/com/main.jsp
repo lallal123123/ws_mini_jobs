@@ -12,6 +12,9 @@
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
 <style>
 #searchBox {
 	text-align: center;
@@ -31,6 +34,40 @@
 	margin-right:20px;
 	width:800px;
 }
+
+.bi-wechat{
+	width:23px;
+	height:23px;
+}
+
+#hotListAndCom {
+    display: flex;
+    justify-content: space-between;
+}
+
+#hotList {
+    flex: 7;
+    margin-right: 20px;
+}
+
+#info {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+#hotListTable {
+ 	width:100%;
+}
+
+#hotListTable td#td1 {
+width:60%;
+}
+#hotListTable td#td2 {
+width:20%;
+}
+#hotListTable td#td3 {
+width:20%;
+}
 </style>
 </head>
 <body>
@@ -41,22 +78,22 @@
 
 			<div class="col-12">
 				<div class="border p-3">
-					<div>실시간 전체글 ${cnt }개</div>
+					<div>실시간 전체글 ${cnt }개<a href="list"><button>전체글보기</button></a></div>
 					<div id="hotListAndCom">
-						<span class="top" id="hotList"> <label>HOT
+						<span class="top border p-3" id="hotList"> <label>HOT
 								전체 인기 글 </label> <a href="">더보기></a><br>
 							<hr>
-							<table>
+							<table id="hotListTable" class="border p-3">
 								<c:forEach var="dto" items="${ hList}">
 									<tr>
-										<td>${dto.title }</td>
-										<td>${dto.replyCnt }</td>
-										<td>${dto.views }</td>
+										<td id="td1"><a href="detail?no=${dto.com_community_no }"> ${dto.title }</a></td>
+										<td id="td2"><i class="bi bi-wechat" ></i>  ${dto.replyCnt }  </td>
+										<td id="td3"><img src="${pageContext.request.contextPath}/images/common/eye_icon.png" alt="사람눈" width="30px" height="30px">  ${dto.views }</td>
 									</tr>
 								</c:forEach>
 							</table>
-						</span> <span class="top"> <span>사진공강</span><span>${loggedInCommany.com_id }님</span><br>
-							<button>게시글작성</button><br>
+						</span> <span class="top border p-3" id="info"> <span>사진공간</span><span>${loggedInCompany.com_id }님</span><br>
+							<a href="write_form"> <button>게시글작성</button></a><br>
 							내가 작성한 글 ${cntComWrite }개<br>
 							내가 작성한 댓글 ${cntComReply }개
 
@@ -66,22 +103,22 @@
 						<div>주제별 커뮤니티</div>
 						<div id="category">
 							<c:forEach var="c" items="${ cList}">
-								<button onclick="category(event)">${c.ch_category }></button>
+								<a href="main?category=${c.ch_category }"><button>${c.ch_category }></a></button>
 							</c:forEach>
 
 						</div>
 						<span>
 							<div>
 								<div id="categoryName">
-									${category } <a href=""> 더보기> </a>
+									${category } <a href="listC?category=${category }"> 더보기> </a>
 								</div>
 
 								<table class="table">
 
 									<c:forEach var="dto" items="${chList}">
 										<tr>
-											<td>${dto.title }</td>
-											<td>${dto.replyCnt }</td>
+											<td><a href="detail?no=${dto.com_community_no }">${dto.title }</a></td>
+											<td><i class="bi bi-wechat"></i>${dto.replyCnt }</td>
 											<td>${dto.views }</td>
 										</tr>
 									</c:forEach>
