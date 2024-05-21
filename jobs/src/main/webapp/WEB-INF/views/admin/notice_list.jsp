@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +32,7 @@
                 </a>
               </li>
               <li>
-                <a href="/admin/companies" div class="nav-link link-body-emphasis">
+                <a href="/admin/companies" class="nav-link link-body-emphasis">
                  기업회원 관리
                 </a>
               </li> 
@@ -45,7 +47,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" div class="nav-link link-body-emphasis">
+                <a href="#" class="nav-link link-body-emphasis">
                  신고 접수된 건
                 </a>
               </li>
@@ -56,14 +58,13 @@
     <div class="col-9">
         <div class="border p-3">
         <h3 style="text-align:center;">공지사항</h3>
-        	<c:choose>
-        		<c:when test="${mem_no == '3'}">
-        			<a class="btn btn-light" href="../admin99/notice_write_form_99" role="button" onclick="return isLoggedIn()">공지사항 작성하기</a>
-        		</c:when>
-        		<c:otherwise>
-        		</c:otherwise>
-        	</c:choose>
-        	
+		  <div class="container-fluid" >
+		    <form class="d-flex" action="/noticeSearchData_99">
+		      <input class="form-control me-2"  value="${searchData }" type="search" placeholder="Search" aria-label="Search" style="width: 150px;">
+		      <button class="btn btn-light" type="submit">Search</button>
+		    </form>
+		  </div>
+        	<a class="btn btn-light" href="../admin99/notice_write_form_99" role="button" onclick="return isLoggedIn()">공지사항 작성하기</a>
         	<table class="table">
 			  <thead>
 			    <tr>
@@ -80,7 +81,9 @@
 			      <td scope="row">${status.count }</td>
 			      <td>${list.category }</td>
 				  <td><a href="../noticeDetail_99?notice_no=${list.notice_no }">${list.title }</a></td>
-			      <td>${list.reg_date }</td>
+			      <td>
+			      	<fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd"/>
+			      </td>
 			    </tr>
 			  </c:forEach>
 			  </tbody>

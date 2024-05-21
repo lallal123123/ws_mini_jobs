@@ -64,22 +64,24 @@
         	<br>
         	<div>제목</div>
         	<div id="title">${dto.title }</div>
+        	<br>
         	<div>내용</div>
         	<div id="content">${dto.content }</div>
+        	<br>
        		<a class="btn btn-light" href="../delete_99?cs_no=${dto.cs_no }" role="button">삭제</a>
         	<hr>
-        	<form action="../admin99/cs_request_99?cs_no=${dto.cs_no }" method="post" onsubmit="return requestRegForm()">
-        	<br>
-        	<div class="mb-3">
-                	<label for="" class="form-label">답변 제목</label>
-                	<textarea class="form-control" name="title" id="title" placeholder="제목을 입력해주세요..."></textarea>
-                	<label for="" class="form-label">답변 내용</label>
-                	<textarea class="form-control" name="content" id="content" placeholder="명확한 답변을 해주세요..."></textarea>
-           	</div>
-           	<input type="submit" class="btn btn-jobs w-100" value="등록하기">
-           	<br>
-        	<a class="btn btn-light" href="../admin99/cs_list_99" role="button">이전</a>
-        	<a class="btn btn-light" href="#" role="button">TOP</a>
+        	<form action="../admin99/cs_request_modify_99?cs_no=${dto.cs_no }" method="post" onsubmit="return requestRegForm()">
+	        	<br>
+	        	<div class="mb-3">
+	                	<label for="" class="form-label">답변 제목</label>
+	                	<textarea class="form-control" name="title" id="title" placeholder="제목을 입력해주세요...">${requestDto.title }</textarea>
+	                	<label for="" class="form-label">답변 내용</label>
+	                	<textarea class="form-control" name="content" id="content" placeholder="명확한 답변을 해주세요...">${requestDto.content }</textarea>
+	           	</div>
+	           	<input type="submit" class="btn btn-jobs w-100" value="등록하기">
+	           	<br>
+	        	<a class="btn btn-light" href="../admin99/cs_list_99" role="button">이전</a>
+	        	<a class="btn btn-light" href="#" role="button">TOP</a>
         	</form>
         </div>
     </div>

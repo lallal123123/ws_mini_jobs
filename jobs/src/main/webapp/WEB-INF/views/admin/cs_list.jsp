@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +45,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" div class="nav-link link-body-emphasis">
+                <a href="#" class="nav-link link-body-emphasis">
                  신고 접수된 건
                 </a>
               </li>    
@@ -54,6 +55,7 @@
     <div class="col-9">
         <div class="border p-3">
         	<h3 style="text-align:center;">고객센터</h3>
+        	
         	<table class="table">
 			  <thead>
 			    <tr>
@@ -70,15 +72,25 @@
 			  	<tr>
 			      <td scope="row">${status.count }</td>
 			      <td>${list.category }</td>
-			      <td><a href="../admin99/cs_detail_99?cs_no=${list.cs_no}">${list.title}</a></td>
-			      <td>${list.reg_date }</td>
 			      <td>
 			      	<c:choose>
-			      		<c:when test="${result == '미답변' }">
+			      		<c:when test="${list.answerStatus == '미답변' }">
+			      			<a href="../admin99/cs_detail_99?cs_no=${list.cs_no}">${list.title}</a></td>
+			      		</c:when>
+			      		<c:otherwise>
+			      			<a href="../admin99/cs_request_detail_99?cs_no=${list.cs_no }">${list.title}</div><a href=""></a>
+			      		</c:otherwise>
+			      	</c:choose>
+			      <td>
+			      	<fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd"/>
+			      </td>
+			      <td>
+			      	<c:choose>
+			      		<c:when test="${list.answerStatus == '미답변' }">
 			      			<a class="btn btn-light" href="../admin99/cs_detail_99?cs_no=${list.cs_no }" role="button">답변 등록하기</a>
 			      		</c:when>
 			      		<c:otherwise>
-			      			<div>답변 완료</div>
+			      			<div class="btn btn-light" role="button">답변 완료</div>
 			      		</c:otherwise>
 			      	</c:choose>
 			      </td>

@@ -68,6 +68,8 @@ public class Common_Controller99 {
 		
 		String cs_no = request.getParameter("cs_no");
 		model.addAttribute("dto", cs_Dao.getlistDetail_99(cs_no));
+		model.addAttribute("requestDto", cs_Dao.getRequestDao_99(cs_no));
+		model.addAttribute("writerId", cs_Dao.getCsWriterId_99(cs_no));
 		return "/common/cs_detail";
 	}
 	
@@ -107,6 +109,26 @@ public class Common_Controller99 {
 		return session.getAttribute("loggedInMember") != null;
 	}
 	
+	@RequestMapping("/csSearchData_99")
+	public String csSearchData(Model model, HttpServletRequest request) {
+		String searchData = request.getParameter("searchData");
+		model.addAttribute("searchData", searchData);
+		model.addAttribute("list", cs_Dao.csSerchData_99(searchData));
+		return "/common/cs_list";
+	}
+	
+	@RequestMapping("/csCategory_99")
+	public String csCategoryList(Model model, HttpServletRequest request, HttpSession session) {
+		String category = request.getParameter("category");
+		Member member = (Member)session.getAttribute("loggedInMember");
+		if(member != null) {
+			Long mem_no = member.getMem_no();
+			model.addAttribute("mem_no",mem_no);
+		}
+		model.addAttribute("list", cs_Dao.csCategory_99(category));
+		return "/common/cs_list";
+	}
+	
 	//공지사항
 	@Autowired
 	private INotice_Dao99 noticeDao;
@@ -136,7 +158,13 @@ public class Common_Controller99 {
 		return "/common/notice_detail";
 	}
 	
-	
+	@RequestMapping("/noticeSearchData_99")
+	public String searchData(Model model, HttpServletRequest request) {
+		String searchData = request.getParameter("searchData");
+		model.addAttribute("noticeSearchData", searchData);
+		model.addAttribute("list", noticeDao.getNoticeSerchData_99(searchData));
+		return "/common/notice_list";
+	}
 	
 	
 	

@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.project.jobs.dao.INotice_Dao99">
 	<!-- 고객센터 문의 신고 -->
 	<select id="getnoticeList_99">
-		SELECT * FROM notice
+		SELECT * FROM notice order by notice_no DESC
 	</select>
 	<insert id="noticeWrite_99" >
 		INSERT INTO notice (mem_no, title, content, reg_date, category)
@@ -13,7 +13,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="getnoticeDetail_99">
-		SELECT * FROM notice WHERE notice_no = #{notice_no}
+		SELECT * FROM notice WHERE notice_no = #{notice_no} 
+	</select>
+	<select id="getNoticeSerchData_99">
+		SELECT * FROM notice WHERE title LIKE concat('%', #{searchData}, '%') order by notice_no DESC;
 	</select>
 	
 	<delete id="noticeDeleteDao_99">
@@ -22,5 +25,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="noticeModify_99">
 		UPDATE notice SET title = #{title}, content = #{content}, category = #{category} WHERE notice_no = #{notice_no}
 	</update>
+	
 		 
 </mapper>
