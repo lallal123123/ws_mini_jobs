@@ -25,14 +25,14 @@ public class Company_controller {
     @Autowired
     private CompanyService3854 companyService;
 
-   /* @GetMapping
+    @GetMapping
     public String getAllCompanies(Model model, HttpSession session) {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
         Long mem_no = loggedInMember != null ? loggedInMember.getMem_no() : null;
         List<Company> companies = companyService.getAllCompaniesWithInterests(mem_no);
         model.addAttribute("companies", companies);
         return "com_list";
-    }*/
+    }
    
     @PostMapping("/toggleInterest")
     @ResponseBody
