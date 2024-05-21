@@ -45,8 +45,8 @@ public class CompanyService3854 {
         return companyDao.existsByComId(com_id) || memberDao.existsByMemId(com_id);
     }
 
-<<<<<<< HEAD
-	public Company login(Company company) {
+
+	/*public Company login(Company company) {
 		System.out.println("service id : " + company.getCom_id());
 		Company result = companyDao.findByComIdAndComPw(company.getCom_id(), company.getCom_pw());
 		
@@ -54,7 +54,7 @@ public class CompanyService3854 {
 		System.out.println("service : " + result);
 		return result;
 	}
-=======
+
     public Company login(Company company) {
         return companyDao.findByComIdAndComPw(company.getCom_id(), company.getCom_pw());
     }
@@ -66,8 +66,8 @@ public class CompanyService3854 {
             company.setInterest(isInterest); 
         }
         return companies;
-    }
->>>>>>> 33c2df4 (로그인 아웃 중복검사 관리자 모드 기능 관심기업 리스트 목록기능 완료 뷰 작업중)
+    }*/
+
 
     public void addInterestCompany(Long mem_no, Long com_no) {
         if (!companyDao.isInterestCompany(mem_no, com_no)) {
