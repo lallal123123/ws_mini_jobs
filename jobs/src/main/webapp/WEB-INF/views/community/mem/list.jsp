@@ -30,7 +30,7 @@
 
 			<div class="col-12">
 				<div class="border p-3">
-					<h1>게시글 전체 방</h1>
+					<h1>게시글 전체 방(개인)</h1>
 
 					<a href="write_form">게시글 작성하기</a><br>
 					<form action="list" method="post">

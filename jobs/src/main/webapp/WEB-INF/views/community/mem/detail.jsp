@@ -26,7 +26,7 @@
 
 					
 						
-                        <a href="list"><button>전체게시글(개인)</button></a>
+                        <a href="list"><button>전체게시글</button></a>
                         <c:if test="${loggedInMember.mem_id eq dto.mem_id}">
                             <a href="modify_form?no=${dto.mem_community_no}"><button>수정</button></a>
                             <a href="delete?no=${dto.mem_community_no}"><button>삭제</button></a>

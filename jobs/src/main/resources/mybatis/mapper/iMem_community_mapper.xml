@@ -49,7 +49,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <!-- com_no로com_id 찾기 -->
-<select id="com_id">
+<select id="mem_id">
 	select mem_id from member where mem_no=#{no}
 </select>
 
