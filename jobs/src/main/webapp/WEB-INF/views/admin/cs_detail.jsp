@@ -5,11 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 고객센터</title>
+<title>jobs 휴먼 클라우드 이력관리플렛폼</title>
+<a href="community/">이준형</a>
+<a href="member/index">김경민</a>
+<a href="common/index">배서원</a>
+<a href="members/index">추창민</a>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
 </head>
-<body class="d-flex flex-column h-100" data-logged-in="${sessionScope.loggedInMember != null}">
+<body class="d-flex flex-column h-100">
 <jsp:include page="../header.jsp"></jsp:include>
 <!-- 작업공간 영역 -->
 <div class="container">
@@ -34,58 +38,45 @@
                 </a>
               </li> 
               <li>
-                <a href="../admin99/cs_list_99" class="nav-link active" aria-current="page">
+                <a href="../admin99/cs_list_99" class="nav-link link-body-emphasis">
                  고객센터 관리
                 </a>
               </li> 
               <li>
-                <a href="../admin99/notice_list_99" class="nav-link link-body-emphasis">
+                <a href="../admin99/notice_list_99" class="nav-link active" aria-current="page">
                  공지사항 관리
                 </a>
               </li>
               <li>
-                <a href="#" div class="nav-link link-body-emphasis">
+                <a href="#" class="nav-link link-body-emphasis">
                  신고 접수된 건
                 </a>
-              </li>    
-            </ul>
+              </li>   
+             </ul>
         </div>
     </div>
     <div class="col-9">
         <div class="border p-3">
-        	<h3 style="text-align:center;">고객센터</h3>
-        	<table class="table">
-			  <thead>
-			    <tr>
-			      <th scope="col">번호</th>
-			      <th scope="col">카테고리</th>
-			      <th scope="col">제목</th>
-			      <th scope="col">작성일</th>
-			      <th scope="col">답변 여부</th>			      
-			    </tr>
-			  </thead>
-			  <tbody class="table-group-divider">
-			  
-			  <c:forEach var="list" items="${list }" varStatus="status">
-			  	<tr>
-			      <td scope="row">${status.count }</td>
-			      <td>${list.category }</td>
-			      <td><a href="../admin99/cs_detail_99?cs_no=${list.cs_no}">${list.title}</a></td>
-			      <td>${list.reg_date }</td>
-			      <td>
-			      	<c:choose>
-			      		<c:when test="${result == '미답변' }">
-			      			<a class="btn btn-light" href="../admin99/cs_detail_99?cs_no=${list.cs_no }" role="button">답변 등록하기</a>
-			      		</c:when>
-			      		<c:otherwise>
-			      			<div>답변 완료</div>
-			      		</c:otherwise>
-			      	</c:choose>
-			      </td>
-			    </tr>
-			  </c:forEach>
-			  </tbody>
-			</table>
+        	<div id="category">${dto.category }</div>
+        	<div>제목</div>
+        	<div id="title">${dto.title }</div>
+        	<div>내용</div>
+        	<div id="content">${dto.content }</div>
+       		<a class="btn btn-light" href="../delete_99?cs_no=${dto.cs_no }" role="button">삭제</a>
+        	<hr>
+        	<form action="../admin99/cs_Request_99" method="post" onsubmit="return noticeRegForm()">
+        	<br>
+        	<div class="mb-3">
+                	<label for="" class="form-label">답변 제목</label>
+                	<textarea class="form-control" name="title" id="title" placeholder="제목을 입력해주세요..."></textarea>
+                	<label for="" class="form-label">답변 내용</label>
+                	<textarea class="form-control" name="content" id="content" placeholder="명확한 답변을 해주세요..."></textarea>
+           	</div>
+           	<input type="submit" class="btn btn-jobs w-100" value="등록하기">
+           	<br>
+        	<a class="btn btn-light" href="../cs_list_99" role="button">이전</a>
+        	<a class="btn btn-light" href="#" role="button">TOP</a>
+        	</form>
         </div>
     </div>
 </div>

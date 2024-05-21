@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.jobs.dao.ICS_Dao99;
 import com.project.jobs.dao.INotice_Dao99;
+import com.project.jobs.dto.Member;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/admin99")
@@ -16,7 +18,7 @@ public class Admin_controller99 {
 	
 	@Autowired
 	private ICS_Dao99 cs_Dao;
-	
+	//문의사항
 	@RequestMapping("/cs_Request_99")
 	public String csRequest(HttpServletRequest request) {
 		String cs_no = request.getParameter("cs_no");
@@ -27,9 +29,33 @@ public class Admin_controller99 {
 		return "redirect:/cs_detail_99?cs_no="+cs_no;
 	}
 	
+	@RequestMapping("/cs_list_99")
+	public String list(Model model, HttpServletRequest request) {
+		String cs_no = request.getParameter("cs_no");
+		Object result = cs_Dao.getRequestDao_99(cs_no);
+				
+		if(result == null) {
+			model.addAttribute("result","미답변");
+		} else {
+			model.addAttribute("result","답변완료");
+		}
+		
+		model.addAttribute("list", cs_Dao.getList_99());
+
+		return "/admin/cs_list";
+	}
+	
+	@RequestMapping("/cs_detail_99")
+	public String csDetail(Model model, HttpServletRequest request) {
+		String cs_no = request.getParameter("cs_no");
+		
+		model.addAttribute("dto",cs_Dao.getlistDetail_99(cs_no));
+		return "/admin/cs_detail";
+	}
+	
 	@Autowired
 	private INotice_Dao99 noticeDao;
-	
+	//공지사항
 	@RequestMapping("/notice_write_form_99")
 	public String noticeWriteForm() {
 		
@@ -72,4 +98,19 @@ public class Admin_controller99 {
 		noticeDao.noticeModify_99(title, content, category, notice_no);
 		return "redirect:/noticeDetail_99?notice_no=" + notice_no;
 	}
+	
+	@RequestMapping("/notice_list_99")
+	public String noticeList(Model model, HttpSession session) {
+		
+		model.addAttribute("list", noticeDao.getnoticeList_99());
+		return "/admin/notice_list";
+	}
+	
+	@RequestMapping("/admin_dashboard_99")
+	public String dashboard() {
+		
+		return "/admin/dashboard";
+	}
+	
+	
 }
