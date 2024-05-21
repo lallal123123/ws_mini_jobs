@@ -14,15 +14,12 @@
 <!-- 작업공간 영역 -->
 <div class="container">
 <div class="row">
-     <div class="col-3">
+    <div class="col-3">
         <div class="border p-3 rounded">
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
-                 	<h1>My Page</h1>
-            <h2>${member.com_name} 님</h2>
-        <a href="${pageContext.request.contextPath}/companies/editProfile">내 정보 수정</a>
             	<li class="nav-item">
-                	<a href="/companies/mypage" class="nav-link link-body-emphasis border-bottom rounded-0" aria-current="page">
+                	<a href="#" class="nav-link link-body-emphasis border-bottom rounded-0" aria-current="page">
                   	My 홈
                 	</a>
               	</li>

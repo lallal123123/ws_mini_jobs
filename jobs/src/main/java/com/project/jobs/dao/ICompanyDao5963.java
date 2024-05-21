@@ -10,6 +10,8 @@ import com.project.jobs.dto.ComRecruitJoinCount;
 import com.project.jobs.dto.Com_detail;
 import com.project.jobs.dto.Mem_recruit;
 import com.project.jobs.dto.Recruit;
+import com.project.jobs.dto.RecruitByMemResume;
+import com.project.jobs.dto.RecruitDetail;
 import com.project.jobs.dto.Region;
 
 @Mapper
@@ -42,4 +44,14 @@ public interface ICompanyDao5963 {
 	
 	// 공고에 지원한 사람 수 가져오기
 	public List<Mem_recruit> getMemCount(Long recruit_no);
+	
+	// 키워드로 공고 리스트 검색하기
+	public List<Recruit> getComRecruitListKeyword(Long com_no, String keyword);
+	
+	// 공고별 지원자 리스트 가져오기
+	public List<RecruitByMemResume> getRecruitMemList(@Param("recruit_no") Long recruit_no);
+	
+	// 공고번호로 공고 디테일 가져오기
+	public RecruitDetail getRecruitDetail(@Param("recruit_no") Long recruit_no);
+	
 }

@@ -5,11 +5,13 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.jobs.dao.ICompanyDao3854;
@@ -20,6 +22,8 @@ import com.project.jobs.dto.Com_detail_file;
 import com.project.jobs.dto.Company;
 import com.project.jobs.dto.Mem_recruit;
 import com.project.jobs.dto.Recruit;
+import com.project.jobs.dto.RecruitByMemResume;
+import com.project.jobs.dto.RecruitDetail;
 import com.project.jobs.dto.Region;
 import com.project.jobs.service.CompanyService5963;
 
@@ -84,6 +88,31 @@ public class Controller5963 {
 		return "/company/mypage/recruit_list";
 	}
 	
+	// 키워드로 공고 리스트 검색하기
+	@RequestMapping("/getComRecruitListKeyword")
+	public String getComRecruitListKeyword(@RequestParam("keyword")String keyword, HttpServletRequest request, Model model) {
+		System.out.println("키워드로 공고제목 검색");
+		HttpSession session = request.getSession();
+		Company company = (Company) session.getAttribute("loggedInCompany");
+		Long com_no = company.getCom_no();
+		
+		List<Recruit> recruitList = companyService.getComRecruitListKeyword(com_no, keyword);
+		System.out.println(recruitList);
+	
+		
+		for(int i=0; i<recruitList.size(); i++) {
+			Recruit recruit = recruitList.get(i); 
+	        List<Mem_recruit> result = companyService.getMemCount(recruit.getRecruit_no());
+	        int memCount = result.size();
+	        System.out.println("getMemCount" + memCount);
+	        
+	        recruit.setMem_count(memCount);
+		}
+		model.addAttribute("recruitList", recruitList);
+		model.addAttribute("company", company);
+	return "/company/mypage/recruit_list";
+	}
+		
 	// 기업 마이페이지 기업소개 디테일 페이지 접속
 	@RequestMapping("/info_detail")
 	public String infoDetail(HttpServletRequest request, Model model) {
@@ -223,7 +252,24 @@ public class Controller5963 {
 	}
 	
 
+	// 공고별 지원자 리스트 가져오기
+	@RequestMapping("/mem_recruit_list")
+	public String getRecruitMemList(@RequestParam("recruit_no")Long recruit_no, Model model) {
+		List<RecruitByMemResume> recruitByMemResumelist = companyService.getRecruitMemList(recruit_no);
+		model.addAttribute("list", recruitByMemResumelist);
+		return "/company/mypage/mem_recruit_list";
+	}
 	
+	// 공고번호로 상세 페이지 접속하기
+	@RequestMapping("/recruitDetail")
+	public String getRecruitDetail(@RequestParam("recruit_no")Long recruit_no, Model model) {
+		RecruitDetail recruitDetail = companyService.getRecruitDetail(recruit_no);
+		Long com_no = recruitDetail.getCom_no();
+		Com_detail com_detail = companyService.getCom_detail(com_no);
+		model.addAttribute("recruitDetail", recruitDetail);
+		model.addAttribute("com_detail", com_detail);
+		return "/company/mypage/recruit_detail";
+	}
 	
 }
 

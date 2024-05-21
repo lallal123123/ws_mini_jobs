@@ -56,12 +56,11 @@
 	    <p class="text-secondary d-flex">
 	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
 	    	<a href="#" class="nav-link text-secondary">채용 공고 관리</a> <span class="mx-3">></span>
-	    	<a href="" class="nav-link text-black fw-bolder">채용 공고 리스트</a>
+	    	<a href="" class="nav-link text-black fw-bolder">지원자 현황</a>
 	    </p>
     
         <div class="border p-5 rounded">
         	<div class="overflow-hidden">
-        		<a class="btn btn-jobs mb-2 float-start" href="/company/mypage/recruit_write_form">채용 공고 작성</a>
         		<div class="input-group search-box float-end">
                     <input type="text" class="form-control" placeholder="제목 검색" aria-label="제목 검색" id="keyword" aria-describedby="getSearchList">
                     <button class="btn btn-outline-secondary" type="button" onclick="getSearchList()">검색</button>
@@ -71,10 +70,10 @@
 	        <div class="border p-3 mb-3">
 	        	<div class="row align-items-center">
 	        		<div class="col-md-4">
-	        			<div class="fs-7 text-secondary" id=${recruit.recruit_no } >공고번호 :${recruit.recruit_no } </div>
+	        			<div class="fs-7 text-secondary">공고번호 :${recruit.recruit_no } </div>
 	        			<div>[ ${company.com_name } ]</div>
 	        			<div class="fs-5 fw-bold w-100 text_ellipsis">
-	        			<a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="/company/mypage/recruitDetail?recruit_no=${recruit.recruit_no }">${recruit.title }</a>
+	        			<a href="/company/mypage/recruitDetail?recruit_no=${recruit.recruit_no }">${recruit.title }</a>
 	        			</div>
 	        		</div>
 	        		<div class="col-md-5 text-secondary">

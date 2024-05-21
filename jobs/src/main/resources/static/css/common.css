@@ -40,12 +40,12 @@ body{
 	width:250px;
 }
 .img_box{
-	height:200px;
+	
 	border-radius:5px;
 	overflow:hidden;
 }
 .img_box img{
-	width:100%;
+	min-width:100%;
 	height:auto;
 }
 
@@ -75,3 +75,4 @@ body{
     --bs-btn-disabled-bg: #51e554;
     --bs-btn-disabled-border-color: #51e554;
 }
+
