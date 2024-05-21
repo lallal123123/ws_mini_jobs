@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.project.jobs.dao.IMember_resume8481;
 import com.project.jobs.dto.Career;
 import com.project.jobs.dto.Education;
+import com.project.jobs.dto.Free_resume;
 import com.project.jobs.dto.License;
 import com.project.jobs.dto.Site_resume;
 
@@ -64,6 +65,8 @@ public class Site_resumeService8481 {
 		siteResumeMapper.insertEducation(lastId, educationfk.getSchool(), educationfk.getEdu_join_date(), educationfk.getGraduation_date(), educationfk.getGraduation(), educationfk.getGrades(), educationfk.getMajor());
 		
 	}	
+	
+	
 	
 	
 }

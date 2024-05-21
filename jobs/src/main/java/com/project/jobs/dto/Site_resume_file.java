@@ -29,6 +29,8 @@ public class Site_resume_file {
 	public String getFileName() {
 		return img_url.getOriginalFilename();
 	}
-	
+	public String getFileName1() {
+		return etc.getOriginalFilename();
+	}
 	
 }
