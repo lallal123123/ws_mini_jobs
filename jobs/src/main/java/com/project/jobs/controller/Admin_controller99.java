@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.project.jobs.dao.IAdminDao99;
 import com.project.jobs.dao.ICS_Dao99;
 import com.project.jobs.dao.INotice_Dao99;
 import com.project.jobs.dto.Member;
@@ -15,6 +16,15 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/admin99")
 public class Admin_controller99 {
+	
+	@Autowired
+	private IAdminDao99 adminDao;
+	
+	@RequestMapping("/getTotalRegistrations")
+	public String TotalRegistrations(Model model) {
+		model.addAttribute("registrations", adminDao.getRegistrations());
+		return "/admin/dashboard";
+	}
 	
 	@Autowired
 	private ICS_Dao99 cs_Dao;
@@ -133,6 +143,13 @@ public class Admin_controller99 {
 		
 		model.addAttribute("list", noticeDao.getnoticeList_99());
 		return "/admin/notice_list";
+	}
+	
+	@RequestMapping("/notice_detail_99")
+	public String noticeDetailList(Model model, HttpServletRequest request) {
+		String notice_no = request.getParameter("notice_no");
+		model.addAttribute("dto",noticeDao.getnoticeDetail_99(notice_no));
+		return "/admin/notice_detail";
 	}
 	
 	@RequestMapping("/admin_dashboard_99")

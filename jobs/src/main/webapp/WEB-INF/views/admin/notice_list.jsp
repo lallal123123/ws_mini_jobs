@@ -80,7 +80,7 @@
 			  	<tr>
 			      <td scope="row">${status.count }</td>
 			      <td>${list.category }</td>
-				  <td><a href="../noticeDetail_99?notice_no=${list.notice_no }">${list.title }</a></td>
+				  <td><a href="../admin99/notice_detail_99?notice_no=${list.notice_no }">${list.title }</a></td>
 			      <td>
 			      	<fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd"/>
 			      </td>

@@ -33,7 +33,7 @@
                 </a>
               </li>
               <li>
-                <a href="/admin/companies" div class="nav-link link-body-emphasis">
+                <a href="/admin/companies" class="nav-link link-body-emphasis">
                  기업회원 관리
                 </a>
               </li> 
