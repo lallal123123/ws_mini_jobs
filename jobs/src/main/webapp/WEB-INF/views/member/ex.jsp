@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>index</h1>
-<a href="http://localhost:8091/members/member_mypage_resume_writeform">이력서쓰는곳 바로가기</a>
-<a href="http://localhost:8091/members/member_mypage_resume_freeform">자유이력서</a>
+<a href="http://localhost:8091/resume/member_mypage_resume_writeform">이력서쓰는곳 바로가기</a>
+<a href="http://localhost:8091/resume/member_mypage_resume_freeform">자유이력서</a>
 </body>
 </html>
