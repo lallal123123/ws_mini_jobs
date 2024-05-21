@@ -24,19 +24,19 @@
                 	</a>
               	</li>
               	<li>
-                	<a href="#" class="nav-link link-body-emphasis  border-bottom rounded-0">
+                	<a href="/company/mypage/info_detail" class="nav-link link-body-emphasis  border-bottom rounded-0">
                  	기업 소개 관리
                 	</a>
               	</li> 
               	<li>
               		<div class="accordion" id="accordionPanelsStayOpenExample">
 			      		<a class="nav-link link-body-emphasis text-weight-bold border-bottom rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-			        		구인 공고 관리
+			        		채용 공고 관리
 			      		</a>
 			   	  		<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
 			      			<div class="accordion-body py-0 pe-0">
-			       				<a href="#" class="d-block nav-link link-body-emphasis border-bottom rounded-0">구인 공고 리스트</a>
-			       				<a href="#" class="d-block nav-link link-body-emphasis border-bottom rounded-0">구인 공고 작성</a>
+			       				<a href="/company/mypage/getComRecruitList" class="d-block nav-link link-body-emphasis border-bottom rounded-0">채용 공고 리스트</a>
+			       				<a href="/company/mypage/recruit_write_form" class="d-block nav-link link-body-emphasis border-bottom rounded-0">채용 공고 작성</a>
 			      			</div>
 			    		</div>
 			 		</div> 
@@ -49,38 +49,64 @@
             </ul>
         </div>
     </div>
-    <div class="col-9">
+    <div class="col-9 mb-5">
 	    <p class="text-secondary d-flex">
 	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
-	    	<a href="#" class="nav-link text-secondary">구인 공고 관리</a> <span class="mx-3">></span>
-	    	<a href="" class="nav-link text-black fw-bolder">구인 공고 작성</a>
+	    	<a href="#" class="nav-link text-secondary">채용 공고 관리</a> <span class="mx-3">></span>
+	    	<a href="" class="nav-link text-black fw-bolder">채용 공고 작성</a>
 	    </p>
     
         <div class="border p-5 rounded">
-        
+        	<a class="btn btn-jobs mb-2" href="/company/mypage/recruit_write_form">채용 공고 작성</a>
         	<c:forEach var="recruit" items="${recruitList }">
-	        <div class="border p-3">
-	        	<div class="row">
+	        <div class="border p-3 mb-3">
+	        	<div class="row align-items-center">
 	        		<div class="col-md-4">
-	        			<div id=${recruit.recruit_no } >공고번호 :${recruit.recruit_no } </div>
-	        			<div>회사명 : ${company.com_name }</div>
-	        			<div>공고제목 : ${recruit.title }</div>
+	        			<div class="fs-7 text-secondary" id=${recruit.recruit_no } >공고번호 :${recruit.recruit_no } </div>
+	        			<div>[ ${company.com_name } ]</div>
+	        			<div class="fs-5 fw-bold w-100 text_ellipsis">${recruit.title }</div>
 	        		</div>
-	        		<div class="col-md-4">
-	        				정규직
-	        				학력무관
-	        				회사내규에 따름
-	        				주소
-	        				마감일
-	        				현재 지원자 <a id="demo" href="#">${recruit.mem_count }</a>
+	        		<div class="col-md-5 text-secondary">
+	        		${recruit.field } | 
+	        		<c:choose>
+				        <c:when test="${recruit.education ne null }">
+				           ${recruit.education } | 
+				        </c:when>         
+				        <c:otherwise>
+				          학력무관 | 
+				        </c:otherwise>
+				    </c:choose>
+				    <c:choose>
+				        <c:when test="${recruit.pay ne 0 }">
+				          ${recruit.pay } |<br/>
+				        </c:when>         
+				        <c:otherwise>
+				          회사내규에 따름 |<br/>
+				        </c:otherwise>
+				    </c:choose> 
+				    <c:choose>
+				        <c:when test="${company.com_addr ne null }">
+				          ${company.com_addr } | 
+				        </c:when>         
+				    </c:choose>      		
+	        		마감일 ${recruit.deadline_date } <br/>
+	        		현재 지원자 <a class="link-info fw-bold" href="#">${recruit.mem_count }</a>
 	        		</div>
-	        		<div class="col-md-4">
-	        			<a class="btn btn-secondary" href="">공고 마감하기</a>
+	        		<div class="col-md-3 d-flex flex-row-reverse">
+	        			<c:choose>
+					        <c:when test="${recruit.mem_count ne 0}">
+					         	<a class="btn btn-secondary" href="">공고 마감하기</a>
+					        </c:when>         
+					        <c:otherwise>
+					        	<a class="btn btn-secondary" href="">삭제</a>
+					        	<a class="btn btn-jobs me-2" href="">수정</a>
+					        </c:otherwise>
+					    </c:choose> 
 	        		</div>
 	        		<div></div>
 	        	</div>
 	        </div>
-        	</c:forEach>>
+        	</c:forEach>
         </div>
     </div>
 </div>

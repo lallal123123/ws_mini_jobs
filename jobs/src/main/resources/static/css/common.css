@@ -49,6 +49,15 @@ body{
 	height:auto;
 }
 
+.text_ellipsis{
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+}
+
+.fs-7 {
+    font-size: 0.8rem !important;
+}
 
 .btn-jobs-community {
     --bs-btn-color: #fff;

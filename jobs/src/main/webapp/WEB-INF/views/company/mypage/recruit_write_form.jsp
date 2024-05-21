@@ -24,19 +24,19 @@
                 	</a>
               	</li>
               	<li>
-                	<a href="#" class="nav-link link-body-emphasis  border-bottom rounded-0">
+                	<a href="/company/mypage/info_detail" class="nav-link link-body-emphasis  border-bottom rounded-0">
                  	기업 소개 관리
                 	</a>
               	</li> 
               	<li>
               		<div class="accordion" id="accordionPanelsStayOpenExample">
 			      		<a class="nav-link link-body-emphasis text-weight-bold border-bottom rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-			        		구인 공고 관리
+			        		채용 공고 관리
 			      		</a>
 			   	  		<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
 			      			<div class="accordion-body py-0 pe-0">
-			       				<a href="#" class="d-block nav-link link-body-emphasis border-bottom rounded-0">구인 공고 리스트</a>
-			       				<a href="#" class="d-block nav-link link-body-emphasis border-bottom rounded-0">구인 공고 작성</a>
+			       				<a href="/company/mypage/getComRecruitList" class="d-block nav-link link-body-emphasis border-bottom rounded-0">채용 공고 리스트</a>
+			       				<a href="/company/mypage/recruit_write_form" class="d-block nav-link link-body-emphasis border-bottom rounded-0">채용 공고 작성</a>
 			      			</div>
 			    		</div>
 			 		</div> 
@@ -49,17 +49,17 @@
             </ul>
         </div>
     </div>
-    <div class="col-9">
+    <div class="col-9 mb-5">
 	    <p class="text-secondary d-flex">
 	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
-	    	<a href="#" class="nav-link text-secondary">구인 공고 관리</a> <span class="mx-3">></span>
-	    	<a href="" class="nav-link text-black fw-bolder font-size-">구인 공고 작성</a>
+	    	<a href="#" class="nav-link text-secondary">채용 공고 관리</a> <span class="mx-3">></span>
+	    	<a href="" class="nav-link text-black fw-bolder font-size-">채용 공고 작성</a>
 	    </p>
     
         <div class="border p-5 rounded">
         
         	<form id="recruit_write_form" action="/company/mypage/registRecruit" method="post" onsubmit="return numberCheck()">
-        		<input type="text" name="com_no" value="1">
+        		<input type="hidden" name="com_no" value="${company.com_no }">
         		<div class="mb-3">
 			  		<label for="" class="form-label">공고제목</label>
 			  		<input type="text" class="form-control" name="title" id="title" placeholder="공고제목">
@@ -156,6 +156,7 @@
 const info_write_form=document.querySelector("#recruit_write_form");
 const pay=document.querySelector("#pay");
 const p_number=document.querySelector("#p_number");
+const deadline_date=document.querySelector("#deadline_date");
 
 function numberCheck(){
 	
@@ -167,7 +168,11 @@ function numberCheck(){
 	}
 	//alert(establishment.value);
 	//alert(p_number.value);
-	
+	if(deadline_date.value.length == 0){
+		 alert("마감일을 등록해주세요");
+		return false;
+	}
+	return true;
 };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
