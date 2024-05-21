@@ -71,7 +71,7 @@
 	        <div class="border p-3 mb-3">
 	        	<div class="row align-items-center">
 	        		<div class="col-md-4">
-	        			<div class="fs-7 text-secondary" id=${recruit.recruit_no } >공고번호 :${recruit.recruit_no } </div>
+	        			<div class="fs-7 text-secondary">공고번호 :${recruit.recruit_no } </div>
 	        			<div>[ ${company.com_name } ]</div>
 	        			<div class="fs-5 fw-bold w-100 text_ellipsis">
 	        			<a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="/company/mypage/recruitDetail?recruit_no=${recruit.recruit_no }">${recruit.title }</a>
@@ -101,7 +101,7 @@
 				        </c:when>         
 				    </c:choose>      		
 	        		마감일 ${recruit.deadline_date } <br/>
-	        		현재 지원자 <a class="link-info fw-bold" href="#">${recruit.mem_count }</a>
+	        		현재 지원자 <a class="link-info fw-bold" href="/company/mypage/mem_recruit_list?recruit_no=${recruit.recruit_no }">${recruit.mem_count }</a>
 	        		</div>
 	        		<div class="col-md-3 d-flex flex-row-reverse">
 	        			<c:choose>

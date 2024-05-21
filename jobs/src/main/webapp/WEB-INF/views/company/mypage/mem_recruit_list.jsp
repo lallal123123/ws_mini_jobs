@@ -60,58 +60,25 @@
 	    </p>
     
         <div class="border p-5 rounded">
-        	<div class="overflow-hidden">
+        	<div class="overflow-hidden mb-3">
         		<div class="input-group search-box float-end">
                     <input type="text" class="form-control" placeholder="제목 검색" aria-label="제목 검색" id="keyword" aria-describedby="getSearchList">
                     <button class="btn btn-outline-secondary" type="button" onclick="getSearchList()">검색</button>
                 </div>
             </div>
-        	<c:forEach var="recruit" items="${recruitList }">
+        	<c:forEach var="resume" items="${list }">
 	        <div class="border p-3 mb-3">
 	        	<div class="row align-items-center">
 	        		<div class="col-md-4">
-	        			<div class="fs-7 text-secondary">공고번호 :${recruit.recruit_no } </div>
-	        			<div>[ ${company.com_name } ]</div>
 	        			<div class="fs-5 fw-bold w-100 text_ellipsis">
-	        			<a href="/company/mypage/recruitDetail?recruit_no=${recruit.recruit_no }">${recruit.title }</a>
+	        			${resume.title }
 	        			</div>
 	        		</div>
 	        		<div class="col-md-5 text-secondary">
-	        		${recruit.field } | 
-	        		<c:choose>
-				        <c:when test="${recruit.education ne null }">
-				           ${recruit.education } | 
-				        </c:when>         
-				        <c:otherwise>
-				          학력무관 | 
-				        </c:otherwise>
-				    </c:choose>
-				    <c:choose>
-				        <c:when test="${recruit.pay ne 0 }">
-				          ${recruit.pay } |<br/>
-				        </c:when>         
-				        <c:otherwise>
-				          회사내규에 따름 |<br/>
-				        </c:otherwise>
-				    </c:choose> 
-				    <c:choose>
-				        <c:when test="${company.com_addr ne null }">
-				          ${company.com_addr } | 
-				        </c:when>         
-				    </c:choose>      		
-	        		마감일 ${recruit.deadline_date } <br/>
-	        		현재 지원자 <a class="link-info fw-bold" href="#">${recruit.mem_count }</a>
+	        		${resume.mem_name } | ${resume.mem_gender } | ${resume.mem_birth }
 	        		</div>
 	        		<div class="col-md-3 d-flex flex-row-reverse">
-	        			<c:choose>
-					        <c:when test="${recruit.mem_count ne 0}">
-					         	<a class="btn btn-secondary" href="">공고 마감하기</a>
-					        </c:when>         
-					        <c:otherwise>
-					        	<a class="btn btn-secondary" href="">삭제</a>
-					        	<a class="btn btn-jobs me-2" href="">수정</a>
-					        </c:otherwise>
-					    </c:choose> 
+					   <a class="btn btn-info text-white" href="">이력서 보기</a>
 	        		</div>
 	        		<div></div>
 	        	</div>

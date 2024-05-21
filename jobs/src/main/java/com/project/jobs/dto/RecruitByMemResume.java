@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 public class RecruitByMemResume {
 
 	private String mem_name;
+	private String mem_gender;
+	private int mem_birth;
 	private Long s_resume_no;
 	private Long mem_no;
 	private String title;
