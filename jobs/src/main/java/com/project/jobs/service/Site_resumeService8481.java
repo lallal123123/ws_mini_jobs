@@ -1,6 +1,7 @@
 package com.project.jobs.service;
 
 import java.sql.Date;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class Site_resumeService8481 {
 
 	@Autowired
 	private IMember_resume8481 siteResumeMapper;
+	
+	@Autowired
+	IMember_resume8481 dao;
 	/*
 	//라이센스에 Site_resume을 넣어준것
 	public void insertFkforLicense(Site_resume site_resume, License liecnsefk) {
@@ -66,7 +70,24 @@ public class Site_resumeService8481 {
 		
 	}	
 	
+	//자유 이력서 등록
+	public void freeResumeWrite(Free_resume free_resume) {
+		
+		dao.insert_free_resume(free_resume);
+	}
 	
+	//사이트 이력서 조회
+	public List<Site_resume> getSiteResumeList(Long mem_no){
+		List<Site_resume> list = dao.getSiteResumeList(mem_no);
+		
+		return list;
+	}
+	//자유 이력서 조회
+	public List<Free_resume> getFreeResumeList(Long mem_no){
+		List<Free_resume> list = dao.getFreeResumeList(mem_no);
+		
+		return list;
+	}
 	
 	
 }

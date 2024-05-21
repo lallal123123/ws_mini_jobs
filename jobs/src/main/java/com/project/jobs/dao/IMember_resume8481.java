@@ -46,4 +46,10 @@ public interface IMember_resume8481 {
 		//자유이력서Insert
 		public void insert_free_resume(@Param("free_dto") Free_resume freedto);
 		
+		
+		//사이트 이력서 List 
+		public List<Site_resume> getSiteResumeList(@Param("mem_no") Long mem_no);
+		//자유 이력서 List
+		public List<Free_resume> getFreeResumeList(@Param("mem_no") Long mem_no);
+		
 }

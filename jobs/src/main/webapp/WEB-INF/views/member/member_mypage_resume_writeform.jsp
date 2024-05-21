@@ -49,6 +49,7 @@
 				<div class="border p-3">
 
 				<form id="resumeForm" action="member_mypage_resume_write" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="mem_no" value="${member.mem_no}">
 					<div class="mb-3">
                         <label for="" class="form-label">희망직무</label>
                         <select class="form-select" name="hope_job" onchange="toggleTitleInput()">

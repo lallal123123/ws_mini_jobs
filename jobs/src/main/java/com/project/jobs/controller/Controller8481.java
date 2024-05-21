@@ -2,10 +2,12 @@ package com.project.jobs.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,9 +17,13 @@ import com.project.jobs.dto.Education;
 import com.project.jobs.dto.Free_resume;
 import com.project.jobs.dto.Free_resume_file;
 import com.project.jobs.dto.License;
+import com.project.jobs.dto.Member;
 import com.project.jobs.dto.Site_resume;
 import com.project.jobs.dto.Site_resume_file;
 import com.project.jobs.service.Site_resumeService8481;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/resume")
@@ -32,16 +38,12 @@ public class Controller8481 {
 		
 		return "/member/ex";
 	}
-	//이력서 리스트
-	@RequestMapping("/member_mypage_resume_list")
-	public String site_resume() {
-		
-		return"member_mypage_resume_list";
-	}
+	
 	//이력서 작성폼
 	@RequestMapping("/member_mypage_resume_writeform")
-	public String site_resume_wirteform() {
-		
+	public String site_resume_wirteform(HttpServletRequest request,Model model) {
+		HttpSession session = request.getSession();
+		model.addAttribute("member", session.getAttribute("loggedInMember"));
 		
 		return"/member/member_mypage_resume_writeform";
 	}
@@ -104,28 +106,38 @@ public class Controller8481 {
 		//4번들어간 문제를 수정한 작업x
 		srs.insertfk(site_resume, lic_dto, car_dto, edu_dto);
 		
-		return "redirect:/member/index";//이력서 작성후 어디로 보낼지 (고민해봐야)
+		System.out.println(site_resume);
+		
+		return "redirect:/resume/member_mypage_resume_writeform";//이력서 작성후 어디로 보낼지 (고민해봐야)
 		
 	}
+	//자유이력서폼
 	@RequestMapping("/member_mypage_resume_freeform")
-	public String sitefree_resume_write() {
+	public String sitefree_resume_write(HttpServletRequest request,Model model) {
+		HttpSession session = request.getSession();
+		model.addAttribute("member", session.getAttribute("loggedInMember"));
 		
 		return "/member/member_mypage_resume_freeform";
 	}
-	
+	//자유이력서 등록
 	@RequestMapping("/member_mypage_resume_free")
-	public String free_resume_write(Free_resume_file free_resume_file) {
-		
+	public String free_resume_write(HttpServletRequest request, Free_resume_file free_resume_file) {
+			
 		Free_resume free_resume = new Free_resume();
-		
 		free_resume.setR_resume_no(free_resume_file.getR_resume_no());
 		free_resume.setMem_no(free_resume_file.getMem_no());
+		System.out.println("memno" + free_resume.getMem_no());
 		free_resume.setTitle(free_resume_file.getTitle());
 		free_resume.setUrl(free_resume_file.getUrl());
 		String originName= free_resume_file.getFileName();
 		
 		String newName = UUID.randomUUID().toString() + "_" + originName;
 		free_resume.setFile(newName);
+		//System.out.println(originName);
+		//System.out.println(newName);
+		
+		//System.out.println(free_resume_file);
+		//System.out.println(free_resume);
 		
 		File file = new File(free_resume.getFile());
 		try {
@@ -138,10 +150,32 @@ public class Controller8481 {
 			e.printStackTrace();
 		}
 		
-		dao.insert_free_resume(free_resume);
+		srs.freeResumeWrite(free_resume);
 		
-		return "redirect:/member/member_mypage_resume_freeform";
+		return "redirect:/resume/member_mypage_resume_freeform";
 	}
 
+	//마이페이지 이력서 리스트 
+	@RequestMapping("/member_mypage_resume_list")
+	public String resumeList(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("loggedInMember");
+		Long mem_no = member.getMem_no();
+				
+		model.addAttribute("member", session.getAttribute("loggedInMember"));
+		
+		
+		List<Site_resume> siteResumeList = srs.getSiteResumeList(mem_no);
+		List<Free_resume> freeResumeList = srs.getFreeResumeList(mem_no);
+		System.out.println(siteResumeList);
+		System.out.println(freeResumeList);
+		
+		model.addAttribute("siteList", siteResumeList);
+		model.addAttribute("freeList", freeResumeList);
+		return"/member/member_mypage_resume_list";
+	}
+	
+	
+	
 	
 }
