@@ -113,10 +113,14 @@
 		</div>
 	</div>
 </div>
+
+
 <div class="d-flex justify-content-center sticky-bottom pb-5">
 	<a href="#" class="btn btn-lg text-white btn-warning px-5 me-1">지원하기</a>
 	<a href="#" class="btn btn-lg text-white btn-info px-5 ms-1">스크랩하기</a>
 </div>
+
+
 <!-- 작업공간 영역 끝 -->
 <jsp:include page="../../footer.jsp"></jsp:include>
 

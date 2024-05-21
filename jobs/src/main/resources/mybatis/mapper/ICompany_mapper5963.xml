@@ -30,6 +30,20 @@ policy=#{com_detail.policy}, convenience=#{com_detail.convenience}, sectors=#{co
 </insert>
 
 
+<update id="modifyRecruit" parameterType="com.project.jobs.dto.Recruit">
+UPDATE recruit SET career=#{recruit.career}, education=#{recruit.education},
+ skill=#{recruit.skill}, field= #{recruit.field}, pay=#{recruit.pay}, location=#{recruit.location},
+ working_time=#{recruit.working_time}, rank=#{recruit.rank}, title=#{recruit.title},
+ qualification=#{recruit.qualification}, welfare=#{recruit.welfare},
+ seprocedure= #{recruit.seprocedure}, notice = #{recruit.notice}, deadline_date = #{recruit.deadline_date},
+ p_number=#{recruit.p_number}  WHERE recruit_no= #{recruit.recruit_no};
+</update>
+
+<select id="getRecruit" parameterType="com.project.jobs.dto.Recruit">
+SELECT * from recruit WHERE recruit_no = #{param1};
+</select>
+
+
 <select id="getComInfoDetail" resultType="com.project.jobs.dto.ComInfoDetail">
 SELECT c.com_no, c.com_name, c.com_size, c.com_ceo, c.com_addr, c.com_tel, c.com_url, cd.com_detail_no, cd.introduction, cd.img_url, cd.pension,
 cd.compensation, cd.facilities, cd.policy, cd.convenience, cd.sectors, cd.p_number, cd.establishment, cd.history, cd.ideal_talent FROM company c

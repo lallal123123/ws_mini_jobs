@@ -56,6 +56,19 @@ public class CompanyService5963 {
 		companyDao5963.comInfoWrite(com_detail);
 	};
 	
+	
+    // 공고 번호로 공고 정보 가져오기
+    public Recruit getRecruit(Long recruit_no) {
+        Recruit recruit = companyDao5963.getRecruit(recruit_no);
+        return recruit;
+    }
+    
+    // 공고 수정하기
+    public void modifyRecruit(Recruit recruit) {
+        companyDao5963.modifyRecruit(recruit);
+    };
+
+    
 	// 공고 삭제하기
 	public void deleteRecruit(Long recruit_no) {
 		companyDao5963.deleteRecruit(recruit_no);
