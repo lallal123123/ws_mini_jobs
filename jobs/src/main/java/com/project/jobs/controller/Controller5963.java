@@ -255,7 +255,9 @@ public class Controller5963 {
 	// 공고별 지원자 리스트 가져오기
 	@RequestMapping("/mem_recruit_list")
 	public String getRecruitMemList(@RequestParam("recruit_no")Long recruit_no, Model model) {
+		System.out.println("공고별 지원자 리스트 가져오기");
 		List<RecruitByMemResume> recruitByMemResumelist = companyService.getRecruitMemList(recruit_no);
+		System.out.println(recruitByMemResumelist);
 		model.addAttribute("list", recruitByMemResumelist);
 		return "/company/mypage/mem_recruit_list";
 	}

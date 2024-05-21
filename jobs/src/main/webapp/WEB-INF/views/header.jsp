@@ -7,6 +7,7 @@
 <title>jobs 휴먼 클라우드 이력관리플렛폼</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link href="/css/common.css" rel="stylesheet">
 <style>
     .btn-notification {
         position: relative;

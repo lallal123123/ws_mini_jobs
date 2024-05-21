@@ -48,10 +48,10 @@ ON c.com_no = cd.com_no WHERE c.com_no=#{com_no};
 
 
 <select id="getRecruitMemList" resultType="com.project.jobs.dto.RecruitByMemResume">
-SELECT m.mem_name, subquery.s_resume_no, subquery.mem_no, subquery.title, subquery.recruit_no 
+SELECT m.mem_name, m.mem_gender, m.mem_birth, subquery.s_resume_no, subquery.mem_no, subquery.title, subquery.recruit_no 
 FROM member m
 JOIN (
-    SELECT sr.s_resume_no, sr.mem_no, sr.title, mr.recruit_no 
+    SELECT sr.s_resume_no, sr.mem_no, sr.title, mr.recruit_no
     FROM site_resume sr
     JOIN mem_recruit mr ON sr.mem_no = mr.mem_no
 ) subquery ON m.mem_no = subquery.mem_no
