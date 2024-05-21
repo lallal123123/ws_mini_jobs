@@ -46,7 +46,7 @@
             <li class="nav-item"><a href="#" class="nav-link" aria-current="page">채용정보</a></li>
             <li class="nav-item"><a href="#" class="nav-link">공고캘린더</a></li>
             <li class="nav-item"><a href="${pageContext.request.contextPath}/companies" class="nav-link">기업정보</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">커뮤니티</a></li>
+            <li class="nav-item"><a href="${pageContext.request.contextPath}/community/company/main" class="nav-link">커뮤니티</a></li>
             <li class="nav-item"><a href="#" class="nav-link">고객센터</a></li>
         </ul>
     </div>
