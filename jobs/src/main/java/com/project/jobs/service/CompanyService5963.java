@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.project.jobs.dao.ICompanyDao5963;
 import com.project.jobs.dto.ComInfoDetail;
-import com.project.jobs.dto.ComInfoJoinRecruit;
+import com.project.jobs.dto.ComRecruitJoinCount;
 import com.project.jobs.dto.Com_detail;
+import com.project.jobs.dto.Mem_recruit;
 import com.project.jobs.dto.Recruit;
 import com.project.jobs.dto.Region;
 
@@ -33,40 +34,48 @@ public class CompanyService5963 {
 	}
 	
 	// 기업 번호로 공고 리스트 가져오기
-	public List<Recruit> getComRecruitAllList(Long com_no){
+	public List<Recruit> getComRecruitList(Long com_no){
 		
-		List<Recruit> list = companyDao5963.getComRecruitAllList(com_no);
+		List<Recruit> list = companyDao5963.getComRecruitList(com_no);
 		
 		return list;
 	}
 	
-	// 기업 번호로 공고와 기업 정보 조인 리스트
-	public List<ComInfoJoinRecruit> comInfoJoinRecruitList(Long com_no){
-		List<ComInfoJoinRecruit> list = companyDao5963.comInfoJoinRecruitList(com_no);
+	// 기업 번호로 공고 리스트
+	public List<ComRecruitJoinCount> comInfoJoinRecruitList(Long com_no){
+		List<ComRecruitJoinCount> list = companyDao5963.comInfoJoinRecruitList(com_no);
 		return list;
 	};
 	
 	// 기업 소개 정보 등록
-	public void comInfoWrite(@Param("com_detail") Com_detail com_detail) {
+	public void comInfoWrite(Com_detail com_detail) {
 		
 		companyDao5963.comInfoWrite(com_detail);
 	};
 	
 	// 기업 소개 디테일 정보 가져오기
-	public ComInfoDetail getComInfoDetail(@Param("com_no") Long com_no) {
+	public ComInfoDetail getComInfoDetail(Long com_no) {
 		ComInfoDetail comInfoDetail = companyDao5963.getComInfoDetail(com_no);
 		return comInfoDetail;
 	}
 	
 	// 기업 소개 정보 등록
-	public void comInfoModify(@Param("com_detail") Com_detail com_detail) {
+	public void comInfoModify(Com_detail com_detail) {
 		companyDao5963.comInfoModify(com_detail);
 	};
 	
 	// 기업 소개 정보 가져오기
-	public Com_detail getCom_detail(@Param("com_no") Long com_no) {
+	public Com_detail getCom_detail(Long com_no) {
 		Com_detail com_detail = companyDao5963.getCom_detail(com_no);
 		return com_detail;
 	};
+	
+	// 공고에 지원한 사람 수 가져오기
+	public List<Mem_recruit> getMemCount(Long recruit_no) {
+		System.out.println("recruit_no" + recruit_no);
+		List<Mem_recruit> result = companyDao5963.getMemCount(recruit_no);
+		System.out.println("result" + result);
+		return result;
+	}
 		
 }

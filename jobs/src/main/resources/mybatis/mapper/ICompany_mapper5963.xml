@@ -12,15 +12,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	INSERT INTO recruit VALUES(0, #{recruit.com_no}, #{recruit.career}, #{recruit.education}, #{recruit.skill}, #{recruit.field},#{recruit.pay},#{recruit.location},#{recruit.working_time},#{recruit.rank}, #{recruit.title}, null, #{recruit.qualification},#{recruit.welfare},#{recruit.seprocedure},#{recruit.notice}, NOW(), #{recruit.deadline_date}, #{recruit.p_number})
 </insert>
 
-<select id="getComRecruitAllList" resultType="com.project.jobs.dto.Recruit">
-	SELECT * from recruit WHERE com_no= #{param};
-</select>
-
-<select id="comInfoJoinRecruitList" resultType="com.project.jobs.dto.ComInfoJoinRecruit">
-	SELECT c.com_no, c.com_id, c.com_name, c.com_size, c.com_addr, r.recruit_no, r.title, r.deadline_date 
-	FROM company c
-	JOIN recruit r ON r.com_no = c.com_no
-	WHERE c.com_no = #{param};
+<select id="getComRecruitList" resultType="com.project.jobs.dto.Recruit">
+	SELECT * from recruit WHERE com_no= #{com_no};
 </select>
 
 <insert id="comInfoWrite" parameterType="com.project.jobs.dto.Com_detail">
@@ -42,6 +35,11 @@ ON c.com_no = cd.com_no WHERE c.com_no=#{com_no};
 
 <select id="getCom_detail" resultType="com.project.jobs.dto.Com_detail">
 	select * from com_detail where com_no = #{com_no};
+</select>
+
+
+<select id="getMemCount" resultType="com.project.jobs.dto.Mem_recruit">
+	SELECT mem_no from mem_recruit WHERE mem_recruit_no = #{recruit_no};
 </select>
 
 </mapper>
