@@ -35,7 +35,7 @@ public class Contoller_community_company92 {
 	}
 
 	@RequestMapping("/company/main")
-	public String main(Model model, @RequestParam(name = "category", required = false) String category) {
+	public String main(Model model, @RequestParam(name = "category", required = false) String category,HttpSession session) {
 		Long cnt = dao.countAll();
 		List<Com_community> hList = dao.hotList(0L, 5L);
 		for (Com_community dto : hList) {
@@ -57,6 +57,18 @@ public class Contoller_community_company92 {
 			model.addAttribute("chList", chList);
 			model.addAttribute("category", "자유글");
 		}
+		
+		Company com = (Company)session.getAttribute("loggedInCompany");
+		List<Com_community> cwList =dao.listByNo(com.getCom_no());
+		System.out.println("cwList"+cwList);
+		int cntComWrite=cwList.size();
+		System.out.println("cntComWrite"+cntComWrite);
+		model.addAttribute("cntComWrite",cntComWrite);
+		
+		List<Com_reply> crList =dao.replyListByNo(com.getCom_no());
+		int cntComReply=crList.size();
+		model.addAttribute("cntComReply",cntComReply);
+		
 		return "community/com/main";
 	}
 

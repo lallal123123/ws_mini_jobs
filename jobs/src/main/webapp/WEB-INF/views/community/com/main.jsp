@@ -20,6 +20,17 @@
 #pageBox {
 	text-align: center;
 }
+
+.top {
+	display: inline-block;
+
+
+}
+
+#hotList{
+	margin-right:20px;
+	width:800px;
+}
 </style>
 </head>
 <body>
@@ -32,8 +43,8 @@
 				<div class="border p-3">
 					<div>실시간 전체글 ${cnt }개</div>
 					<div id="hotListAndCom">
-					링크 다 달아주고 스크립트 완성하기!!!!!!!!!!!!!
-						<span> <label>HOT 전체 인기 글 </label> <a href="">더보기></a><br>
+						<span class="top" id="hotList"> <label>HOT
+								전체 인기 글 </label> <a href="">더보기></a><br>
 							<hr>
 							<table>
 								<c:forEach var="dto" items="${ hList}">
@@ -44,8 +55,10 @@
 									</tr>
 								</c:forEach>
 							</table>
-						</span> <span> <span>사진공강</span><span>${loggedInCommany.com_id }</span><br>
-							<button>게시글작성</button>
+						</span> <span class="top"> <span>사진공강</span><span>${loggedInCommany.com_id }님</span><br>
+							<button>게시글작성</button><br>
+							내가 작성한 글 ${cntComWrite }개<br>
+							내가 작성한 댓글 ${cntComReply }개
 
 						</span>
 					</div>
@@ -62,9 +75,9 @@
 								<div id="categoryName">
 									${category } <a href=""> 더보기> </a>
 								</div>
-								
+
 								<table class="table">
-								
+
 									<c:forEach var="dto" items="${chList}">
 										<tr>
 											<td>${dto.title }</td>
@@ -89,7 +102,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
-	
+
 
 </body>
 </html>
