@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +32,7 @@
 			<div class="col-9">
 				<div class="border p-3">
 
-				<form action="member_mypage_resume_free" method="post">
+				<form action="member_mypage_resume_free" method="post" enctype="multipart/form-data">
 					<div class="mb-3">
 						<label for="" class="form-label">제목</label> 
 						<input type="text" class="form-control" name="title" placeholder="이력서 제목">

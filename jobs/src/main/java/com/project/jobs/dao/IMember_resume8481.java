@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Param;
 
 import com.project.jobs.dto.Career;
 import com.project.jobs.dto.Education;
+import com.project.jobs.dto.Free_resume;
+import com.project.jobs.dto.Free_resume_file;
 import com.project.jobs.dto.License;
 import com.project.jobs.dto.Site_resume;
 
@@ -41,5 +43,7 @@ public interface IMember_resume8481 {
 		@Insert("INSERT INTO education (s_resume_no, school, edu_join_date, graduation_date, graduation , grades, major) VALUES (#{s_resume_no}, #{school}, #{edu_join_date}, #{graduation_date}, #{graduation}, #{grades}, #{major})")
 		void insertEducation(@Param("s_resume_no") Long sResumeNo, @Param("school") String school, @Param("edu_join_date") String edu_join_date, @Param("graduation_date") String graduation_date, @Param("graduation") int graduation, @Param("grades") int grades, @Param("major") String major);
 		
+		//자유이력서Insert
+		public void insert_free_resume(@Param("free_dto") Free_resume freedto);
 		
 }
