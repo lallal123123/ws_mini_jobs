@@ -12,6 +12,8 @@ import com.project.jobs.dto.ComRecruitJoinCount;
 import com.project.jobs.dto.Com_detail;
 import com.project.jobs.dto.Mem_recruit;
 import com.project.jobs.dto.Recruit;
+import com.project.jobs.dto.RecruitByMemResume;
+import com.project.jobs.dto.RecruitDetail;
 import com.project.jobs.dto.Region;
 
 
@@ -77,5 +79,23 @@ public class CompanyService5963 {
 		System.out.println("result" + result);
 		return result;
 	}
+	
+	// 키워드로 공고 리스트 검색하기
+	public List<Recruit> getComRecruitListKeyword(Long com_no, String keyword){
+		List<Recruit> list = companyDao5963.getComRecruitListKeyword(com_no, keyword);
+		return list;
+	}
+	
+	// 공고별 지원자 리스트 가져오기
+	public List<RecruitByMemResume> getRecruitMemList(Long recruit_no){
+		List<RecruitByMemResume> list = companyDao5963.getRecruitMemList(recruit_no);
+		return list;
+	};
+	
+	// 공고번호로 공고 디테일 가져오기
+	public RecruitDetail getRecruitDetail(@Param("recruit_no") Long recruit_no){
+		RecruitDetail recruitDetail = companyDao5963.getRecruitDetail(recruit_no);
+		return recruitDetail;
+	};
 		
 }

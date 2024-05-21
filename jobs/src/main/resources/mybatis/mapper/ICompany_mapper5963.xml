@@ -42,4 +42,33 @@ ON c.com_no = cd.com_no WHERE c.com_no=#{com_no};
 	SELECT mem_no from mem_recruit WHERE mem_recruit_no = #{recruit_no};
 </select>
 
+<select id="getComRecruitListKeyword" resultType="com.project.jobs.dto.Recruit">
+	SELECT * from recruit WHERE com_no= #{param1} AND title LIKE '%#{param2}%'
+</select>
+
+
+<select id="getRecruitMemList" resultType="com.project.jobs.dto.RecruitByMemResume">
+SELECT m.mem_name, subquery.s_resume_no, subquery.mem_no, subquery.title, subquery.recruit_no 
+FROM member m
+JOIN (
+    SELECT sr.s_resume_no, sr.mem_no, sr.title, mr.recruit_no 
+    FROM site_resume sr
+    JOIN mem_recruit mr ON sr.mem_no = mr.mem_no
+) subquery ON m.mem_no = subquery.mem_no
+WHERE recruit_no = #{recruit_no};
+</select>
+
+
+<select id="getRecruitDetail" resultType="com.project.jobs.dto.RecruitDetail">
+SELECT c.com_no, c.com_name, c.com_size, c.com_ceo, c.com_addr,
+c.com_url, r.recruit_no, r.career, r.education, r.skill,
+r.FIELD, r.pay, r.location, r.working_time, r.RANK, r.title,
+r.qualification, r.welfare, r.sePROCEDURE, r.notice, r.reg_date, r.deadline_date, r.p_number
+FROM company c
+join
+recruit r
+ON c.com_no = r.com_no
+WHERE r.recruit_no = #{recruit_no};
+</select>
+
 </mapper>
