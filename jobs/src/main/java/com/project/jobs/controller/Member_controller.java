@@ -86,7 +86,9 @@ public class Member_controller {
 	        return "redirect:/members/index";
 	    } else {
 	        model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
-	        return "member/loginForm"; // 리디렉션이 아닌 포워딩으로 변경
+	        model.addAttribute("member", new Member());
+	        model.addAttribute("company", new Company()); 
+	        return "member/loginForm"; 
 	    }
 	}
 
