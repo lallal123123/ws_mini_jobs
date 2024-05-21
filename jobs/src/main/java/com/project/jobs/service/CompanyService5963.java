@@ -15,6 +15,7 @@ import com.project.jobs.dto.Recruit;
 import com.project.jobs.dto.RecruitByMemResume;
 import com.project.jobs.dto.RecruitDetail;
 import com.project.jobs.dto.Region;
+import com.project.jobs.dto.SiteMemByresume;
 
 
 @Service
@@ -103,6 +104,12 @@ public class CompanyService5963 {
 	public RecruitDetail getRecruitDetail(@Param("recruit_no") Long recruit_no){
 		RecruitDetail recruitDetail = companyDao5963.getRecruitDetail(recruit_no);
 		return recruitDetail;
+	};
+	
+	// 이력서 번호로 이력서 정보 가져오기
+	public SiteMemByresume getResumeDetail(@Param("s_resume_no") Long s_resume_no) {
+		SiteMemByresume siteMemByresume = companyDao5963.getResumeDetail(s_resume_no);
+		return siteMemByresume;
 	};
 		
 }

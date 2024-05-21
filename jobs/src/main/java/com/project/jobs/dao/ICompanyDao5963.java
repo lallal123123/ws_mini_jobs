@@ -13,6 +13,7 @@ import com.project.jobs.dto.Recruit;
 import com.project.jobs.dto.RecruitByMemResume;
 import com.project.jobs.dto.RecruitDetail;
 import com.project.jobs.dto.Region;
+import com.project.jobs.dto.SiteMemByresume;
 
 @Mapper
 public interface ICompanyDao5963 {
@@ -55,5 +56,8 @@ public interface ICompanyDao5963 {
 	
 	// 공고번호로 공고 디테일 가져오기
 	public RecruitDetail getRecruitDetail(@Param("recruit_no") Long recruit_no);
+	
+	// 이력서 번호로 이력서 정보 가져오기
+	public SiteMemByresume getResumeDetail(@Param("s_resume_no") Long s_resume_no);
 	
 }
