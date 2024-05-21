@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.jobs.dao.IMember_resume8481;
@@ -175,7 +176,20 @@ public class Controller8481 {
 		return"/member/member_mypage_resume_list";
 	}
 	
-	
-	
+	//마이페이지 이력서 삭제(사이트 이력서)
+	@RequestMapping("/member_mypage_resume_sitelist")
+	public String siteResumeDelete(@RequestParam("s_resume_no")Long s_resume_no) {
+		srs.deleteSiteResume(s_resume_no);
+		
+		return "redirect:/resume/member_mypage_resume_list";
+	}
+	//마이페이지 이력서 삭제(자유 이력서)
+	@RequestMapping("/member_mypage_resume_freedelete")
+	public String freeResumeDelete(@RequestParam("r_resume_no")Long r_resume_no) {
+		srs.deleteFreeResume(r_resume_no);
+		
+		
+		return "redirect:/resume/member_mypage_resume_list";
+	}
 	
 }
