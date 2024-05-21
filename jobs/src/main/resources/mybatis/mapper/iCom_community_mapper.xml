@@ -27,10 +27,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- com_no로 게시글,댓글 -->
 <select id="listByNo" resultType="com.project.jobs.dto.Com_community">
-	select * from com_community where com_community_no = #{no}
+	select * from com_community where com_no = #{no}
 </select>
 <select id="replyListByNo" resultType="com.project.jobs.dto.Com_reply">
-	select * from com_reply where com_community_no = #{no}
+	select * from com_reply where com_no = #{no}
 </select>
 <!-- 댓글 -->
 <insert id="insert_reply">
@@ -72,6 +72,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 인기글 -->
 <select id="chList" resultType="com.project.jobs.dto.Com_community">
 	select * from com_community where category=#{category} order by com_community_no desc LIMIT #{start},#{cnt}
+</select>
+<select id="chListCount">
+	select count(*) from com_community where category=#{category}
 </select>
 
 <!-- 카테고리별 게시글 리스트 -->
