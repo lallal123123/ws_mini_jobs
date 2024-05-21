@@ -23,7 +23,7 @@
                     <c:choose>
                         <c:when test="${not empty sessionScope.loggedInMember}">
                             <c:if test="${sessionScope.isAdmin == true}">
-                                <a href="/admin/dashboard" class="btn btn-jobs ms-2">관리자 모드</a>
+                                <a href="/admin99/getTotalRegistrations" class="btn btn-jobs ms-2">관리자 모드</a>
                             </c:if>
                             <a href="/members/mypage" class="btn btn-jobs ms-2">마이 페이지</a>
                             <a href="/members/logout" class="btn btn-jobs ms-2">로그아웃</a>

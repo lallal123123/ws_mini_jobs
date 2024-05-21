@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +55,11 @@
     <div class="col-9">
         <div class="border p-3">
         <h1>관리자 대시보드</h1>
-	    	<h3>QnA</h3>
+	    	<c:forEach var="dto" items="${registrations }">
+	    		${dto.year }<br>
+	    		${dto.month }<br>
+	    		${dto.member_type }<br>
+	    	</c:forEach>
         </div>
     </div>
 </div>
