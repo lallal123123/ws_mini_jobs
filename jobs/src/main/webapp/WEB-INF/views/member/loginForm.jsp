@@ -23,7 +23,7 @@
 </head>
 <body>
 <div class="container form-container">
-    <h2 class="text-center">로그인</h2>
+    <h2 class="text-center">Jobs 로그인</h2>
     <ul class="nav nav-tabs" id="loginTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="member-tab" data-toggle="tab" href="#member" role="tab" aria-controls="member" aria-selected="true">회원 로그인</a>
