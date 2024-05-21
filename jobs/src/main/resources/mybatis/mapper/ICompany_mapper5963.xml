@@ -12,6 +12,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	INSERT INTO recruit VALUES(0, #{recruit.com_no}, #{recruit.career}, #{recruit.education}, #{recruit.skill}, #{recruit.field},#{recruit.pay},#{recruit.location},#{recruit.working_time},#{recruit.rank}, #{recruit.title}, null, #{recruit.qualification},#{recruit.welfare},#{recruit.seprocedure},#{recruit.notice}, NOW(), #{recruit.deadline_date}, #{recruit.p_number})
 </insert>
 
+<delete id="deleteRecruit">
+	delete FROM recruit WHERE recruit_no = #{param1};
+</delete>
+
 <select id="getComRecruitList" resultType="com.project.jobs.dto.Recruit">
 	SELECT * from recruit WHERE com_no= #{com_no};
 </select>
@@ -53,7 +57,7 @@ FROM member m
 JOIN (
     SELECT sr.s_resume_no, sr.mem_no, sr.title, mr.recruit_no
     FROM site_resume sr
-    JOIN mem_recruit mr ON sr.mem_no = mr.mem_no
+    JOIN mem_recruit mr ON sr.s_resume_no = mr.s_resume_no
 ) subquery ON m.mem_no = subquery.mem_no
 WHERE recruit_no = #{recruit_no};
 </select>
@@ -70,5 +74,10 @@ recruit r
 ON c.com_no = r.com_no
 WHERE r.recruit_no = #{recruit_no};
 </select>
+
+<select id="getSiteResume" resultType="com.project.jobs.dto.Site_resume">
+	SELECT * FROM site_resume WHERE s_resume_no = 1;
+</select>
+
 
 </mapper>

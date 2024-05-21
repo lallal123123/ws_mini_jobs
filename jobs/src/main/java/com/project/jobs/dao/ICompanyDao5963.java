@@ -23,6 +23,8 @@ public interface ICompanyDao5963 {
 	// 공고 등록하기
 	public void registRecruit(@Param("recruit") Recruit recruit);
 	
+	// 공고 삭제하기
+	public void deleteRecruit(Long recruit_no);
 	
 	// 기업 번호로 공고 리스트 가져오기
 	public List<Recruit> getComRecruitList(Long com_no);

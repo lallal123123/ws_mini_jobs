@@ -109,7 +109,7 @@
 					         	<a class="btn btn-secondary" href="">공고 마감하기</a>
 					        </c:when>         
 					        <c:otherwise>
-					        	<a class="btn btn-secondary" href="">삭제</a>
+					        	<a class="btn btn-secondary" href="/company/mypage/deleteRecruit?recruit_no=${recruit.recruit_no }">삭제</a>
 					        	<a class="btn btn-jobs me-2" href="">수정</a>
 					        </c:otherwise>
 					    </c:choose> 

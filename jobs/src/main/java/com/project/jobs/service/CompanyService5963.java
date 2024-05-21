@@ -55,16 +55,23 @@ public class CompanyService5963 {
 		companyDao5963.comInfoWrite(com_detail);
 	};
 	
+	// 공고 삭제하기
+	public void deleteRecruit(Long recruit_no) {
+		companyDao5963.deleteRecruit(recruit_no);
+	};
+	
 	// 기업 소개 디테일 정보 가져오기
 	public ComInfoDetail getComInfoDetail(Long com_no) {
 		ComInfoDetail comInfoDetail = companyDao5963.getComInfoDetail(com_no);
 		return comInfoDetail;
 	}
 	
-	// 기업 소개 정보 등록
+	// 기업 소개 정보 수정
 	public void comInfoModify(Com_detail com_detail) {
 		companyDao5963.comInfoModify(com_detail);
 	};
+	
+	
 	
 	// 기업 소개 정보 가져오기
 	public Com_detail getCom_detail(Long com_no) {

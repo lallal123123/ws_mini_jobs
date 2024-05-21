@@ -63,6 +63,17 @@ public class Controller5963 {
 		return "redirect:/company/mypage/getComRecruitList";
 	}
 	
+	//공고 삭제하기
+	@RequestMapping("/deleteRecruit")
+	public String deleteRecruit(@RequestParam("recruit_no")Long recruit_no, Model model) {
+		System.out.println("공고 삭제하기에 접근");
+		
+		companyService.deleteRecruit(recruit_no);
+		
+		return "redirect:/company/mypage/getComRecruitList";
+	}
+	
+	
 	//com_no로 공고 리스트
 	@RequestMapping("/getComRecruitList")
 	public String getComRecruitList(HttpServletRequest request, Model model) {
@@ -273,5 +284,13 @@ public class Controller5963 {
 		return "/company/mypage/recruit_detail";
 	}
 	
+	
+	// 이력서 번호로 이력서 정보 가져오기
+	@RequestMapping("/getResumeDetail")
+	public String getResumeDetail(@RequestParam("s_resume_no")Long s_resume_no, Model model) {
+		RecruitDetail recruitDetail = companyService.getRecruitDetail(s_resume_no);
+		model.addAttribute("recruitDetail", recruitDetail);
+		return "/company/mypage/recruit_detail";
+	}
 }
 
