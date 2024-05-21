@@ -25,6 +25,7 @@ import com.project.jobs.dto.Recruit;
 import com.project.jobs.dto.RecruitByMemResume;
 import com.project.jobs.dto.RecruitDetail;
 import com.project.jobs.dto.Region;
+import com.project.jobs.dto.SiteMemByresume;
 import com.project.jobs.service.CompanyService5963;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -288,9 +289,9 @@ public class Controller5963 {
 	// 이력서 번호로 이력서 정보 가져오기
 	@RequestMapping("/getResumeDetail")
 	public String getResumeDetail(@RequestParam("s_resume_no")Long s_resume_no, Model model) {
-		RecruitDetail recruitDetail = companyService.getRecruitDetail(s_resume_no);
-		model.addAttribute("recruitDetail", recruitDetail);
-		return "/company/mypage/recruit_detail";
+		SiteMemByresume siteMemByresume = companyService.getResumeDetail(s_resume_no);
+		model.addAttribute("siteMemByresume", siteMemByresume);
+		return "/company/mypage/resume_detail";
 	}
 }
 

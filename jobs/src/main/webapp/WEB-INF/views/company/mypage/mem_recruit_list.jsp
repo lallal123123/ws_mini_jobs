@@ -78,7 +78,7 @@
 	        		${resume.mem_name } | ${resume.mem_gender } | ${resume.mem_birth }
 	        		</div>
 	        		<div class="col-md-3 d-flex flex-row-reverse">
-					   <button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#resumeModal${resume.s_resume_no }">이력서 보기</button>
+					   <a href="/company/mypage/getResumeDetail?s_resume_no=${resume.s_resume_no }" class="btn btn-info text-white">이력서 보기</a>
 	        		</div>
 	        		<div></div>
 	        	</div>
@@ -89,33 +89,11 @@
 </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="resumeModal${resume.s_resume_no }" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">이력서 상세보기</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- 작업공간 영역 끝 -->
 <jsp:include page="../../footer.jsp"></jsp:include>
 <script>
-const keyword = document.querySelector("#keyword");
-function getSearchList(){
-    console.log("키워드검색 하자");
-    location.href = "/company/mypage/getComRecruitListKeyword?keyword=" + keyword.value;
-}
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

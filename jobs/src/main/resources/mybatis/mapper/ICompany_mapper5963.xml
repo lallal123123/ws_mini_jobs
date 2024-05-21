@@ -75,8 +75,15 @@ ON c.com_no = r.com_no
 WHERE r.recruit_no = #{recruit_no};
 </select>
 
-<select id="getSiteResume" resultType="com.project.jobs.dto.Site_resume">
-	SELECT * FROM site_resume WHERE s_resume_no = 1;
+<select id="getResumeDetail" resultType="com.project.jobs.dto.SiteMemByresume">
+SELECT m.mem_no, m.mem_name, m.mem_tel, m.mem_email, m.mem_gender, m.mem_birth,
+sr.s_resume_no, sr.img_url, sr.hope_job, sr.addr, sr.part, sr.military, sr.etc,
+sr.motive, sr.personality, sr.aspiration, sr.growth, sr.title from member m
+JOIN 
+site_resume sr 
+on m.mem_no = sr.mem_no
+WHERE s_resume_no = 1;
+
 </select>
 
 
