@@ -51,5 +51,12 @@ public interface IMember_resume8481 {
 		public List<Site_resume> getSiteResumeList(@Param("mem_no") Long mem_no);
 		//자유 이력서 List
 		public List<Free_resume> getFreeResumeList(@Param("mem_no") Long mem_no);
+		//사이트 이력서 삭제
 		
+		public void deleteSiteResume1(Long s_resume_no);
+		public void deleteSiteResume2(Long s_resume_no);
+		public void deleteSiteResume3(Long s_resume_no);
+		public void deleteSiteResume(Long s_resume_no);
+		//자유 이력서 삭제
+		public void deleteFreeResume(Long r_resume_no);
 }

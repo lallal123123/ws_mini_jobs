@@ -88,6 +88,17 @@ public class Site_resumeService8481 {
 		
 		return list;
 	}
-	
+	//사이트 이력서 삭제
+	public void deleteSiteResume(Long s_resume_no) {
+		
+		dao.deleteSiteResume1(s_resume_no);
+		dao.deleteSiteResume2(s_resume_no);
+		dao.deleteSiteResume3(s_resume_no);
+		dao.deleteSiteResume(s_resume_no);
+	}
+	//자유 이력서 삭제
+	public void deleteFreeResume(Long r_resume_no) {
+		dao.deleteFreeResume(r_resume_no);
+	}
 	
 }

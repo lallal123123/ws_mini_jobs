@@ -29,4 +29,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	SELECT * FROM free_resume WHERE mem_no = #{mem_no}
 </select>
 
+<delete id="deleteFreeResume">
+	DELETE FROM free_resume WHERE r_resume_no = #{r_resume_no}
+</delete>
+
+
+<delete id="deleteSiteResume1">
+	DELETE FROM license WHERE s_resume_no = #{s_resume_no}
+</delete>
+<delete id="deleteSiteResume2">
+	DELETE FROM career WHERE s_resume_no = #{s_resume_no}
+</delete>
+<delete id="deleteSiteResume3">
+	DELETE FROM education WHERE s_resume_no = #{s_resume_no}
+</delete>
+<delete id="deleteSiteResume">
+	DELETE FROM site_resume WHERE s_resume_no = #{s_resume_no}
+</delete>
 </mapper>
