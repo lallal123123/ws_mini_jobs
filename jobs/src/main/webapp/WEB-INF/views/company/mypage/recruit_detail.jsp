@@ -1,3 +1,4 @@
+<%@page import="com.project.jobs.dto.Company"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -114,11 +115,14 @@
 	</div>
 </div>
 
+<c:if test="${sessionScope.loggedInCompany eq null}">
+	<div class="d-flex justify-content-center sticky-bottom pb-5">
+		<a href="#" class="btn btn-lg text-white btn-warning px-5 me-1">지원하기</a>
+		<a href="#" class="btn btn-lg text-white btn-info px-5 ms-1">스크랩하기</a>
+	</div>
+</c:if>
 
-<div class="d-flex justify-content-center sticky-bottom pb-5">
-	<a href="#" class="btn btn-lg text-white btn-warning px-5 me-1">지원하기</a>
-	<a href="#" class="btn btn-lg text-white btn-info px-5 ms-1">스크랩하기</a>
-</div>
+
 
 
 <!-- 작업공간 영역 끝 -->
