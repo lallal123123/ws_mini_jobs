@@ -320,5 +320,9 @@ public class Controller5963 {
 		model.addAttribute("siteMemByresume", siteMemByresume);
 		return "/company/mypage/resume_detail";
 	}
+	
+	
+	
+	
 }
 
