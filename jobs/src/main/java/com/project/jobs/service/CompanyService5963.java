@@ -85,7 +85,10 @@ public class CompanyService5963 {
 		companyDao5963.comInfoModify(com_detail);
 	};
 	
-	
+	// 기업 소개 사진 수정
+	public void comInfoModifyImg(@Param("com_detail") Com_detail com_detail) {
+		companyDao5963.comInfoModifyImg(com_detail);
+	};
 	
 	// 기업 소개 정보 가져오기
 	public Com_detail getCom_detail(Long com_no) {

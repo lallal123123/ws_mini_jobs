@@ -67,10 +67,7 @@
 					<label for="" class="form-label">소개글</label>
 					<textarea class="form-control" name="introduction" id="introduction" placeholder="기업에 대한 소개글을 작성해주세요">${comInfoDetail.introduction}</textarea>
 			 	</div>
-				<div class="mb-3">
-					<label for="" class="form-label">대표사진</label>
-					<input class="form-control" type="file" name="img_url" id="img_url" value="${comInfoDetail.img_url}">
-				</div>
+				
 				<div class="mb-3">
 					<label for="" class="form-label">업종</label>
 					<select class="form-select" name="sectors" id="sectors" value="${comInfoDetail.sectors}">

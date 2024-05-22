@@ -64,6 +64,11 @@
 								<img src="/images/user/${comInfoDetail.img_url }">
 							</div>
 						</div>
+						<div class="text-end">
+							<button type="button" class="btn btn-jobs" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							  사진 변경하기
+							</button>
+						</div>
 					</div>
 		  
 					<div class="row mb-3 border-bottom pb-3">
@@ -146,6 +151,30 @@
    
 </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">사진 변경</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/company/mypage/infoModifyImg" method="post" enctype="multipart/form-data">
+      	<input type="hidden" name="com_no" value="${comInfoDetail.com_no}">
+      	<div class="modal-body">
+			<label for="" class="form-label">대표사진</label>
+			<input class="form-control" type="file" name="img_url" id="img_url">
+     	</div>
+      	<div class="modal-footer">
+        	<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        	<button type="submit" class="btn btn-primary">수정하기</button>
+      	</div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <!-- 작업공간 영역 끝 -->
 <jsp:include page="../../footer.jsp"></jsp:include>
 
