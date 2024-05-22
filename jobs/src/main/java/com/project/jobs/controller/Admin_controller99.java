@@ -1,5 +1,7 @@
 package com.project.jobs.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.jobs.dao.IAdminDao99;
 import com.project.jobs.dao.ICS_Dao99;
+import com.project.jobs.dao.ICom_community_dao92;
+import com.project.jobs.dao.IMem_community_dao92;
 import com.project.jobs.dao.INotice_Dao99;
+import com.project.jobs.dto.Cs_question;
 import com.project.jobs.dto.Member;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,17 +25,34 @@ public class Admin_controller99 {
 	@Autowired
 	private IAdminDao99 adminDao;
 	
+	@Autowired
+	private ICS_Dao99 cs_Dao;
+	
+	@Autowired
+	ICom_community_dao92 comDao;
+	@Autowired
+	IMem_community_dao92 memDao;
+	//대시보드 관련
 	@RequestMapping("/getTotalRegistrations")
 	public String TotalRegistrations(Model model) {
+		//기업, 일반회원 가입현황
 		model.addAttribute("currentMemRegist", adminDao.getCurrentMemRegist());
 		model.addAttribute("pastMemRegist", adminDao.getPastMemRegist());
 		model.addAttribute("currentComRegist", adminDao.getCurrentComRegist());
 		model.addAttribute("pastComRegist", adminDao.getPastComRegist());
+		//
+		List<Cs_question> dashboardCsList = adminDao.getCsList(0L, 3L);
+		for(Cs_question dto : dashboardCsList) {
+			dto.setCom_id(comDao.com_id(dto.getCom_no()));
+			dto.setMem_id(memDao.mem_id(dto.getMem_no()));
+		}
+		System.out.println(dashboardCsList);
+		model.addAttribute("list", dashboardCsList);
 		return "/admin/dashboard";
 	}
 	
-	@Autowired
-	private ICS_Dao99 cs_Dao;
+	
+	
 	//문의사항
 	@RequestMapping("/cs_request_99")
 	public String csRequest(HttpServletRequest request) {
@@ -155,11 +177,16 @@ public class Admin_controller99 {
 		return "/admin/notice_detail";
 	}
 	
-	@RequestMapping("/admin_dashboard_99")
-	public String dashboard() {
+	@RequestMapping("/noticeCategory_99")
+	public String csCategoryList(Model model, HttpServletRequest request) {
+		String category = request.getParameter("category");
 		
-		return "/admin/dashboard";
+		model.addAttribute("list", noticeDao.noticeCategory_99(category));
+		return "/common/cs_list";
 	}
+	
+	
+	
 	
 	
 }

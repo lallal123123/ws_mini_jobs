@@ -37,6 +37,14 @@
 	      <input class="form-control me-2" value="${noticeSearchData }" type="search" name="searchData" placeholder="Search" aria-label="Search" style="width: 150px;">
 	      <button class="btn btn-light" type="submit">Search</button>
 	    </form>
+		<form action="../noticeCategory_99" method="post">
+		  	<select class="form-select" name="category" id="category">
+		  	<option value="">전체보기</option>
+		  	<option value="공지">공지</option>
+		  	<option value="서비스 오픈">서비스 오픈</option>
+		  	</select>
+          	<input type="submit" class="btn btn-jobs w-100" value="검색하기Common">
+		</form>
         	<c:choose>
         		<c:when test="${mem_no == '3'}">
         			<a class="btn btn-light" href="../admin99/notice_write_form_99" role="button" onclick="return isLoggedIn()">공지사항 작성하기</a>

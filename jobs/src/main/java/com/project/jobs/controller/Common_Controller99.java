@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.jobs.dao.ICS_Dao99;
 import com.project.jobs.dao.INotice_Dao99;
+import com.project.jobs.dto.Company;
 import com.project.jobs.dto.Member;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,20 +29,31 @@ public class Common_Controller99 {
 	}
 	
 	@RequestMapping("/write_Form_99")
-	public String writeForm() {
+	public String writeForm(Model model,HttpSession session) {
+		Member member = (Member)session.getAttribute("loggedInMember");
+		Company company = (Company)session.getAttribute("loggedInCompany");
 		
+		if(member != null) {
+			Long mem_no = member.getMem_no();
+			model.addAttribute("mem_no", mem_no);
+		} else if(company != null) {
+			Long com_no = company.getCom_no();
+			model.addAttribute("com_no", com_no);
+		}
 		return "/common/write_form";
 	}
 	
 	@RequestMapping("/write_99")
 	public String write(HttpServletRequest request) {
 		String mem_no = request.getParameter("mem_no");
+		String com_no = request.getParameter("com_no");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String category = request.getParameter("category");
 		String ch_private = request.getParameter("ch_private");
+			
+		cs_Dao.write_99(mem_no, com_no, title, content, category, ch_private);
 		
-		cs_Dao.writeDao_99(mem_no, title, content, category, ch_private);
 		return "redirect:/cs_list_99";
 	}
 	
@@ -59,17 +71,22 @@ public class Common_Controller99 {
 	
 	@RequestMapping("/cs_detail_99")
 	public String listDetail(HttpServletRequest request, Model model, HttpSession session) {
+		String cs_no = request.getParameter("cs_no");
+		System.out.println(cs_no);
 		Member member = (Member)session.getAttribute("loggedInMember");
-		
+		Company company = (Company)session.getAttribute("loggedInCompany");
 		if(member != null) {
-			Long mem_no = member.getMem_no();
-			model.addAttribute("mem_no",mem_no);
+			String mem_id = member.getMem_id();
+			model.addAttribute("user_id", mem_id);
+		} else if(company != null) {
+			String com_id = company.getCom_id();
+			model.addAttribute("user_id", com_id);
 		}
 		
-		String cs_no = request.getParameter("cs_no");
 		model.addAttribute("dto", cs_Dao.getlistDetail_99(cs_no));
 		model.addAttribute("requestDto", cs_Dao.getRequestDao_99(cs_no));
-		model.addAttribute("writerId", cs_Dao.getCsWriterId_99(cs_no));
+		model.addAttribute("writer", cs_Dao.getCsWriterId_99(cs_no));
+		
 		return "/common/cs_detail";
 	}
 	
@@ -105,8 +122,14 @@ public class Common_Controller99 {
 	@GetMapping("/login_status_99")
 	@ResponseBody
 	public boolean checkLoginStatus(HttpSession session) {
-		
-		return session.getAttribute("loggedInMember") != null;
+		Member member = (Member)session.getAttribute("loggedInMember");
+		Company company = (Company)session.getAttribute("loggedInCompany");
+		if(member != null) {
+			return session.getAttribute("loggedInMember") != null;
+		} else if(company != null) {
+			return session.getAttribute("loggedInCompany") != null;
+		}
+		return false;
 	}
 	
 	@RequestMapping("/csSearchData_99")
@@ -166,6 +189,13 @@ public class Common_Controller99 {
 		return "/common/notice_list";
 	}
 	
+	@RequestMapping("/noticeCategory_99")
+	public String noticeCategoryList(Model model, HttpServletRequest request) {
+		String category = request.getParameter("category");
+		
+		model.addAttribute("list", noticeDao.noticeCategory_99(category));
+		return "/common/cs_list";
+	}
 	
 	
 	

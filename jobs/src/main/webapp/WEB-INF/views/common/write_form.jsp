@@ -24,7 +24,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link link-body-emphasis">
+                <a href="../notice_list_99" class="nav-link link-body-emphasis">
                  공지사항
                 </a>
               </li>   
@@ -34,7 +34,7 @@
     
     <div class="col-9">
         <div class="border p-3">
-        	<form action="/write_99" method="post" onsubmit="return csRegForm()">
+        	<form action="../write_99" method="post" onsubmit="return csRegForm()">
 		    	<h3 style="text-align:center;">문의·신고 작성</h3>
 	      		<div>문의·신고 종류(필수)</div>
 			  	<select class="form-select" name="category" id="category">
@@ -53,6 +53,8 @@
            		<div>글 비공개 여부</div>
 	 			<input type="radio" value="1" name="ch_private" id="public">공개
 	 			<input type="radio" value="0" name="ch_private" id="private">비공개<br>
+	 			<input type="text" value="${mem_no }" name="mem_no">
+	 			<input type="text" value="${com_no }" name="com_no">
            		<input type="submit" class="btn btn-jobs w-100" value="등록하기">
 			</form>
 			<a class="btn btn-light" href="../cs_list_99" role="button">이전</a>

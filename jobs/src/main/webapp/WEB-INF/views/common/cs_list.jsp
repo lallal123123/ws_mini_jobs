@@ -64,13 +64,13 @@
 			      <td>${list.category }</td>
 				  <c:choose>
 				  	<c:when test="${mem_no == '3' }">
-					  	<td><a href="cs_detail_99?cs_no=${list.cs_no}">${list.title}</a></td>
+					  	<td><a href="../cs_detail_99?cs_no=${list.cs_no}">${list.title}</a></td>
 					</c:when>
 					<c:when test="${list.ch_private == false and list.mem_no ne mem_no}">
 						<td>비밀글입니다</td>
 					</c:when>
 				  	<c:otherwise>
-						<td><a href="cs_detail_99?cs_no=${list.cs_no}">${list.title}</a></td>
+						<td><a href="../cs_detail_99?cs_no=${list.cs_no}">${list.title}</a></td>
 				  	</c:otherwise>
 				  </c:choose>
 			      <td>

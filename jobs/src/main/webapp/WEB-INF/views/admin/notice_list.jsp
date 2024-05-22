@@ -22,7 +22,7 @@
             <!-- 여기에 메뉴를 나열해주세요 -->
      			<!-- 여기에 메뉴를 나열해주세요 -->
               <li class="nav-item">
-                <a href="../admin99/admin_dashboard_99" class="nav-link link-body-emphasis">
+                <a href="../admin99/getTotalRegistrations" class="nav-link link-body-emphasis">
                   My home
                 </a>
               </li>
@@ -63,6 +63,14 @@
 		      <input class="form-control me-2"  value="${searchData }" type="search" placeholder="Search" aria-label="Search" style="width: 150px;">
 		      <button class="btn btn-light" type="submit">Search</button>
 		    </form>
+		    <form action="/noticeCategory_99" method="post">
+			  	<select class="form-select" name="category" id="category">
+			  	<option value="">전체보기</option>
+			  	<option value="공지">공지</option>
+			  	<option value="서비스 오픈">서비스 오픈</option>
+			  	</select>
+           		<input type="submit" class="btn btn-jobs w-100" value="검색하기">
+			</form>
 		  </div>
         	<a class="btn btn-light" href="../admin99/notice_write_form_99" role="button" onclick="return isLoggedIn()">공지사항 작성하기</a>
         	<table class="table">

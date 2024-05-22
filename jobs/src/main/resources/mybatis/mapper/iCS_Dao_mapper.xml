@@ -12,20 +12,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ON q.cs_no = r.cs_no
 		order by cs_no DESC
 	</select>
+	
 	<select id="getCsWriterId_99">
-		SELECT m.mem_id
-		FROM cs_question q
-		JOIN member m
-		ON q.mem_no = m.mem_no
-		WHERE q.cs_no = #{cs_no}
+		SELECT 
+			COALESCE(c.com_id, m.mem_id) AS mem_id
+		FROM
+			cs_question q
+			LEFT JOIN company c ON q.com_no = c.com_no
+			LEFT JOIN member m ON q.mem_no = m.mem_no
+		WHERE 
+			q.cs_no = #{cs_no}
 	</select>
+	
 	<select id="getlistDetail_99">
 		SELECT * FROM cs_question WHERE cs_no = #{cs_no}
 	</select>
-	<insert id="writeDao_99" >
-		INSERT INTO cs_question (mem_no, title, content, reg_date, category, ch_private)
-		VALUES (#{mem_no}, #{title}, #{content}, DATE(NOW()), #{category}, #{ch_private})
+	<insert id="write_99" >
+		INSERT INTO cs_question (mem_no, com_no, title, content, reg_date, category, ch_private)
+		VALUES (
+			<choose>
+				<when test="com_no != null">
+					 NULL, #{com_no},
+				</when>
+				<otherwise>
+					#{mem_no}, NULL, 
+				</otherwise>
+			</choose>
+			#{title}, #{content}, DATE(NOW()), #{category}, #{ch_private}
+		)
 	</insert>
+	
 	<delete id="deleteDao_99">
 		DELETE FROM cs_question WHERE cs_no = #{cs_no}
 	</delete>
@@ -38,6 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="csCategory_99">
 		SELECT * FROM cs_question WHERE category = #{category}
 	</select>
+	
 	<!-- 문의 답변 -->
 	<insert id="writeRequestDao_99">
 		INSERT INTO cs_request (cs_no, content, reg_date, title)

@@ -40,7 +40,7 @@
         	<div id="category">${dto.category }</div>
         	<br>
         	<div>작성자</div>
-        	<div id="writerId">${writerId.mem_id }</div>
+        	<div id="writerId">${writer.mem_id }</div>
         	<br>
         	<div>제목</div>
         	<div id="title">${dto.title }</div>
@@ -48,16 +48,19 @@
         	<div>내용</div>
         	<div id="content">${dto.content }</div>
         	<hr>
-        	<div>답변 제목</div>
-        	<div>${requestDto.title }</div>
-        	<br>
-        	<div>답변 내용</div>
-        	<div>${requestDto.content }</div>
-           	<br>
-        	<c:if test="${dto.mem_no == mem_no}">
+        	<c:if test="${writer.mem_id == user_id}">
        			<a class="btn btn-light" href="../modify_form_99?cs_no=${dto.cs_no }" role="button">수정</a>
        			<a class="btn btn-light" href="../delete_99?cs_no=${dto.cs_no }" role="button">삭제</a>
         	</c:if>
+        	<c:if test="${requestDto.title != null }">
+        		<div>답변 제목</div>
+	        	<div>${requestDto.title }</div>
+	        	<br>
+	        	<div>답변 내용</div>
+	        	<div>${requestDto.content }</div>
+	           	<br>
+        	</c:if>
+        	
         	<a class="btn btn-light" href="../cs_list_99" role="button">이전</a>
         	<a class="btn btn-light" href="#" role="button">TOP</a>
         </div>
