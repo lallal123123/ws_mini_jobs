@@ -4,9 +4,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.jobs.dao.IInterest_dao92">
 <!-- 전체글 -->
-<select id="memList" resultType="com.project.jobs.dto.Mem_interest" >
+<select id="mem_interestList" resultType="com.project.jobs.dto.Mem_interest" >
   select * from Mem_interest where com_no =#{comNo}
 </select>
 
+<select id="site_resumeListLast1" resultType="com.project.jobs.dto.Site_resume">
+	SELECT *
+FROM site_resume r1
+WHERE s_resume_no = (
+    SELECT MAX(r2.s_resume_no)
+    FROM site_resume r2
+    WHERE r2.mem_no = r1.mem_no
+);
+</select>
+
+<select id="memberListAll" resultType="com.project.jobs.dto.Member">
+	select *from member
+</select>
+<delete id="deleteMemInterest">
+	delete from mem_interest where mem_interest_no = #{no}
+</delete>
 
 </mapper>

@@ -49,7 +49,7 @@
 			 		</div> 
               	</li>   
               	<li>
-                	<a href="#" class="nav-link link-body-emphasis  border-bottom rounded-0">
+                	<a href="/interest92/memInterestList" class="nav-link link-body-emphasis  border-bottom rounded-0">
                 	스크랩 구직자 
                 	</a>
               	</li>   

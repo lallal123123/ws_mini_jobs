@@ -18,8 +18,8 @@ public class Mem_interest {
 	private String mem_birth;
 	private String mem_gender;
 	//최신이력서에서(site_resume 테이블)
-	private String hope_job;
-	private String part;
+	private String hope_job;//희망직무
+	private String part;//지원분야
 	
 
 }
