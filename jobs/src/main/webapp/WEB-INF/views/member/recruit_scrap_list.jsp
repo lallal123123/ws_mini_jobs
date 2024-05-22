@@ -38,7 +38,7 @@
                     <c:forEach var="memRecruitScrap" items="${memRecruitScrapList }">
 			        <div class="border p-3 mb-3">
 			        	<div class="row align-items-center">
-			        		
+			        		<input type="hidden" id="s_recruit_no" value="${memRecruitScrap.s_recruit_no }">
 			        		<div class="col-md-4">
 			        			<div class="fs-7 text-secondary">공고번호 : ${memRecruitScrap.recruit_no } </div>
 			        			<div>[ ${memRecruitScrap.com_name } ]</div>
@@ -72,7 +72,7 @@
 			        		마감일 ${memRecruitScrap.deadline_date } <br/>
 			        		</div>
 			        		<div class="col-md-3 text-center">
-				        		<button type="button" class="btn btn-info text-white"  onclick="scrapDelete(${memRecruitScrap.s_recruit_no })">
+				        		<button type="button" class="btn btn-info text-white"  onclick="scrapDelete()">
 					               <i class="bi bi-bookmark-star-fill fs-6"></i>
 					            </button>
 			        		</div>
@@ -90,11 +90,11 @@
     <!-- 작업공간 영역 끝 -->
     <jsp:include page="../footer.jsp"></jsp:include>
 	<script>
-	//const s_recruit_no = document.querySelector("#s_recruit_no");
+	const s_recruit_no = document.querySelector("#s_recruit_no");
 
-	function scrapDelete(s_recruit_no){
+	function scrapDelete(){
 		if(confirm("스크랩을 해제하시겠습니까?")){
-			location.href="/member/deleteRecruitScrap?s_recruit_no=" + s_recruit_no;
+			location.href="/member/deleteRecruitScrap?s_recruit_no=" + s_recruit_no.value;
 		}else{
 			alert("스크랩 해제를 취소하셨습니다.");
 		}

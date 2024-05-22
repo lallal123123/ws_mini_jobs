@@ -22,7 +22,16 @@ WHERE s_resume_no = (
 	select *from member
 </select>
 <delete id="deleteMemInterest">
-	delete from mem_interest where mem_interest_no = #{no}
+	delete from mem_interest where mem_no=#{dto.mem_no} and com_no=#{dto.com_no}
 </delete>
+
+<!-- 기업 ->멤버 관심버튼 작동 -->
+<insert id="mem_interestInsert">
+	insert into mem_interest values (null,#{dto.mem_no},#{dto.com_no})
+</insert>
+<delete id="mem_interestDelete">
+	delete from mem_interest where mem_no=#{dto.mem_no} and com_no=#{dto.com_no}
+</delete>
+
 
 </mapper>

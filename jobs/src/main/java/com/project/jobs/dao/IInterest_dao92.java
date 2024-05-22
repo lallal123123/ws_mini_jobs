@@ -15,5 +15,7 @@ public interface IInterest_dao92 {
 	public List<Member> memberListAll();	
 	public List<Mem_interest> mem_interestList(@Param("comNo") Long comNo);
 	public List<Site_resume> site_resumeListLast1();
-	public void deleteMemInterest(@Param("no") String no);
+	public void deleteMemInterest(@Param("dto") Mem_interest mem);
+	public void mem_interestInsert(@Param("dto") Mem_interest mem);
+	
 }

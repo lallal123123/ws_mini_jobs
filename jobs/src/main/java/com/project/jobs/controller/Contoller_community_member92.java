@@ -41,8 +41,7 @@ public class Contoller_community_member92 {
 		List<Mem_community> hList = dao.hotList(0L, 5L);
 		for (Mem_community dto : hList) {
 			dto.setMem_id(dao.mem_id(dto.getMem_no()));
-		}
-		;
+		};
 		System.out.println(hList);
 		model.addAttribute("hList", hList);
 		model.addAttribute("cnt", cnt);

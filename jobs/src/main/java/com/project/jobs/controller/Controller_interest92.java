@@ -42,6 +42,7 @@ public class Controller_interest92 {
 				if(dto.getMem_no() == Long.parseLong(s.getMem_no())) {
 					dto.setHope_job(s.getHope_job());
 					dto.setPart(s.getPart());
+					dto.setS_resume_no(s.getS_resume_no());
 				}
 			}
 			
@@ -51,10 +52,30 @@ public class Controller_interest92 {
 	}
 	
 	@RequestMapping("/delete")
-	public String delete(@RequestParam("no") String no) {
-		dao.deleteMemInterest(no);
+	public String delete(Mem_interest mem_interest) {
+		dao.deleteMemInterest(mem_interest);
 		return "redirect:memInterestList";
 	}
 	
+	@RequestMapping("/mem_interestInsert")
+	public String mem_interestInsert(Mem_interest mem_interest) {
+		dao.mem_interestInsert(mem_interest);
+		return "redirect:/company/mypage/mem_recruit_list";
+	}
+	@RequestMapping("/mem_notInterest")
+	public String mem_notInterest(Mem_interest mem_interest,@RequestParam("recruit_no") Long recruit_no,HttpSession session) {
+		Company com = (Company)session.getAttribute("loggedInCompany");
+		mem_interest.setCom_no(com.getCom_no());
+		dao.deleteMemInterest(mem_interest);
+		return "redirect:/company/mypage/mem_recruit_list?recruit_no="+recruit_no;
+	}
+	@RequestMapping("/mem_interest")
+	public String mem_interest(Mem_interest mem_interest,@RequestParam("recruit_no") Long recruit_no,HttpSession session) {
+		Company com = (Company)session.getAttribute("loggedInCompany");
+		mem_interest.setCom_no(com.getCom_no());
+	
+		dao.mem_interestInsert(mem_interest);
+		return "redirect:/company/mypage/mem_recruit_list?recruit_no="+recruit_no;
+	}
 	
 }

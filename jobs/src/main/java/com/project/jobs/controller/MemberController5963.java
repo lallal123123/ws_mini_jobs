@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
-import com.project.jobs.dto.Free_resume;
 import com.project.jobs.dto.MemRecruitApply;
 import com.project.jobs.dto.MemRecruitScrap;
-import com.project.jobs.dto.Mem_recruit;
 import com.project.jobs.dto.Member;
 import com.project.jobs.dto.Site_resume;
 import com.project.jobs.service.MemberService5963;
@@ -101,10 +99,9 @@ public class MemberController5963 {
 	
 	// 지원한 공고 취소하기
 	@RequestMapping("/deleteRecruitApply")
-	public String deleteRecruitApply(@RequestParam("mem_recruit_no")Long mem_recruit_no) {
-		System.out.println("공고 지원 취소");
+	public String deleteRecruitApply(Long mem_recruit_no) {
 		memberService.deleteRecruitApply(mem_recruit_no);
-		return "redirect:/member/getMemRecruitApplyList";
+		return "";
 	}
 }
 
