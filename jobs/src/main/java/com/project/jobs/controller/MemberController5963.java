@@ -101,9 +101,10 @@ public class MemberController5963 {
 	
 	// 지원한 공고 취소하기
 	@RequestMapping("/deleteRecruitApply")
-	public String deleteRecruitApply(Long mem_recruit_no) {
+	public String deleteRecruitApply(@RequestParam("mem_recruit_no")Long mem_recruit_no) {
+		System.out.println("공고 지원 취소");
 		memberService.deleteRecruitApply(mem_recruit_no);
-		return "";
+		return "redirect:/member/getMemRecruitApplyList";
 	}
 }
 
