@@ -38,7 +38,7 @@
                     <c:forEach var="memRecruitApply" items="${memRecruitApplyList }">
 			        <div class="border p-3 mb-3">
 			        	<div class="row align-items-center">
-			        	<input type="hidden" id="s_recruit_no" value="${memRecruitApply.mem_recruit_no }">
+			        	<input type="hidden" class="mem_recruit_no" value="${memRecruitApply.mem_recruit_no }">
 			        		<div class="col-md-4">
 			        			<div class="fs-7 text-secondary">공고번호 : ${memRecruitApply.recruit_no } </div>
 			        			<div>[ ${memRecruitApply.com_name } ]</div>
@@ -84,7 +84,7 @@
 						        </c:otherwise>
 						    </c:choose> 
 						    <c:if test="${memRecruitApply.pass eq null }">
-				        		<button type="button" class="btn btn-info text-white ms-2"  onclick="applyDelete()">
+				        		<button type="button" class="btn btn-info text-white ms-2"  onclick="applyDelete(${memRecruitApply.mem_recruit_no})">
 					               취소하기
 					            </button>
 					        </c:if>
@@ -103,13 +103,12 @@
     <!-- 작업공간 영역 끝 -->
     <jsp:include page="../footer.jsp"></jsp:include>
 	<script>
-	const mem_recruit_no = document.querySelector("#mem_recruit_no");
-
-	function applyDelete(){
-		if(confirm("지원을 취소하시겠습니까?")){
-			location.href="/member/deleteRecruitApply?mem_recruit_no=" + mem_recruit_no.value;
-		}
-	}
+	
+	function applyDelete(memRecruitNo) {
+        if (confirm("지원을 취소하시겠습니까?")) {
+            location.href = "/member/deleteRecruitApply?mem_recruit_no=" + memRecruitNo;
+        }
+    }
 	</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
