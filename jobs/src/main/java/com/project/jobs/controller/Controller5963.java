@@ -271,6 +271,53 @@ public class Controller5963 {
 		com_detail.setEstablishment(com_detail_file.getEstablishment());
 		com_detail.setHistory(com_detail_file.getHistory());
 		com_detail.setIdeal_talent(com_detail_file.getIdeal_talent());
+		//String originName = com_detail_file.getFileName();
+
+		//String newName = UUID.randomUUID().toString() + "_" + originName;
+		//com_detail.setImg_url(newName);
+		//System.out.println(originName);
+		//System.out.println(newName);
+
+		//System.out.println(com_detail_file);
+		//System.out.println(com_detail);
+		// 파일저장
+		//File file = new File(com_detail.getImg_url());
+
+		//try {
+		//	com_detail_file.getImg_url().transferTo(file);
+		//} catch (IllegalStateException e) {
+		//	// TODO Auto-generated catch block
+		//	e.printStackTrace();
+		//} catch (IOException e) {
+		//	// TODO Auto-generated catch block
+		//	e.printStackTrace();
+		//}
+
+		companyService.comInfoModify(com_detail);
+
+		return "redirect:/company/mypage/info_detail";
+	}
+	
+	// 사진 수정하기
+	@RequestMapping("/infoModifyImg")
+	public String infoModifyImg(Com_detail_file com_detail_file) {
+		System.out.println("공고 소개 이미지 수정 중");
+		System.out.println(com_detail_file);
+		System.out.println(com_detail_file);
+		Com_detail com_detail = new Com_detail();
+		com_detail.setCom_no(com_detail_file.getCom_no());
+		//com_detail.setCom_detail_no(com_detail_file.getCom_detail_no());
+		//com_detail.setIntroduction(com_detail_file.getIntroduction());
+		//com_detail.setPension(com_detail_file.getPension());
+		//com_detail.setCompensation(com_detail_file.getCompensation());
+		//com_detail.setFacilities(com_detail_file.getFacilities());
+		//com_detail.setPolicy(com_detail_file.getPolicy());
+		//com_detail.setConvenience(com_detail_file.getConvenience());
+		//com_detail.setSectors(com_detail_file.getSectors());
+		//com_detail.setP_number(com_detail_file.getP_number());
+		//com_detail.setEstablishment(com_detail_file.getEstablishment());
+		//com_detail.setHistory(com_detail_file.getHistory());
+		//com_detail.setIdeal_talent(com_detail_file.getIdeal_talent());
 		String originName = com_detail_file.getFileName();
 
 		String newName = UUID.randomUUID().toString() + "_" + originName;
@@ -278,8 +325,8 @@ public class Controller5963 {
 		System.out.println(originName);
 		System.out.println(newName);
 
-		System.out.println(com_detail_file);
-		System.out.println(com_detail);
+		System.out.println("com_detail_file" + com_detail_file);
+		System.out.println("com_detail " + com_detail);
 		// 파일저장
 		File file = new File(com_detail.getImg_url());
 
@@ -293,7 +340,8 @@ public class Controller5963 {
 			e.printStackTrace();
 		}
 
-		companyService.comInfoModify(com_detail);
+
+		companyService.comInfoModifyImg(com_detail);
 
 		return "redirect:/company/mypage/info_detail";
 	}

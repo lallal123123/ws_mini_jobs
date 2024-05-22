@@ -25,8 +25,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </insert>
 
 <insert id="comInfoModify" parameterType="com.project.jobs.dto.Com_detail">
-UPDATE com_detail SET introduction=#{com_detail.introduction}, img_url=#{com_detail.img_url}, pension=#{com_detail.pension}, compensation=#{com_detail.compensation}, facilities=#{com_detail.facilities},
+UPDATE com_detail SET introduction=#{com_detail.introduction}, pension=#{com_detail.pension}, compensation=#{com_detail.compensation}, facilities=#{com_detail.facilities},
 policy=#{com_detail.policy}, convenience=#{com_detail.convenience}, sectors=#{com_detail.sectors}, p_number=#{com_detail.p_number}, establishment=#{com_detail.establishment}  WHERE com_no= #{com_detail.com_no};
+</insert>
+
+<insert id="comInfoModifyImg" parameterType="com.project.jobs.dto.Com_detail">
+UPDATE com_detail SET img_url=#{com_detail.img_url}  WHERE com_no= #{com_detail.com_no};
 </insert>
 
 

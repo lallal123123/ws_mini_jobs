@@ -48,6 +48,9 @@ public interface ICompanyDao5963 {
 	// 기업 소개 정보 수정
 	public void comInfoModify(@Param("com_detail") Com_detail com_detail);
 	
+	// 기업 소개 사진 수정
+	public void comInfoModifyImg(@Param("com_detail") Com_detail com_detail);
+	
 	// 기업 소개 정보 가져오기
 	public Com_detail getCom_detail(@Param("com_no") Long com_no);
 	
