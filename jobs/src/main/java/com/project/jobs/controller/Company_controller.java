@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.jobs.dto.Company;
 import com.project.jobs.dto.Member;
+import com.project.jobs.dto.Recruit;
 import com.project.jobs.service.CompanyService3854;
 
 import jakarta.servlet.http.HttpSession;
@@ -24,6 +25,11 @@ public class Company_controller {
 
     @Autowired
     private CompanyService3854 companyService;
+    
+    @GetMapping("/jobPostings")
+    public List<Recruit> getJobPostingsForInterestedCompanies(@RequestParam String mem_id) {
+        return companyService.getJobPostingsForInterestedCompanies(mem_id);
+    }
 
     @GetMapping
     public String getAllCompanies(Model model, HttpSession session) {
