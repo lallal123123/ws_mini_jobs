@@ -30,6 +30,9 @@
         .interested {
             color: red;
         }
+        .not-interested {
+            color: blue;
+        }
     </style>
     <script>
         function toggleInterest(com_no, starElement) {
@@ -50,10 +53,26 @@
             };
             xhr.send('com_no=' + com_no + '&action=' + action);
         }
+
+        function toggleNotInterest(com_no, starElement) {
+            var action = starElement.classList.contains('not-interested') ? 'remove' : 'add';
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '${pageContext.request.contextPath}/companies/toggleNotInterest', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    if (action === 'add') {
+                        starElement.classList.add('not-interested');
+                        starElement.innerText = '◆';
+                    } else {
+                        starElement.classList.remove('not-interested');
+                        starElement.innerText = '◇';
+                    }
+                }
+            };
+            xhr.send('com_no=' + com_no + '&action=' + action);
+        }
     </script>
-<title>jobs 휴먼 클라우드 이력관리플렛폼</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<link href="/css/common.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column h-100">
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
@@ -61,7 +80,6 @@
     <div class="row">
         <div class="col-auto sidebar border p-3">
             <ul class="nav nav-pills flex-column mb-auto">
-                <!-- 여기에 메뉴를 나열해주세요 -->
                 <li class="nav-item">
                     <a href="#" class="nav-link link-body-emphasis border-bottom rounded-0" aria-current="page">My 홈</a>
                 </li>
@@ -84,38 +102,67 @@
             <div class="container">
                 <p class="text-secondary d-flex">
                     <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
-                    <a href="#" class="nav-link text-secondary">관심기업 목록</a> <span class="mx-3"></span>
-                    
+                    <a href="#" class="nav-link text-secondary">관심기업 | 관심없음  목록</a> <span class="mx-3"></span>
                 </p>
                 <div class="form-container">
-            <h2>관심 기업 목록</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>회사명</th>
-                        <th>대표자</th>
-                        <th>주소</th>
-                        <th>관심 기업</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="company" items="${interestCompanies}">
-                        <tr>
-                            <td>${company.com_name}</td>
-                            <td>${company.com_ceo}</td>
-                            <td>${company.com_addr}</td>
-                            <td>
-                                <span class="star interested" onclick="toggleInterest(${company.com_no}, this)">★</span>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+                    <h4>관심 기업 목록</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>회사명</th>
+                                <th>대표자</th>
+                                <th>주소</th>
+                                <th>관심 기업 해제</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="company" items="${interestCompanies}">
+                                <tr>
+                                    <td>${company.com_name}</td>
+                                    <td>${company.com_ceo}</td>
+                                    <td>${company.com_addr}</td>
+                                    <td>
+                                        <span class="star interested" onclick="toggleInterest(${company.com_no}, this)">
+                                            ★
+                                        </span>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-container mt-4">
+                    <h4>관심 없음 기업 목록</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>회사명</th>
+                                <th>대표자</th>
+                                <th>주소</th>
+                                <th>관심 없음 기업 해제</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="company" items="${notInterestCompanies}">
+                                <tr>
+                                    <td>${company.com_name}</td>
+                                    <td>${company.com_ceo}</td>
+                                    <td>${company.com_addr}</td>
+                                    <td>
+                                        <span class="star not-interested" onclick="toggleNotInterest(${company.com_no}, this)">
+                                            ◆
+                                        </span>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
