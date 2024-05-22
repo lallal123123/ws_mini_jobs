@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,9 +105,17 @@
 	        		현재 지원자 <a class="link-info fw-bold" href="/company/mypage/mem_recruit_list?recruit_no=${recruit.recruit_no }">${recruit.mem_count }</a>
 	        		</div>
 	        		<div class="col-md-3 d-flex flex-row-reverse">
-	        			<c:choose>
+	        			
+	        			<c:choose>	
 					        <c:when test="${recruit.mem_count ne 0}">
-					         	<a class="btn btn-secondary" href="">공고 마감하기</a>
+					        	<c:choose>
+						        	<c:when test="${recruit.deadline_date < today}">
+						        		<a class="btn btn-secondary" href="#">마감</a>
+						        	</c:when>
+						        	<c:otherwise>
+						        		<a class="btn btn-secondary" href="/company/mypage/updateDeadlineDate?recruit_no=${recruit.recruit_no }">공고 마감하기</a>
+						        	</c:otherwise>
+					        	</c:choose>
 					        </c:when>         
 					        <c:otherwise>
 					        	<a class="btn btn-secondary" href="/company/mypage/deleteRecruit?recruit_no=${recruit.recruit_no }">삭제</a>

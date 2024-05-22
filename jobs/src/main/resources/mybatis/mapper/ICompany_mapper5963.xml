@@ -57,7 +57,7 @@ ON c.com_no = cd.com_no WHERE c.com_no=#{com_no};
 
 
 <select id="getMemCount" resultType="com.project.jobs.dto.Mem_recruit">
-	SELECT mem_no from mem_recruit WHERE mem_recruit_no = #{recruit_no};
+	SELECT mem_no from mem_recruit WHERE recruit_no = #{recruit_no};
 </select>
 
 <select id="getComRecruitListKeyword" resultType="com.project.jobs.dto.Recruit">
@@ -66,10 +66,10 @@ ON c.com_no = cd.com_no WHERE c.com_no=#{com_no};
 
 
 <select id="getRecruitMemList" resultType="com.project.jobs.dto.RecruitByMemResume">
-SELECT m.mem_name, m.mem_gender, m.mem_birth, subquery.s_resume_no, subquery.mem_no, subquery.title, subquery.recruit_no 
+SELECT m.mem_name, m.mem_gender, m.mem_birth, subquery.s_resume_no, subquery.mem_no, subquery.title, subquery.recruit_no, subquery.mem_recruit_no
 FROM member m
 JOIN (
-    SELECT sr.s_resume_no, sr.mem_no, sr.title, mr.recruit_no
+    SELECT sr.s_resume_no, sr.mem_no, sr.title, mr.recruit_no, mr.mem_recruit_no
     FROM site_resume sr
     JOIN mem_recruit mr ON sr.s_resume_no = mr.s_resume_no
 ) subquery ON m.mem_no = subquery.mem_no
@@ -96,9 +96,23 @@ sr.motive, sr.personality, sr.aspiration, sr.growth, sr.title from member m
 JOIN 
 site_resume sr 
 on m.mem_no = sr.mem_no
-WHERE s_resume_no = 1;
-
+WHERE s_resume_no = #{param1};
 </select>
 
+<update id="updateDeadlineDate">
+UPDATE recruit SET deadline_date = DATE_SUB(NOW(), INTERVAL 1 DAY) WHERE recruit_no=#{param1};
+</update>
+
+<update id="updatePassTrue">
+UPDATE mem_recruit SET pass=true WHERE mem_recruit_no=#{param1};
+</update>
+
+<update id="updatePassFalse">
+UPDATE mem_recruit SET pass=false WHERE mem_recruit_no=#{param1}; 
+</update>
+ 
+<select id="getMemRecruit" resultType="com.project.jobs.dto.Mem_recruit">
+SELECT * FROM mem_recruit WHERE mem_recruit_no = #{param1};
+</select>
 
 </mapper>

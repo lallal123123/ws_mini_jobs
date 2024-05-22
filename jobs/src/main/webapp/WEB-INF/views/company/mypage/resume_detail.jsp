@@ -130,9 +130,25 @@
 					</div>
 					
 		        </div>
-				<a href="" class="btn btn-jobs float-end mb-5">수정하기</a>
-	        
-       
+		        <c:if test="${sessionScope.loggedInCompany ne null}">
+		        <div class="text-center border p-4 rouned mb-5">
+		        	<c:choose> 
+					    <c:when test="${mem_recruit.pass eq null}">
+					        <div class="mb-3">결과 통보하기</div>
+					        <div class="d-flex justify-content-center">
+								<a href="/company/mypage/updatePassTrue?mem_recruit_no=${mem_recruit_no }&s_resume_no=${siteMemByresume.s_resume_no }" class="btn btn-primary me-1">합격</a>
+								<a href="/company/mypage/updatePassFalse?mem_recruit_no=${mem_recruit_no }&s_resume_no=${siteMemByresume.s_resume_no }" class="btn btn-danger ms-1">불합격</a>
+							</div>
+					    </c:when>
+					    <c:when test="${mem_recruit.pass eq false}">
+					        <span class="text-danger fw-blod">불합격</span>
+					    </c:when>
+					    <c:otherwise>
+					       <span class="text-primary fw-blod">합격</span>
+					    </c:otherwise>
+					</c:choose>
+				</div>
+       			</c:if>
     </div>
    
 </div>

@@ -16,5 +16,6 @@ public class RecruitByMemResume {
 	private Long mem_no;
 	private String title;
 	private Long recruit_no;
+	private Long mem_recruit_no;
 	private int interest;
 }
