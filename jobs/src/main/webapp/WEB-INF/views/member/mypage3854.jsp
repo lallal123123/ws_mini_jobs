@@ -30,7 +30,7 @@
                             </div> 
                         </li>   
                         <li>
-                            <a href="#" class="nav-link link-body-emphasis border-bottom rounded-0">스크랩 구직자</a>
+                            <a href="/member/recruitScrapList" class="nav-link link-body-emphasis border-bottom rounded-0">스크랩 공고 리스트</a>
                         </li> 
                         <li class="nav-item">
                             <a href="#" class="nav-link link-body-emphasis border-bottom rounded-0" aria-current="page">이력서</a>

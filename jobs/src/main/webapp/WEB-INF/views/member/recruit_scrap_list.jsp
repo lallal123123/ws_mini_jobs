@@ -23,11 +23,9 @@
                 </div>
             </div>
             <div class="col-9">
-                <div class="border p-3">
-                <!-- 작업시작 -->
-                         
+        
                  <div class="border p-5 rounded">
-                 <h2>사이트 이력서</h2>
+
                     
                     <!-- 검색창 -->
                     <div id="searchBox" >
@@ -37,66 +35,54 @@
                         </form>
                     </div><hr>      
                     <!-- 검색창 --> 
-                    <c:forEach var="siteList" items="${siteList}">
-                    <div class="border p-2 mb-2">
-                        <div class="row align-items-center">
-                            <div class="col-md-4">
-                                <div>이력서 제목 :${siteList.title } </div>
-                            </div>
-                            <div class="col-md-5 text-secondary">
-                            <div class="col-md-3 d-flex flex-row-reverse">
-                                <c:choose>        
-                                    <c:when test="${not empty siteList.title}">
-                                        <a class="btn btn-secondary" href="/resume/member_mypage_resume_sitelist?s_resume_no=${siteList.s_resume_no }">삭제</a>
-                                        <a class="btn btn-jobs me-2" href="">수정</a>
-                                    </c:when>
-                                 
-                                </c:choose> 
-                            </div>
-                            <div>
-                            </div>
-                        </div>
-                    </div></div>
-                    </c:forEach>
+                    <c:forEach var="memRecruitScrap" items="${memRecruitScrapList }">
+			        <div class="border p-3 mb-3">
+			        	<div class="row align-items-center">
+			        		<div class="col-md-4">
+			        			<div class="fs-7 text-secondary">공고번호 :${memRecruitScrap.recruit_no } </div>
+			        			<div>[ ${memRecruitScrap.com_name } ]</div>
+			        			<div class="fs-5 fw-bold w-100 text_ellipsis">
+			        			<a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="/company/mypage/recruitDetail?recruit_no=${memRecruitScrap.recruit_no }">${memRecruitScrap.title }</a>
+			        			</div>
+			        		</div>
+			        		<div class="col-md-5 text-secondary">
+			        		${memRecruitScrap.field } | 
+			        		<c:choose>
+						        <c:when test="${memRecruitScrap.education ne null }">
+						           ${memRecruitScrap.education } | 
+						        </c:when>         
+						        <c:otherwise>
+						          학력무관 | 
+						        </c:otherwise>
+						    </c:choose>
+						    <c:choose>
+						        <c:when test="${memRecruitScrap.pay ne 0 }">
+						          ${memRecruitScrap.pay } |<br/>
+						        </c:when>         
+						        <c:otherwise>
+						          회사내규에 따름 |<br/>
+						        </c:otherwise>
+						    </c:choose> 
+						    <c:choose>
+						        <c:when test="${memRecruitScrap.com_addr ne null }">
+						          ${memRecruitScrap.com_addr } | 
+						        </c:when>         
+						    </c:choose>      		
+			        		마감일 ${memRecruitScrap.deadline_date } <br/>
+			        		</div>
+			        		<div class="col-md-3 text-center">
+			        		  <i class="bi bi-bookmark-star-fill fs-2 text-success"></i>
+			        		</div>
+			        		<div></div>
+			        	</div>
+			        </div>
+		        	</c:forEach>
                 </div>
                                 
-               <div class="border p-5 rounded">
-                <h2>자유양식 이력서</h2>
-                                
-                    <div id="searchBox" >
-                        <form action="freeresumesearch" method="post">
-                            <input type="text"  name="search" placeholder="제목을 입력해주세요..">
-                            <button>검색</button>
-                        </form>
-                    </div><hr>  
-                <c:forEach var="freeList" items="${freeList}">
-                    <div class="border p-2 mb-2">
-                        <div class="row align-items-center">
-                            <div class="col-md-4">
-                                <div>이력서 제목 :${freeList.title } </div>
-                            </div>
-                            <div class="col-md-5 text-secondary">
-                            <div class="col-md-3 d-flex flex-row-reverse">
-                                <c:choose>        
-                                    <c:when test="${not empty freeList.title}">
-                                        <a class="btn btn-secondary" href="/resume/member_mypage_resume_freedelete?r_resume_no=${freeList.r_resume_no }">삭제</a>
-                                        <a class="btn btn-jobs me-2" href="">수정</a>
-                                    </c:when>
-                                </c:choose> 
-                            </div>
-                            <div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    </c:forEach>
-                
-
-                <!-- 작업끝 -->
-                </div>
+               </div>
             </div>
 
-        </div>
+
     </div>
     <!-- 작업공간 영역 끝 -->
     <jsp:include page="../footer.jsp"></jsp:include>

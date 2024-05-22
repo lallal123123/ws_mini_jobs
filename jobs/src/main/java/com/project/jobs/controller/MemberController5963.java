@@ -1,10 +1,14 @@
 package com.project.jobs.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.jobs.dto.MemRecruitScrap;
 import com.project.jobs.dto.Member;
 import com.project.jobs.service.MemberService5963;
 
@@ -21,8 +25,13 @@ public class MemberController5963 {
 	
 	// 개인회원 스크랩한 공고 리스트 
 	@RequestMapping("/recruitScrapList")
-	public String recruitScrapList() {
-		
+	public String recruitScrapList(HttpServletRequest request, Model model) {
+		System.out.println("스크랩 공고 리스트 페이지 가기");
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("loggedInMember");
+		Long mem_no = member.getMem_no();
+		List<MemRecruitScrap> memRecruitScrapList = memverService.getMemRecruitScrapList(mem_no);
+		model.addAttribute("memRecruitScrapList", memRecruitScrapList);
 		return "/member/recruit_scrap_list";
 	}
 	
