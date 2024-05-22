@@ -45,4 +45,28 @@ public class Recruit_controller8481 {
 		return "/common/recruit_List";
 	}
 	
+	//셀렉트 검색(등록일)
+	@RequestMapping("recruitselectregdate")
+	public String selectRegDate(HttpServletRequest request, Model model) {
+		System.out.println("등록일순으로 볼거에요");
+		
+		List<ComRecruitList> selectLeg = dao.getSelectRegDate();
+		model.addAttribute("crmlist", selectLeg);
+		
+		return "/common/recruit_List";
+	}
+	
+	
+	//셀렉트 검색(마감일)
+		@RequestMapping("recruitselectdeaddate")
+		public String selectRegDate(Model model) {
+			System.out.println("마감일순으로 볼거에요");
+			
+			List<ComRecruitList> selectDead = dao.getSelectDeadLine();
+			model.addAttribute("crmlist", selectDead);
+			
+			return "/common/recruit_List";
+		}
+	
+	
 }

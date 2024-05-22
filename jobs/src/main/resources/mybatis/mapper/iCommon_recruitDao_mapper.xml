@@ -3,17 +3,26 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.jobs.dao.ICommonRecruitDao8481">
-<select id="getRecruitList">
+
 	
-	SELECT a.*, b.com_name FROM recruit AS a LEFT JOIN company AS b ON a.com_no = b.com_no
-	<!-- SELECT * from recruit -->
-</select>
-
-<select id="getSearchList">
-	SELECT a.*, b.com_name AS com_no FROM recruit AS a LEFT JOIN company AS b ON a.com_no = b.com_no WHERE
-	a.title LIKE CONCAT('%', #{search}, '%') or a.career LIKE CONCAT('%', #{search} '%') 
-	OR a.skill LIKE CONCAT ('%', #{search}, '%') OR a.field LIKE CONCAT('%', #{search},'%') or b.com_name LIKE CONCAT('%', #{search}, '%') 
-</select>
-
+	<select id="getRecruitList">
+		SELECT a.*, b.com_name FROM recruit AS a LEFT JOIN company AS b ON a.com_no = b.com_no
+	</select>
+	
+	<select id="getSearchList"> <!-- 검색기능 -->
+		SELECT a.*, b.com_name AS com_no FROM recruit AS a LEFT JOIN company AS b ON a.com_no = b.com_no WHERE
+		a.title LIKE CONCAT('%', #{search}, '%') or a.career LIKE CONCAT('%', #{search} '%') 
+		OR a.skill LIKE CONCAT ('%', #{search}, '%') OR a.field LIKE CONCAT('%', #{search},'%') or b.com_name LIKE CONCAT('%', #{search}, '%') 
+	</select>
+	
+	<select id="getSelectRegDate"><!-- 등록일 -->
+		SELECT a.*, b.com_name from recruit AS a LEFT JOIN company AS b ON a.com_no = b.com_no ORDER BY reg_date
+	</select>
+	
+	<select id="getSelectDeadLine"><!-- 마감일 -->
+		SELECT a.*, b.com_name FROM recruit AS a LEFT JOIN company AS b ON a.com_no = b.com_no WHERE deadline_date >= CURDATE() ORDER BY deadline_date
+	</select>
+	
+	
 
 </mapper>

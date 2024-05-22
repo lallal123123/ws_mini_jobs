@@ -30,12 +30,8 @@
                  <h2>사이트 이력서</h2>
                     
                     <!-- 검색창 -->
-                    <div id="searchBox" >
-                        <form action="siteresumesearch" method="post" placeholder="제목을 입력해주세요..">
-                            <input type="text"  name="search">
-                            <button>검색</button>
-                        </form>
-                    </div><hr>      
+                    
+                          
                     <!-- 검색창 --> 
                     <c:forEach var="siteList" items="${siteList}">
                     <div class="border p-2 mb-2">
@@ -62,13 +58,7 @@
                                 
                <div class="border p-5 rounded">
                 <h2>자유양식 이력서</h2>
-                                
-                    <div id="searchBox" >
-                        <form action="freeresumesearch" method="post">
-                            <input type="text"  name="search" placeholder="제목을 입력해주세요..">
-                            <button>검색</button>
-                        </form>
-                    </div><hr>  
+                                          
                 <c:forEach var="freeList" items="${freeList}">
                     <div class="border p-2 mb-2">
                         <div class="row align-items-center">

@@ -15,4 +15,9 @@ public interface ICommonRecruitDao8481 {
 	//검색기능
 	public List<ComRecruitList> getSearchList(@Param("search") String search);
 	
+	//셀렉트별 검색(등록일순)
+	public List<ComRecruitList> getSelectRegDate();
+	//셀렉트별 검색(마감일)
+	public List<ComRecruitList> getSelectDeadLine();
+	
 }
