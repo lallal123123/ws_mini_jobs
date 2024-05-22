@@ -2,6 +2,9 @@ package com.project.jobs.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -97,6 +100,13 @@ public class Controller5963 {
 		return "redirect:/company/mypage/getComRecruitList";
 	}
 
+	// 공고 마감하기
+	@RequestMapping("/updateDeadlineDate")
+	public String updateDeadlineDate(@RequestParam("recruit_no") Long recruit_no) {
+		companyService.updateDeadlineDate(recruit_no);
+		return "redirect:/company/mypage/getComRecruitList";
+	};
+	
 	// com_no로 공고 리스트
 	@RequestMapping("/getComRecruitList")
 	public String getComRecruitList(HttpServletRequest request, Model model) {
@@ -108,7 +118,7 @@ public class Controller5963 {
 		List<Recruit> recruitList = companyService.getComRecruitList(com_no);
 		System.out.println(recruitList);
 
-		for (int i = 0; i < recruitList.size(); i++) {
+		for(int i = 0; i < recruitList.size(); i++) {
 			Recruit recruit = recruitList.get(i);
 			List<Mem_recruit> result = companyService.getMemCount(recruit.getRecruit_no());
 			int memCount = result.size();
@@ -116,8 +126,13 @@ public class Controller5963 {
 
 			recruit.setMem_count(memCount);
 		}
+		LocalDate now = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String today = now.format(formatter);
+
 		model.addAttribute("recruitList", recruitList);
 		model.addAttribute("company", company);
+		model.addAttribute("today", today);
 		return "/company/mypage/recruit_list";
 	}
 
@@ -324,10 +339,38 @@ public class Controller5963 {
 
 	// 이력서 번호로 이력서 정보 가져오기
 	@RequestMapping("/getResumeDetail")
-	public String getResumeDetail(@RequestParam("s_resume_no") Long s_resume_no, Model model) {
+	public String getResumeDetail(@RequestParam("mem_recruit_no")Long mem_recruit_no, @RequestParam("s_resume_no") Long s_resume_no, Model model) {
 		SiteMemByresume siteMemByresume = companyService.getResumeDetail(s_resume_no);
+		if(mem_recruit_no != null){
+			Mem_recruit mem_recruit = companyService.getMemRecruit(mem_recruit_no);
+			model.addAttribute("mem_recruit_no", mem_recruit_no);
+			model.addAttribute("mem_recruit", mem_recruit);
+		};
+		
 		model.addAttribute("siteMemByresume", siteMemByresume);
+		
 		return "/company/mypage/resume_detail";
 	}
 
+	// 이력서 true 주기
+	@RequestMapping("/updatePassTrue")
+	public String updatePassTrue(@RequestParam("mem_recruit_no")Long mem_recruit_no, @RequestParam("s_resume_no")Long s_resume_no, Model model) {
+		companyService.updatePassTrue(mem_recruit_no);
+		System.out.println(s_resume_no);
+		model.addAttribute("mem_recruit_no", mem_recruit_no);
+		model.addAttribute("s_resume_no", s_resume_no);
+		return "redirect:/company/mypage/getResumeDetail?mem_recruit_no=" + mem_recruit_no + "&s_resume_no=" + s_resume_no;
+	};
+			
+	// 이력서 flase 주기
+	@RequestMapping("/updatePassFalse")
+	public String updatePassFlase(@RequestParam("mem_recruit_no")Long mem_recruit_no, @RequestParam("s_resume_no")Long s_resume_no, Model model) {
+		companyService.updatePassFalse(mem_recruit_no);
+		System.out.println(s_resume_no);
+		model.addAttribute("mem_recruit_no", mem_recruit_no);
+		model.addAttribute("s_resume_no", s_resume_no);
+		return "redirect:/company/mypage/getResumeDetail?mem_recruit_no=" + mem_recruit_no + "&s_resume_no=" + s_resume_no;
+	};
+	
+	
 }

@@ -66,4 +66,18 @@ public interface ICompanyDao5963 {
 	// 이력서 번호로 이력서 정보 가져오기
 	public SiteMemByresume getResumeDetail(@Param("s_resume_no") Long s_resume_no);
 	
+	// 공고 마감하기
+	public void updateDeadlineDate(Long recruit_no);
+	
+	// 이력서 true 주기
+	public void updatePassTrue(Long mem_recruit_no);
+	
+	// 이력서 flase 주기
+	public void updatePassFalse(Long mem_recruit_no);
+	
+	// 공고 지원 현황
+	public Mem_recruit getMemRecruit(Long mem_recruit_no);
+	
+	
+	
 }

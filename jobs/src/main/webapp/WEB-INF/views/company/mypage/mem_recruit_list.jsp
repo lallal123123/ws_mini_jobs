@@ -103,7 +103,7 @@
 								</div>
 								<div class="col-md-3 d-flex flex-row-reverse">
 									<a
-										href="/company/mypage/getResumeDetail?s_resume_no=${resume.s_resume_no }"
+										href="/company/mypage/getResumeDetail?s_resume_no=${resume.s_resume_no }&mem_recruit_no=${resume.mem_recruit_no }"
 										class="btn btn-info text-white">이력서 보기</a>
 								</div>
 								<div></div>
