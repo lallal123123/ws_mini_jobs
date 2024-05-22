@@ -15,6 +15,6 @@ public class Mem_recruit {
 	private Long recruit_no; 
 	private Boolean pass; 
 	private Boolean view;
-	
+	private Long s_recruit_no;
 	
 }
