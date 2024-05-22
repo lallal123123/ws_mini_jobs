@@ -16,4 +16,6 @@ public interface IMemberDao5963 {
 	// 개인회원 스크랩 공고 리스트 가져오기
 	public List<MemRecruitScrap> getMemRecruitScrapList(@Param("mem_no")Long mem_no);
 	
+	// 개인회원 스크랩 공고 삭제하기
+	public void deleteRecruitScrap(Long s_recruit_no);
 }
