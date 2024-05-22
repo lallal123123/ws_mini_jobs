@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.project.jobs.dto.Company;
+import com.project.jobs.dto.Recruit;
 
 @Mapper
 public interface ICompanyDao3854 {
@@ -43,4 +44,6 @@ public interface ICompanyDao3854 {
    List<Company> getNotInterestCompanies(@Param("mem_no") Long mem_no);
    
    List<Company> getAllCompaniesWithoutNotInterested(@Param("mem_no") Long mem_no);
+   
+   List<Recruit> getJobPostingsForInterestedCompanies(@Param("mem_id") String mem_id);
 }
