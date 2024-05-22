@@ -46,7 +46,16 @@ public class MemberController5963 {
 		
 		memverService.addRecruitScrap(mem_no, recruit_no);
 		
-		return "";
+		return "redirect:/member/recruitScrapList";
+	}
+	
+	// 개인회원 스크랩 공고 삭제하기
+	@RequestMapping("/deleteRecruitScrap")
+	public String deleteRecruitScrap(@RequestParam("s_recruit_no")Long s_recruit_no) {
+		System.out.println("스크랩 공고 삭제하기");
+		memverService.deleteRecruitScrap(s_recruit_no);
+		
+		return "redirect:/member/recruitScrapList";
 	}
 	
 }

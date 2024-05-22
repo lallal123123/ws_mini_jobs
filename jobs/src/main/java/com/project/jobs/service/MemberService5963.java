@@ -26,4 +26,10 @@ public class MemberService5963 {
 		return list;
 	};
 
+	
+	// 개인회원 스크랩 공고 삭제하기
+	public void deleteRecruitScrap(Long s_recruit_no) {
+		memberDao.deleteRecruitScrap(s_recruit_no);
+	};
+		
 }
