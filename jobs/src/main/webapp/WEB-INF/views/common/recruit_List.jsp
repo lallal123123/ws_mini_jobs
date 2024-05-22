@@ -20,21 +20,24 @@
 
 	<div class="container">
 		<div class="row">
+		
+		
+		
+		
 			<div class="border p-5 rounded">
-			
-				<div class="p-3 mb-3">
-                        <select class="form-select" name="hope_job" onchange="toggleTitleInput()">
-                            <option value="regdate">등록일</option>
-                            <option value="deadline">마감일</option>
-                        </select>
-                 </div>
-
 				<div class="overflow-hidden">
 					<div class="input-group search-box float-end">
-						<input type="text" class="form-control" placeholder="검색"
-							aria-label="제목 검색" id="search" name="search" aria-describedby="getSearchList">
-						<button class="btn btn-outline-secondary" type="button"
-							onclick="getSearchList()">검색</button>
+						<div class=" search-box p-1 mb-">
+	                        <select class="form-select" id ="selectdate" name="selectdate" onchange="toggleTitleInput()">
+	                            <option value="">선택해주세요</option>
+	                            <option value="regdate">등록일</option>
+	                            <option value="deadline">마감일</option>
+	                        </select>
+	                	 </div>
+	                	<form class="d-flex"> 
+							<input type="text" class="form-control me-2" placeholder="검색" aria-label="제목 검색" id="search" name="search" aria-describedby="getSearchList" style="width: 150px;">
+							<button class="btn btn-light" type="button"	onclick="getSearchList()">검색</button>
+						</form>
 					</div>
 				</div>
 				<c:forEach var="crmlist" items="${crmlist}">
@@ -44,8 +47,7 @@
 								<div class="fs-7 text-secondary">공고번호 : ${crmlist.recruit_no }</div>
 								<div>[ ${crmlist.com_name } ]</div>
 								<div class="fs-5 fw-bold w-100 text_ellipsis">
-									<a
-										class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+									<a	class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
 										href="/company/mypage/recruitDetail?recruit_no=${crmlist.recruit_no }">${crmlist.title }</a>
 								</div>
 							</div>
@@ -62,7 +64,7 @@
 								</c:choose>
 								<c:choose>
 									<c:when test="${crmlist.pay ne 0 }">
-				          				${crmlist.pay } |<br />
+				          				연봉 ${crmlist.pay } |<br />
 									</c:when>
 									<c:otherwise>
 			          					회사내규에 따름 |<br />
@@ -74,8 +76,7 @@
 							        </c:when>
 								</c:choose>
 								마감일 ${crmlist.deadline_date } <br /> 
-								현재 지원자 <a	class="link-info fw-bold"
-									href="/company/mypage/mem_recruit_list?recruit_no=${crmlist.recruit_no }">${recruit.mem_count }</a>
+								현재 지원자 <a	class="link-info fw-bold">${crmlist.mem_count }</a>
 							</div>
 							
 							<div class="col-md-3 d-flex flex-row-reverse">
@@ -101,9 +102,29 @@ function getSearchList(){
     console.log("검색하는중");
     location.href = "/recruitsearchlist?search=" + search.value;
 }
+
+const select = document.querySelector("#selectdate");
+function getSelectList(){
+	
+	location.href = "" + select.value;
+	
+}
+
+function toggleTitleInput() {
+    var selectBox = document.getElementById("selectdate");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+    if (selectedValue === "regdate") {
+    	location.href = "/recruitselectregdate";
+    } else if (selectedValue === "deadline") {
+    	location.href = "/recruitselectdeaddate";
+    }
+}
+
+
+
+
 </script>
-
-
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
