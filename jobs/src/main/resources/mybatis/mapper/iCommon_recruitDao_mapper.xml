@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.jobs.dao.ICommonRecruitDao8481">
 
-	
 	<select id="getRecruitList">
 		SELECT a.*, b.com_name FROM recruit AS a LEFT JOIN company AS b ON a.com_no = b.com_no
 	</select>
@@ -23,6 +22,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT a.*, b.com_name FROM recruit AS a LEFT JOIN company AS b ON a.com_no = b.com_no WHERE deadline_date >= CURDATE() ORDER BY deadline_date
 	</select>
 	
-	
-
 </mapper>
