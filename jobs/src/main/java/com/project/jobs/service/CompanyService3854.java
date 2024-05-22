@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.project.jobs.dao.ICompanyDao3854;
 import com.project.jobs.dao.IMemberDao3854;
 import com.project.jobs.dto.Company;
+import com.project.jobs.dto.Recruit;
 
 @Service
 public class CompanyService3854 {
@@ -100,4 +101,9 @@ public class CompanyService3854 {
 		}
 		return companyDao.getAllCompaniesWithoutNotInterested(mem_no);
 	}
+	
+	 public List<Recruit> getJobPostingsForInterestedCompanies(String mem_id) {
+	        return companyDao.getJobPostingsForInterestedCompanies(mem_id);
+	    }
+	
 }
