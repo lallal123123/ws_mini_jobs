@@ -29,7 +29,7 @@ public class Company_controller {
     public String getAllCompanies(Model model, HttpSession session) {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
         Long mem_no = loggedInMember != null ? loggedInMember.getMem_no() : null;
-        List<Company> companies = companyService.getAllCompaniesWithInterests(mem_no);
+        List<Company> companies = companyService.getAllCompaniesWithoutNotInterested(mem_no);
         model.addAttribute("companies", companies);
         return "com_list";
     }
@@ -43,6 +43,9 @@ public class Company_controller {
             if ("add".equals(action)) {
                 if (!companyService.isInterestCompany(mem_no, com_no)) {
                     companyService.addInterestCompany(mem_no, com_no);
+                    if (companyService.isNotInterestCompany(mem_no, com_no)) {
+                        companyService.removeNotInterestCompany(mem_no, com_no);
+                    }
                 }
             } else if ("remove".equals(action)) {
                 if (companyService.isInterestCompany(mem_no, com_no)) {
@@ -54,14 +57,45 @@ public class Company_controller {
         return "error";
     }
 
+    @PostMapping("/toggleNotInterest")
+    @ResponseBody
+    public String toggleNotInterest(@RequestParam("com_no") Long com_no, @RequestParam("action") String action, HttpSession session) {
+        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+        if (loggedInMember != null) {
+            Long mem_no = loggedInMember.getMem_no();
+            if ("add".equals(action)) {
+                if (!companyService.isNotInterestCompany(mem_no, com_no)) {
+                    companyService.addNotInterestCompany(mem_no, com_no);
+                    if (companyService.isInterestCompany(mem_no, com_no)) {
+                        companyService.removeInterestCompany(mem_no, com_no);
+                    }
+                }
+            } else if ("remove".equals(action)) {
+                if (companyService.isNotInterestCompany(mem_no, com_no)) {
+                    companyService.removeNotInterestCompany(mem_no, com_no);
+                }
+            }
+            return "success";
+        }
+        return "error";
+    }
+
     @GetMapping("/interestCompanies")
     public String getInterestCompanies(Model model, HttpSession session) {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
-        List<Company> interestCompanies = companyService.getInterestCompanies(loggedInMember.getMem_no());
-        model.addAttribute("interestCompanies", interestCompanies);
-        return "member/com_interest_list";
+        if (loggedInMember != null) {
+            Long mem_no = loggedInMember.getMem_no();
+            
+            List<Company> interestCompanies = companyService.getInterestCompanies(mem_no);
+            List<Company> notInterestCompanies = companyService.getNotInterestCompanies(mem_no);
+            
+            model.addAttribute("interestCompanies", interestCompanies);
+            model.addAttribute("notInterestCompanies", notInterestCompanies);
+            
+            return "member/com_interest_list";
+        }
+        return "error";
     }
-
 
     @GetMapping("/{com_no}")
     public String getCompanyById(@PathVariable("com_no") Long com_no, Model model, HttpSession session) {
@@ -70,7 +104,9 @@ public class Company_controller {
         Company company = companyService.getCompanyById(com_no);
         if (mem_no != null) {
             boolean isInterest = companyService.isInterestCompany(mem_no, com_no);
+            boolean isNotInterest = companyService.isNotInterestCompany(mem_no, com_no);
             company.setInterest(isInterest);
+            company.setNotInterest(isNotInterest);
         }
         model.addAttribute("company", company);
         return "com_interest_detail";
@@ -159,3 +195,5 @@ public class Company_controller {
         return (Company) session.getAttribute("loggedInCompany");
     }
 }
+
+

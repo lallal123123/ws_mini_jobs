@@ -38,8 +38,9 @@
                     <c:forEach var="memRecruitScrap" items="${memRecruitScrapList }">
 			        <div class="border p-3 mb-3">
 			        	<div class="row align-items-center">
+			        		<input type="hidden" id="s_recruit_no" value="${memRecruitScrap.s_recruit_no }">
 			        		<div class="col-md-4">
-			        			<div class="fs-7 text-secondary">공고번호 :${memRecruitScrap.recruit_no } </div>
+			        			<div class="fs-7 text-secondary">공고번호 : ${memRecruitScrap.recruit_no } </div>
 			        			<div>[ ${memRecruitScrap.com_name } ]</div>
 			        			<div class="fs-5 fw-bold w-100 text_ellipsis">
 			        			<a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="/company/mypage/recruitDetail?recruit_no=${memRecruitScrap.recruit_no }">${memRecruitScrap.title }</a>
@@ -71,7 +72,9 @@
 			        		마감일 ${memRecruitScrap.deadline_date } <br/>
 			        		</div>
 			        		<div class="col-md-3 text-center">
-			        		  <i class="bi bi-bookmark-star-fill fs-2 text-success"></i>
+				        		<button type="button" class="btn btn-info text-white"  onclick="scrapDelete()">
+					               <i class="bi bi-bookmark-star-fill fs-6"></i>
+					            </button>
 			        		</div>
 			        		<div></div>
 			        	</div>
@@ -86,7 +89,17 @@
     </div>
     <!-- 작업공간 영역 끝 -->
     <jsp:include page="../footer.jsp"></jsp:include>
+	<script>
+	const s_recruit_no = document.querySelector("#s_recruit_no");
 
+	function scrapDelete(){
+		if(confirm("스크랩을 해제하시겠습니까?")){
+			location.href="/member/deleteRecruitScrap?s_recruit_no=" + s_recruit_no.value;
+		}else{
+			alert("스크랩 해제를 취소하셨습니다.");
+		}
+	}
+	</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

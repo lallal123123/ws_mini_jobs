@@ -18,7 +18,7 @@
 	<div class="border rounded p-4">
 		<div class="row">
 			<div class="col-md-8 border-end">
-				<div class="fs-7 text-secondary">공고 번호 : ${recruitDetail.recruit_no}</div>
+				<div class="fs-7 text-secondary">공고 번호 : <span id="recruit_no">${recruitDetail.recruit_no}</span></div>
 				<div class="f-5 fw-bold">${recruitDetail.com_name}</div>
 				<h3 class="border-bottom py-2">${recruitDetail.title}</h3>
 				<table class="w-100">
@@ -118,7 +118,7 @@
 <c:if test="${sessionScope.loggedInCompany eq null}">
 	<div class="d-flex justify-content-center sticky-bottom pb-5">
 		<a href="#" class="btn btn-lg text-white btn-warning px-5 me-1">지원하기</a>
-		<a href="#" class="btn btn-lg text-white btn-info px-5 ms-1">스크랩하기</a>
+		<button class="btn btn-lg text-white btn-info px-5 ms-1" onclick="addRecruitScrap()">스크랩하기</button>
 	</div>
 </c:if>
 
@@ -127,7 +127,17 @@
 
 <!-- 작업공간 영역 끝 -->
 <jsp:include page="../../footer.jsp"></jsp:include>
+<script>
+const recruit_no = document.querySelector("#recruit_no");
 
+function addRecruitScrap(){
+	if(confirm("해당 공고를 스크랩하시겠습니까?")){
+		location.href="/member/addRecruitScrap?recruit_no=" + recruit_no.innerHTML;
+	}else{
+		alert("공고 스크랩을 취소하였습니다.");
+	}
+}
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
