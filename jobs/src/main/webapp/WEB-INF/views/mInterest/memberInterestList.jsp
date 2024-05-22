@@ -50,7 +50,7 @@
 									</div>
 									<div class="col-md-5 text-secondary">
 										<div class="col-md-3 d-flex flex-row">
-											<a class="btn btn-secondary" href="/company/mypage/getResumeDetail?s_resume_no=${dto.s_resume_no }">이력서조회</a> 
+											<a class="btn btn-secondary" href="/company/mypage/getResumeDetail1?s_resume_no=${dto.s_resume_no }">이력서조회</a> 
 											<a class="btn btn-jobs me-2" href="delete?mem_no=${dto.mem_no}&com_no=${dto.com_no}">관심삭제</a>
 										</div>
 									</div>
