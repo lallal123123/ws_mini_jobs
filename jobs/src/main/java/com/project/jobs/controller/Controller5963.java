@@ -393,13 +393,26 @@ public class Controller5963 {
 			Mem_recruit mem_recruit = companyService.getMemRecruit(mem_recruit_no);
 			model.addAttribute("mem_recruit_no", mem_recruit_no);
 			model.addAttribute("mem_recruit", mem_recruit);
-		};
+		}else if(mem_recruit_no == 0L){
+			
+		}
 		
 		model.addAttribute("siteMemByresume", siteMemByresume);
 		
 		return "/company/mypage/resume_detail";
 	}
 
+	
+	@RequestMapping("/getResumeDetail1")
+	public String getResumeDetail1(@RequestParam("s_resume_no") Long s_resume_no, Model model) {
+		SiteMemByresume siteMemByresume = companyService.getResumeDetail(s_resume_no);
+		
+		model.addAttribute("siteMemByresume", siteMemByresume);
+		
+		return "/company/mypage/resume_detail";
+	}
+
+	
 	// 이력서 true 주기
 	@RequestMapping("/updatePassTrue")
 	public String updatePassTrue(@RequestParam("mem_recruit_no")Long mem_recruit_no, @RequestParam("s_resume_no")Long s_resume_no, Model model) {
