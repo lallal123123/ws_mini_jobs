@@ -35,13 +35,13 @@
 					<a href="write_form">게시글 작성하기</a><br>
 					<form action="list" method="post">
 						<label for="" class="form-label">카테고리</label> <select
-							class="form-control" name="category">
+							class=" form-select" name="category">
 							<option value="">선택해주세요</option>
 							<c:forEach var="dto" items="${clist}">
 								<option class="option_category" value="${dto.ch_category}">${dto.ch_category}</option>
 							</c:forEach>
 						</select>
-						<button>보기</button>
+						<button class="btn btn-light">보기</button>
 					</form>
 					<table class="table">
 						<thead>
@@ -71,64 +71,70 @@
 					<div id="pageBox">
 
 						<c:if test="${pagination.pageBlock ne 1 }">
-							<button id="preBtn" onclick="pre()">[이전]</button>
+							<button id="preBtn" class="btn btn-secondary" onclick="pre()">[이전]</button>
 						</c:if>
 
 						<c:if test="${pagination.end < pagination.endMax }">
 							<!-- 삼항연산자로 코드 간결하게 가능!!!! -->
-							<c:forEach var="x" begin="${pagination.begin }"
-								end="${pagination.end }">
+							<c:forEach var="x" begin="${pagination.begin}"
+								end="${pagination.end}">
 								<c:if test="${x eq pagination.page}">
-									 ${x }
-								</c:if>
+        ${x}
+    </c:if>
 								<c:if test="${x ne pagination.page}">
-									 <c:if test="${search eq null && category eq null && com_no eq null} ">
-										<a href="list?page=${x }">${x }</a>
-									</c:if>
-									<c:if test="${category ne null }">
-										<a href="list?page=${x }&category=${category}">${x }</a>
-									</c:if>
-									<c:if test="${search ne null }">
-										<a href="list?page=${x }&search=${search}">${x }</a>
-									</c:if>
-									<c:if test="${com_no ne null }">
-										<a href="list?page=${x }&com_no=${com_no}">${x }</a>
-									</c:if>
+									<c:choose>
+										<c:when
+											test="${empty search && empty category && empty com_no}">
+											<a href="list?page=${x}">${x}</a>
+										</c:when>
+										<c:when test="${not empty category}">
+											<a href="list?page=${x}&category=${category}">${x}</a>
+										</c:when>
+										<c:when test="${not empty search}">
+											<a href="list?page=${x}&search=${search}">${x}</a>
+										</c:when>
+										<c:when test="${not empty com_no}">
+											<a href="list?page=${x}&com_no=${com_no}">${x}</a>
+										</c:when>
+									</c:choose>
 								</c:if>
 							</c:forEach>
 						</c:if>
 
 						<c:if test="${pagination.end >= pagination.endMax }">
-							<c:forEach var="x" begin="${pagination.begin }"
-								end="${pagination.endMax }">
+							<c:forEach var="x" begin="${pagination.begin}"
+								end="${pagination.endMax}">
 								<c:if test="${x eq pagination.page}">
-									 ${x }
-	 							</c:if>
+        ${x}
+    </c:if>
 								<c:if test="${x ne pagination.page}">
-									 <c:if test="${search eq null && category eq null && com_no eq null} ">
-										<a href="list?page=${x }">${x }</a>
-									</c:if>
-									<c:if test="${category ne null }">
-										<a href="list?page=${x }&category=${category}">${x }</a>
-									</c:if>
-									<c:if test="${search ne null }">
-										<a href="list?page=${x }&search=${search}">${x }</a>
-									</c:if>
-									<c:if test="${com_no ne null }">
-										<a href="list?page=${x }&com_no=${com_no}">${x }</a>
-									</c:if>
+									<c:choose>
+										<c:when
+											test="${empty search && empty category && empty com_no}">
+											<a href="list?page=${x}">${x}</a>
+										</c:when>
+										<c:when test="${not empty category}">
+											<a href="list?page=${x}&category=${category}">${x}</a>
+										</c:when>
+										<c:when test="${not empty search}">
+											<a href="list?page=${x}&search=${search}">${x}</a>
+										</c:when>
+										<c:when test="${not empty com_no}">
+											<a href="list?page=${x}&com_no=${com_no}">${x}</a>
+										</c:when>
+									</c:choose>
 								</c:if>
 							</c:forEach>
 						</c:if>
 
 						<c:if test="${pagination.pageBlock ne pagination.pageBlockMax }">
-							<button id="nextBtn" onclick="next()">[다음]</button>
+							<button id="nextBtn" class="btn btn-secondary" onclick="next()">[다음]</button>
 						</c:if>
 					</div>
-					<div id="searchBox">
-						<form action="list" method="post">
-							<input type="text" name="search">
-							<button>내용검색</button>
+					<div id="searchBox" >
+						<form action="list"  method="post" >
+							<input type="text"   style="width: 250px;" name="search">
+							<button class="btn btn-light">내용검색</button>
 						</form>
 					</div>
 
