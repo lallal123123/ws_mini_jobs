@@ -120,4 +120,17 @@ public class CompanyService3854 {
 	public Com_detail getComDetailByCompanyId(Long com_no) {
 		return comDetailDao.getComDetailByCompanyId(com_no);
 	}
+	
+
+    
+    public List<Company> findPaginated(int page, int pageSize) {
+        int offset = (page - 1) * pageSize;
+        return companyDao.getCompaniesByPage(offset, pageSize);
+    }
+
+   
+    public int countCompanies() {
+        return companyDao.getTotalCompanyCount();
+    }
+
 }

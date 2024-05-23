@@ -76,12 +76,19 @@ public class Company_controller {
         return emitter;
     }*/
     
+
+
     @GetMapping
-    public String getAllCompanies(Model model, HttpSession session) {
-        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
-        Long mem_no = loggedInMember != null ? loggedInMember.getMem_no() : null;
-        List<Company> companies = companyService.getAllCompaniesWithoutNotInterested(mem_no);
+    public String getAllCompanies(Model model, HttpSession session,
+                                  @RequestParam(name = "page", defaultValue = "1") int page) {
+        int pageSize = 5;
+        List<Company> companies = companyService.findPaginated(page, pageSize);
+        int totalCompanies = companyService.countCompanies();
+        int totalPages = (int) Math.ceil((double) totalCompanies / pageSize);
+
         model.addAttribute("companies", companies);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
         return "com_list";
     }
    

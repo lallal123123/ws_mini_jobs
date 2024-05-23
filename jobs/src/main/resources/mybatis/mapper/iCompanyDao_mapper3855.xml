@@ -119,7 +119,7 @@
         WHERE com_no = #{com_no} AND status = TRUE
     </select>
     
-        <select id="getCompaniesByPage" resultType="com.project.jobs.dto.Company">
+     <select id="getCompaniesByPage" resultType="com.project.jobs.dto.Company">
         SELECT * FROM company
         ORDER BY com_no
         LIMIT #{pageSize} OFFSET #{offset}
