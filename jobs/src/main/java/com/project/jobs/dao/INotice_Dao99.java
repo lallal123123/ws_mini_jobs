@@ -16,4 +16,5 @@ public interface INotice_Dao99 {
 	public void noticeDeleteDao_99(@Param("notice_no") String notice_no);
 	public void noticeModify_99(@Param("title") String title, @Param("content") String content, @Param("category") String category, @Param("notice_no") String notice_no);
 	public List<Notice> getNoticeSerchData_99(@Param("searchData")String searchData);
+	public List<Notice> noticeCategory_99(@Param("category") String category);
 }

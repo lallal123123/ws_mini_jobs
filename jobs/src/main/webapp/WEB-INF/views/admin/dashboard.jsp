@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
               <li class="nav-item">
-                <a href="../admin99/admin_dashboard_99" class="nav-link active" aria-current="page">
+                <a href="../admin99/getTotalRegistrations" class="nav-link active" aria-current="page">
                   My home
                 </a>
               </li>
@@ -66,6 +67,56 @@
         	window.pastMemberRegistrations = ${pastMemRegist.total};
         	window.pastCompanyRegistrations = ${pastComRegist.total};
         </script>
+        <h3>미답변 문의·신고 </h3>
+        <br>
+        <table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">게시글번호</th>
+			      <th scope="col">문의등록일</th>
+			      <th scope="col">제목</th>
+			      <th scope="col">작성자</th>
+			      <th scope="col">답변 달기</th>			      
+			    </tr>
+			  </thead>
+			  <tbody class="table-group-divider">
+			  
+			  <c:forEach var="list" items="${list }" varStatus="status">
+			  	<tr>
+			      <td scope="row">${list.cs_no }</td>
+			      <td><fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd"/></td>
+			      <td>
+			      	<c:choose>
+			      		<c:when test="${list.answerStatus == '미답변' }">
+			      			<a href="../admin99/cs_detail_99?cs_no=${list.cs_no}">${list.title}</a></td>
+			      		</c:when>
+			      		<c:otherwise>
+			      			<a href="../admin99/cs_request_detail_99?cs_no=${list.cs_no }">${list.title}</div>
+			      		</c:otherwise>
+			      	</c:choose>
+			      <c:choose>
+			      	<c:when test='${list.com_id != null }'>
+			      		<td>${list.com_id }</td>
+			      	</c:when>
+			      	<c:otherwise>
+			      		<td>${list.mem_id }</td>
+			      	</c:otherwise>
+			      </c:choose>
+			      <td>
+			      	<c:choose>
+			      		<c:when test="${list.answerStatus == '미답변' }">
+			      			<a class="btn btn-light" href="../admin99/cs_detail_99?cs_no=${list.cs_no }" role="button">답변 등록하기</a>
+			      		</c:when>
+			      		<c:otherwise>
+			      			<div class="btn btn-light" role="button">답변 완료</div>
+			      		</c:otherwise>
+			      	</c:choose>
+			      </td>
+			    </tr>
+			  </c:forEach>
+			  </tbody>
+			</table>
+			<a href="../admin99/cs_list_99">더보기></a>
 		</div>
     </div>
 </div>

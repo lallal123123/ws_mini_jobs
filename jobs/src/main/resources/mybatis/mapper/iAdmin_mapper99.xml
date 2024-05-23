@@ -39,4 +39,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM company
 		WHERE MONTH(make_date)=(MONTH(CURRENT_DATE)-1)	
 	</select>
+	<select id="getCsList">
+		SELECT q.cs_no, q.mem_no, q.title, q.content, q.reg_date, q.category, q.ch_private,
+			case when r.cs_no IS NULL then '미답변' ELSE '답변완료' end AS answerStatus
+		FROM cs_question q
+		LEFT JOIN cs_request r
+		ON q.cs_no = r.cs_no
+		WHERE case when r.cs_no IS NULL then '미답변' ELSE '답변완료' END = '미답변'
+		LIMIT #{start}, #{cnt}
+	</select>
+	<select id="getCsListAll_99">
+		SELECT q.cs_no, q.mem_no, q.title, q.content, q.reg_date, q.category, q.ch_private,
+			case when r.cs_no IS NULL then '미답변' ELSE '답변완료' end AS answerStatus
+		FROM cs_question q
+		LEFT JOIN cs_request r
+		ON q.cs_no = r.cs_no
+		WHERE case when r.cs_no IS NULL then '미답변' ELSE '답변완료' END = '미답변'
+	</select>
+	<select id="getRecruitList_99">
+		SELECT * FROM recruit LIMIT #{start}, #{cnt}
+	</select>
 </mapper>

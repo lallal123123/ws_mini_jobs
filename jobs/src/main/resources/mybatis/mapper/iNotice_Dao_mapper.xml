@@ -25,6 +25,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="noticeModify_99">
 		UPDATE notice SET title = #{title}, content = #{content}, category = #{category} WHERE notice_no = #{notice_no}
 	</update>
+	<select id="noticeCategory_99">
+		SELECT * FROM notice WHERE category = #{category}
+	</select>
 	
 		 
 </mapper>

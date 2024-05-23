@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.jobs.dao.IMainPageDao99">
+	<select id="getMemRecruitList_99">
+		SELECT re.recruit_no, re.com_no, subsubquery.mem_name, subsubquery.mem_gender,
+		subsubquery.mem_birth, subsubquery.s_resume_no, subsubquery.mem_no, subsubquery.title,
+		subsubquery.recruit_no, subsubquery.mem_recruit_no
+		FROM recruit re
+		join
+		(SELECT m.mem_name, m.mem_gender, m.mem_birth, subquery.s_resume_no, subquery.mem_no, subquery.title, subquery.recruit_no, subquery.mem_recruit_no
+		FROM member m
+		JOIN (
+		    SELECT sr.s_resume_no, sr.mem_no, sr.title, mr.recruit_no, mr.mem_recruit_no
+		    FROM site_resume sr
+		    JOIN mem_recruit mr ON sr.s_resume_no = mr.s_resume_no
+		) subquery ON m.mem_no = subquery.mem_no) subsubquery
+		on re.recruit_no= subsubquery.recruit_no
+		WHERE com_no = #{com_no}
+	</select>
+</mapper>

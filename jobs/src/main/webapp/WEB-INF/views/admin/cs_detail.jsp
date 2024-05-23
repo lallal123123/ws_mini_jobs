@@ -60,7 +60,7 @@
         	<div id="category">${dto.category }</div>
         	<br>
         	<div>작성자</div>
-        	<div id="writerId">${writerId.mem_id }</div>
+        	<div id="writerId">${writer.mem_id }</div>
         	<br>
         	<div>제목</div>
         	<div id="title">${dto.title }</div>

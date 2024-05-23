@@ -16,6 +16,9 @@ public class Cs_question {
 
 	private Long cs_no;
 	private Long mem_no;
+	private Long com_no;
+	private String com_id;
+	private String mem_id;
 	private String title;
 	private String content;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

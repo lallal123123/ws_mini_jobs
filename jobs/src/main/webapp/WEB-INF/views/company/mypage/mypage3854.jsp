@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,14 +20,12 @@
         <div class="border p-3 rounded">
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
-<body>
-    
-        <h1>My Page</h1>
-            <h2>${company.com_name} 님</h2>
+    <h1>My Page</h1>
+        <h2>${company.com_name} 님</h2>
 
         <a href="${pageContext.request.contextPath}/companies/editProfile">내 정보 수정</a>
             	<li class="nav-item">
-                	<a href="/companies/mypage" class="nav-link link-body-emphasis border-bottom rounded-0" aria-current="page">
+                	<a href="/mainPage/com_mainPage" class="nav-link link-body-emphasis border-bottom rounded-0" aria-current="page">
                   	My 홈
                 	</a>
               	</li>
@@ -56,18 +55,46 @@
             </ul>
         </div>
     </div>
+    
     <div class="col-9">
 	    <p class="text-secondary d-flex">
 	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
-	    	<a href="" class="nav-link text-black fw-bolder">내정보 수정</a>
+	    	<a href="" class="nav-link text-black fw-bolder">My 홈</a>
 	    </p>
-    	
-	    <div class="border p-5 rounded mb-3 text-center text-secondary">
-	           My home 화면
-	    </div>
-       
-    </div>
+	    <!-- 진행중인 공고 시작 -->
+	    <h3>진행중인 공고</h3>
+	    <a href="/company/mypage/getComRecruitList">더보기 ></a>
+	    <c:forEach var="recruit" items="${recruitList }">
+	        <div class="border p-3 mb-3">
+	        	<div class="row align-items-center">
+	        		<div class="col-md-4">
+	        			<div class="fs-7 text-secondary">공고번호 :${recruit.recruit_no } </div>
+	        			<div>[ ${company.com_name } ]</div>
+	        			<div class="fs-5 fw-bold w-100 text_ellipsis">
+	        			<a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="/company/mypage/recruitDetail?recruit_no=${recruit.recruit_no }">${recruit.title }</a>
+	        			</div>
+	        		</div>
+	        		<div class="col-md-5 text-secondary">
+	        		마감일 ${recruit.deadline_date }
+	        		</div>
+	        		<div class="col-md-3 d-flex flex-row-reverse">
+	        			<c:choose>
+					        <c:when test="${recruit.mem_count ne 0}">
+					         	<a class="btn btn-secondary" href="">공고중</a>
+					        </c:when>         
+					        <c:otherwise>
+					        	<a class="btn btn-jobs me-2" href="/company/mypage/recruit_modify_form?recruit_no=${recruit.recruit_no }">공고마감</a>
+					        </c:otherwise>
+					    </c:choose> 
+	        		</div>
+	        	</div>
+	        </div>
+        </c:forEach>
+        <!-- 진행중인 공고 종료 -->
+        <h3>지원 구직자 현황</h3>
+        <a href="">더보기 ></a>
         
+    </div>
  </div>
 </div>
 <!-- 작업공간 영역 끝 -->
