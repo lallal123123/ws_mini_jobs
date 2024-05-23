@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>jobs 휴먼 클라우드 이력관리플렛폼</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -22,29 +22,32 @@
 }
 </style>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 	<jsp:include page="../../header.jsp"></jsp:include>
 	<!-- 작업공간 영역 -->
 	<div class="container">
 		<div class="row">
-
-			<div class="col-12">
-				<div class="border p-3">
-					<h1>게시글 전체 방(기업)</h1>
+			
+			<div class="col-12 mb-5">
+				<h4>게시글 전체 방(기업)</h4>
+				<div class="border p-5 rounded">
 					<c:if test="${loggedInCompany ne null }">
-					<a href="write_form">게시글 작성하기</a><br>
+					<a class="btn btn-info text-white float-end" href="write_form">게시글 작성하기</a><br>
 					</c:if>
-					<form action="list" method="post">
-						<label for="" class="form-label">카테고리</label> <select
+					<form style="width:250px" action="list" method="post">
+						<label for="" class="form-label">카테고리</label>
+						<div class="d-flex mb-3">
+						<select
 							class=" form-select" name="category">
 							<option value="">선택해주세요</option>
 							<c:forEach var="dto" items="${clist}">
 								<option class="option_category" value="${dto.ch_category}">${dto.ch_category}</option>
 							</c:forEach>
 						</select>
-						<button class="btn btn-light">보기</button>
+						<button class="btn btn-jobs" style="width:100px">검색</button>
+						</div>
 					</form>
-					<table class="table">
+					<table class="table table jobs-table text-center">
 						<thead>
 							<tr>
 								<th scope="col">카테고리</th>
@@ -54,9 +57,9 @@
 						</thead>
 						<tbody>
 							<c:forEach var="dto" items="${list }">
-								<tr>
+								<tr class="border-bottom">
 									<td>${dto.category }</td>
-									<td><a href="detail?no=${dto.com_community_no}">
+									<td><a class="link-body-emphasis" href="detail?no=${dto.com_community_no}">
 											${dto.title } </a></td>
 									<c:if test="${dto.secret eq 0}">
 										<td>${dto.com_id}</td>
@@ -133,9 +136,9 @@
 						</c:if>
 					</div>
 					<div id="searchBox" >
-						<form action="list"  method="post" >
-							<input type="text"   style="width: 250px;" name="search">
-							<button class="btn btn-light">내용검색</button>
+						<form action="list"  method="post" class="d-flex" style="width: 250px; margin:10px auto;">
+							<input class="form-control" type="text" name="내용 검색">
+							<button class="btn btn-jobs" style="width:100px;">검색</button>
 						</form>
 					</div>
 

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>jobs 휴먼 클라우드 이력관리플렛폼</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -19,31 +19,26 @@
 	<!-- 작업공간 영역 -->
 	<div class="container">
 		<div class="row">
-
-			<div class="col-12">
-				<div class="border p-3">
-
-
-
-
-					<a href="list"><button>전체게시글</button></a>
+			<div class="col-12 mb-5">
+				<div class="border p-5">
+					<a class="btn btn-jobs" href="list">전체게시글</a>
 					<c:if test="${loggedInCompany.com_id eq dto.com_id}">
-						<a href="modify_form?no=${dto.com_community_no}"><button>수정</button></a>
-						<a href="delete?no=${dto.com_community_no}"><button>삭제</button></a>
+						<a class="btn btn-info text-white" href="modify_form?no=${dto.com_community_no}">수정</a>
+						<a  class="btn btn-secondary" href="delete?no=${dto.com_community_no}">삭제</a>
 					</c:if>
-					<div class="mb-3" id="title">${dto.title}</div>
+					<div class="mb-3 mt-3 fs-5 fw-bold" id="title">${dto.title}</div>
 					<div class="mb-3" id="writerBox">
 						<c:if test="${dto.secret eq 0}">
 							
 							<div id="writer">${dto.com_id}<br>${dto.s_reg_date}</div>
 						</c:if>
 						<c:if test="${dto.secret eq 1}">
-							<div id="img">비공개이미지위치</div>
+							<!-- <div id="img">비공개이미지위치</div> -->
 							<div id="writer">
-								비공개<br>${dto.s_reg_date}</div>
+								비공개 | ${dto.s_reg_date}</div>
 						</c:if>
 					</div>
-					<div class="mb-3" id="content">${dto.content}</div>
+					<div class="mb-3 border-top border-bottom py-4" id="content">${dto.content}</div>
 					<div class="mb-3" id="category">${dto.category}</div>
 					<c:if test="${ loggedInCompany ne null}">
 						<form action="reply" method="post">
@@ -59,27 +54,22 @@
 					</c:if>
 					<hr>
 					<div id="replyList">
-						<table class="table">
+						
 							<c:forEach var="reply" items="${rList}">
-								<tr>
-									<td>${reply.content}</td>
-									<td>${reply.com_id}</td>
-									<td>${reply.s_regdate}<c:if
-											test="${reply.com_id eq loggedInCompany.com_id}">
-											<a
-												href="delete_reply?no=${reply.com_reply_no}&community_no=${dto.com_community_no}">X</a>
-										</c:if>
-									</td>
-								</tr>
+							<div class="p-4 border mb-2">
+									<div>
+									${reply.content}
+									</div>
+									<div class="d-flex justify-content-end text-secondary">
+									${reply.com_id}
+									${reply.s_regdate}
+									<c:if test="${reply.com_id eq loggedInCompany.com_id}">
+										<a class="btn btn-sm btn-secondary ms-3" href="delete_reply?no=${reply.com_reply_no}&community_no=${dto.com_community_no}">삭제</a>
+									</c:if>
+									</div>
+								</div>
 							</c:forEach>
-
-						</table>
-
 					</div>
-
-
-
-
 				</div>
 			</div>
 		</div>
