@@ -8,6 +8,30 @@
 <title>jobs 휴먼 클라우드 이력관리플렛폼</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet">
+<style>
+    .text-center {
+        text-align: center;
+    }
+</style>
+<script>
+    function fetchInterestMemberCount(com_no, elementId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '${pageContext.request.contextPath}/companies/interestMemberCount?com_no=' + com_no, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var count = xhr.responseText;
+                document.getElementById(elementId).innerText = count;
+            }
+        };
+        xhr.send();
+    }
+
+    window.onload = function() {
+        <c:forEach var="company" items="${companies}">
+            fetchInterestMemberCount(${company.com_no}, 'interestMemberCount_${company.com_no}');
+        </c:forEach>
+    };
+</script>
 </head>
 <body class="d-flex flex-column h-100">
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
@@ -24,6 +48,7 @@
                 <th>회사명</th>
                 <th>대표자</th>
                 <th>주소</th>
+                <th class="text-center">관심 등록 회원 수</th>
                 <th>기업상세</th>
             </tr>
         </thead>
@@ -34,6 +59,7 @@
                     <td>${company.com_name}</td>
                     <td>${company.com_ceo}</td>
                     <td>${company.com_addr}</td>
+                    <td id="interestMemberCount_${company.com_no}" class="text-center">로딩 중...</td>
                     <td><a href="${pageContext.request.contextPath}/companies/${company.com_no}" class="btn btn-primary">기업상세</a></td>
                 </tr>
             </c:forEach>

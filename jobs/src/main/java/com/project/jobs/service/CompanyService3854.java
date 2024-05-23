@@ -108,4 +108,8 @@ public class CompanyService3854 {
 	public List<Recruit> getJobPostingsForInterestedCompanies(Long mem_no) {
 	    return companyDao.getJobPostingsForInterestedCompanies(mem_no);
 	}
+	
+	public int getInterestMemberCount(Long com_no) {
+        return companyDao.getInterestMemberCount(com_no);
+    }
 }

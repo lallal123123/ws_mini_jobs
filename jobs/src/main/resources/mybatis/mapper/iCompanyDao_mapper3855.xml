@@ -112,5 +112,11 @@
 		FROM recruit
 		WHERE recruit_no = #{recruit_no}
 	</select>
+	
+	   <select id="getInterestMemberCount" parameterType="Long" resultType="int">
+        SELECT COUNT(*)
+        FROM com_interest
+        WHERE com_no = #{com_no} AND status = TRUE
+    </select>
 
 </mapper>
