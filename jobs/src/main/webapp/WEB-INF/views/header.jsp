@@ -71,7 +71,7 @@
                             <c:if test="${sessionScope.isAdmin == true}">
                                 <a href="/admin99/getTotalRegistrations" class="btn btn-jobs ms-2">관리자 모드</a>
                             </c:if>
-                            <a href="/members/mypage/myhome" class="btn btn-jobs ms-2">마이 페이지</a>
+                            <a href="/members/mypage" class="btn btn-jobs ms-2">마이 페이지</a>
                             <a href="/members/logout" class="btn btn-jobs ms-2">로그아웃</a>
                             <span>환영합니다, ${sessionScope.loggedInMember.mem_id}님!</span>
                         </c:when>
@@ -89,7 +89,7 @@
             </div>
         </div>
         <ul class="nav nav-pills nav-jobs mt-2 justify-content-end">
-            <li class="nav-item"><a href="/" class="nav-link" aria-current="page">채용정보</a></li>
+            <li class="nav-item"><a href="#" class="nav-link" aria-current="page">채용정보</a></li>
             <li class="nav-item"><a href="#" class="nav-link">공고캘린더</a></li>
             <li class="nav-item"><a href="${pageContext.request.contextPath}/companies" class="nav-link">기업정보</a></li>
             <c:if test="${loggedInCompany ne null}">
@@ -121,7 +121,7 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
 <script>
 function loadJobPostings(mem_no) {
     var xhr = new XMLHttpRequest();
