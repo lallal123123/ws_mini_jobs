@@ -16,4 +16,5 @@ public class Mem_push {
 	private String content;
 	private Date reg_date;
 	private String hidden;
+	private Long recruit_no;
 }

@@ -1,7 +1,10 @@
 package com.project.jobs.controller;
 
+import java.io.IOException;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,11 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import com.project.jobs.dto.Company;
 import com.project.jobs.dto.Member;
 import com.project.jobs.dto.Recruit;
 import com.project.jobs.service.CompanyService3854;
+import com.project.jobs.service.RecruitService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -26,11 +31,43 @@ public class Company_controller {
     @Autowired
     private CompanyService3854 companyService;
     
-    @GetMapping("/jobPostings")
-    public List<Recruit> getJobPostingsForInterestedCompanies(@RequestParam String mem_id) {
-        return companyService.getJobPostingsForInterestedCompanies(mem_id);
+
+    @Autowired
+    private RecruitService recruitService;
+
+    @GetMapping("/recruitDetail")
+    public String getRecruitDetail(@RequestParam("recruit_no") Long recruit_no, Model model) {
+        Recruit recruit = recruitService.getRecruitById(recruit_no);
+        model.addAttribute("recruit", recruit);
+        return "company/mypage/recruit_detail"; // View 파일로 이동
     }
 
+    @GetMapping("/jobPostings")
+    @ResponseBody
+    public List<Recruit> getJobPostingsForInterestedCompanies(@RequestParam("mem_no") Long mem_no) {
+        return companyService.getJobPostingsForInterestedCompanies(mem_no);
+    }
+    
+
+    @GetMapping("/notifications")
+    public SseEmitter getNotifications(@RequestParam("mem_no") Long mem_no) {
+        SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
+
+        new Thread(() -> {
+            try {
+                while (true) {
+                    List<Recruit> jobPostings = companyService.getJobPostingsForInterestedCompanies(mem_no);
+                    emitter.send(jobPostings, MediaType.APPLICATION_JSON);
+                    Thread.sleep(5000); // 5초마다 새 알림 확인
+                }
+            } catch (IOException | InterruptedException e) {
+                emitter.completeWithError(e);
+            }
+        }).start();
+
+        return emitter;
+    }
+    
     @GetMapping
     public String getAllCompanies(Model model, HttpSession session) {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
@@ -130,7 +167,7 @@ public class Company_controller {
         Company loginCompany = companyService.login(company);
         if (loginCompany != null) {
             session.setAttribute("loggedInCompany", loginCompany);
-            return "redirect:/";
+            return "redirect:/members/index";
         } else {
             model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
             return "redirect:/members/loginForm";
