@@ -22,30 +22,34 @@
 }
 </style>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 	<jsp:include page="../../header.jsp"></jsp:include>
 	<!-- 작업공간 영역 -->
 	<div class="container">
 		<div class="row">
-
+			
 			<div class="col-12">
-				<div class="border p-3">
-					<h1>게시글 전체 방(개인)</h1>
+				<h4>게시글 전체 방(개인)</h4>
+				<div class="border p-5 rounded">
+		
 					<c:if test="${loggedInMember ne null }">
 						<a href="write_form">게시글 작성하기</a>
 						<br>
 					</c:if>
-					<form action="list" method="post">
-						<label for="" class="form-label">카테고리</label> <select
-							class="form-control" name="category">
-							<option value="">선택해주세요</option>
-							<c:forEach var="dto" items="${clist}">
-								<option class="option_category" value="${dto.ch_category}">${dto.ch_category}</option>
-							</c:forEach>
-						</select>
-						<button class="btn btn-light">보기</button>
+					<form style="width:250px" action="list" method="post">
+						<label for="" class="form-label">카테고리</label>
+						<div class="d-flex mb-3">
+							<select
+								class="form-control" name="category">
+								<option value="">선택해주세요</option>
+								<c:forEach var="dto" items="${clist}">
+									<option class="option_category" value="${dto.ch_category}">${dto.ch_category}</option>
+								</c:forEach>
+							</select>
+							<button class="btn btn-jobs" style="width:100px;">검색</button>
+						</div>
 					</form>
-					<table class="table">
+					<table class="table jobs-table text-center">
 						<thead>
 							<tr>
 								<th scope="col">카테고리</th>
@@ -71,7 +75,6 @@
 					</table>
 
 					<div id="pageBox">
-
 						<c:if test="${pagination.pageBlock ne 1 }">
 							<button id="preBtn" class="btn btn-secondary" onclick="pre()">[이전]</button>
 						</c:if>
@@ -81,8 +84,8 @@
 							<c:forEach var="x" begin="${pagination.begin}"
 								end="${pagination.end}">
 								<c:if test="${x eq pagination.page}">
-        ${x}
-    </c:if>
+							        ${x}
+							    </c:if>
 								<c:if test="${x ne pagination.page}">
 									<c:choose>
 										<c:when
@@ -107,8 +110,8 @@
 							<c:forEach var="x" begin="${pagination.begin}"
 								end="${pagination.endMax}">
 								<c:if test="${x eq pagination.page}">
-        ${x}
-    </c:if>
+							        ${x}
+							    </c:if>
 								<c:if test="${x ne pagination.page}">
 									<c:choose>
 										<c:when
@@ -134,9 +137,9 @@
 						</c:if>
 					</div>
 					<div id="searchBox">
-						<form action="list" method="post">
-							<input type="text" style="width: 250px;" name="search">
-							<button class="btn btn-light">내용검색</button>
+						<form action="list" method="post" class="d-flex" style="width: 250px; margin:10px auto;">
+							<input class="form-control" type="text" name="search" placeholder="내용 검색">
+							<button class="btn btn-jobs" style="width:100px;">검색</button>
 						</form>
 					</div>
 
