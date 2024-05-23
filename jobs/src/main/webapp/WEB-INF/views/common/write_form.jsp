@@ -53,8 +53,8 @@
            		<div>글 비공개 여부</div>
 	 			<input type="radio" value="1" name="ch_private" id="public">공개
 	 			<input type="radio" value="0" name="ch_private" id="private">비공개<br>
-	 			<input type="text" value="${mem_no }" name="mem_no">
-	 			<input type="text" value="${com_no }" name="com_no">
+	 			<input type="hidden" value="${mem_no }" name="mem_no">
+	 			<input type="hidden" value="${com_no }" name="com_no">
            		<input type="submit" class="btn btn-jobs w-100" value="등록하기">
 			</form>
 			<a class="btn btn-light" href="../cs_list_99" role="button">이전</a>
