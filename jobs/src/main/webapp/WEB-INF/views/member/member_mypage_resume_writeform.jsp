@@ -203,7 +203,8 @@
 		crossorigin="anonymous"></script>
 		
 	   <script>
-		document.getElementById('resumeForm').addEventListener('submit', function(event) {
+		/*
+	   document.getElementById('resumeForm').addEventListener('submit', function(event) {
 			var gradesInput = document.getElementById('grades');
 			var getDateInput = document.getElementById('get_date');
 			var carJoinDateInput = document.getElementById('car_join_date');
@@ -241,6 +242,7 @@
 			
 			
 		});
+		*/
 	</script>
    
 

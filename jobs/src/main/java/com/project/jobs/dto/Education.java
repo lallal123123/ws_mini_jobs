@@ -22,7 +22,7 @@ public class Education {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private String graduation_date;
 	private int graduation; 
-	private int grades;
+	private String grades;
 	private String major;
 	private Long mem_no;
 

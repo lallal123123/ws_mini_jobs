@@ -57,6 +57,71 @@ public class Site_resumeService8481 {
 	}
      */   
 	//위에것들 합치는 작업 (최종적으로 얘를쓴다)
+	public void insertfk(Site_resume site_resume)
+	{
+		// site_resume 테이블에 레코드 삽입
+		siteResumeMapper.site_resume_write(site_resume);
+	}
+	public void insertfk(Site_resume site_resume, License liecnsefk)
+	{
+		// site_resume 테이블에 레코드 삽입
+		siteResumeMapper.site_resume_write(site_resume);
+						
+		// 삽입된 site_resume 테이블의 PK 값을 license 테이블의 FK로 사용
+		Long lastId = site_resume.getS_resume_no();
+		siteResumeMapper.insertLicense(lastId, liecnsefk.getLicense_name(), liecnsefk.getAgency());
+		
+	}
+	public void insertfk(Site_resume site_resume, Career careerfk)
+	{
+		// site_resume 테이블에 레코드 삽입
+		siteResumeMapper.site_resume_write(site_resume);
+		// 삽입된 site_resume 테이블의 PK 값을 license 테이블의 FK로 사용
+		Long lastId = site_resume.getS_resume_no();
+		siteResumeMapper.insertCareer(lastId, careerfk.getCompany(), careerfk.getCar_join_date(), careerfk.getQuit_date(), careerfk.getMain_part());
+	}
+	public void insertfk(Site_resume site_resume, Education educationfk)
+	{
+		// site_resume 테이블에 레코드 삽입
+		siteResumeMapper.site_resume_write(site_resume);
+						
+		// 삽입된 site_resume 테이블의 PK 값을 license 테이블의 FK로 사용
+		Long lastId = site_resume.getS_resume_no();
+		siteResumeMapper.insertEducation(lastId, educationfk.getSchool(), educationfk.getEdu_join_date(), educationfk.getGraduation_date(), educationfk.getGraduation(), educationfk.getGrades(), educationfk.getMajor());
+	}
+	public void insertfk(Site_resume site_resume, License liecnsefk, Career careerfk)
+	{
+		// site_resume 테이블에 레코드 삽입
+		siteResumeMapper.site_resume_write(site_resume);
+						
+		// 삽입된 site_resume 테이블의 PK 값을 license 테이블의 FK로 사용
+		Long lastId = site_resume.getS_resume_no();
+		siteResumeMapper.insertLicense(lastId, liecnsefk.getLicense_name(), liecnsefk.getAgency());
+		siteResumeMapper.insertCareer(lastId, careerfk.getCompany(), careerfk.getCar_join_date(), careerfk.getQuit_date(), careerfk.getMain_part());
+		
+	}
+	public void insertfk(Site_resume site_resume, License liecnsefk, Education educationfk)
+	{
+		// site_resume 테이블에 레코드 삽입
+		siteResumeMapper.site_resume_write(site_resume);
+						
+		// 삽입된 site_resume 테이블의 PK 값을 license 테이블의 FK로 사용
+		Long lastId = site_resume.getS_resume_no();
+		siteResumeMapper.insertLicense(lastId, liecnsefk.getLicense_name(), liecnsefk.getAgency());
+		siteResumeMapper.insertEducation(lastId, educationfk.getSchool(), educationfk.getEdu_join_date(), educationfk.getGraduation_date(), educationfk.getGraduation(), educationfk.getGrades(), educationfk.getMajor());
+		
+	}
+	public void insertfk(Site_resume site_resume, Career careerfk, Education educationfk)
+	{
+		// site_resume 테이블에 레코드 삽입
+		siteResumeMapper.site_resume_write(site_resume);
+						
+		// 삽입된 site_resume 테이블의 PK 값을 license 테이블의 FK로 사용
+		Long lastId = site_resume.getS_resume_no();
+		siteResumeMapper.insertCareer(lastId, careerfk.getCompany(), careerfk.getCar_join_date(), careerfk.getQuit_date(), careerfk.getMain_part());
+		siteResumeMapper.insertEducation(lastId, educationfk.getSchool(), educationfk.getEdu_join_date(), educationfk.getGraduation_date(), educationfk.getGraduation(), educationfk.getGrades(), educationfk.getMajor());
+		
+	}
 	public void insertfk(Site_resume site_resume, License liecnsefk, Career careerfk, Education educationfk)
 	{
 		// site_resume 테이블에 레코드 삽입
@@ -68,8 +133,7 @@ public class Site_resumeService8481 {
 		siteResumeMapper.insertCareer(lastId, careerfk.getCompany(), careerfk.getCar_join_date(), careerfk.getQuit_date(), careerfk.getMain_part());
 		siteResumeMapper.insertEducation(lastId, educationfk.getSchool(), educationfk.getEdu_join_date(), educationfk.getGraduation_date(), educationfk.getGraduation(), educationfk.getGrades(), educationfk.getMajor());
 		
-	}	
-	
+	}
 	//자유 이력서 등록
 	public void freeResumeWrite(Free_resume free_resume) {
 		

@@ -105,7 +105,24 @@ public class Controller8481 {
 		//srs.insertFkforEducation(site_res_dto, edu_dto);
 			
 		//4번들어간 문제를 수정한 작업x
-		srs.insertfk(site_resume, lic_dto, car_dto, edu_dto);
+		
+		if(lic_dto.getLicense_name().equals("") && car_dto.getCompany().equals("") && edu_dto.getGrades().equals("")) {
+		srs.insertfk(site_resume);
+	}else if(lic_dto.getLicense_name().equals("") &&  car_dto.getCompany().equals("")) {
+		srs.insertfk(site_resume,edu_dto);
+	}else if(lic_dto.getLicense_name().equals("") && edu_dto.getGrades().equals("")) {
+		srs.insertfk(site_resume,car_dto);
+	}else if( car_dto.getCompany().equals("") && edu_dto.getGrades().equals("")) {
+		srs.insertfk(site_resume,lic_dto);
+	}else if( car_dto.getCompany().equals("")) {
+		srs.insertfk(site_resume,lic_dto,edu_dto);
+	}else if(edu_dto.getGrades().equals("")) {
+		srs.insertfk(site_resume,lic_dto,car_dto);
+	}else if(lic_dto.getLicense_name().equals("")) {
+		srs.insertfk(site_resume,car_dto,edu_dto);
+	}else {
+		srs.insertfk(site_resume,  lic_dto,  car_dto,  edu_dto);
+	}
 		
 		System.out.println(site_resume);
 		

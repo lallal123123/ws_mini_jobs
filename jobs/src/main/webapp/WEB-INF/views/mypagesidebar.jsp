@@ -55,12 +55,12 @@
 								<a
 									href="${pageContext.request.contextPath}/resume/member_mypage_resume_writeform"
 									class="d-block nav-link link-body-emphasis border-bottom rounded-0">사이트
-									이력서
+									이력서 작성
 								</a>
 								<a
 									href="${pageContext.request.contextPath}/resume/member_mypage_resume_freeform"
 									class="d-block nav-link link-body-emphasis border-bottom rounded-0">자유
-									이력서
+									이력서 작성
 								</a>
 								<a
 									href="${pageContext.request.contextPath}/resume/member_mypage_resume_list"
