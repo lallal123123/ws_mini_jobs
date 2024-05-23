@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>jobs 휴먼 클라우드 이력관리플렛폼</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -21,9 +21,8 @@
 		<div class="row">
 
 			<div class="col-12">
-				<div class="border p-3">
-					<h1>커뮤니티 게시글 작성</h1>
-
+				<h4>커뮤니티 게시글 작성</h4>
+				<div class="border p-5 mb-5">
 					<form action="write" method="post">
 						<div class="mb-3">
 							<label for="" class="form-label">카테고리</label> 
@@ -44,16 +43,13 @@
 							<textarea class="form-control" name="content"></textarea>
 						</div>
 						<div class="mb-3">
-							<label for="" class="form-label">작성자 비공개 여부</label>
+							<label for="" class="form-label d-block">작성자 비공개 여부</label>
 							<input type="radio" name="secret" value="0" checked>
   							<label for="option1" >공개</label>
   							<input type="radio"  name="secret" value="1">
   							<label for="option1">비공개</label>
 						</div>
 						<button class="btn btn-jobs w-100">등록하기</button>
-
-
-
 					</form>
 
 				</div>
