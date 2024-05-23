@@ -7,8 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>jobs 휴먼 클라우드 이력관리플렛폼</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -68,7 +74,6 @@
 	        <div class="border p-3 mb-3">
 	        	<div class="row align-items-center">
 	        		<div class="col-md-4">
-	        			<div class="fs-7 text-secondary">공고번호 :${recruit.recruit_no } </div>
 	        			<div>[ ${company.com_name } ]</div>
 	        			<div class="fs-5 fw-bold w-100 text_ellipsis">
 	        			<a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="/company/mypage/recruitDetail?recruit_no=${recruit.recruit_no }">${recruit.title }</a>
@@ -92,8 +97,62 @@
         </c:forEach>
         <!-- 진행중인 공고 종료 -->
         <h3>지원 구직자 현황</h3>
-        <a href="">더보기 ></a>
+        <a href="/mainPage/mem_recruit_list99">더보기 ></a>
+        <c:forEach var="memRecruit" items="${memRecruitList }">
+	        <div class="border p-3 mb-3">
+	        	<div class="row align-items-center">
+	        		<div class="col-md-4">
+	        			<div class="fs-5 fw-bold w-100 text_ellipsis">
+	        			<a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="/company/mypage/getResumeDetail1?s_resume_no=${memRecruit.s_resume_no }">${memRecruit.mem_name } 이력서</a>
+	        			</div>
+	        		</div>
+	        		<div class="col-md-5 text-secondary">
+	        		
+	        		</div>
+	        		<div class="col-md-3 d-flex flex-row-reverse">
+	        			<a href="/company/mypage/recruitDetail?recruit_no=${memRecruit.recruit_no }">공고번호 ${memRecruit.recruit_no }</a>
+	        		</div>
+	        	</div>
+	        </div>
+        </c:forEach>
         
+        <h3>스크랩한 구직자 리스트</h3>
+        <a href="/interest92/memInterestList">더보기 ></a>
+        <c:forEach var="memInterestList" items="${list }">
+	        <div class="border p-3 mb-3">
+	        	<div class="row align-items-center">
+	        		<div class="col-md-4">
+	        			<div class="fs-5 fw-bold w-100 text_ellipsis">
+	        			<a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="/company/mypage/getResumeDetail1?s_resume_no=${memInterestList.s_resume_no }">${memInterestList.mem_name }</a>
+	        			</div>
+	        		</div>
+	        		<div class="col-md-5 text-secondary">
+	        			${memInterestList.mem_birth }
+	        		</div>
+	        		<div class="col-md-5 text-secondary">
+	        			
+	        		</div>
+	        		<div class="col-md-3 d-flex flex-row-reverse">
+	        		<div>
+						찜하기
+						${memInterestList.mem_interest_no }
+						<div class="heartIcon">
+							<c:if test="${memInterestList.mem_interest_no eq 1 }">
+								<a
+									href="/interest92/mem_notInterest?mem_no=${resume.mem_no}&recruit_no=${recruit_no}"><i
+									class="bi bi-heart-fill 1"></i></a>
+							</c:if>
+							<c:if test="${memInterestList.mem_interest_no eq 0 }">
+								<a
+									href="/interest92/mem_interest?mem_no=${resume.mem_no}&recruit_no=${recruit_no}"><i
+									class="bi bi-heart 0"></i></a>
+							</c:if>
+						</div>
+					</div>
+	        		</div>
+	        	</div>
+	        </div>
+        </c:forEach>
     </div>
  </div>
 </div>

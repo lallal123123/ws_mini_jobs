@@ -30,7 +30,7 @@
                             <span>환영합니다, ${sessionScope.loggedInMember.mem_id}님!</span>
                         </c:when>
                         <c:when test="${not empty sessionScope.loggedInCompany}">
-                            <a href="/companies/mypage" class="btn btn-jobs">마이 페이지</a>
+                            <a href="/mainPage/com_mainPage" class="btn btn-jobs">마이 페이지</a>
                             <a href="/companies/logout" class="btn btn-jobs ms-2">로그아웃</a>
                             <span>환영합니다, ${sessionScope.loggedInCompany.com_id}님!</span>
                         </c:when>
