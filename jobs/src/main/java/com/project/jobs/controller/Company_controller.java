@@ -49,7 +49,7 @@ public class Company_controller {
     }
     
 
-    @GetMapping("/notifications")
+    /*@GetMapping("/notifications")
     public SseEmitter getNotifications(@RequestParam("mem_no") Long mem_no) {
         SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
 
@@ -66,7 +66,7 @@ public class Company_controller {
         }).start();
 
         return emitter;
-    }
+    }*/
     
     @GetMapping
     public String getAllCompanies(Model model, HttpSession session) {
