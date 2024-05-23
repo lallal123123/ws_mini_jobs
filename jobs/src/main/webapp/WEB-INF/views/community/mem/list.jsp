@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>jobs 휴먼 클라우드 이력관리플렛폼</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -28,12 +28,11 @@
 	<div class="container">
 		<div class="row">
 			
-			<div class="col-12">
+			<div class="col-12 mb-5">
 				<h4>게시글 전체 방(개인)</h4>
 				<div class="border p-5 rounded">
-		
 					<c:if test="${loggedInMember ne null }">
-						<a href="write_form">게시글 작성하기</a>
+						<a class="btn btn-info text-white float-end" href="write_form">게시글 작성하기</a>
 						<br>
 					</c:if>
 					<form style="width:250px" action="list" method="post">
@@ -59,9 +58,9 @@
 						</thead>
 						<tbody>
 							<c:forEach var="dto" items="${list }">
-								<tr>
+								<tr class="border-bottom">
 									<td>${dto.category }</td>
-									<td><a href="detail?no=${dto.mem_community_no}">
+									<td><a class="link-body-emphasis" href="detail?no=${dto.mem_community_no}">
 											${dto.title } </a></td>
 									<c:if test="${dto.secret eq 0}">
 										<td>${dto.mem_id}</td>

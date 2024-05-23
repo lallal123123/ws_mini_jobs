@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>jobs 휴먼 클라우드 이력관리플렛폼</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -87,48 +87,49 @@ display: inline-block;
 	<div class="container">
 		<div class="row">
 
-			<div class="col-12">
-				<div class="border p-3">
-					<div>실시간 전체글 ${cnt }개<a href="list"><button>전체글보기</button></a></div>
+			<div class="col-12 mb-">
+				<div class="border p-5 mb-5">
+					<div class="mb-3">실시간 전체글 <strong>${cnt }</strong>개 <a class="btn btn-jobs" href="list">전체글보기</a></div>
 					<div id="hotListAndCom">
-						<span class="top border p-3" id="hotList"> <label>HOT
-								인기 글 </label> <br>
+						<div class="top border p-3" id="hotList">
+						<label>
+							✨ HOT 인기 글 </label>
 							<hr>
-							<table id="hotListTable" class="border p-3">
+							<table id="hotListTable" class="border-none-table">
 								<c:forEach var="dto" items="${ hList}">
-									<tr>
-										<td id="td1"><a href="detail?no=${dto.mem_community_no }"> ${dto.title }</a></td>
+									<tr class="border-bottom">
+										<td id="td1"><a class="link-body-emphasis" href="detail?no=${dto.mem_community_no }"> ${dto.title }</a></td>
 										<td id="td2"><i class="bi bi-wechat" ></i>  ${dto.replyCnt }  </td>
 										<td id="td3"><img src="${pageContext.request.contextPath}/images/common/eye_icon.png" alt="사람눈" width="30px" height="30px">  ${dto.views }</td>
 									</tr>
 								</c:forEach>
 							</table>
-						</span> <span class="top border p-3" id="info"> <span id="img"></span><span id="com_id">${loggedInMember.mem_id }님</span><br>
-							<a href="write_form"> <button>게시글작성</button></a><br>
-							<div>내가 작성한 글 <a href="list?mem_no=${loggedInMember.mem_no }">${cntMemWrite }개</a></div><br>
+						</div>
+						<div class="top border p-3 text-center" id="info"> <span id="img"></span><span id="com_id">${loggedInMember.mem_id }님</span>
+							<a class="btn btn-jobs my-3" href="write_form">게시글작성</a>
+							<div>내가 작성한 글 <a href="list?mem_no=${loggedInMember.mem_no }">${cntMemWrite }개</a></div>
 							내가 작성한 댓글 ${cntMemReply }개
-
-						</span>
+						</div>
 					</div>
-					<div id="categoryList">
-						<div>주제별 커뮤니티</div>
+					<div id="categoryList" class="mt-4">
+						<div class="mb-2">💬 커뮤니티</div>
 						<div id="category">
 							<c:forEach var="c" items="${ cList}">
-								<a href="main?category=${c.ch_category }"><button>${c.ch_category }></button></a>
+								<a class="btn btn-sm btn-light" href="main?category=${c.ch_category }"> ${c.ch_category } ></a>
 							</c:forEach>
 
 						</div>
-						<span>
-							<div>
+					
+							<div class="mt-3">
 								<div id="categoryName">
-									${category } <a href="list?category=${category }"> 더보기> </a>
+									${category } <a class="link-body-emphasis" href="list?category=${category }"> 더보기> </a>
 								</div>
 
-								<table class="table">
+								<table class="table border-none-table text-center mt-3 border-top">
 
 									<c:forEach var="dto" items="${chList}">
-										<tr>
-											<td><a href="detail?no=${dto.mem_community_no }">${dto.title }</a></td>
+										<tr class="border-bottom">
+											<td><a class="link-body-emphasis" href="detail?no=${dto.mem_community_no }">${dto.title }</a></td>
 											<td><i class="bi bi-wechat"></i>${dto.replyCnt }</td>
 											<td>${dto.views }</td>
 										</tr>
@@ -136,7 +137,7 @@ display: inline-block;
 								</table>
 							</div>
 
-						</span>
+			
 					</div>
 
 				</div>
