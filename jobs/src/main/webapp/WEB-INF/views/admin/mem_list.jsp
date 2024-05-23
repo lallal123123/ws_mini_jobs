@@ -20,7 +20,7 @@
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
               <li class="nav-item">
-                <a href="../admin99/admin_dashboard_99" class="nav-link link-body-emphasis">
+                <a href="/admin99/getTotalRegistrations" class="nav-link link-body-emphasis">
                   My home
                 </a>
               </li>

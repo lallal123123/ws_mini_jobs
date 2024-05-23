@@ -56,7 +56,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ON q.cs_no = r.cs_no
 		WHERE case when r.cs_no IS NULL then '미답변' ELSE '답변완료' END = '미답변'
 	</select>
-	<select id="getRecruitList_99">
-		SELECT * FROM recruit LIMIT #{start}, #{cnt}
-	</select>
+	
 </mapper>
