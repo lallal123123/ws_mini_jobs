@@ -121,7 +121,7 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
 function loadJobPostings(mem_no) {
     var xhr = new XMLHttpRequest();
@@ -135,12 +135,13 @@ function loadJobPostings(mem_no) {
 
             if (jobPostings.length > 0) {
                 jobPostings.forEach(function(recruit) {
+                    var url = '${pageContext.request.contextPath}/company/mypage/recruitDetail?recruit_no=' + recruit.recruit_no;
+                    console.log('Generated URL:', url);  // URL 로그 추가
                     jobPostingsBody.innerHTML += `
                         <div class="card mb-2">
                             <div class="card-body">
                                 <h5 class="card-title">${recruit.title}</h5>
-                               
-                                <a href="${pageContext.request.contextPath}/companies/recruitDetail?id=${recruit.recruit_no}" class="btn btn-primary">자세히 보기</a>
+                                <a href="${url}" class="btn btn-primary">자세히 보기</a>
                             </div>
                         </div>
                     `;

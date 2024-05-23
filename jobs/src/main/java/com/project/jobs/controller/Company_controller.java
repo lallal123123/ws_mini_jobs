@@ -1,7 +1,6 @@
 package com.project.jobs.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,12 +31,14 @@ public class Company_controller {
     @Autowired
     private RecruitService recruitService;
 
+
     @GetMapping("/recruitDetail")
-    public String getRecruitDetail(@RequestParam("id") Long recruit_no, Model model) {
+    public String getRecruitDetail(@RequestParam("recruit_no") Long recruit_no, Model model) {
         Recruit recruit = recruitService.getRecruitById(recruit_no);
         model.addAttribute("recruit", recruit);
         return "company/mypage/recruit_detail";
     }
+
     
     @GetMapping("/jobPostings")
     public List<Recruit> getJobPostingsForInterestedCompanies(@RequestParam Long mem_id) {
