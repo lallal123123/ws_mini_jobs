@@ -31,8 +31,8 @@
 </head>
 <body>
 <div class="container form-container">
-    <h2 class="text-center">회원가입</h2>
-    <ul class="nav nav-tabs" id="signupTab" role="tablist">
+    <h2 class="text-center mb-3">Jobs 회원가입</h2>
+    <ul class="nav nav-tabs mb-3" id="signupTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="member-tab" data-toggle="tab" href="#member" role="tab" aria-controls="member" aria-selected="true">회원가입</a>
         </li>
@@ -73,12 +73,12 @@
                 <div class="form-group">
                     <label for="mem_gender">성별</label><br/>
                     <form:radiobutton path="mem_gender" value="male" id="gender_male"/>
-                    <label for="gender_male">남성</label>
+                    <label for="gender_male" class="mr-2">남성</label>
                     <form:radiobutton path="mem_gender" value="female" id="gender_female"/>
                     <label for="gender_female">여성</label>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">일반 회원가입</button>
+                    <button type="submit" class="btn btn-primary w-100">일반 회원가입</button>
                 </div>
             </form:form>
         </div>
@@ -128,12 +128,12 @@
                     <form:input path="com_url" id="com_url" cssClass="form-control"/>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">기업 회원가입</button>
+                    <button type="submit" class="btn btn-primary w-100">기업 회원가입</button>
                 </div>
             </form:form>
         </div>
     </div>
-    <a href="${pageContext.request.contextPath}/members/index" class="btn btn-link">메인으로 돌아가기</a>
+    <a href="${pageContext.request.contextPath}/" class="btn btn-link w-100 mb-3">메인으로 돌아가기</a>
 </div>
 <!-- Bootstrap JS and dependencies -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
