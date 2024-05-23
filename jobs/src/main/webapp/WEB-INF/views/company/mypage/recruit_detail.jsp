@@ -122,17 +122,27 @@
 	</div>
 	<input type="hidden" id="mem_no"
 		value="${sessionScope.loggedInMember.mem_no}">
-	<c:if test="${sessionScope.loggedInCompany eq null}">
+	<c:if test="${sessionScope.loggedInMember ne null}">
 		<div class="d-flex justify-content-center sticky-bottom pb-5">
+		<c:if test="${recruitDetail.deadline_date > today}">
 			<button type="button"
 				class="btn btn-lg text-white btn-warning px-5 me-1"
 				data-bs-toggle="modal" data-bs-target="#exampleModal">지원하기
 			</button>
+		</c:if>
 			<button class="btn btn-lg text-white btn-info px-5 ms-1"
 				onclick="addRecruitScrap()">스크랩하기</button>
 		</div>
 	</c:if>
-
+	<c:if test="${sessionScope.loggedInCompany == null and sessionScope.loggedInMember == null}">
+	<div class="d-flex justify-content-center sticky-bottom">
+		<div class="w-100 bg-primary bg-opacity-75 text-white p-4 text-center">
+			로그인 or 회원가입 후 공고에 지원해보세요!
+			<a class="btn btn-jobs mx-2" href="/members/loginForm">로그인</a>
+			<a class="btn btn-jobs" href="/members/signup">회원가입</a>
+		</div>
+	</div>
+	</c:if>
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">

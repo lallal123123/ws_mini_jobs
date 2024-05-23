@@ -379,6 +379,12 @@ public class Controller5963 {
 	public String getRecruitDetail(@RequestParam("recruit_no") Long recruit_no, Model model) {
 		RecruitDetail recruitDetail = companyService.getRecruitDetail(recruit_no);
 		Long com_no = recruitDetail.getCom_no();
+		
+		LocalDate now = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String today = now.format(formatter);
+		model.addAttribute("today", today);
+		
 		Com_detail com_detail = companyService.getCom_detail(com_no);
 		model.addAttribute("recruitDetail", recruitDetail);
 		model.addAttribute("com_detail", com_detail);
