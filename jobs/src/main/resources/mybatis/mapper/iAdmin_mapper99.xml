@@ -56,5 +56,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ON q.cs_no = r.cs_no
 		WHERE case when r.cs_no IS NULL then '미답변' ELSE '답변완료' END = '미답변'
 	</select>
+	<!-- FAQ -->
+	<insert id="faqWrite">
+		INSERT INTO faq (title, content, category, mem_type) 
+		VALUES (#{title}, #{content}, #{category}, #{mem_type})
+	</insert>
+	<select id="faqMemberList">
+		SELECT * FROM faq where mem_type = 1
+	</select>
+	<select id="faqCompanyList">
+		SELECT * FROM faq where mem_type = 0
+	</select>
+	<select id="faqList">
+		SELECT * FROM faq
+	</select>
 	
 </mapper>

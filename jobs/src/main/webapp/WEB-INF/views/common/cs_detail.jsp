@@ -22,17 +22,25 @@
         <div class="border p-3">
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
-              <li class="nav-item">
-                <a href="../cs_list_99" class="nav-link active" aria-current="page">
-                  문의·신고
-                </a>
-              </li>
               <li>
-                <a href="../notice_list_99" class="nav-link link-body-emphasis">
-                 공지사항
-                </a>
-              </li>   
-                </ul>
+                	<div class="nav-link link-body-emphasis">FAQ</div>
+              	</li>
+              	<li class="nav-item">
+	                <a href="../admin99/faqMemberList" class="nav-link link-body-emphasis">· 일반 회원</a>
+	            </li>
+	            <li class="nav-item">
+	                <a href="../admin99/faqCompanyList" class="nav-link link-body-emphasis">· 기업 회원</a>
+	            </li>
+	            <li>
+                	<div class="nav-link link-body-emphasis">고객센터</div>
+              	</li>
+            	<li class="nav-item">
+	                <a href="../cs_list_99" class="nav-link active" aria-current="page">· 문의·신고</a>
+	            </li>
+	            <li>
+                	<a href="../notice_list_99" class="nav-link link-body-emphasis">· 공지사항</a>
+              	</li>
+               </ul>
         </div>
     </div>
     <div class="col-9">

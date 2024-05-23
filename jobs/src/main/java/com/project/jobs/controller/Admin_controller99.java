@@ -185,6 +185,7 @@ public class Admin_controller99 {
 		return "/common/cs_list";
 	}
 	
+	
 	//FAQ 작성, 수정, 삭제
 	@RequestMapping("/faqWriteForm")
 	public String faqWriteForm() {
@@ -192,12 +193,35 @@ public class Admin_controller99 {
 		return "/faq/faq_write_form";
 	}
 	
-	@RequestMapping("/faqList")
-	public String faqList() {
+	@RequestMapping("/faqWrite")
+	public String faqWrite(HttpServletRequest request) {
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String category = request.getParameter("category");
+		String mem_type = request.getParameter("mem_type");
+		adminDao.faqWrite(title, content, category, mem_type);
 		
-		return "/faq/faq_list";
+		return "redirect:/admin99/faqList";
 	}
 	
+	@RequestMapping("/faqList")
+	public String faqList(Model model) {
+		model.addAttribute("list", adminDao.faqList());
+		return "/faq/faq_list";
+	}
+	@RequestMapping("/faqMemberList")
+	public String faqMemberList(Model model) {
+		
+		model.addAttribute("list", adminDao.faqMemberList());
+		return "/faq/faq_member_list";
+	}
+	
+	@RequestMapping("/faqCompanyList")
+	public String faqCompanyList(Model model) {
+		
+		model.addAttribute("list", adminDao.faqCompanyList());
+		return "/faq/faq_company_list";
+	}
 	
 	
 	

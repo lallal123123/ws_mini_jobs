@@ -20,7 +20,7 @@
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
               <li class="nav-item">
-                <a href="../admin99/getTotalRegistrations" class="nav-link link-body-emphasis">
+                <a href="../admin99/admin_dashboard_99" class="nav-link link-body-emphasis">
                   My home
                 </a>
               </li>
@@ -48,13 +48,13 @@
                 <a href="../admin99/faqList" class="nav-link active" aria-current="page">
                  FAQ 관리
                 </a>
-              </li> 
+              </li>
               <li>
                 <a href="#" class="nav-link link-body-emphasis">
                  신고 접수된 건
                 </a>
               </li>    
-            </ul>
+              </ul>
         </div>
     </div>
     <div class="col-9">
@@ -63,14 +63,16 @@
 	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">&gt;</span>
 	    	<a href="#" class="nav-link text-black fw-bolder">FAQ 관리</a>
 	    </p>
+	    	<a class="btn btn-outline-primary mt-3" href="../admin99/faqWriteForm" role="button" onclick="">FAQ 글 작성하기</a>
         	<h3 style="text-align:center;">FAQ 목록</h3>
         	<form action="../csCategory_99" method="post">
 			  	<select class="form-select" name="category" id="category">
 			  	<option value="">전체보기</option>
-			  	<option value="서비스 이용 문의">서비스 이용 문의</option>
-			  	<option value="불량정보·오류 신고">불량정보·오류 신고</option>
-			  	<option value="서비스 제안·칭찬">서비스 제안·칭찬</option>
-			  	<option value="커뮤니티 관련사항">커뮤니티 관련사항</option>
+			  	<option value="회원가입·정보">회원가입·정보</option>
+			  	<option value="이력서 관리·활용">이력서 관리·활용</option>
+			  	<option value="입사지원">입사지원</option>
+			  	<option value="채용정보">채용정보</option>
+			  	<option value="기타">기타</option>
 			  	</select>
            		<input type="submit" class="btn btn-jobs w-100" value="검색하기">
 			</form>
@@ -80,8 +82,6 @@
 			      <th scope="col">번호</th>
 			      <th scope="col">카테고리</th>
 			      <th scope="col">제목</th>
-			      <th scope="col">작성일</th>
-			      <th scope="col">답변 여부</th>			      
 			    </tr>
 			  </thead>
 			  <tbody class="table-group-divider">
@@ -90,28 +90,7 @@
 			  	<tr>
 			      <td scope="row">${status.count }</td>
 			      <td>${list.category }</td>
-			      <td>
-			      	<c:choose>
-			      		<c:when test="${list.answerStatus == '미답변' }">
-			      			<a href="../admin99/cs_detail_99?cs_no=${list.cs_no}">${list.title}</a></td>
-			      		</c:when>
-			      		<c:otherwise>
-			      			<a href="../admin99/cs_request_detail_99?cs_no=${list.cs_no }">${list.title}</div><a href=""></a>
-			      		</c:otherwise>
-			      	</c:choose>
-			      <td>
-			      	<fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd"/>
-			      </td>
-			      <td>
-			      	<c:choose>
-			      		<c:when test="${list.answerStatus == '미답변' }">
-			      			<a class="btn btn-light" href="../admin99/cs_detail_99?cs_no=${list.cs_no }" role="button">답변 등록하기</a>
-			      		</c:when>
-			      		<c:otherwise>
-			      			<div class="btn btn-light" role="button">답변 완료</div>
-			      		</c:otherwise>
-			      	</c:choose>
-			      </td>
+			      <td>${list.title }</td>
 			    </tr>
 			  </c:forEach>
 			  </tbody>
