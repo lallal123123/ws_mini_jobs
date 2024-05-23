@@ -76,3 +76,31 @@ body{
     --bs-btn-disabled-border-color: #51e554;
 }
 
+.jobs-table{
+	border-collapse: collapse;
+  	border: 0;
+}
+
+.jobs-table
+th,
+td {
+  border-bottom: 1px solid #ccc;
+  background-clip: padding-box;
+  scroll-snap-align: start;
+  vertical-align:middle;
+}
+
+.jobs-table
+th,
+td {
+  padding: 0.6rem;
+  min-width: 6rem;
+  margin: 0;
+}
+.jobs-table thead{
+	border-bottom: 3px solid #1c459a;
+}
+
+
+
+

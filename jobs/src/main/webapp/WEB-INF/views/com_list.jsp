@@ -37,11 +37,8 @@
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 <!-- 작업공간 영역 -->
 <div class="container">
-    <div class="row">
-        <h1>기업 리스트</h1>
-    </div>
-
-    <table class="table">
+ 	<h4>기업 리스트</h4>
+    <table class="table jobs-table text-center table-hover mt-3 mb-5">
         <thead>
             <tr>
                 <th>기업 번호</th>
@@ -60,7 +57,7 @@
                     <td>${company.com_ceo}</td>
                     <td>${company.com_addr}</td>
                     <td id="interestMemberCount_${company.com_no}" class="text-center">로딩 중...</td>
-                    <td><a href="${pageContext.request.contextPath}/companies/${company.com_no}" class="btn btn-primary">기업상세</a></td>
+                    <td><a href="${pageContext.request.contextPath}/companies/${company.com_no}" class="btn btn-sm btn-primary">기업상세</a></td>
                 </tr>
             </c:forEach>
         </tbody>
