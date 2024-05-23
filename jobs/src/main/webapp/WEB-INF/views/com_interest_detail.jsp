@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Company Detail</title>
+    <title>jobs 휴먼 클라우드 이력관리플렛폼</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet">
     <script>
@@ -83,7 +83,7 @@
             text-decoration: none;
             cursor: pointer;
         }
-        .table-container {
+        /* .table-container {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -104,17 +104,17 @@
         }
         th {
             background-color: #f2f2f2;
-        }
+        } */
     </style>
 </head>
 <body class="d-flex flex-column h-100">
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
-<div class="content">
-    <header>
-        <h1 class="text-center">${company.com_name} 상세 정보</h1>
-    </header>
-    <div class="table-container">
-        <table>
+<div class="container">
+    <h4>${company.com_name} 상세 정보</h4>
+    <div class="row">
+		<div class="border p-5 rounded mb-5">
+		
+        <table class="table">
             <tr>
                 <th>기업 번호</th>
                 <td>${company.com_no}</td>
@@ -132,7 +132,7 @@
                 <td>${company.com_addr}</td>
             </tr>
             <tr>
-                <th>회사 번호</th>
+                <th>사업자 번호</th>
                 <td>${company.com_companynum}</td>
             </tr>
             <tr>
@@ -180,7 +180,8 @@
                 </tr>
             </c:if>
         </table>
-    </div>
+		</div>
+	</div>
 </div>
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
