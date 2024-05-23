@@ -14,6 +14,7 @@ public class Company {
    private String com_tel;
    private String com_email;
    private String com_url;
+ 
    private Date make_date;
    
    private boolean notInterest;
@@ -23,7 +24,9 @@ public class Company {
       return interest;
    }
 
-   public void setInterest(boolean interest) {
+  
+
+public void setInterest(boolean interest) {
       this.interest = interest;
    }
 

@@ -49,6 +49,9 @@ public interface ICompanyDao3854 {
    
    int getInterestMemberCount(Long com_no);
    
+   List<Company> getCompaniesByPage(@Param("offset") int offset, @Param("pageSize") int pageSize);
+   int getTotalCompanyCount();
+   
 
    
 
