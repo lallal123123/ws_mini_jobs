@@ -130,7 +130,7 @@ public class Company_controller {
         Company loginCompany = companyService.login(company);
         if (loginCompany != null) {
             session.setAttribute("loggedInCompany", loginCompany);
-            return "redirect:/members/index";
+            return "redirect:/";
         } else {
             model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
             return "redirect:/members/loginForm";

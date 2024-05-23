@@ -180,13 +180,9 @@
                 </tr>
             </c:if>
         </table>
-        <a href="${pageContext.request.contextPath}/companies" class="back-to-main">이전으로 돌아가기</a>
     </div>
 </div>
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
-<div class="footer">
-    <span>Footer content here</span>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html> 

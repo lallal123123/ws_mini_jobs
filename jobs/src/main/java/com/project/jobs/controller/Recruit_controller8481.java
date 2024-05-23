@@ -21,7 +21,15 @@ public class Recruit_controller8481 {
 	@Autowired
 	ICommonRecruitDao8481 dao;
 	
+	@RequestMapping("/")
+	public String index() {
+		return "redirect:/recruitList";
+	}
+	
+	
+	
 	//공고 리스트 
+	//@RequestMapping("/recruitList")
 	@RequestMapping("/recruitList")
 	public String recruitList(HttpServletRequest request, Model model) {
 		System.out.println("공고리스트 볼거에요");

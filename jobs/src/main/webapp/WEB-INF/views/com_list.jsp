@@ -39,7 +39,7 @@
             </c:forEach>
         </tbody>
     </table>
-    <a href="${pageContext.request.contextPath}/members/index" class="btn btn-secondary">메인페이지로 돌아가기</a>
+    
 </div>
 <!-- 작업공간 영역 끝 -->
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>

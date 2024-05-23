@@ -109,7 +109,7 @@ public class Controller8481 {
 		
 		System.out.println(site_resume);
 		
-		return "redirect:/resume/member_mypage_resume_writeform";//이력서 작성후 어디로 보낼지 (고민해봐야)
+		return "redirect:/resume/member_mypage_resume_list";//이력서 작성후 어디로 보낼지 (고민해봐야)
 		
 	}
 	//자유이력서폼
@@ -153,7 +153,7 @@ public class Controller8481 {
 		
 		srs.freeResumeWrite(free_resume);
 		
-		return "redirect:/resume/member_mypage_resume_freeform";
+		return "redirect:/resume/member_mypage_resume_list";
 	}
 
 	//마이페이지 이력서 리스트 

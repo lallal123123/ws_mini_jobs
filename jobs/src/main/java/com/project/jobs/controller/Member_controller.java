@@ -83,7 +83,7 @@ public class Member_controller {
 	        } else {
 	            session.setAttribute("isAdmin", false);
 	        }
-	        return "redirect:/members/index";
+	        return "redirect:/";
 	    } else {
 	        model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다");
 	        model.addAttribute("member", new Member());

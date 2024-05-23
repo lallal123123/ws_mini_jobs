@@ -81,7 +81,7 @@
             </form:form>
         </div>
     </div>
-    <a href="${pageContext.request.contextPath}/members/index" class="btn btn-link text-center d-block mt-3">메인으로 돌아가기</a>
+    <a href="${pageContext.request.contextPath}/" class="btn btn-link text-center d-block mt-3">메인으로 돌아가기</a>
 </div>
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
