@@ -46,6 +46,11 @@
                 </a>
               </li>
               <li>
+                <a href="../admin99/faqList" class="nav-link link-body-emphasis">
+                 FAQ 관리
+                </a>
+              </li>
+              <li>
                 <a href="#" class="nav-link link-body-emphasis">
                  신고 접수된 건
                 </a>

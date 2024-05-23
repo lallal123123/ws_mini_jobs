@@ -17,7 +17,41 @@
         <div class="border p-3">
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
-              
+              <li class="nav-item">
+                <a href="../admin99/getTotalRegistrations" class="nav-link link-body-emphasis">
+                  My home
+                </a>
+              </li>
+              <li>
+                <a href="/admin/members" class="nav-link link-body-emphasis">
+                 개인회원 관리
+                </a>
+              </li>
+              <li>
+                <a href="/admin/companies" class="nav-link link-body-emphasis">
+                 기업회원 관리
+                </a>
+              </li> 
+              <li>
+                <a href="../admin99/cs_list_99" class="nav-link link-body-emphasis">
+                 고객센터 관리
+                </a>
+              </li> 
+              <li>
+                <a href="../admin99/notice_list_99" class="nav-link link-body-emphasis">
+                 공지사항 관리
+                </a>
+              </li>
+              <li>
+                <a href="../admin99/faqList" class="nav-link active" aria-current="page">
+                 FAQ 관리
+                </a>
+              </li> 
+              <li>
+                <a href="#" class="nav-link link-body-emphasis">
+                 신고 접수된 건
+                </a>
+              </li>    
              </ul>
         </div>
     </div>
@@ -25,7 +59,7 @@
     <div class="col-9">
         <div class="border p-3">
         <!-- common controller -->
-        	<form action="../writeFAQ" method="post" onsubmit="return noticeRegForm()">
+        	<form action="../admin99/faqWrite" method="post" onsubmit="return faqRegForm()">
 		    	<h3 style="text-align:center;">FAQ 작성</h3>
 	      		<div>카테고리 종류(필수)</div>
 			  	<select class="form-select" name="category" id="category">
@@ -42,12 +76,12 @@
                 	<label for="" class="form-label">내용</label>
                 	<textarea class="form-control" name="content" id="content" placeholder="내용"></textarea>
            		</div>
-           		<div class="mb-1">글 비공개 여부</div>
+           		<div class="mb-1">회원 유형 선택</div>
 	 			<input type="radio" value="1" name="mem_type" id="member"> 일반회원
 	 			<input class="ms-3" type="radio" value="0" name="mem_type" id="company"> 기업회원<br>
            		<input type="submit" class="btn btn-jobs w-100" value="등록하기">
 			</form>
-			<a class="btn btn-light" href="#" role="button">이전</a>
+			<a class="btn btn-light" href="/admin99/faqList" role="button">이전</a>
         </div>
     </div>
 </div>

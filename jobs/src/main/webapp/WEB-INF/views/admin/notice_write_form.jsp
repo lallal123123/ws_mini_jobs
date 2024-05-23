@@ -18,35 +18,40 @@
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
               <li class="nav-item">
-                <a href="../cs_list_99" class="nav-link link-body-emphasis">
+                <a href="../admin99/getTotalRegistrations" class="nav-link link-body-emphasis">
                   My home
                 </a>
               </li>
               <li>
-                <div class="nav-link link-body-emphasis">
+                <a href="/admin/members" class="nav-link link-body-emphasis">
                  개인회원 관리
-                </div>
+                </a>
               </li>
               <li>
-                <div class="nav-link link-body-emphasis">
+                <a href="/admin/companies" class="nav-link link-body-emphasis">
                  기업회원 관리
-                </div>
+                </a>
               </li> 
               <li>
-                <div class="nav-link link-body-emphasis">
+                <a href="../admin99/cs_list_99" class="nav-link link-body-emphasis">
                  고객센터 관리
-                </div>
+                </a>
               </li> 
               <li>
-                <div class="nav-link active" aria-current="page">
+                <a href="../admin99/notice_list_99" class="nav-link active" aria-current="page">
                  공지사항 관리
-                </div>
+                </a>
+              </li>
+              <li>
+                <a href="../admin99/faqList" class="nav-link link-body-emphasis">
+                 FAQ 관리
+                </a>
               </li>
               <li>
                 <a href="#" class="nav-link link-body-emphasis">
                  신고 접수된 건
                 </a>
-              </li>    
+              </li>
              </ul>
         </div>
     </div>
