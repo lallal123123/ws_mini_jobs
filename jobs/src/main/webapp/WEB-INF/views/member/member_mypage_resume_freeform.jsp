@@ -18,15 +18,7 @@
 	<!-- 작업공간 영역 -->
 	<div class="container">
 		<div class="row">
-			<div class="col-3">
-				<div class="border p-3">
-					<ul class="nav nav-pills flex-column mb-auto">
-						<!-- 여기에 메뉴를 나열해주세요 사이드바-->
-						<li class="nav-item"><a href="#" class="nav-link active"aria-current="page"> 메뉴1 </a></li>
-						<li><a href="#" class="nav-link link-body-emphasis"> 메뉴2</a></li>
-					</ul>
-				</div>
-			</div>
+			<jsp:include page="../mypagesidebar.jsp"></jsp:include>
 			<!-- 여긴 내용 -->
 
 			<div class="col-9">
