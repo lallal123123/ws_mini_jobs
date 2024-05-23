@@ -82,8 +82,11 @@ public class Company_controller {
     public String getAllCompanies(Model model, HttpSession session,
                                   @RequestParam(name = "page", defaultValue = "1") int page) {
         int pageSize = 5;
-        List<Company> companies = companyService.findPaginated(page, pageSize);
-        int totalCompanies = companyService.countCompanies();
+        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+        Long mem_no = loggedInMember != null ? loggedInMember.getMem_no() : null;
+
+        List<Company> companies = companyService.findPaginated(page, pageSize, mem_no);
+        int totalCompanies = companyService.countCompanies(mem_no);
         int totalPages = (int) Math.ceil((double) totalCompanies / pageSize);
 
         model.addAttribute("companies", companies);
