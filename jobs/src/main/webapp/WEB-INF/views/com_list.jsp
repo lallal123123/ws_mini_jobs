@@ -51,7 +51,7 @@
         </thead>
         <tbody>
             <c:forEach var="company" items="${companies}">
-                <tr>
+                <tr class="border-bottom">
                     <td>${company.com_no}</td>
                     <td>${company.com_name}</td>
                     <td>${company.com_ceo}</td>

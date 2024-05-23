@@ -15,18 +15,7 @@
         <div class="row">
              <jsp:include page="../mypagesidebar.jsp"></jsp:include>
             <div class="col-9">
-        
                  <div class="border p-5 rounded">
-
-                    
-                    <!-- 검색창 -->
-                    <div id="searchBox" >
-                        <form action="siteresumesearch" method="post" placeholder="제목을 입력해주세요..">
-                            <input type="text"  name="search">
-                            <button>검색</button>
-                        </form>
-                    </div><hr>      
-                    <!-- 검색창 --> 
                     <c:forEach var="memRecruitApply" items="${memRecruitApplyList }">
 			        <div class="border p-3 mb-3">
 			        	<div class="row align-items-center">
