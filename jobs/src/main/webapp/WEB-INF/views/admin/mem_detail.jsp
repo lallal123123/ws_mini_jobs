@@ -52,17 +52,46 @@
             </ul>
         </div>
     </div>
-    <div class="col-9">
-        <div class="border p-3">
-        <h3 style="text-align:center;">개인회원 상세조회</h3>
-        	<p><strong>회원 번호:</strong> <span>${member.mem_no}</span></p>
-	        <p><strong>아이디:</strong> <span>${member.mem_id}</span></p>
-	        <p><strong>이름:</strong> <span>${member.mem_name}</span></p>
-	        <p><strong>생년월일:</strong> <span>${member.mem_birth}</span></p>
-	        <p><strong>전화번호:</strong> <span>${member.mem_tel}</span></p>
-	        <p><strong>이메일:</strong> <span>${member.mem_email}</span></p>
-	        <p><strong>성별:</strong> <span>${member.mem_gender}</span></p>
-	        <p><strong>가입 날짜:</strong> <span><fmt:formatDate value="${member.make_date}" pattern="yyyy-MM-dd"/></span></p>
+    <div class="col-9 mb-5">
+    	<h4>개인회원 상세조회</h4>
+        <div class="border p-5">
+       		<table class="table border-none-table">
+       			<tbody>
+       				<tr class="border-bottom">
+       					<td>회원 번호</td>
+       					<td>${member.mem_no}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>아이디</td>
+       					<td>${member.mem_id}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>이름</td>
+       					<td>${member.mem_name}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>생년월일</td>
+       					<td>${member.mem_birth}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>전화번호</td>
+       					<td>${member.mem_tel}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>이메일</td>
+       					<td>${member.mem_email}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>성별</td>
+       					<td>${member.mem_gender}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>가입 날짜</td>
+       					<td><fmt:formatDate value="${member.make_date}" pattern="yyyy-MM-dd"/></td>
+       				</tr>
+       			</tbody>
+       		</table>
+        	
         </div>
     </div>
 </div>

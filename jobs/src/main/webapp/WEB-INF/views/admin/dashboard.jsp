@@ -54,9 +54,9 @@
         </div>
     </div>
     
-    <div class="col-9">
-        <div class="border p-3">
-        <h3>월별 가입현황</h3>
+    <div class="col-9 mb-5">
+        <div class="border p-5">
+        <h3 class="fs-5 fw-bold">월별 가입현황</h3>
         <canvas id="montlyRegistrationsChart" width="800" height="400"></canvas>
         <script src="../js/chartScript.js"></script>
         <script>
@@ -67,9 +67,9 @@
         	window.pastMemberRegistrations = ${pastMemRegist.total};
         	window.pastCompanyRegistrations = ${pastComRegist.total};
         </script>
-        <h3>미답변 문의·신고 </h3>
+        <h3 class="fs-5 fw-bold mt-5">미답변 문의·신고 </h3>
         <br>
-        <table class="table">
+        <table class="table jobs-table text-center">
 			  <thead>
 			    <tr>
 			      <th scope="col">게시글번호</th>
@@ -82,7 +82,7 @@
 			  <tbody class="table-group-divider">
 			  
 			  <c:forEach var="list" items="${list }" varStatus="status">
-			  	<tr>
+			  	<tr class="border-bottom">
 			      <td scope="row">${list.cs_no }</td>
 			      <td><fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd"/></td>
 			      <td>

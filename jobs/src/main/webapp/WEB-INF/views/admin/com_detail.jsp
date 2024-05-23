@@ -52,20 +52,53 @@
             </ul>
         </div>
     </div>
-    <div class="col-9">
-        <div class="border p-3">
-        <h3 style="text-align:center;">기업회원 상세조회</h3>
-        	<p><strong>기업 번호:</strong> <span>${company.com_no}</span></p>
-	        <p><strong>아이디:</strong> <span>${company.com_id}</span></p>
-	        <p><strong>이름:</strong> <span>${company.com_name}</span></p>
-	        <p><strong>규모:</strong> <span>${company.com_size}</span></p>
-	        <p><strong>대표:</strong> <span>${company.com_ceo}</span></p>
-	        <p><strong>주소:</strong> <span>${company.com_addr}</span></p>
-	        <p><strong>사업자 번호:</strong> <span>${company.com_companynum}</span></p>
-	        <p><strong>전화번호:</strong> <span>${company.com_tel}</span></p>
-	        <p><strong>이메일:</strong> <span>${company.com_email}</span></p>
-	        <p><strong>웹사이트:</strong> <span>${company.com_url}</span></p>
-	        <p><strong>가입 날짜:</strong> <span><fmt:formatDate value="${company.make_date}" pattern="yyyy-MM-dd"/></span></p>
+    <div class="col-9 mb-5">
+    	<h4>기업회원 상세조회</h4>
+        <div class="border p-5">
+        <table class="table border-none-table">
+       			<tbody>
+       				<tr class="border-bottom">
+       					<td>기업 번호</td>
+       					<td>${company.com_no}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>아이디</td>
+       					<td>${company.com_id}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>이름</td>
+       					<td>${company.com_name}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>대표</td>
+       					<td>${company.com_ceo}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>주소</td>
+       					<td>${company.com_addr}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>사업자 번호</td>
+       					<td>${company.com_companynum}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>전화번호</td>
+       					<td>${company.com_tel}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>이메일</td>
+       					<td>${company.com_email}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>웹사이트</td>
+       					<td>${company.com_url}</td>
+       				</tr>
+       				<tr class="border-bottom">
+       					<td>가입 날짜</td>
+       					<td><fmt:formatDate value="${company.make_date}" pattern="yyyy-MM-dd"/></td>
+       				</tr>
+       			</tbody>
+       		</table>
         </div>
     </div>
 </div>

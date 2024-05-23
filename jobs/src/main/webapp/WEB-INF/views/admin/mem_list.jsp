@@ -52,11 +52,11 @@
             </ul>
         </div>
     </div>
-    <div class="col-9">
-        <div class="border p-3">
-        <h3 style="text-align:center;">개인회원 조회</h3>
+    <div class="col-9 mb-5">
+    	<h4>개인회원 조회</h4>
+        <div class="border p-5">
         	
-        <table class="table" style="text-align:center;">
+        <table class="table jobs-table text-center">
         <thead>
             <tr>
               <th scope="col">회원 번호</th>
@@ -68,7 +68,7 @@
         </thead>
         <tbody>
             <c:forEach var="member" items="${members}">
-                <tr>
+                <tr class="border-bottom">
                     <td>${member.mem_no}</td>
                     <td><fmt:formatDate value="${member.make_date}" pattern="yyyy-MM-dd"/></td>
                     <td><a href="<c:url value='/admin/members/${member.mem_no}'/>">${member.mem_id}</a></td>

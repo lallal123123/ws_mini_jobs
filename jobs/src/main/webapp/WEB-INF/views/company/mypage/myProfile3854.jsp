@@ -12,7 +12,7 @@
 <body class="d-flex flex-column h-100">
 <jsp:include page="../../header.jsp"></jsp:include>
 <!-- 작업공간 영역 -->
-<div class="container-fluid">
+<div class="container">
 <div class="row">
       <div class="col-3">
         <div class="border p-3 rounded">
@@ -52,8 +52,12 @@
             </ul>
         </div>
     </div>
-    <div class="col-9">
-        <h3>기업정보수정</h3>
+    <div class="col-9 mb-5">
+        <p class="text-secondary d-flex">
+			 <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
+			 <a href="" class="nav-link text-black fw-bolder font-size-">내 정보 수정</a>
+		</p>
+		<div class="border p-5 rounded">
         <form action="${pageContext.request.contextPath}/companies/updateProfile" method="post" class="needs-validation" novalidate>
             <div class="mb-3">
                 <label for="com_id" class="form-label">아이디:</label>
@@ -123,11 +127,13 @@
                 </div>
             </div>
             <div>
-                <button type="submit" class="btn btn-primary">수정하기</button>
+                <button type="submit" class="btn btn-jobs w-100">수정하기</button>
             </div>
         </form>
+        </div>
     </div>
     
+</div>
     <script>
         // Bootstrap의 폼 유효성 검사를 활성화하는 스크립트
         (function () {

@@ -81,13 +81,13 @@ display: inline-block;
 }
 </style>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 	<jsp:include page="../../header.jsp"></jsp:include>
 	<!-- 작업공간 영역 -->
 	<div class="container">
 		<div class="row">
 
-			<div class="col-12 mb-">
+			<div class="col-12">
 				<div class="border p-5 mb-5">
 					<div class="mb-3">실시간 전체글 <strong>${cnt }</strong>개 <a class="btn btn-jobs" href="list">전체글보기</a></div>
 					<div id="hotListAndCom">
