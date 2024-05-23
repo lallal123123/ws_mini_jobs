@@ -40,7 +40,7 @@
                      <c:forEach var="memRecruitApply" items="${memRecruitApplyList }">
 			        <div class="border p-3 mb-3">
 			        	<div class="row align-items-center">
-			        	<input type="hidden" id="s_recruit_no" value="${memRecruitApply.mem_recruit_no }">
+			        	<input type="hidden" id="mem_recruit_no" value="${memRecruitApply.mem_recruit_no }">
 			        		<div class="col-md-4">
 			        			<div class="fs-7 text-secondary">공고번호 : ${memRecruitApply.recruit_no } </div>
 			        			<div>[ ${memRecruitApply.com_name } ]</div>
@@ -121,7 +121,16 @@
 </div>
 <!-- 작업공간 영역 끝 -->
 <jsp:include page="../footer.jsp"></jsp:include>
+<script>
+	const mem_recruit_no = document.querySelector("#mem_recruit_no");
 
+	function applyDelete(){
+		if(confirm("지원을 취소하시겠습니까?")){
+			location.href="/member/deleteRecruitApply?mem_recruit_no=" + mem_recruit_no.value;
+			console.log("/member/deleteRecruitApply?mem_recruit_no=" + mem_recruit_no.value);
+		}
+	}
+	</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html> 

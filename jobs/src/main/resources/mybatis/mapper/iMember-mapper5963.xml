@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.jobs.dao.IMemberDao5963">
 <insert id="addRecruitScrap">
-	INSERT INTO scrap_recruit VALUES(NULL, #{param1}, #{param2});
+	INSERT INTO scrap_recruit VALUES(NULL, #{param1}, #{param2})
 </insert>
 
 <select id="getMemRecruitScrapList" resultType="com.project.jobs.dto.MemRecruitScrap">
@@ -17,15 +17,15 @@ JOIN
 FROM company c
 JOIN recruit r ON r.com_no = c.com_no) subquery
 ON sr.recruit_no = subquery.recruit_no
-WHERE mem_no = ${param1};
+WHERE mem_no = ${param1}
 </select>
 
 <delete id="deleteRecruitScrap">
-DELETE FROM scrap_recruit WHERE s_recruit_no = ${s_recruit_no};
+DELETE FROM scrap_recruit WHERE s_recruit_no = ${s_recruit_no}
 </delete>
 
 <insert id="applyRecruit">
-INSERT INTO mem_recruit VALUES(0, #{param1}, #{param2}, null, FALSE, #{param3});
+INSERT INTO mem_recruit VALUES(0, #{param1}, #{param2}, null, FALSE, #{param3})
 </insert>
 
 <select id="getSiteResumeList">
@@ -42,11 +42,11 @@ JOIN
 FROM company c
 JOIN recruit r ON r.com_no = c.com_no) subquery
 ON mr.recruit_no = subquery.recruit_no
-WHERE mem_no = ${param1};
+WHERE mem_no = ${param1}
 </select>
 
 <delete id="deleteRecruitApply">
-DELETE FROM mem_recruit WHERE mem_recruit_no = #{param1};
+DELETE FROM mem_recruit WHERE mem_recruit_no = #{param1}
 </delete>
 
 </mapper>

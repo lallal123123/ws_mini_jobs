@@ -120,7 +120,7 @@
 			</div>
 		</div>
 	</div>
-	<input type="text" id="mem_no"
+	<input type="hidden" id="mem_no"
 		value="${sessionScope.loggedInMember.mem_no}">
 	<c:if test="${sessionScope.loggedInCompany eq null}">
 		<div class="d-flex justify-content-center sticky-bottom pb-5">
