@@ -58,10 +58,10 @@
                 <div class="float-end d-flex align-items-center">
                     <c:choose>
                         <c:when test="${not empty sessionScope.loggedInMember || not empty sessionScope.loggedInCompany}">
-                            <button class="btn btn-notification" data-bs-toggle="modal" data-bs-target="#notificationModal">
+                            <button class="btn btn-notification" data-bs-toggle="modal" data-bs-target="#notificationModal" onclick="loadJobPostings('${sessionScope.loggedInMember.mem_no}')">
                                 <i class="bi bi-bell notification-bell"></i>
                                 <c:if test="${notificationCount > 0}">
-                                    <span class="notification-count" id="notificationCount">${notificationCount}</span>
+                                    <span class="notification-count">${notificationCount}</span>
                                 </c:if>
                             </button>
                         </c:when>
@@ -69,14 +69,14 @@
                     <c:choose>
                         <c:when test="${not empty sessionScope.loggedInMember}">
                             <c:if test="${sessionScope.isAdmin == true}">
-                                <a href="/mainPage/com_mainPage" class="btn btn-jobs ms-2">관리자 모드</a>
+                                <a href="/admin99/getTotalRegistrations" class="btn btn-jobs ms-2">관리자 모드</a>
                             </c:if>
-                            <a href="/members/mypage" class="btn btn-jobs ms-2">마이 페이지</a>
+                            <a href="/members/mypage/myhome" class="btn btn-jobs ms-2">마이 페이지</a>
                             <a href="/members/logout" class="btn btn-jobs ms-2">로그아웃</a>
                             <span>환영합니다, ${sessionScope.loggedInMember.mem_id}님!</span>
                         </c:when>
                         <c:when test="${not empty sessionScope.loggedInCompany}">
-                            <a href="/mainPage/com_mainPage" class="btn btn-jobs">마이 페이지</a>
+                            <a href="/companies/mypage" class="btn btn-jobs">마이 페이지</a>
                             <a href="/companies/logout" class="btn btn-jobs ms-2">로그아웃</a>
                             <span>환영합니다, ${sessionScope.loggedInCompany.com_id}님!</span>
                         </c:when>
@@ -90,12 +90,12 @@
         </div>
         <ul class="nav nav-pills nav-jobs mt-2 justify-content-end">
             <li class="nav-item"><a href="#" class="nav-link" aria-current="page">채용정보</a></li>
-            <li class="nav-item"><a onclick="preparing()" href="#" class="nav-link">공고캘린더</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">공고캘린더</a></li>
             <li class="nav-item"><a href="${pageContext.request.contextPath}/companies" class="nav-link">기업정보</a></li>
             <c:if test="${loggedInCompany ne null}">
             <li class="nav-item"><a href="${pageContext.request.contextPath}/community/company/main" class="nav-link">커뮤니티</a></li>
             </c:if>
-            <c:if test="${loggedInMember ne null}">
+             <c:if test="${loggedInMember ne null}">
             <li class="nav-item"><a href="${pageContext.request.contextPath}/community/member/main" class="nav-link">커뮤니티</a></li>
             </c:if>
             <li class="nav-item"><a href="/cs_list_99" class="nav-link">고객센터</a></li>
@@ -108,7 +108,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="notificationModalLabel">관심 등록한 기업의 채용 공고</h5>
+                <h5 class="modal-title" id="notificationModalLabel">알림</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="jobPostingsBody">
@@ -123,38 +123,36 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script>
-function preparing(){
-	alert("서비스 준비중입니다 :)");
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    var mem_no = '${sessionScope.loggedInMember.mem_no}';
-    if (mem_no) {
-        var eventSource = new EventSource('${pageContext.request.contextPath}/companies/notifications?mem_no=' + encodeURIComponent(mem_no));
-        eventSource.onmessage = function(event) {
-            var jobPostings = JSON.parse(event.data);
+function loadJobPostings(mem_no) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '${pageContext.request.contextPath}/companies/jobPostings?mem_no=' + encodeURIComponent(mem_no), true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var jobPostings = JSON.parse(xhr.responseText);
             var jobPostingsBody = document.getElementById('jobPostingsBody');
             jobPostingsBody.innerHTML = '';
 
             if (jobPostings.length > 0) {
                 jobPostings.forEach(function(recruit) {
                     var url = '${pageContext.request.contextPath}/company/mypage/recruitDetail?recruit_no=' + recruit.recruit_no;
+                    console.log('Generated URL:', url);  // URL 로그 추가
                     jobPostingsBody.innerHTML += `
                         <div class="card mb-2">
                             <div class="card-body">
-                                <h5 class="card-title">${recruit.title}</h5>
-                                <a href="${url}" class="btn btn-primary">자세히 보기</a>
+                               
+                                <a href="${url}" class="btn btn-primary">새로운 알림</a>
                             </div>
                         </div>
                     `;
                 });
-                document.getElementById('notificationCount').innerText = jobPostings.length;
             } else {
                 jobPostingsBody.innerHTML = '<p>관심 등록한 기업의 채용 공고가 없습니다.</p>';
             }
-        };
-    }
-});
+        }
+    };
+    xhr.send();
+}
 </script>
 </body>
 </html>
