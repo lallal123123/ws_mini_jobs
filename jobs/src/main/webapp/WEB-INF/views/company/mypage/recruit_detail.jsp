@@ -62,9 +62,11 @@
 					</table>
 				</div>
 				<div class="col-md-4">
+					<!-- 
 					<div>
 						<a href="">구독</a> <a href="">숨기기</a>
 					</div>
+					 -->
 					<table class="w-100 mb-2">
 						<tbody>
 							<tr>

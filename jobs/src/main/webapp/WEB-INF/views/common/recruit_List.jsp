@@ -19,23 +19,22 @@
 	<!-- 작업공간 영역 -->
 
 	<div class="container">
+		<h4>채용 정보</h4>
 		<div class="row">
-		
-		
-		
-		
-			<div class="border p-5 rounded">
-				<div class="overflow-hidden">
-					<div class="input-group search-box float-end">
-						<div class=" search-box p-1 mb-">
+			<div class="border p-5 rounded mb-5">
+				<div class="d-flex justify-content-between">
+					<div class="input-group search-box float-end mb-3">
+						<div class="search-box mb-1">
 	                        <select class="form-select" id ="selectdate" name="selectdate" onchange="toggleTitleInput()">
 	                            <option value="">선택해주세요</option>
 	                            <option value="regdate">등록일</option>
 	                            <option value="deadline">마감일</option>
 	                        </select>
 	                	 </div>
-	                	<form class="d-flex"> 
-							<input type="text" class="form-control me-2" placeholder="검색" aria-label="제목 검색" id="search" name="search" aria-describedby="getSearchList" style="width: 150px;">
+					</div>
+					<div>
+						<form class="d-flex"> 
+							<input type="text" class="form-control me-2" placeholder="제목 검색" aria-label="제목 검색" id="search" name="search" aria-describedby="getSearchList" style="width: 150px;">
 							<button class="btn btn-light" type="button"	onclick="getSearchList()">검색</button>
 						</form>
 					</div>
