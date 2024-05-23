@@ -18,46 +18,25 @@
         <jsp:include page="../mypagesidebar.jsp"></jsp:include>
         <!-- 오른쪽 컬럼 -->
         <div class="col-9">
-            <div class="border p-3" style="display: flex; flex-direction: row;">
-                 <div class = "col-5"style="border: 1px solid #ced4da; padding: 10px; margin-right: 10px;">
-                 <h5>지원공고 내역</h5><hr>
+            <div class="border p-5 rounded mb-5">
+            	<div class="row">
+                 <div class="col-6 border-end">
+                 	<div class="d-flex justify-content-between border-bottom pb-3 mb-3">
+                    	<h5>지원공고 내역</h5>
+                    	<a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="/resume/member_mypage_resume_list">더보기 ></a>
+                    </div>
                      <c:forEach var="memRecruitApply" items="${memRecruitApplyList }">
 			        <div class="border p-3 mb-3">
 			        	<div class="row align-items-center">
 			        	<input type="hidden" id="mem_recruit_no" value="${memRecruitApply.mem_recruit_no }">
-			        		<div class="col-md-4">
+			        		<div class="col-md-8">
 			        			<div class="fs-7 text-secondary">공고번호 : ${memRecruitApply.recruit_no } </div>
 			        			<div>[ ${memRecruitApply.com_name } ]</div>
 			        			<div class="fs-5 fw-bold w-100 text_ellipsis">
 			        			<a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="/company/mypage/recruitDetail?recruit_no=${memRecruitApply.recruit_no }">${memRecruitApply.title }</a>
 			        			</div>
 			        		</div>
-			        		<div class="col-md-5 text-secondary">
-			        		${memRecruitApply.field } | 
-			        		<c:choose>
-						        <c:when test="${memRecruitApply.education ne null }">
-						           ${memRecruitApply.education } | 
-						        </c:when>         
-						        <c:otherwise>
-						          학력무관 | 
-						        </c:otherwise>
-						    </c:choose>
-						    <c:choose>
-						        <c:when test="${memRecruitApply.pay ne 0 }">
-						          ${memRecruitApply.pay } |<br/>
-						        </c:when>         
-						        <c:otherwise>
-						          회사내규에 따름 |<br/>
-						        </c:otherwise>
-						    </c:choose> 
-						    <c:choose>
-						        <c:when test="${memRecruitApply.com_addr ne null }">
-						          ${memRecruitApply.com_addr } | 
-						        </c:when>         
-						    </c:choose>      		
-			        		마감일 ${memRecruitApply.deadline_date } <br/>
-			        		</div>
-			        		<div class="col-md-3 text-center">
+			        		<div class="col-md-4 text-center">
 			        		<c:choose>
 						        <c:when test="${memRecruitApply.pass eq true }">
 						          <span class="text-primary fw-bold">합격</span>
@@ -70,7 +49,7 @@
 						        </c:otherwise>
 						    </c:choose> 
 						    <c:if test="${memRecruitApply.pass eq null }">
-				        		<button type="button" class="btn btn-info text-white ms-2"  onclick="applyDelete()">
+				        		<button type="button" class="btn btn-info btn-sm text-white ms-2"  onclick="applyDelete()">
 					               취소하기
 					            </button>
 					        </c:if>
@@ -80,24 +59,24 @@
 			        </div>
 		        	</c:forEach>
                 </div>
-                <div class="col-5" style="border: 1px solid #ced4da; padding: 10px;">
-                    <h5>이력서 리스트</h5><hr>
+                <div class="col-6">
+                	<div class="d-flex justify-content-between border-bottom pb-3 mb-3">
+                    	<h5>이력서 리스트</h5>
+                    	<a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="/member/getMemRecruitApplyList">더보기 ></a>
+                    </div>
                     <c:forEach var="siteList" items="${siteList}">
                     <div class="border p-2 mb-2">
                         <div class="row align-items-center">
-                            <div class="col-md-4">
-                                <div>이력서 제목 : ${siteList.title } </div>
+                            <div class="col-md-12">
+                                <span class="fs-7 text-secondary">이력서 제목</span> 
+                                <div class="fw-bold">${siteList.title }</div> 
                             </div>
-                            <div class="col-md-5 text-secondary">
-                            <div class="col-md-3 d-flex flex-row-reverse">
-                                
-                            </div>
-                            <div>
-                            </div>
+                            
                         </div>
-                    </div></div>
+                    </div>
                     </c:forEach>
                     
+                </div>
                 </div>
             </div>
         </div>

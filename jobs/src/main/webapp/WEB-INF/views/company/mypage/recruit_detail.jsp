@@ -27,7 +27,7 @@
 					</div>
 					<div class="f-5 fw-bold">${recruitDetail.com_name}</div>
 					<h3 class="border-bottom py-2">${recruitDetail.title}</h3>
-					<table class="w-100">
+					<table class="border-none-table w-100">
 						<tbody>
 							<tr>
 								<td class="p-1 text-secondary w-50" colspan=2>지원자격</td>
@@ -67,7 +67,7 @@
 						<a href="">구독</a> <a href="">숨기기</a>
 					</div>
 					 -->
-					<table class="w-100 mb-2">
+					<table class="border-none-table w-100 mb-2">
 						<tbody>
 							<tr>
 								<td class="p-1 text-secondary" colspan=2>기업정보</td>

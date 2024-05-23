@@ -76,16 +76,16 @@
 </head>
 <body class="d-flex flex-column h-100">
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <!-- 사이드빠 CSS -->
             <jsp:include page="../mypagesidebar.jsp"></jsp:include>
         
-        <div class="col content">
-            <div class="container">
+
+            <div class="col-9 mb-5">
                 <p class="text-secondary d-flex">
                     <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
-                    <a href="#" class="nav-link text-secondary">관심기업 | 관심없음  목록</a> <span class="mx-3"></span>
+                    <a href="" class="nav-link text-black fw-bolder">관심기업 리스트</a>
                 </p>
                 <div class="form-container">
                     <h4>관심 기업 목록</h4>
@@ -142,7 +142,7 @@
                     </table>
                 </div>
             </div>
-        </div>
+       
     </div>
 </div>
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
