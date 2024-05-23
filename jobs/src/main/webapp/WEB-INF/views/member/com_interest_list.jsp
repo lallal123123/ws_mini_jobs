@@ -87,9 +87,12 @@
                     <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
                     <a href="" class="nav-link text-black fw-bolder">관심기업 리스트</a>
                 </p>
-                <div class="form-container">
-                    <h4>관심 기업 목록</h4>
-                    <table class="table">
+                <div class="border p-3 mb-3  rounded">
+                
+                <div class="row">
+                <div class="col-12">
+                    <h5 class="fw-bold fs-5 mt-2">관심 기업 목록</h5>
+                    <table class="table jobs-table text-center">
                         <thead>
                             <tr>
                                 <th>회사명</th>
@@ -114,9 +117,12 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="form-container mt-4">
-                    <h4>관심 없음 기업 목록</h4>
-                    <table class="table">
+               </div>
+               <hr/>
+               <div class="col-12">
+                <div>
+                    <h5 class="fw-bold fs-5 mt-5">관심 없음 기업 목록</h5>
+                    <table class="table jobs-table text-center">
                         <thead>
                             <tr>
                                 <th>회사명</th>
@@ -141,8 +147,9 @@
                         </tbody>
                     </table>
                 </div>
+                </div>
             </div>
-       
+       </div>
     </div>
 </div>
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>

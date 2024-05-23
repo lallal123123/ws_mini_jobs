@@ -23,12 +23,12 @@
 
                     
                     <!-- 검색창 -->
-                    <div id="searchBox" >
+                    <!-- <div id="searchBox" >
                         <form action="siteresumesearch" method="post" placeholder="제목을 입력해주세요..">
                             <input type="text"  name="search">
                             <button>검색</button>
                         </form>
-                    </div><hr>      
+                    </div><hr>    -->   
                     <!-- 검색창 --> 
                     <c:forEach var="memRecruitScrap" items="${memRecruitScrapList }">
 			        <div class="border p-3 mb-3">

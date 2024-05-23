@@ -17,23 +17,18 @@
             <jsp:include page="../mypagesidebar.jsp"></jsp:include>
             
             <div class="col-9">
-                <div class="border p-3">
-                <!-- 작업시작 -->
-                         
-                 <div class="border p-5 rounded">
-                 <h2>사이트 이력서</h2>
+                <div class="border p-5 rounded mb-3">
+                <!-- 작업시작 -->     
+                 
+                 <h2 class="fw-bold fs-5">사이트 이력서</h2>
                     
-                    <!-- 검색창 -->
-                    
-                          
-                    <!-- 검색창 --> 
                     <c:forEach var="siteList" items="${siteList}">
                     <div class="border p-2 mb-2">
                         <div class="row align-items-center">
-                            <div class="col-md-4">
+                            <div class="col-md-9">
                                 <div>이력서 제목 :${siteList.title } </div>
                             </div>
-                            <div class="col-md-5 text-secondary">
+                            
                             <div class="col-md-3 d-flex flex-row-reverse">
                                 <c:choose>        
                                     <c:when test="${not empty siteList.title}">
@@ -43,23 +38,24 @@
                                  
                                 </c:choose> 
                             </div>
-                            <div>
-                            </div>
+                            
+                           
                         </div>
-                    </div></div>
+                    </div>
+                   
                     </c:forEach>
                 </div>
                                 
-               <div class="border p-5 rounded">
-                <h2>자유양식 이력서</h2>
+               <div class="border p-5 rounded mb-5">
+                <h2 class="fw-bold fs-5">자유양식 이력서</h2>
                                           
                 <c:forEach var="freeList" items="${freeList}">
                     <div class="border p-2 mb-2">
                         <div class="row align-items-center">
-                            <div class="col-md-4">
+                            <div class="col-md-9">
                                 <div>이력서 제목 :${freeList.title } </div>
                             </div>
-                            <div class="col-md-5 text-secondary">
+                            
                             <div class="col-md-3 d-flex flex-row-reverse">
                                 <c:choose>        
                                     <c:when test="${not empty freeList.title}">
@@ -72,16 +68,18 @@
                             </div>
                         </div>
                     </div>
-                    </div>
                     </c:forEach>
                 
 
                 <!-- 작업끝 -->
                 </div>
-            </div>
+ 			</div>
+ 		</div>
+ 	</div>
+           
 
-        </div>
-    </div>
+ 
+
     <!-- 작업공간 영역 끝 -->
     <jsp:include page="../footer.jsp"></jsp:include>
 
