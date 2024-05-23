@@ -78,26 +78,9 @@
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-auto sidebar border p-3">
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="#" class="nav-link link-body-emphasis border-bottom rounded-0" aria-current="page">My 홈</a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/members/editProfile">내 정보 수정</a>
-                </li> 
-                <li>
-                    <div class="accordion" id="accordionPanelsStayOpenExample">
-                        <a class="nav-link link-body-emphasis text-weight-bold border-bottom rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                            관심기업리스트
-                        </a>
-                    </div> 
-                </li>   
-                <li>
-                    <a href="#" class="nav-link link-body-emphasis border-bottom rounded-0">스크랩 구직자</a>
-                </li>   
-            </ul>
-        </div>
+        <!-- 사이드빠 CSS -->
+            <jsp:include page="../mypagesidebar.jsp"></jsp:include>
+        
         <div class="col content">
             <div class="container">
                 <p class="text-secondary d-flex">

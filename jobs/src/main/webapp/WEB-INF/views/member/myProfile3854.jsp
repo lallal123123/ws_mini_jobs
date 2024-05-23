@@ -28,25 +28,10 @@
     <!-- 작업공간 영역 -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-auto sidebar border p-3">
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <!-- 여기에 메뉴를 나열해주세요 -->
-                    <li class="nav-item">
-                        <a href="#" class="nav-link link-body-emphasis border-bottom rounded-0" aria-current="page">My 홈</a>
-                    </li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/members/editProfile">내 정보 수정</a>
-                    </li> 
-                    <li>
-                        <div class="accordion" id="accordionPanelsStayOpenExample">
-                            <a href="${pageContext.request.contextPath}/companies/interestCompanies">관심기업 리스트</a>
-                        </div> 
-                    </li>   
-                    <li>
-                        <a href="#" class="nav-link link-body-emphasis border-bottom rounded-0">스크랩 구직자</a>
-                    </li>   
-                </ul>
-            </div>
+            
+            <!-- 사이드빠 CSS -->
+            <jsp:include page="../mypagesidebar.jsp"></jsp:include>
+            
             <div class="col content">
                 <div class="container">
                     <p class="text-secondary d-flex">
