@@ -66,10 +66,13 @@
 	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
 	    	<a href="" class="nav-link text-black fw-bolder">My 홈</a>
 	    </p>
-	    <a class="btn btn-light" href="/company/mypage/info_write_form">기업소개 작성</a>
+	    <div class="border p-5 rounded">
+	    
 	    <!-- 진행중인 공고 시작 -->
-	    <h3>진행중인 공고</h3>
-	    <a href="/company/mypage/getComRecruitList">더보기 ></a>
+	    <div class="d-flex justify-content-between py-2 border-bottom">
+		    <h4 class="fs-5">진행중인 공고</h4>
+		    <a href="/company/mypage/getComRecruitList">더보기 ></a>
+	    </div>
 	    <c:forEach var="recruit" items="${recruitList }">
 	        <div class="border p-3 mb-3">
 	        	<div class="row align-items-center">
@@ -96,8 +99,11 @@
 	        </div>
         </c:forEach>
         <!-- 진행중인 공고 종료 -->
-        <h3>지원 구직자 현황</h3>
-        <a href="/mainPage/mem_recruit_list99">더보기 ></a>
+         <div class="d-flex justify-content-between py-2 border-bottom">
+		    <h4 class="fs-5">지원 구직자 현황</h4>
+		    <a href="/mainPage/mem_recruit_list99">더보기 ></a>
+	    </div>
+        
         <c:forEach var="memRecruit" items="${memRecruitList }">
 	        <div class="border p-3 mb-3">
 	        	<div class="row align-items-center">
@@ -116,8 +122,10 @@
 	        </div>
         </c:forEach>
         
-        <h3>스크랩한 구직자 리스트</h3>
-        <a href="/interest92/memInterestList">더보기 ></a>
+        <div class="d-flex justify-content-between py-2 border-bottom">
+		    <h4 class="fs-5">스크랩한 구직자 리스트</h4>
+		    <a href="/interest92/memInterestList">더보기 ></a>
+	    </div>
         <c:forEach var="memInterestList" items="${list }">
 	        <div class="border p-3 mb-3">
 	        	<div class="row align-items-center">
@@ -138,6 +146,7 @@
 	        	</div>
 	        </div>
         </c:forEach>
+    </div>
     </div>
  </div>
 </div>

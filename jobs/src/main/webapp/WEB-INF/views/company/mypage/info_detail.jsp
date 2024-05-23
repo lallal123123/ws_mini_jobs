@@ -18,7 +18,7 @@
         <div class="border p-3 rounded">
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
-        	<div class="text-center mb-2">${company.com_name} 님</div>
+        	<div class="text-center mb-2">${sessionScope.loggedInCompany.com_name} 님</div>
 
         	<a class="btn btn-jobs" href="${pageContext.request.contextPath}/companies/editProfile">내 정보 수정</a>
             	<li class="nav-item">
