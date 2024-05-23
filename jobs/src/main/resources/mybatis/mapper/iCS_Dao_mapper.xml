@@ -70,7 +70,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</choose>
 		
 	</select>
-	
+	<select id="getQuestionList">
+		SELECT * FROM cs_question WHERE com_no = #{com_no}
+	</select>
 	<!-- 문의 답변 -->
 	<insert id="writeRequestDao_99">
 		INSERT INTO cs_request (cs_no, content, reg_date, title)

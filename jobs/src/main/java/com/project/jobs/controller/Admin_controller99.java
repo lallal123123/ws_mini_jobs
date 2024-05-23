@@ -185,6 +185,18 @@ public class Admin_controller99 {
 		return "/common/cs_list";
 	}
 	
+	//FAQ 작성, 수정, 삭제
+	@RequestMapping("/faqWriteForm")
+	public String faqWriteForm() {
+		
+		return "/faq/faq_write_form";
+	}
+	
+	@RequestMapping("/faqList")
+	public String faqList() {
+		
+		return "/faq/faq_list";
+	}
 	
 	
 	

@@ -28,4 +28,6 @@ public interface ICS_Dao99 {
 	public Member getCsWriterId_99(@Param("cs_no") String cs_no);
 	public List<Cs_question> csSerchData_99(@Param("searchData") String searchData);
 	public List<Cs_question> csCategory_99(@Param("category") String category);
+	//로그인 한 기업이 작성한 문의글 리스트
+	public List<Cs_question> getQuestionList(@Param("com_no") Long com_no);
 }

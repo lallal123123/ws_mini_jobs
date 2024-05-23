@@ -28,6 +28,12 @@ public class Common_Controller99 {
 		return "/common/write_form";
 	}
 	
+	@RequestMapping("/mypagesidebar")
+	public String mypagesidebar() {
+		
+		return "/common/csAndNoticeSideBar";
+	}
+	
 	@RequestMapping("/write_Form_99")
 	public String writeForm(Model model,HttpSession session) {
 		Member member = (Member)session.getAttribute("loggedInMember");
@@ -152,6 +158,24 @@ public class Common_Controller99 {
 		return "/common/cs_list";
 	}
 	
+	@RequestMapping("/getQuestionList99")
+	public String getQuestionList(Model model, HttpSession session) {
+		Company company = (Company)session.getAttribute("loggedInCompany");
+		Long com_no = company.getCom_no();
+		model.addAttribute("list", cs_Dao.getQuestionList(com_no));
+		//Member member = (Member)session.getAttribute("loggedInMember");
+		/*
+		if(company != null) {
+			Long com_no = company.getCom_no();
+			model.addAttribute("com_no", com_no);
+		} else if(member != null) {
+			Long mem_no = member.getMem_no();
+			model.addAttribute("mem_no", mem_no);
+		}*/
+		
+		return "/company/mypage/com_cs_list";
+	}
+	
 	//공지사항
 	@Autowired
 	private INotice_Dao99 noticeDao;
@@ -196,6 +220,9 @@ public class Common_Controller99 {
 		model.addAttribute("list", noticeDao.noticeCategory_99(category));
 		return "/common/notice_list";
 	}
+	
+	//FAQ
+	
 	
 	
 	
