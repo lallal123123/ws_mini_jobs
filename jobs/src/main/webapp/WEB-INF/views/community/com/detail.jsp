@@ -22,64 +22,63 @@
 
 			<div class="col-12">
 				<div class="border p-3">
-					
 
-					
-						
-                        <a href="list"><button>전체게시글</button></a>
-                        <c:if test="${loggedInCompany.com_id eq dto.com_id}">
-                            <a href="modify_form?no=${dto.com_community_no}"><button>수정</button></a>
-                            <a href="delete?no=${dto.com_community_no}"><button>삭제</button></a>
-                        </c:if>
-						<div class="mb-3" id="title">
-							${dto.title}
-						</div>
-                        <div class="mb-3" id="writerBox">
-                            <c:if test="${dto.secret eq 0}">
-							<div id="img">이미지위치</div>
-                            <div id="writer">${dto.com_id}<br>${dto.s_reg_date}</div>
-                            </c:if>
-                            <c:if test="${dto.secret eq 1}">
+
+
+
+					<a href="list"><button>전체게시글</button></a>
+					<c:if test="${loggedInCompany.com_id eq dto.com_id}">
+						<a href="modify_form?no=${dto.com_community_no}"><button>수정</button></a>
+						<a href="delete?no=${dto.com_community_no}"><button>삭제</button></a>
+					</c:if>
+					<div class="mb-3" id="title">${dto.title}</div>
+					<div class="mb-3" id="writerBox">
+						<c:if test="${dto.secret eq 0}">
+							
+							<div id="writer">${dto.com_id}<br>${dto.s_reg_date}</div>
+						</c:if>
+						<c:if test="${dto.secret eq 1}">
 							<div id="img">비공개이미지위치</div>
-                            <div id="writer">비공개<br>${dto.s_reg_date}</div>
-                            </c:if>
-						</div>
-						<div class="mb-3" id="content">
-							${dto.content}
-						</div>
-						<div class="mb-3" id="category">
-							${dto.category}
-						</div>
-                        <form action="reply" method="post">
-                            <div id="reply_id" name="com_id">${loggedInCompany.com_id}</div>
-                            <input type="hidden" name="com_community_no" value="${dto.com_community_no}">
-                            <input type="hidden" name="com_no" value="${loggedInCompany.com_no}">
-                            
-                            <textarea name="content" class="form-control"></textarea><br>
-						<button class="btn btn-jobs w-100">댓글등록</button>
-                        </form>
+							<div id="writer">
+								비공개<br>${dto.s_reg_date}</div>
+						</c:if>
+					</div>
+					<div class="mb-3" id="content">${dto.content}</div>
+					<div class="mb-3" id="category">${dto.category}</div>
+					<c:if test="${ loggedInCompany ne null}">
+						<form action="reply" method="post">
+							<div id="reply_id" name="com_id">${loggedInCompany.com_id}</div>
+							<input type="hidden" name="com_community_no"
+								value="${dto.com_community_no}"> <input type="hidden"
+								name="com_no" value="${loggedInCompany.com_no}">
 
-                        <hr>
-                        <div id="replyList">
-                            <table>
-                                <c:forEach var="reply" items="${rList}">
-                                <tr>
-                                    <td>${reply.content}</td>
-                                    <td>${reply.com_id}</td>
-                                    <td>${reply.s_regdate} 
-                                        <c:if test="${reply.com_id eq loggedInCompany.com_id}">
-                                            <a href="delete_reply?no=${reply.com_reply_no}&community_no=${dto.com_community_no}">X</a> 
-                                        </c:if>
-                                    </td>
-                                </tr>
-                                </c:forEach>
+							<textarea name="content" class="form-control"></textarea>
+							<br>
+							<button class="btn btn-jobs w-100">댓글등록</button>
+						</form>
+					</c:if>
+					<hr>
+					<div id="replyList">
+						<table class="table">
+							<c:forEach var="reply" items="${rList}">
+								<tr>
+									<td>${reply.content}</td>
+									<td>${reply.com_id}</td>
+									<td>${reply.s_regdate}<c:if
+											test="${reply.com_id eq loggedInCompany.com_id}">
+											<a
+												href="delete_reply?no=${reply.com_reply_no}&community_no=${dto.com_community_no}">X</a>
+										</c:if>
+									</td>
+								</tr>
+							</c:forEach>
 
-                            </table>
+						</table>
 
-                        </div>
+					</div>
 
 
-					
+
 
 				</div>
 			</div>

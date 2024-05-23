@@ -19,6 +19,6 @@ public class Com_reply {
 	private Long com_no;
 	private String com_id;
 	private String content;
-	private Date regdate;
+	private Date reg_date;
 	private String s_regdate;
 }

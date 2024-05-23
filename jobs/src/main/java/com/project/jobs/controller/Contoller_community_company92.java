@@ -254,14 +254,16 @@ public class Contoller_community_company92 {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 		// 포맷을 적용하여 날짜 문자열로 변환
-		dto.setS_reg_date(sdf.format(dto.getReg_date()));
+		if(dto.getReg_date()!=null) {
+			dto.setS_reg_date(sdf.format(dto.getReg_date()));
+			}
 		dto.setCom_id(dao.com_id(dto.getCom_no()));
 		model.addAttribute("dto", dto);
 
-		List<Com_reply> rList = dao.replyListByComNo(Long.parseLong(no));
+		List<Com_reply> rList = dao.replyByNo(no);
 		for (Com_reply reply : rList) {
 			reply.setCom_id(dao.com_id(reply.getCom_no()));
-			reply.setS_regdate(sdf.format(reply.getRegdate()));
+			reply.setS_regdate(sdf.format(reply.getReg_date()));
 		}
 		model.addAttribute("rList", rList);
 
@@ -271,7 +273,8 @@ public class Contoller_community_company92 {
 	@RequestMapping("/reply")
 	public String com_reply(Com_reply com_reply) {
 		dao.insert_reply(com_reply);
-		return "redirect:detail?no=" + com_reply.getCom_community_no();
+		String result = "redirect:detail?no="+com_reply.getCom_community_no();
+		return result;
 	}
 
 	@RequestMapping("/delete_reply")

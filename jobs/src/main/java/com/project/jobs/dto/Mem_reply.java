@@ -15,6 +15,6 @@ public class Mem_reply {
 	private Long mem_no;
 	private String mem_id;
 	private String content;
-	private Date regdate;
+	private Date reg_date;
 	private String s_regdate;
 }

@@ -31,8 +31,9 @@
 			<div class="col-12">
 				<div class="border p-3">
 					<h1>게시글 전체 방(기업)</h1>
-
+					<c:if test="${loggedInCompany ne null }">
 					<a href="write_form">게시글 작성하기</a><br>
+					</c:if>
 					<form action="list" method="post">
 						<label for="" class="form-label">카테고리</label> <select
 							class=" form-select" name="category">

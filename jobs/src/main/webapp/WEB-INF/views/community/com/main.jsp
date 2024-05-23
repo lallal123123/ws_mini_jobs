@@ -121,7 +121,7 @@ display: inline-block;
 						<span>
 							<div>
 								<div id="categoryName">
-									${category } <a href="listC?category=${category }"> 더보기> </a>
+									${category } <a href="list?category=${category }"> 더보기> </a>
 								</div>
 
 								<table class="table">

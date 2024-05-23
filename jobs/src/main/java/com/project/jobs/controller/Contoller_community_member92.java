@@ -37,6 +37,7 @@ public class Contoller_community_member92 {
 	@RequestMapping("/main")
 	public String main(Model model, @RequestParam(name = "category", required = false) String category,
 			HttpSession session) {
+		
 		Long cnt = dao.countAll();
 		List<Mem_community> hList = dao.hotList(0L, 5L);
 		for (Mem_community dto : hList) {
@@ -253,14 +254,16 @@ public class Contoller_community_member92 {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 		// 포맷을 적용하여 날짜 문자열로 변환
+		if(dto.getReg_date()!=null) {
 		dto.setS_reg_date(sdf.format(dto.getReg_date()));
+		}
 		dto.setMem_id(dao.mem_id(dto.getMem_no()));
 		model.addAttribute("dto", dto);
 
-		List<Mem_reply> rList = dao.replyListByMemNo(Long.parseLong(no));
+		List<Mem_reply> rList = dao.replyByNo(no);
 		for (Mem_reply reply : rList) {
 			reply.setMem_id(dao.mem_id(reply.getMem_no()));
-			reply.setS_regdate(sdf.format(reply.getRegdate()));
+			reply.setS_regdate(sdf.format(reply.getReg_date()));
 		}
 		model.addAttribute("rList", rList);
 

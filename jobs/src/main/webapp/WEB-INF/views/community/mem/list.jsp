@@ -13,12 +13,12 @@
 	crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
 <style>
-
 #searchBox {
-    text-align: center;
+	text-align: center;
 }
+
 #pageBox {
-    text-align: center;
+	text-align: center;
 }
 </style>
 </head>
@@ -31,17 +31,19 @@
 			<div class="col-12">
 				<div class="border p-3">
 					<h1>게시글 전체 방(개인)</h1>
-
-					<a href="write_form">게시글 작성하기</a><br>
+					<c:if test="${loggedInMember ne null }">
+						<a href="write_form">게시글 작성하기</a>
+						<br>
+					</c:if>
 					<form action="list" method="post">
-						<label for="" class="form-label">카테고리</label> 
-							<select class="form-control" name="category">
-								<option value="">선택해주세요</option>
-								<c:forEach var="dto" items="${clist}">									
-									<option class="option_category" value="${dto.ch_category}">${dto.ch_category}</option>
-								</c:forEach>
-							</select>
-							<button class="btn btn-light">보기</button>
+						<label for="" class="form-label">카테고리</label> <select
+							class="form-control" name="category">
+							<option value="">선택해주세요</option>
+							<c:forEach var="dto" items="${clist}">
+								<option class="option_category" value="${dto.ch_category}">${dto.ch_category}</option>
+							</c:forEach>
+						</select>
+						<button class="btn btn-light">보기</button>
 					</form>
 					<table class="table">
 						<thead>
@@ -131,9 +133,9 @@
 							<button id="nextBtn" class="btn btn-secondary" onclick="next()">[다음]</button>
 						</c:if>
 					</div>
-					<div id="searchBox" >
-						<form action="list"  method="post" >
-							<input type="text"   style="width: 250px;" name="search">
+					<div id="searchBox">
+						<form action="list" method="post">
+							<input type="text" style="width: 250px;" name="search">
 							<button class="btn btn-light">내용검색</button>
 						</form>
 					</div>
