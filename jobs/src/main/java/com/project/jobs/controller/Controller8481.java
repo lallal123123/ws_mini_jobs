@@ -75,14 +75,14 @@ public class Controller8481 {
 		
 		site_resume.setImg_url(newName);
 		site_resume.setEtc(newName1);
-		System.out.println(originName);
-		System.out.println(newName);
 		
-		File file = new File(site_resume.getImg_url(), site_resume.getEtc());
 		
+		File file = new File(site_resume.getImg_url());
+		File file1 = new File(site_resume.getEtc());
+		 
 		try {
 			site_reusme_file.getImg_url().transferTo(file);
-			site_reusme_file.getEtc().transferTo(file);
+			site_reusme_file.getEtc().transferTo(file1);
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -127,7 +127,7 @@ public class Controller8481 {
 		Free_resume free_resume = new Free_resume();
 		free_resume.setR_resume_no(free_resume_file.getR_resume_no());
 		free_resume.setMem_no(free_resume_file.getMem_no());
-		System.out.println("memno" + free_resume.getMem_no());
+		//System.out.println("memno" + free_resume.getMem_no());
 		free_resume.setTitle(free_resume_file.getTitle());
 		free_resume.setUrl(free_resume_file.getUrl());
 		String originName= free_resume_file.getFileName();
