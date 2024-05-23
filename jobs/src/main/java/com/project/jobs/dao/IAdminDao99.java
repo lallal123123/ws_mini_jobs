@@ -23,5 +23,5 @@ public interface IAdminDao99 {
 	//현재날짜
 	public String getCurrentDate();
 	
-	public List<Recruit> getRecruitList_99(@Param("start") Long start, @Param("cnt") Long cnt);
+	
 }

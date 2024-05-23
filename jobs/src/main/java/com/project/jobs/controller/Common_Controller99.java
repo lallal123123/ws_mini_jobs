@@ -194,7 +194,7 @@ public class Common_Controller99 {
 		String category = request.getParameter("category");
 		
 		model.addAttribute("list", noticeDao.noticeCategory_99(category));
-		return "/common/cs_list";
+		return "/common/notice_list";
 	}
 	
 	

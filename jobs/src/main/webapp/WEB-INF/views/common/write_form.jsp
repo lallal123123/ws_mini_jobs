@@ -11,7 +11,6 @@
 <body class="d-flex flex-column h-100">
 <jsp:include page="../header.jsp"></jsp:include>
 <!-- 작업공간 영역 -->
-<a href="../cs_list_99">목록보기</a>
 <div class="container">
 <div class="row">
     <div class="col-3">
@@ -31,7 +30,6 @@
              </ul>
         </div>
     </div>
-    
     <div class="col-9">
         <div class="border p-3">
         	<form action="../write_99" method="post" onsubmit="return csRegForm()">

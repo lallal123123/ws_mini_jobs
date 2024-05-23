@@ -31,17 +31,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO cs_question (mem_no, com_no, title, content, reg_date, category, ch_private)
 		VALUES (
 			<choose>
-				<when test="com_no != null">
-					 NULL, #{com_no},
+				<when test="mem_no != null and mem_no !=''">
+					#{mem_no},
 				</when>
 				<otherwise>
-					#{mem_no}, NULL, 
+					NULL,
+				</otherwise>
+			</choose>
+			<choose>
+				<when test="com_no != null and com_no != ''">
+					#{com_no},
+				</when>
+				<otherwise>
+					NULL,
 				</otherwise>
 			</choose>
 			#{title}, #{content}, DATE(NOW()), #{category}, #{ch_private}
 		)
 	</insert>
-	
 	<delete id="deleteDao_99">
 		DELETE FROM cs_question WHERE cs_no = #{cs_no}
 	</delete>
@@ -52,7 +59,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM cs_question WHERE title LIKE concat('%', #{searchData}, '%') order by cs_no DESC
 	</select>
 	<select id="csCategory_99">
-		SELECT * FROM cs_question WHERE category = #{category}
+		SELECT * FROM cs_question 
+		<choose>
+			<when test="category == ''">
+				
+			</when>
+			<otherwise>
+				WHERE category = #{category}
+			</otherwise>
+		</choose>
+		
 	</select>
 	
 	<!-- 문의 답변 -->

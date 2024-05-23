@@ -39,5 +39,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getMemInterestSmallList99">
 		 select * from Mem_interest where com_no =#{com_no} LIMIT #{start}, #{cnt}
 	</select>
+	<select id="getRecruitStatusList99">
+		SELECT *,
+			case when deadline_date >= CURDATE() then '공고중' ELSE '공고마감' END AS recruitStatus
+		FROM recruit r
+		WHERE r.com_no = #{com_no}
+		LIMIT #{start}, #{cnt}
+	</select>
+	<select id="getRecruitList_99">
+		SELECT * FROM recruit LIMIT #{start}, #{cnt}
+	</select>
 	
 </mapper>

@@ -48,7 +48,7 @@
     
     <div class="col-9">
         <div class="border p-3">
-        	<form action="../notice_modify_99?notice_no=${dto.notice_no }" method="post" onsubmit="return noticeRegForm()">
+        	<form action="/admin99/notice_modify_99?notice_no=${dto.notice_no }" method="post" onsubmit="return noticeRegForm()">
 		    	<h3 style="text-align:center;">공지사항 작성</h3>
 	      		<div>공지사항 종류(필수)</div>
 			  	<select class="form-select" name="category" id="category">

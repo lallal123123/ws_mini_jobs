@@ -1,5 +1,7 @@
 package com.project.jobs.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +49,7 @@ public class MainPage_controller99 {
 		Company company = (Company) session.getAttribute("loggedInCompany");
 		Long com_no = company.getCom_no();
 		
-		List<Recruit> recruitList = adminDao.getRecruitList_99(0L, 3L);
+		List<Recruit> recruitList = mainpageDao.getRecruitStatusList99(com_no, 0L, 3L);
 		System.out.println(recruitList);
 
 		for (int i = 0; i < recruitList.size(); i++) {
@@ -58,9 +60,14 @@ public class MainPage_controller99 {
 
 			recruit.setMem_count(memCount);
 		}
+		
+		LocalDate now = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String today = now.format(formatter);
+		
 		model.addAttribute("recruitList", recruitList);
 		model.addAttribute("company", company);
-		
+		model.addAttribute("today", today);
 		//공고별 지원자 리스트 가져오기
 		 List<RecruitByMemResume> memRecruitList = mainpageDao.getMemRecruitSmallList_99(com_no, 0L, 3L);
 		model.addAttribute("memRecruitList", memRecruitList);
@@ -90,6 +97,7 @@ public class MainPage_controller99 {
 		return "/company/mypage/mypage3854";
 	}
 	
+	
 	@RequestMapping("/mem_recruit_list99")
 	public String memRecruitList99(Model model, HttpSession session) {
 		Company company = (Company) session.getAttribute("loggedInCompany");
@@ -100,32 +108,10 @@ public class MainPage_controller99 {
 		return "/company/mypage/mem_recruit_list99";
 	}
 	
-	@RequestMapping("/memInterestList")
-	public String memInterestList(HttpSession session,Model model) {
-		Company com = (Company)session.getAttribute("loggedInCompany");
-		List<Mem_interest> milist =dao.mem_interestList(com.getCom_no());
-		List<Member>  mlistAll = dao.memberListAll();
-		List<Site_resume> srlistAll =dao.site_resumeListLast1();
-		for(Mem_interest dto : milist){
-			for(Member m : mlistAll) {
-				if(dto.getMem_no() == m.getMem_no()) {
-					dto.setMem_name(m.getMem_name());
-					dto.setMem_email(m.getMem_email());
-					dto.setMem_birth(m.getMem_birth());
-					dto.setMem_gender(m.getMem_gender());
-				}
-			}
-			for(Site_resume s : srlistAll) {
-				if(dto.getMem_no() == Long.parseLong(s.getMem_no())) {
-					dto.setHope_job(s.getHope_job());
-					dto.setPart(s.getPart());
-					dto.setS_resume_no(s.getS_resume_no());
-				}
-			}
-			
-		}
-		model.addAttribute("list", milist);
-		return "/mInterest/memberInterestList";
+	@RequestMapping("/delete")
+	public String delete(Mem_interest mem_interest) {
+		dao.deleteMemInterest(mem_interest);
+		return "redirect:/mainPage/com_mainPage";
 	}
 	
 	

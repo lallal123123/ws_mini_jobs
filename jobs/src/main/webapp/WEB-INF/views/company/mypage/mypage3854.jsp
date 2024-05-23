@@ -67,6 +67,7 @@
 	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
 	    	<a href="" class="nav-link text-black fw-bolder">My 홈</a>
 	    </p>
+	    <a class="btn btn-light" href="/company/mypage/info_write_form">기업소개 작성</a>
 	    <!-- 진행중인 공고 시작 -->
 	    <h3>진행중인 공고</h3>
 	    <a href="/company/mypage/getComRecruitList">더보기 ></a>
@@ -84,13 +85,13 @@
 	        		</div>
 	        		<div class="col-md-3 d-flex flex-row-reverse">
 	        			<c:choose>
-					        <c:when test="${recruit.mem_count ne 0}">
-					         	<a class="btn btn-secondary" href="">공고중</a>
-					        </c:when>         
-					        <c:otherwise>
-					        	<a class="btn btn-jobs me-2" href="/company/mypage/recruit_modify_form?recruit_no=${recruit.recruit_no }">공고마감</a>
-					        </c:otherwise>
-					    </c:choose> 
+				        	<c:when test="${recruit.deadline_date < today}">
+				        		<a class="btn btn-secondary" href="#">공고마감하기</a>
+				        	</c:when>
+				        	<c:otherwise>
+				        		<a class="btn btn-secondary" href="/company/mypage/updateDeadlineDate?recruit_no=${recruit.recruit_no }">공고중</a>
+				        	</c:otherwise>
+			        	</c:choose> 
 	        		</div>
 	        	</div>
 	        </div>
@@ -133,22 +134,7 @@
 	        			
 	        		</div>
 	        		<div class="col-md-3 d-flex flex-row-reverse">
-	        		<div>
-						찜하기
-						${memInterestList.mem_interest_no }
-						<div class="heartIcon">
-							<c:if test="${memInterestList.mem_interest_no eq 1 }">
-								<a
-									href="/interest92/mem_notInterest?mem_no=${resume.mem_no}&recruit_no=${recruit_no}"><i
-									class="bi bi-heart-fill 1"></i></a>
-							</c:if>
-							<c:if test="${memInterestList.mem_interest_no eq 0 }">
-								<a
-									href="/interest92/mem_interest?mem_no=${resume.mem_no}&recruit_no=${recruit_no}"><i
-									class="bi bi-heart 0"></i></a>
-							</c:if>
-						</div>
-					</div>
+						<a href="/mainPage/delete?mem_no=${memInterestList.mem_no }&com_no=${company.com_no }"><i class="bi bi-heart-fill 1"></i></a>
 	        		</div>
 	        	</div>
 	        </div>
