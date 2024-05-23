@@ -37,7 +37,7 @@
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 <!-- 작업공간 영역 -->
 <div class="container">
- 	<h4>기업 리스트</h4>
+    <h4>기업 리스트</h4>
     <table class="table jobs-table text-center table-hover mt-3 mb-5">
         <thead>
             <tr>
