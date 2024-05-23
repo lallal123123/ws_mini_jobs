@@ -12,7 +12,7 @@
 <body class="d-flex flex-column h-100">
 <jsp:include page="../../header.jsp"></jsp:include>
 <!-- 작업공간 영역 -->
-<div class="container">
+<div class="container-fluid">
 <div class="row">
      <div class="col-3">
         <div class="border p-3 rounded">
@@ -53,56 +53,98 @@
         </div>
     </div>
     <div class="col-9">
-	    <h1>기업정보수정</h1>
-    <form action="${pageContext.request.contextPath}/companies/updateProfile" method="post">
-        <div>
-            <label for="com_id">아이디:</label>
-            <input type="text" id="com_id" name="com_id" value="${company.com_id}" readonly/>
-        </div>
-        <div>
-            <label for="com_pw">비밀번호:</label>
-            <input type="password" id="com_pw" name="com_pw" value="${company.com_pw}" />
-        </div>
-        <div>
-            <label for="com_name">기업명:</label>
-            <input type="text" id="com_name" name="com_name" value="${company.com_name}" />
-        </div>
-        <div>
-            <label for="com_size">기업규모:</label>
-            <input type="text" id="com_size" name="com_size" value="${company.com_size}" />
-        </div>
-        <div>
-            <label for="com_ceo">대표자:</label>
-            <input type="text" id="com_ceo" name="com_ceo" value="${company.com_ceo}" />
-        </div>
-        <div>
-            <label for="com_addr">주소:</label>
-            <input type="text" id="com_addr" name="com_addr" value="${company.com_addr}" />
-        </div>
-        <div>
-            <label for="com_companynum">사업자번호:</label>
-            <input type="text" id="com_companynum" name="com_companynum" value="${company.com_companynum}" />
-        </div>
-        <div>
-            <label for="com_tel">전화번호:</label>
-            <input type="text" id="com_tel" name="com_tel" value="${company.com_tel}" />
-        </div>
-        <div>
-            <label for="com_email">Email:</label>
-            <input type="text" id="com_email" name="com_email" value="${company.com_email}" />
-        </div>
-        <div>
-            <label for="com_url">홈페이지:</label>
-            <input type="text" id="com_url" name="com_url" value="${company.com_url}" />
-        </div>
-        <div>
-            <button type="submit">수정하기</button>
-        </div>
-    </form>
-       
+        <h3>기업정보수정</h3>
+        <form action="${pageContext.request.contextPath}/companies/updateProfile" method="post" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="com_id" class="form-label">아이디:</label>
+                <input type="text" id="com_id" name="com_id" class="form-control" value="${company.com_id}" readonly/>
+            </div>
+            <div class="mb-3">
+                <label for="com_pw" class="form-label">비밀번호:</label>
+                <input type="password" id="com_pw" name="com_pw" class="form-control" value="${company.com_pw}" required/>
+                <div class="invalid-feedback">
+                    비밀번호를 입력해 주세요.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="com_name" class="form-label">기업명:</label>
+                <input type="text" id="com_name" name="com_name" class="form-control" value="${company.com_name}" required/>
+                <div class="invalid-feedback">
+                    기업명을 입력해 주세요.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="com_size" class="form-label">기업규모:</label>
+                <input type="text" id="com_size" name="com_size" class="form-control" value="${company.com_size}" required/>
+                <div class="invalid-feedback">
+                    기업규모를 입력해 주세요.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="com_ceo" class="form-label">대표자:</label>
+                <input type="text" id="com_ceo" name="com_ceo" class="form-control" value="${company.com_ceo}" required/>
+                <div class="invalid-feedback">
+                    대표자를 입력해 주세요.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="com_addr" class="form-label">주소:</label>
+                <input type="text" id="com_addr" name="com_addr" class="form-control" value="${company.com_addr}" required/>
+                <div class="invalid-feedback">
+                    주소를 입력해 주세요.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="com_companynum" class="form-label">사업자번호:</label>
+                <input type="text" id="com_companynum" name="com_companynum" class="form-control" value="${company.com_companynum}" required/>
+                <div class="invalid-feedback">
+                    사업자번호를 입력해 주세요.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="com_tel" class="form-label">전화번호:</label>
+                <input type="text" id="com_tel" name="com_tel" class="form-control" value="${company.com_tel}" required/>
+                <div class="invalid-feedback">
+                    전화번호를 입력해 주세요.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="com_email" class="form-label">Email:</label>
+                <input type="email" id="com_email" name="com_email" class="form-control" value="${company.com_email}" required/>
+                <div class="invalid-feedback">
+                    이메일을 입력해 주세요.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="com_url" class="form-label">홈페이지:</label>
+                <input type="url" id="com_url" name="com_url" class="form-control" value="${company.com_url}" required/>
+                <div class="invalid-feedback">
+                    홈페이지 주소를 입력해 주세요.
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">수정하기</button>
+            </div>
+        </form>
     </div>
- </div>
-</div>
+    
+    <script>
+        // Bootstrap의 폼 유효성 검사를 활성화하는 스크립트
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
 <!-- 작업공간 영역 끝 -->
 <jsp:include page="../../footer.jsp"></jsp:include>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
