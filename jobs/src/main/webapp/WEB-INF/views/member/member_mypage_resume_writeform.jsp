@@ -88,14 +88,14 @@
     					</div>
     					<div class="col-md-4 mb-3">
         					<label for="" class="form-label">취득일자</label>
-        					<input type="date" class="form-control" name="get_date" placeholder="취득일">
+        					<input type="date" class="form-control" name="get_date"  id="get_date" placeholder="취득일">
     					</div>
 					</div>
 					<div><Strong> 경력사항</Strong> </div><br>
 					<div class="row">
     					<div class="col-md-6 mb-3">
         					<label for="" class="form-label">재직기관</label>
-        					<input type="text" class="form-control" name="company" placeholder="기관명">
+        					<input type="text" class="form-control" name="company" placeholder="회사명">
     					</div>
     					<div class="col-md-6 mb-3">
         					<label for="" class="form-label">주요업무</label>
@@ -106,12 +106,12 @@
 					<div class="row">
     					<div class="col-md-6 mb-3">
         					<label for="" class="form-label">입사일</label>
-        					<input type="date" class="form-control" name="car_join_date" placeholder="0000-00-00">
+        					<input type="date" class="form-control" name="car_join_date" id="car_join_date" placeholder="0000-00-00">
     					</div>
     					
     					<div class="col-md-6 mb-3">
         					<label for="" class="form-label">퇴사일</label>
-        					<input type="date" class="form-control" name="quit_date" placeholder="0000-00-00">
+        					<input type="date" class="form-control" name="quit_date" id="quit_date" placeholder="0000-00-00">
     					</div>
 					</div>
 					<div><strong>학력사항</strong></div><br>
@@ -132,11 +132,11 @@
 						<div class="row">
     						<div class="col-md-4 mb-3">
         						<label for="" class="form-label">입학일 </label>
-        						<input type="date" class="form-control" name="edu_join_date" placeholder="0000-00-00">
+        						<input type="date" class="form-control" name="edu_join_date" id="edu_join_date" placeholder="0000-00-00">
     						</div>
     						<div class="col-md-4 mb-3">
         						<label for="" class="form-label">졸업일</label>
-        						<input type="date" class="form-control" name="graduation_date" placeholder="0000-00-00">
+        						<input type="date" class="form-control" name="graduation_date" id="graduation_date" placeholder="0000-00-00">
     						</div>
     						<div class="col-md-4 mb-3">
                  				<label for="" class="form-label">졸업여부</label>
@@ -205,11 +205,41 @@
 	   <script>
 		document.getElementById('resumeForm').addEventListener('submit', function(event) {
 			var gradesInput = document.getElementById('grades');
+			var getDateInput = document.getElementById('get_date');
+			var carJoinDateInput = document.getElementById('car_join_date');
+			var quitDateInput = document.getElementById('quit_date');
+			var eduJoinDateInput = document.getElementById('edu_join_date');
+			var graduationInput = document.getElementById('graduation_date');
+			
 			if (!gradesInput.value) {
 				alert('학점을 입력하세요.');
 				gradesInput.focus();
 				event.preventDefault();
+			}else if (!getDateInput.value) {
+				alert('자격증 취득일을 입력하세요.');
+				getDateInput.focus();
+				event.preventDefault();
+			}else if (!carJoinDateInput.value) {
+				alert('입사일을 입력하세요');
+				carJoinDateInput.focus();
+				event.preventDefault();
+			}else if (!quitDateInput.value) {
+				alert('퇴사일을 입력하세요');
+				quitDateInput.focus();
+				event.preventDefault();
+			}else if (!eduJoinDateInput.value) {
+				alert('입학일을 입력하세요');
+				eduJoinDateInput.focus();
+				event.preventDefault();
+			}else if (!graduationInput.value) {
+				alert('졸업일을 입력하세요');
+				graduationInput.focus();
+				event.preventDefault();
 			}
+			
+			
+			
+			
 		});
 	</script>
    
