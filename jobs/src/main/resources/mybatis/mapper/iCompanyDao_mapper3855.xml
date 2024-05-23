@@ -113,20 +113,28 @@
 		WHERE recruit_no = #{recruit_no}
 	</select>
 	
-	   <select id="getInterestMemberCount" parameterType="Long" resultType="int">
-        SELECT COUNT(*)
-        FROM com_interest
-        WHERE com_no = #{com_no} AND status = TRUE
-    </select>
-    
-     <select id="getCompaniesByPage" resultType="com.project.jobs.dto.Company">
-        SELECT * FROM company
+   <select id="getCompaniesByPage" resultType="com.project.jobs.dto.Company">
+        SELECT *
+        FROM company
+        WHERE com_no NOT IN (
+            SELECT com_no FROM com_interest WHERE mem_no = #{mem_no} AND status = FALSE
+        )
         ORDER BY com_no
         LIMIT #{pageSize} OFFSET #{offset}
     </select>
 
-    <select id="getTotalCompanyCount" resultType="int">
-        SELECT COUNT(*) FROM company
+    <select id="getTotalCompanyCount" parameterType="Long" resultType="int">
+        SELECT COUNT(*)
+        FROM company
+        WHERE com_no NOT IN (
+            SELECT com_no FROM com_interest WHERE mem_no = #{mem_no} AND status = FALSE
+        )
     </select>
+    
+    <select id="getInterestMemberCount" parameterType="Long" resultType="int">
+    SELECT COUNT(*)
+    FROM com_interest
+    WHERE com_no = #{com_no} AND status = TRUE
+</select>
 
 </mapper>

@@ -21,10 +21,9 @@ public class CompanyService3854 {
 
 	@Autowired
 	private IMemberDao3854 memberDao;
-	
 
-    @Autowired
-    private ComDetailDao3854 comDetailDao;
+	@Autowired
+	private ComDetailDao3854 comDetailDao;
 
 	public List<Company> getAllCompanies() {
 		return companyDao.getAllCompanies();
@@ -120,17 +119,14 @@ public class CompanyService3854 {
 	public Com_detail getComDetailByCompanyId(Long com_no) {
 		return comDetailDao.getComDetailByCompanyId(com_no);
 	}
-	
 
-    
-    public List<Company> findPaginated(int page, int pageSize) {
+    public List<Company> findPaginated(int page, int pageSize, Long mem_no) {
         int offset = (page - 1) * pageSize;
-        return companyDao.getCompaniesByPage(offset, pageSize);
+        return companyDao.getCompaniesByPage(offset, pageSize, mem_no);
     }
 
-   
-    public int countCompanies() {
-        return companyDao.getTotalCompanyCount();
+    public int countCompanies(Long mem_no) {
+        return companyDao.getTotalCompanyCount(mem_no);
     }
 
 }
