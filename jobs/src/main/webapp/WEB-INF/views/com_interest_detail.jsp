@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -147,6 +146,10 @@
                 <th>웹사이트</th>
                 <td>${company.com_url}</td>
             </tr>
+            <tr>
+                <th>소개글</th>
+                <td>${comDetail.introduction}</td>
+            </tr>
             <c:if test="${not empty sessionScope.loggedInMember || sessionScope.isAdmin == true}">
                 <tr>
                     <th>관심 기업 등록|해제</th>
@@ -186,4 +189,4 @@
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
-</html> 
+</html>

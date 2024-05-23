@@ -6,10 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.jobs.dao.ComDetailDao3854;
 import com.project.jobs.dao.ICompanyDao3854;
 import com.project.jobs.dao.IMemberDao3854;
+import com.project.jobs.dto.Com_detail;
 import com.project.jobs.dto.Company;
-import com.project.jobs.dto.Mem_recruit;
 import com.project.jobs.dto.Recruit;
 
 @Service
@@ -20,6 +21,10 @@ public class CompanyService3854 {
 
 	@Autowired
 	private IMemberDao3854 memberDao;
+	
+
+    @Autowired
+    private ComDetailDao3854 comDetailDao;
 
 	public List<Company> getAllCompanies() {
 		return companyDao.getAllCompanies();
@@ -103,13 +108,16 @@ public class CompanyService3854 {
 		}
 		return companyDao.getAllCompaniesWithoutNotInterested(mem_no);
 	}
-	
-	 
+
 	public List<Recruit> getJobPostingsForInterestedCompanies(Long mem_no) {
-	    return companyDao.getJobPostingsForInterestedCompanies(mem_no);
+		return companyDao.getJobPostingsForInterestedCompanies(mem_no);
 	}
-	
+
 	public int getInterestMemberCount(Long com_no) {
-        return companyDao.getInterestMemberCount(com_no);
-    }
+		return companyDao.getInterestMemberCount(com_no);
+	}
+
+	public Com_detail getComDetailByCompanyId(Long com_no) {
+		return comDetailDao.getComDetailByCompanyId(com_no);
+	}
 }

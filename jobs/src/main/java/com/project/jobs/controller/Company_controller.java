@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
+import com.project.jobs.dto.Com_detail;
 import com.project.jobs.dto.Company;
 import com.project.jobs.dto.Member;
 import com.project.jobs.dto.Recruit;
@@ -152,16 +153,19 @@ public class Company_controller {
         Member loggedInMember = (Member) session.getAttribute("loggedInMember");
         Long mem_no = loggedInMember != null ? loggedInMember.getMem_no() : null;
         Company company = companyService.getCompanyById(com_no);
+        Com_detail comDetail = companyService.getComDetailByCompanyId(com_no); // 회사 상세 정보 가져오기
+
         if (mem_no != null) {
             boolean isInterest = companyService.isInterestCompany(mem_no, com_no);
             boolean isNotInterest = companyService.isNotInterestCompany(mem_no, com_no);
             company.setInterest(isInterest);
             company.setNotInterest(isNotInterest);
         }
+
         model.addAttribute("company", company);
+        model.addAttribute("comDetail", comDetail); // 모델에 회사 상세 정보 추가
         return "com_interest_detail";
     }
-
 
     @PostMapping("/insertCompany")
     public String insertCompany(@ModelAttribute Company company) {
