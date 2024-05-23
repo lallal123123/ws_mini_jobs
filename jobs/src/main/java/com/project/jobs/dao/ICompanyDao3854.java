@@ -47,6 +47,8 @@ public interface ICompanyDao3854 {
    List<Company> getAllCompaniesWithoutNotInterested(@Param("mem_no") Long mem_no);
    List<Recruit> getJobPostingsForInterestedCompanies(@Param("mem_no") Long mem_no);
    
+   int getInterestMemberCount(Long com_no);
+   
 
    
 

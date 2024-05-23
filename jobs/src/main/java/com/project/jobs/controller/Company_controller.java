@@ -48,6 +48,13 @@ public class Company_controller {
         return companyService.getJobPostingsForInterestedCompanies(mem_no);
     }
     
+    @GetMapping("/interestMemberCount")
+    @ResponseBody
+    public int getInterestMemberCount(@RequestParam("com_no") Long com_no) {
+        return companyService.getInterestMemberCount(com_no);
+    }
+
+    
 
     /*@GetMapping("/notifications")
     public SseEmitter getNotifications(@RequestParam("mem_no") Long mem_no) {
