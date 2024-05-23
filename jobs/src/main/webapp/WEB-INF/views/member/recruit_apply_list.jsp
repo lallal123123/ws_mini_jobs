@@ -38,7 +38,7 @@
                     <c:forEach var="memRecruitApply" items="${memRecruitApplyList }">
 			        <div class="border p-3 mb-3">
 			        	<div class="row align-items-center">
-			        	<input type="hidden" id="s_recruit_no" value="${memRecruitApply.mem_recruit_no }">
+			        	<input type="hidden" id="mem_recruit_no" value="${memRecruitApply.mem_recruit_no }">
 			        		<div class="col-md-4">
 			        			<div class="fs-7 text-secondary">공고번호 : ${memRecruitApply.recruit_no } </div>
 			        			<div>[ ${memRecruitApply.com_name } ]</div>
@@ -108,6 +108,7 @@
 	function applyDelete(){
 		if(confirm("지원을 취소하시겠습니까?")){
 			location.href="/member/deleteRecruitApply?mem_recruit_no=" + mem_recruit_no.value;
+			console.log("/member/deleteRecruitApply?mem_recruit_no=" + mem_recruit_no.value);
 		}
 	}
 	</script>
