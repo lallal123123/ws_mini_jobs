@@ -26,10 +26,9 @@
         <div class="border p-3 rounded">
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
-    <h1>My Page</h1>
-        <h2>${company.com_name} 님</h2>
+        	<div class="text-center mb-2">${company.com_name} 님</div>
 
-        <a href="${pageContext.request.contextPath}/companies/editProfile">내 정보 수정</a>
+        	<a class="btn btn-jobs" href="${pageContext.request.contextPath}/companies/editProfile">내 정보 수정</a>
             	<li class="nav-item">
                 	<a href="/mainPage/com_mainPage" class="nav-link link-body-emphasis border-bottom rounded-0" aria-current="page">
                   	My 홈

@@ -33,7 +33,7 @@
 				<div class="border p-5 rounded">
 					<c:if test="${loggedInMember ne null }">
 						<a class="btn btn-info text-white float-end" href="write_form">게시글 작성하기</a>
-						<br>
+	
 					</c:if>
 					<form style="width:250px" action="list" method="post">
 						<label for="" class="form-label">카테고리</label>
