@@ -92,7 +92,7 @@ display: inline-block;
 					<div>실시간 전체글 ${cnt }개<a href="list"><button>전체글보기</button></a></div>
 					<div id="hotListAndCom">
 						<span class="top border p-3" id="hotList"> <label>HOT
-								전체 인기 글 </label> <a href="">더보기></a><br>
+								인기 글 </label> <br>
 							<hr>
 							<table id="hotListTable" class="border p-3">
 								<c:forEach var="dto" items="${ hList}">
@@ -103,7 +103,7 @@ display: inline-block;
 									</tr>
 								</c:forEach>
 							</table>
-						</span> <span class="top border p-3" id="info"> <span id="img">사진공간</span><span id="com_id">${loggedInMember.mem_id }님</span><br>
+						</span> <span class="top border p-3" id="info"> <span id="img"></span><span id="com_id">${loggedInMember.mem_id }님</span><br>
 							<a href="write_form"> <button>게시글작성</button></a><br>
 							<div>내가 작성한 글 <a href="list?mem_no=${loggedInMember.mem_no }">${cntMemWrite }개</a></div><br>
 							내가 작성한 댓글 ${cntMemReply }개
