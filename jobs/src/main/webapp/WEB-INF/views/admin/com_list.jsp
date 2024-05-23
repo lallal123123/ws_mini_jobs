@@ -53,10 +53,10 @@
         </div>
     </div>
     <div class="col-9">
-        <div class="border p-3">
-        	<h3 style="text-align:center;">기업회원 조회</h3>
+       	<h4>기업회원 조회</h4>
+        <div class="border p-5">
         	
-        	<table class="table" style="text-align:center;">
+        	<table class="table jobs-table text-center">
 			  <thead>
 			    <tr>
 			      <th scope="col">기업 번호</th>
@@ -68,7 +68,7 @@
 			  </thead>
 			  <tbody class="table-group-divider">
 				<c:forEach var="company" items="${companies}">
-                <tr>
+                <tr class="border-bottom">
                     <td>${company.com_no}</td>
                     <td><fmt:formatDate value="${company.make_date}" pattern="yyyy-MM-dd"/></td>
                     <td><a href="<c:url value='/admin/companies/${company.com_no}'/>">${company.com_id}</a></td>
