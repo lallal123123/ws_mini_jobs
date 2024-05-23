@@ -1,6 +1,7 @@
 package com.project.jobs.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import com.project.jobs.dto.Company;
 import com.project.jobs.dto.Member;
 import com.project.jobs.dto.Recruit;
 import com.project.jobs.service.CompanyService3854;
+import com.project.jobs.service.RecruitService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -26,8 +28,19 @@ public class Company_controller {
     @Autowired
     private CompanyService3854 companyService;
     
+
+    @Autowired
+    private RecruitService recruitService;
+
+    @GetMapping("/recruitDetail")
+    public String getRecruitDetail(@RequestParam("id") Long recruit_no, Model model) {
+        Recruit recruit = recruitService.getRecruitById(recruit_no);
+        model.addAttribute("recruit", recruit);
+        return "company/mypage/recruit_detail";
+    }
+    
     @GetMapping("/jobPostings")
-    public List<Recruit> getJobPostingsForInterestedCompanies(@RequestParam String mem_id) {
+    public List<Recruit> getJobPostingsForInterestedCompanies(@RequestParam Long mem_id) {
         return companyService.getJobPostingsForInterestedCompanies(mem_id);
     }
 

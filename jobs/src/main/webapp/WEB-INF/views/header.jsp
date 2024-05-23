@@ -47,7 +47,7 @@
     <div class="container">
         <div class="d-flex flex-wrap justify-content-center">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <img class="header_logo_size" src="/images/common/logo.png" alt="로고">
+                <img class="header_logo_size" src="${pageContext.request.contextPath}/images/common/logo.png" alt="로고">
             </a>
 
             <div class="ms-auto overflow-hidden">
@@ -58,7 +58,7 @@
                 <div class="float-end d-flex align-items-center">
                     <c:choose>
                         <c:when test="${not empty sessionScope.loggedInMember || not empty sessionScope.loggedInCompany}">
-                            <button class="btn btn-notification" data-bs-toggle="modal" data-bs-target="#notificationModal" onclick="loadJobPostings('${sessionScope.loggedInMember.mem_id}')">
+                            <button class="btn btn-notification" data-bs-toggle="modal" data-bs-target="#notificationModal" onclick="loadJobPostings('${sessionScope.loggedInMember.mem_no}')">
                                 <i class="bi bi-bell notification-bell"></i>
                                 <c:if test="${notificationCount > 0}">
                                     <span class="notification-count">${notificationCount}</span>
@@ -112,7 +112,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="jobPostingsBody">
-                관심 등록한 회사의 채용 공고가 등록되었습니다.
+                <!-- 관심 등록한 기업의 채용 공고가 여기에 동적으로 삽입됩니다. -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
@@ -123,31 +123,35 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></script>
 <script>
-    function loadJobPostings(mem_id) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '${pageContext.request.contextPath}/api/jobPostings?mem_id=' + encodeURIComponent(mem_id), true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var jobPostings = JSON.parse(xhr.responseText);
-                var jobPostingsBody = document.getElementById('jobPostingsBody');
-                jobPostingsBody.innerHTML = '';
+function loadJobPostings(mem_no) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '${pageContext.request.contextPath}/api/jobPostings?mem_no=' + encodeURIComponent(mem_no), true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var jobPostings = JSON.parse(xhr.responseText);
+            var jobPostingsBody = document.getElementById('jobPostingsBody');
+            jobPostingsBody.innerHTML = '';
 
-                jobPostings.forEach(function(job) {
+            if (jobPostings.length > 0) {
+                jobPostings.forEach(function(recruit) {
                     jobPostingsBody.innerHTML += `
                         <div class="card mb-2">
                             <div class="card-body">
-                                <h5 class="card-title">${job.title}</h5>
-                                <p class="card-text">${job.description}</p>
-                                <a href="${pageContext.request.contextPath}/recruit_detail.jsp?id=${job.recruit_no}" class="btn btn-primary">자세히 보기</a>
+                                <h5 class="card-title">${recruit.title}</h5>
+                               
+                                <a href="${pageContext.request.contextPath}/companies/recruitDetail?id=${recruit.recruit_no}" class="btn btn-primary">자세히 보기</a>
                             </div>
                         </div>
                     `;
                 });
+            } else {
+                jobPostingsBody.innerHTML = '<p>관심 등록한 기업의 채용 공고가 없습니다.</p>';
             }
-        };
-        xhr.send();
-    }
+        }
+    };
+    xhr.send();
+}
 </script>
 </body>
 </html>

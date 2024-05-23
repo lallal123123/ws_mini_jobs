@@ -93,13 +93,24 @@
 		LEFT JOIN com_interest ci ON c.com_no = ci.com_no AND ci.mem_no =
 		#{mem_no} AND ci.status = FALSE
 		WHERE ci.com_no IS NULL
+
 	</select>
 
-	    <select id="getJobPostingsForInterestedCompanies" parameterType="String" resultType="com.project.jobs.dto.Recruit">
-        SELECT r.*
-        FROM recruit r
-        JOIN com_interest ci ON r.com_no = ci.com_no
-        JOIN member m ON ci.mem_no = m.mem_no
-        WHERE m.mem_id = #{mem_id} AND ci.status = TRUE
-    </select>
+	<select id="getJobPostingsForInterestedCompanies" parameterType="Long"
+		resultType="com.project.jobs.dto.Recruit">
+		SELECT r.*
+		FROM recruit r
+		JOIN com_interest ci ON r.com_no = ci.com_no
+		WHERE ci.mem_no = #{mem_no}
+	</select>
+
+	<select id="getRecruitById" parameterType="Long"
+		resultType="com.project.jobs.dto.Recruit">
+		SELECT recruit_no, com_no, career, education, skill, field, pay,
+		location, working_time, rank, title, com_size, qualification, welfare,
+		seprocedure, notice, reg_date, deadline_date, p_number, mem_count
+		FROM recruit
+		WHERE recruit_no = #{recruit_no}
+	</select>
+
 </mapper>

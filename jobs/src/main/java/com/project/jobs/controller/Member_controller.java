@@ -53,12 +53,12 @@ public class Member_controller {
 		return "member/loginForm";
 	}
 
-	@GetMapping
+	/*@GetMapping
 	public String getAllMembers(Model model) {
 		List<Member> members = memberService.getAllMembers();
 		model.addAttribute("members", members);
 		return "memberList";
-	}
+	}*/
 
 	@GetMapping("/{mem_no}")
 	public String getMemberById(@PathVariable("mem_no") Long mem_no, Model model) {
