@@ -7,4 +7,6 @@ import java.util.List;
 public interface RecruitService {
     Recruit getRecruitById(Long recruit_no);
     List<Recruit> getJobPostingsForInterestedCompanies(Long mem_no);
+    
+    
 }

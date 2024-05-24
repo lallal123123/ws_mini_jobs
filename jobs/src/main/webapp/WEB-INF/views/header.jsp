@@ -58,7 +58,7 @@
                 <div class="float-end d-flex align-items-center">
                     <c:choose>
                         <c:when test="${not empty sessionScope.loggedInMember || not empty sessionScope.loggedInCompany}">
-                            <button class="btn btn-notification" data-bs-toggle="modal" data-bs-target="#notificationModal" onclick="loadJobPostings('${sessionScope.loggedInMember.mem_no}')">
+                            <button class="btn btn-notification" data-bs-toggle="modal" data-bs-target="#notificationModal">
                                 <i class="bi bi-bell notification-bell"></i>
                                 <c:if test="${notificationCount > 0}">
                                     <span class="notification-count">${notificationCount}</span>
@@ -90,7 +90,7 @@
         </div>
         <ul class="nav nav-pills nav-jobs mt-2 justify-content-end">
             <li class="nav-item"><a href="/" class="nav-link" aria-current="page">채용정보</a></li>
-            <li class="nav-item"><a onclick="preparing()" href="#" class="nav-link">공고캘린더</a></li>
+            <li class="nav-item"><a href="/calendar" class="nav-link">공고캘린더</a></li>
             <li class="nav-item"><a href="${pageContext.request.contextPath}/companies" class="nav-link">기업정보</a></li>
             <c:if test="${loggedInMember eq null && loggedInCompany eq null }">
             <li class="nav-item"><a href="${pageContext.request.contextPath}/community/member/list" class="nav-link">커뮤니티</a></li>
@@ -114,8 +114,9 @@
                 <h5 class="modal-title" id="notificationModalLabel">알림</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" id="jobPostingsBody">
-                <!-- 관심 등록한 기업의 채용 공고가 여기에 동적으로 삽입됩니다. -->
+            <div class="modal-body">
+                <p>추후 업데이트 예정입니다.</p>
+               
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
@@ -125,40 +126,5 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script>
-function preparing(){
-	alert("준비중입니다 :)");
-}
-function loadJobPostings(mem_no) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '${pageContext.request.contextPath}/companies/jobPostings?mem_no=' + encodeURIComponent(mem_no), true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var jobPostings = JSON.parse(xhr.responseText);
-            var jobPostingsBody = document.getElementById('jobPostingsBody');
-            jobPostingsBody.innerHTML = '';
-
-            if (jobPostings.length > 0) {
-                jobPostings.forEach(function(recruit) {
-                    var url = '${pageContext.request.contextPath}/company/mypage/recruitDetail?recruit_no=' + recruit.recruit_no;
-                    console.log('Generated URL:', url);  // URL 로그 추가
-                    jobPostingsBody.innerHTML += `
-                        <div class="card mb-2">
-                            <div class="card-body">
-                               
-                                <a href="${url}" class="btn btn-primary">새로운 알림</a>
-                            </div>
-                        </div>
-                    `;
-                });
-            } else {
-                jobPostingsBody.innerHTML = '<p>관심 등록한 기업의 채용 공고가 없습니다.</p>';
-            }
-        }
-    };
-    xhr.send();
-}
-</script>
 </body>
 </html>

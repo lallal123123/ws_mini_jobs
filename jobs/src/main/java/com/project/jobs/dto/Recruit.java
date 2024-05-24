@@ -29,4 +29,5 @@ public class Recruit {
     private String deadline_date;
     private int p_number; 
     private int mem_count;
+    private Company company;
 }
