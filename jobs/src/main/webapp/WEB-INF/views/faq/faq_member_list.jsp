@@ -48,10 +48,6 @@
 	    </p>
         	<h3 style="text-align:center;">FAQ</h3>
         	<div class="overflow-auto">
-		    <form class="d-flex float-end" action="/noticeSearchData_99">
-		      <input class="form-control me-2"  value="${searchData }" type="search" placeholder="제목 검색" aria-label="제목 검색" style="width: 150px;">
-		      <button class="btn btn-light" type="submit">검색</button>
-		    </form>
 		    <form class="d-flex float-start" action="../admin99/faqMemCategory_99" method="post">
 			  	<select class="form-select" name="category" id="category">
 			  	<option value="">전체보기</option>

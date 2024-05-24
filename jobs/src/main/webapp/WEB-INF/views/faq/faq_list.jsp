@@ -57,7 +57,6 @@
               </ul>
         </div>
     </div>
-<<<<<<< HEAD:jobs/src/main/webapp/WEB-INF/views/faq/faq_list.jsp
     <div class="col-9">
         <div class="border p-3">
         <p class="text-secondary d-flex">
@@ -65,10 +64,6 @@
 	    	<a href="#" class="nav-link text-black fw-bolder">FAQ 관리</a>
 	    </p>
         	<div class="overflow-auto">
-		    <form class="d-flex float-end" action="/noticeSearchData_99">
-		      <input class="form-control me-2"  value="${searchData }" type="search" placeholder="제목 검색" aria-label="제목 검색" style="width: 150px;">
-		      <button class="btn btn-light" type="submit">검색</button>
-		    </form>
 		    <form class="d-flex float-start" action="../admin99/faqCategory_99" method="post">
 			  	<select class="form-select" name="category" id="category">
 			  	<option value="">전체보기</option>

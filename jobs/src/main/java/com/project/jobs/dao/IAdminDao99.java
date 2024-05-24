@@ -36,6 +36,6 @@ public interface IAdminDao99 {
 	public Faq faqDetail(@Param("faq_no") Long faq_no);
 	//faq 일반회원 카테고리 조회
 	public List<Faq> faqMemCategory_99(@Param("category") String category);
-	
-	
+	//faq 검색
+	public List<Faq> faqSerchData_99(@Param("searchData") String searchData);
 }

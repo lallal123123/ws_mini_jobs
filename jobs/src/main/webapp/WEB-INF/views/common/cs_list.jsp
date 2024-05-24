@@ -81,7 +81,7 @@
 			      <td scope="row">${status.count }</td>
 			      <td>${list.category }</td>
 				  <c:choose>
-				  	<c:when test="${mem_no == '3' }">
+				  	<c:when test="${mem_no == '4' }">
 					  	<td><a href="../cs_detail_99?cs_no=${list.cs_no}">${list.title}</a></td>
 					</c:when>
 					<c:when test="${list.ch_private == false and list.mem_no ne mem_no}">

@@ -84,5 +84,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="faqMemCategory_99">
 		SELECT * FROM faq WHERE mem_type = 1 and category = #{category}
 	</select>
+	<select id="faqDetail">
+		SELECT * FROM faq WHERE faq_no = #{faq_no}
+	</select>
+	<select id="faqSerchData_99">
+		SELECT * FROM faq WHERE title LIKE concat('%', #{searchData}, '%') order by faq_no DESC
+	</select>
 	
 </mapper>

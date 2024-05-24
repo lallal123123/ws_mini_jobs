@@ -43,12 +43,12 @@
                 </a>
               </li> 
               <li>
-                <a href="../admin99/notice_list_99" class="nav-link active" aria-current="page">
+                <a href="../admin99/notice_list_99" class="nav-link link-body-emphasis">
                  공지사항 관리
                 </a>
               </li>
               <li>
-                <a href="../admin99/faqList" class="nav-link link-body-emphasis">
+                <a href="../admin99/faqList" class="nav-link active" aria-current="page">
                  FAQ 관리
                 </a>
               </li>
@@ -63,15 +63,15 @@
     <div class="col-9">
         <div class="border p-5">
         	<div id="category">#${dto.category }</div>
-        	<div class="fs-7 text-secondary my-2" id="writerId">작성자 | ${writer.mem_id }</div>
+        	<div class="fs-7 text-secondary my-2" id="writerId">작성자 | ${writerId.mem_id }</div>
         	<div class="fs-5 fw-bold my-3" id="title">${dto.title }</div>
         	<div class="py-3 border-top border-bottom mb-3" id="content">${dto.content }</div>
         	
-        	<c:if test="${mem_no == '4'}">
+        	<c:if test="${mem_no == '3'}">
         		<a class="btn btn-light" href="" role="button">수정</a>
         		<a class="btn btn-light" href="" role="button">삭제</a>
         	</c:if>
-        	<a class="btn btn-light" href="../admin99/notice_list_99" role="button">이전</a>
+        	<a class="btn btn-light" href="../admin99/faqList" role="button">이전</a>
         	<a class="btn btn-light" href="#" role="button">TOP</a>
         </div>
     </div>
