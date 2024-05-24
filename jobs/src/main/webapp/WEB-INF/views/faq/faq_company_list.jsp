@@ -41,13 +41,14 @@
         </div>
     </div>
     <div class="col-9">
-        <div class="border p-3">
-        <p class="text-secondary d-flex">
+    	<p class="text-secondary d-flex">
 	    	<a href="#" class="nav-link text-secondary">FAQ</a> <span class="mx-3">&gt;</span>
 	    	<a href="#" class="nav-link text-black fw-bolder">기업 회원</a>
 	    </p>
-        	<h3 style="text-align:center;">FAQ</h3>
-        	<form action="#" method="post">
+        <div class="border p-5">
+        
+			<div class="overflow-auto">
+        	<form  class="d-flex float-start" action="#" method="post">
 			  	<select class="form-select" name="category" id="category">
 			  	<option value="">전체보기</option>
 			  	<option value="회원가입·정보">회원가입·정보</option>
@@ -56,9 +57,10 @@
 			  	<option value="채용정보">채용정보</option>
 			  	<option value="기타">기타</option>
 			  	</select>
-           		<input type="submit" class="btn btn-jobs w-100" value="검색하기">
+           		<input type="submit" class="btn btn-jobs" value="검색하기">
 			</form>
-        	<table class="table">
+			</div>
+        	<table class="table jobs-table text-center mt-3">
 			  <thead>
 			    <tr>
 			      <th scope="col">번호</th>
@@ -69,7 +71,7 @@
 			  <tbody class="table-group-divider">
 			  
 			  <c:forEach var="list" items="${list }" varStatus="status">
-			  	<tr>
+			  	<tr class="border-bottom">
 			      <td scope="row">${status.count }</td>
 			      <td>${list.category }</td>
 			      <td><a href="#">${list.title }</a></td>

@@ -56,12 +56,17 @@
         </div>
     </div>
     
-    <div class="col-9">
-        <div class="border p-3">
+    <div class="col-9 mb-5">
+    	<p class="text-secondary d-flex">
+	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">&gt;</span>
+	    	<a href="#" class="nav-link text-secondary">FAQ 관리</a> <span class="mx-3">&gt;</span>
+	    	<a href="#" class="nav-link text-black fw-bolder">FAQ 작성</a>
+	    </p>
+        <div class="border p-5">
         <!-- common controller -->
         	<form action="../admin99/faqWrite" method="post" onsubmit="return faqRegForm()">
-		    	<h3 style="text-align:center;">FAQ 작성</h3>
-	      		<div>카테고리 종류(필수)</div>
+		    	
+	      		<div class="mb-1">카테고리 종류(필수)</div>
 			  	<select class="form-select" name="category" id="category">
 			  	<option value="">선택하세요</option>
 			  	<option value="회원가입·정보">회원가입·정보</option>
@@ -71,17 +76,17 @@
 			  	<option value="기타">기타</option>
 			  	</select>
 	 			<div class="mb-3">
-                	<label for="" class="form-label">제목</label>
+                	<label for="" class="form-label mt-3">제목</label>
                 	<textarea class="form-control" name="title" id="title" placeholder="제목"></textarea>
-                	<label for="" class="form-label">내용</label>
+                	<label for="" class="form-label mt-3">내용</label>
                 	<textarea class="form-control" name="content" id="content" placeholder="내용"></textarea>
            		</div>
            		<div class="mb-1">회원 유형 선택</div>
 	 			<input type="radio" value="1" name="mem_type" id="member"> 일반회원
 	 			<input class="ms-3" type="radio" value="0" name="mem_type" id="company"> 기업회원<br>
-           		<input type="submit" class="btn btn-jobs w-100" value="등록하기">
+           		<input type="submit" class="btn btn-jobs w-100 mt-3" value="등록하기">
 			</form>
-			<a class="btn btn-light" href="/admin99/faqList" role="button">이전</a>
+			<a class="btn btn-light mt-3" href="/admin99/faqList" role="button">이전</a>
         </div>
     </div>
 </div>

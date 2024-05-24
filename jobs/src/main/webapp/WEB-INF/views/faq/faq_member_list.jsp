@@ -40,13 +40,14 @@
               </ul>
         </div>
     </div>
-    <div class="col-9">
-        <div class="border p-3">
-        <p class="text-secondary d-flex">
+    <div class="col-9 mb-5">
+     <p class="text-secondary d-flex">
 	    	<a href="#" class="nav-link text-secondary">FAQ</a> <span class="mx-3">&gt;</span>
 	    	<a href="#" class="nav-link text-black fw-bolder">일반 회원</a>
 	    </p>
-        	<h3 style="text-align:center;">FAQ</h3>
+        <div class="border p-5">
+       
+        	
         	<div class="overflow-auto">
 		    <form class="d-flex float-start" action="../admin99/faqMemCategory_99" method="post">
 			  	<select class="form-select" name="category" id="category">
@@ -60,7 +61,7 @@
            		<input type="submit" class="btn btn-jobs" value="검색하기">
 			</form>
 		  	</div>
-        	<table class="table">
+        	<table class="table jobs-table text-center mt-3">
 			  <thead>
 			    <tr>
 			      <th scope="col">번호</th>
@@ -71,7 +72,7 @@
 			  <tbody class="table-group-divider">
 			  
 			  <c:forEach var="list" items="${list }" varStatus="status">
-			  	<tr>
+			  	<tr class="border-bottom">
 			      <td scope="row">${status.count }</td>
 			      <td>${list.category }</td>
 			      <td><a href="#">${list.title }</a></td>

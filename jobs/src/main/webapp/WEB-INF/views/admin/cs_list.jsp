@@ -77,7 +77,7 @@
 				  	<option value="서비스 제안·칭찬">서비스 제안·칭찬</option>
 				  	<option value="커뮤니티 관련사항">커뮤니티 관련사항</option>
 				  	</select>
-	           		<input type="submit" class="btn btn-jobs w-100" value="검색하기">
+	           		<input type="submit" class="btn btn-jobs" value="검색하기">
 				</form>
 			</div>
         	<table class="table jobs-table text-center mt-3">

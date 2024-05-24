@@ -57,17 +57,17 @@
         </div>
     </div>
     <div class="col-9 mb-5">
-        <div class="border p-3">
+        <div class="border p-5">
         	<div id="category">#${dto.category }</div>
         	<div class="fs-7 text-secondary my-2" id="writerId">작성자 | ${writerId.mem_id }</div>
         	<div class="fs-5 fw-bold my-3" id="title">${dto.title }</div>
   
         	<div class="py-3 border-top border-bottom mb-3" id="content">${dto.content }</div>
        		<a class="btn btn-light" href="../delete_99?cs_no=${dto.cs_no }" role="button">삭제</a>
-        	<div>답변 제목</div>
+        	<div class="mt-5 mb-1">답변 제목</div>
         	<div>${requestDto.title }</div>
         	<br>
-        	<div>답변 내용</div>
+        	<div class="mb-1">답변 내용</div>
         	<div>${requestDto.content }</div>
            	<br>
            	
