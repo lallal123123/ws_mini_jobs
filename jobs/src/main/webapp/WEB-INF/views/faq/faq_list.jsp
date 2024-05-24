@@ -19,40 +19,56 @@
         <div class="border p-3">
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
+              <li class="nav-item">
+                <a href="../admin99/admin_dashboard_99" class="nav-link link-body-emphasis">
+                  My home
+                </a>
+              </li>
               <li>
-                	<div class="nav-link link-body-emphasis">FAQ</div>
-              	</li>
-              	<li class="nav-item">
-	                <a href="../admin99/faqMemberList" class="nav-link active" aria-current="page">· 일반 회원</a>
-	            </li>
-	            <li class="nav-item">
-	                <a href="../admin99/faqCompanyList" class="nav-link link-body-emphasis">· 기업 회원</a>
-	            </li>
-	            <li>
-                	<div class="nav-link link-body-emphasis">고객센터</div>
-              	</li>
-            	<li class="nav-item">
-	                <a href="../cs_list_99" class="nav-link link-body-emphasis">· 문의·신고</a>
-	            </li>
-	            <li>
-                	<a href="../notice_list_99" class="nav-link link-body-emphasis">· 공지사항</a>
-              	</li>
+                <a href="/admin/members" class="nav-link link-body-emphasis">
+                 개인회원 관리
+                </a>
+              </li>
+              <li>
+                <a href="/admin/companies" class="nav-link link-body-emphasis">
+                 기업회원 관리
+                </a>
+              </li> 
+              <li>
+                <a href="../admin99/cs_list_99" class="nav-link link-body-emphasis">
+                 고객센터 관리
+                </a>
+              </li> 
+              <li>
+                <a href="../admin99/notice_list_99" class="nav-link link-body-emphasis">
+                 공지사항 관리
+                </a>
+              </li>
+              <li>
+                <a href="../admin99/faqList" class="nav-link active" aria-current="page">
+                 FAQ 관리
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link link-body-emphasis">
+                 신고 접수된 건
+                </a>
+              </li>    
               </ul>
         </div>
     </div>
     <div class="col-9">
         <div class="border p-3">
         <p class="text-secondary d-flex">
-	    	<a href="#" class="nav-link text-secondary">FAQ</a> <span class="mx-3">&gt;</span>
-	    	<a href="#" class="nav-link text-black fw-bolder">일반 회원</a>
+	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">&gt;</span>
+	    	<a href="#" class="nav-link text-black fw-bolder">FAQ 관리</a>
 	    </p>
-        	<h3 style="text-align:center;">FAQ</h3>
         	<div class="overflow-auto">
 		    <form class="d-flex float-end" action="/noticeSearchData_99">
 		      <input class="form-control me-2"  value="${searchData }" type="search" placeholder="제목 검색" aria-label="제목 검색" style="width: 150px;">
 		      <button class="btn btn-light" type="submit">검색</button>
 		    </form>
-		    <form class="d-flex float-start" action="../admin99/faqMemCategory_99" method="post">
+		    <form class="d-flex float-start" action="../admin99/faqCategory_99" method="post">
 			  	<select class="form-select" name="category" id="category">
 			  	<option value="">전체보기</option>
 			  	<option value="회원가입·정보">회원가입·정보</option>
@@ -64,6 +80,8 @@
            		<input type="submit" class="btn btn-jobs" value="검색하기">
 			</form>
 		  	</div>
+		  	<a class="btn btn-outline-primary mt-3" href="../admin99/faqWriteForm" role="button" onclick="">FAQ 글 작성하기</a>
+		  	
         	<table class="table">
 			  <thead>
 			    <tr>
@@ -78,7 +96,7 @@
 			  	<tr>
 			      <td scope="row">${status.count }</td>
 			      <td>${list.category }</td>
-			      <td><a href="#">${list.title }</a></td>
+			      <td><a href="/admin99/faqDetail_99?faq_no=${list.faq_no }">${list.title }</a></td>
 			    </tr>
 			  </c:forEach>
 			  </tbody>
