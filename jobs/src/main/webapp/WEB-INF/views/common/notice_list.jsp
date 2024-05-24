@@ -70,7 +70,7 @@
         		</c:otherwise>
         	</c:choose>
         	
-        	<table class="table jobs-table">
+        	<table class="table jobs-table text-center">
 			  <thead>
 			    <tr>
 			      <th scope="col">번호</th>

@@ -6,10 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>jobs 휴먼 클라우드 이력관리플렛폼</title>
-<a href="community/">이준형</a>
-<a href="member/index">김경민</a>
-<a href="common/index">배서원</a>
-<a href="members/index">추창민</a>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
 </head>
@@ -43,22 +39,17 @@
                </ul>
         </div>
     </div>
-    <div class="col-9">
-        <div class="border p-3">
-        	<div id="category">${dto.category }</div>
-        	<br>
-        	<div>작성자</div>
-        	<div id="writerId">${writer.mem_id }</div>
-        	<br>
-        	<div>제목</div>
-        	<div id="title">${dto.title }</div>
-        	<br>
-        	<div>내용</div>
-        	<div id="content">${dto.content }</div>
-        	<hr>
+    <div class="col-9 mb-5">
+        <div class="border p-5">
+        	<div id="category">#${dto.category }</div>
+        	<div class="fs-7 text-secondary my-2" id="writerId">작성자 | ${writer.mem_id }</div>
+        	<div class="fs-5 fw-bold my-3" id="title">${dto.title }</div>
+        	
+        	<div class="py-3 border-top border-bottom mb-3" id="content">${dto.content }</div>
+        
         	<c:if test="${writer.mem_id == user_id}">
-       			<a class="btn btn-light" href="../modify_form_99?cs_no=${dto.cs_no }" role="button">수정</a>
-       			<a class="btn btn-light" href="../delete_99?cs_no=${dto.cs_no }" role="button">삭제</a>
+       			<a class="btn btn-info text-white" href="../modify_form_99?cs_no=${dto.cs_no }" role="button">수정</a>
+       			<a class="btn btn-secondary" href="../delete_99?cs_no=${dto.cs_no }" role="button">삭제</a>
         	</c:if>
         	<c:if test="${requestDto.title != null }">
         		<div>답변 제목</div>

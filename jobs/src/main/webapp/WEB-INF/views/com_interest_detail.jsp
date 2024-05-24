@@ -90,92 +90,95 @@
     <h4>${company.com_name} 상세 정보</h4>
     <div class="row">
         <div class="border p-5 rounded mb-5">
-            <table class="table">
-                <tr>
-                    <th></th>
-                    <td><img src="/images/user/${comDetail.img_url}"></td>
-                </tr>
-                <tr>
+            <table class="table border-none-table">
+            	<c:if test="${comDetail.img_url ne null}">
+	                <tr class="border-bottom">
+	                    <td colspan="2">
+	                    	<img src="/images/user/${comDetail.img_url}">
+	                    </td>
+	                </tr>
+                </c:if>
+                <tr class="border-bottom">
                     
-                    <th>기업 번호</th>
+                    <td>기업 번호</td>
                     <td>${company.com_no}</td>
                 </tr>
-                <tr>
-                    <th>회사명</th>
+                <tr class="border-bottom">
+                    <td>회사명</td>
                     <td>${company.com_name}</td>
                 </tr>
-                <tr>
-                    <th>대표자</th>
+                <tr class="border-bottom">
+                    <td>대표자</td>
                     <td>${company.com_ceo}</td>
                 </tr>
-                <tr>
-                    <th>주소</th>
+                <tr class="border-bottom">
+                    <td>주소</td>
                     <td>${company.com_addr}</td>
                 </tr>
-                <tr>
-                    <th>사업자 번호</th>
+                <tr class="border-bottom">
+                    <td>사업자 번호</td>
                     <td>${company.com_companynum}</td>
                 </tr>
-                <tr>
-                    <th>전화번호</th>
+                <tr class="border-bottom">
+                    <td>전화번호</td>
                     <td>${company.com_tel}</td>
                 </tr>
-                <tr>
-                    <th>이메일</th>
+                <tr class="border-bottom">
+                    <td>이메일</td>
                     <td>${company.com_email}</td>
                 </tr>
-                <tr>
-                    <th>웹사이트</th>
+                <tr class="border-bottom">
+                    <td>웹사이트</td>
                     <td>${company.com_url}</td>
                 </tr>
-                <tr>
-                    <th>소개글</th>
+                <tr class="border-bottom">
+                    <td>소개글</td>
                     <td>${comDetail.introduction}</td>
                 </tr>
                 
-                <tr>
-                    <th>연금 보험</th>
+                <tr class="border-bottom">
+                    <td>연금 보험</td>
                     <td>${comDetail.pension}</td>
                 </tr>
-                <tr>
-                    <th>보상/수당/지원</th>
+                <tr class="border-bottom">
+                    <td>보상/수당/지원</td>
                     <td>${comDetail.compensation}</td>
                 </tr>
-                <tr>
-                    <th>사내 시설</th>
+                <tr class="border-bottom">
+                    <td>사내 시설</td>
                     <td>${comDetail.facilities}</td>
                 </tr>
-                <tr>
-                    <th>사내 제도/성장</th>
+                <tr class="border-bottom">
+                    <td>사내 제도/성장</td>
                     <td>${comDetail.policy}</td>
                 </tr>
-                <tr>
-                    <th>편의/여가/건강</th>
+                <tr class="border-bottom">
+                    <td>편의/여가/건강</td>
                     <td>${comDetail.convenience}</td>
                 </tr>
-                <tr>
-                    <th>업종</th>
+                <tr class="border-bottom">
+                    <td>업종</td>
                     <td>${comDetail.sectors}</td>
                 </tr>
-                <tr>
-                    <th>사원수</th>
+                <tr class="border-bottom">
+                    <td>사원수</td>
                     <td>${comDetail.p_number}</td>
                 </tr>
-                <tr>
-                    <th>설립연도</th>
+                <tr class="border-bottom">
+                    <td>설립연도</td>
                     <td>${comDetail.establishment}</td>
                 </tr>
-                <tr>
-                    <th>연혁</th>
+                <tr class="border-bottom">
+                    <td>연혁</td>
                     <td>${comDetail.history}</td>
                 </tr>
-                <tr>
-                    <th>인재상</th>
+                <tr class="border-bottom">
+                    <td>인재상</td>
                     <td>${comDetail.ideal_talent}</td>
                 </tr>
                 <c:if test="${not empty sessionScope.loggedInMember || sessionScope.isAdmin == true}">
-                    <tr>
-                        <th>관심 기업 등록|해제</th>
+                    <tr class="border-bottom">
+                        <td>관심 기업 등록 | 해제</td>
                         <td>
                             <span class="star ${company.interest ? 'interested' : ''}" onclick="toggleInterest(${company.com_no}, this)">
                                 <c:choose>
@@ -189,8 +192,8 @@
                             </span>
                         </td>
                     </tr>
-                    <tr>
-                        <th>관심 없음 기업 등록|해제</th>
+                    <tr class="border-bottom">
+                        <td>관심 없음 기업 등록 | 해제</td>
                         <td>
                             <span class="star ${company.notInterest ? 'not-interested' : ''}" onclick="toggleNotInterest(${company.com_no}, this)">
                                 <c:choose>
