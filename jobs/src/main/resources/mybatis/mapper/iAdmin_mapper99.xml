@@ -81,5 +81,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</otherwise>
 		</choose>
 	</select>
+	<select id="faqMemCategory_99">
+		SELECT * FROM faq WHERE mem_type = 1 and category = #{category}
+	</select>
 	
 </mapper>

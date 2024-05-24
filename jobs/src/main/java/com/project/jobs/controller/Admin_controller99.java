@@ -241,6 +241,14 @@ public class Admin_controller99 {
 		return "/faq/faq_admin_detail";
 	}
 	
+	@RequestMapping("/faqMemCategory_99")
+	public String faqCategoryMemList(Model model, HttpServletRequest request) {
+		String category = request.getParameter("category");
+		
+		model.addAttribute("list", adminDao.faqMemCategory_99(category));
+		return "/faq/faq_member_list";
+	}
+	
 	
 	
 }

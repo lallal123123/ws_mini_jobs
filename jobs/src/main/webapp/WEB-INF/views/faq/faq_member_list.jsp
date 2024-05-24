@@ -47,7 +47,12 @@
 	    	<a href="#" class="nav-link text-black fw-bolder">일반 회원</a>
 	    </p>
         	<h3 style="text-align:center;">FAQ</h3>
-        	<form action="#" method="post">
+        	<div class="overflow-auto">
+		    <form class="d-flex float-end" action="/noticeSearchData_99">
+		      <input class="form-control me-2"  value="${searchData }" type="search" placeholder="제목 검색" aria-label="제목 검색" style="width: 150px;">
+		      <button class="btn btn-light" type="submit">검색</button>
+		    </form>
+		    <form class="d-flex float-start" action="../admin99/faqMemCategory_99" method="post">
 			  	<select class="form-select" name="category" id="category">
 			  	<option value="">전체보기</option>
 			  	<option value="회원가입·정보">회원가입·정보</option>
@@ -56,8 +61,9 @@
 			  	<option value="채용정보">채용정보</option>
 			  	<option value="기타">기타</option>
 			  	</select>
-           		<input type="submit" class="btn btn-jobs w-100" value="검색하기">
+           		<input type="submit" class="btn btn-jobs" value="검색하기">
 			</form>
+		  	</div>
         	<table class="table">
 			  <thead>
 			    <tr>
