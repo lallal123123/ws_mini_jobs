@@ -37,7 +37,7 @@ public class Contoller_community_company92 {
 	@RequestMapping("/main")
 	public String main(Model model, @RequestParam(name = "category", required = false) String category,
 			HttpSession session) {
-		Long cnt = dao.countAll();
+		Long cnt =  dao.countAll();
 		List<Com_community> hList = dao.hotList(0L, 5L);
 		for (Com_community dto : hList) {
 			dto.setCom_id(dao.com_id(dto.getCom_no()));
