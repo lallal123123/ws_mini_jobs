@@ -57,7 +57,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-9">
+    <div class="col-9 mb-5">
     	<div class="border p-3">
     	<p class="text-secondary d-flex">
 	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">&gt;</span>
