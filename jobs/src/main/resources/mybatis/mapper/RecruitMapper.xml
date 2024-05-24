@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.jobs.dao.RecruitMapper">
+
+    <resultMap id="RecruitResultMap" type="com.project.jobs.dto.Recruit">
+        <id property="recruit_no" column="recruit_no"/>
+        <result property="com_no" column="com_no"/>
+        <result property="career" column="career"/>
+        <result property="education" column="education"/>
+        <result property="skill" column="skill"/>
+        <result property="field" column="field"/>
+        <result property="pay" column="pay"/>
+        <result property="location" column="location"/>
+        <result property="working_time" column="working_time"/>
+        <result property="rank" column="rank"/>
+        <result property="title" column="title"/>
+        <result property="com_size" column="com_size"/>
+        <result property="qualification" column="qualification"/>
+        <result property="welfare" column="welfare"/>
+        <result property="seprocedure" column="seprocedure"/>
+        <result property="notice" column="notice"/>
+        <result property="reg_date" column="reg_date"/>
+        <result property="deadline_date" column="deadline_date"/>
+        <result property="p_number" column="p_number"/>
+        <result property="mem_count" column="mem_count"/>
+        <association property="company" javaType="com.project.jobs.dto.Company">
+            <id property="com_no" column="com_no"/>
+            <result property="com_id" column="com_id"/>
+            <result property="com_name" column="com_name"/>
+            <result property="com_size" column="com_size"/>
+            <result property="com_ceo" column="com_ceo"/>
+            <result property="com_addr" column="com_addr"/>
+            <result property="com_companynum" column="com_companynum"/>
+            <result property="com_tel" column="com_tel"/>
+            <result property="com_email" column="com_email"/>
+            <result property="com_url" column="com_url"/>
+            <result property="make_date" column="make_date"/>
+        </association>
+    </resultMap>
+
+    <select id="getAllRecruits" resultMap="RecruitResultMap">
+        SELECT r.*, c.*
+        FROM recruit r
+        JOIN company c ON r.com_no = c.com_no
+    </select>
+
+</mapper>
+

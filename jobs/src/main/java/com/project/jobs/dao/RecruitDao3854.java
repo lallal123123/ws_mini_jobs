@@ -10,9 +10,9 @@ import java.util.List;
 public interface RecruitDao3854 {
     @Select("SELECT * FROM recruit WHERE recruit_no = #{recruit_no}")
     Recruit getRecruitById(Long recruit_no);
-
-    @Select("SELECT r.* FROM recruit r JOIN com_interest ci ON r.com_no = ci.com_no WHERE ci.mem_no = #{mem_no}")
-    List<Recruit> getJobPostingsForInterestedCompanies(@Param("mem_no") Long mem_no);
+    @Select("SELECT r.*, c.* FROM recruit r JOIN company c ON r.com_no = c.com_no")
+    List<Recruit> getAllRecruits();
+	List<Recruit> getJobPostingsForInterestedCompanies(Long mem_no);
     
     
 }
