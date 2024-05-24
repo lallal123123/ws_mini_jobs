@@ -16,12 +16,12 @@ public class CommunityTest {
 	public void test1(){
 		for(int i =0 ; i < 200 ; i++) {
 		Mem_community mc = new Mem_community();
-		mc.setMem_id("3번아이디");
+		mc.setMem_id("jun");
 		mc.setCategory("자유글");
 		mc.setMem_no(1L);
-		mc.setContent(i+"내용");
+		mc.setContent(i+"게시글 내용입니다.");
 		mc.setSecret(0);
-		mc.setTitle(i+"제목");
+		mc.setTitle(i+"제목 입니다.");
 		dao.write92(mc);
 		}
 	}
