@@ -22,8 +22,13 @@
 			<!-- 여긴 내용 -->
 
 			<div class="col-9">
+				<p class="text-secondary d-flex">
+                        <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
+                        <a href="#" class="nav-link text-secondary">이력서</a> <span class="mx-3">></span>
+                        <a href="" class="nav-link text-black fw-bolder">자유 이력서 작성</a>
+                    </p>
 				<div class="border p-3">
-
+				
 				<form action="member_mypage_resume_free" id="myButton" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="mem_no" value="${member.mem_no}">
 					<div class="mb-3">

@@ -87,7 +87,7 @@
                     <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
                     <a href="" class="nav-link text-black fw-bolder">관심기업 리스트</a>
                 </p>
-                <div class="border p-3 mb-3  rounded">
+                <div class="border p-5 mb-3  rounded">
                 
                 <div class="row">
                 <div class="col-12">

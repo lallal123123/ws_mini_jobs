@@ -18,10 +18,12 @@
             <jsp:include page="../mypagesidebar.jsp"></jsp:include>
             
             <div class="col-9">
+            		<p class="text-secondary d-flex">
+                        <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
+                        <a href="" class="nav-link text-black fw-bolder">스크랩한 공고 리스트</a>
+                    </p>
         
                  <div class="border p-5 rounded">
-
-                    
                     <!-- 검색창 -->
                     <!-- <div id="searchBox" >
                         <form action="siteresumesearch" method="post" placeholder="제목을 입력해주세요..">

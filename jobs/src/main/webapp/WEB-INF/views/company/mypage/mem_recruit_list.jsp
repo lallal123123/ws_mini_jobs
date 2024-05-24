@@ -24,7 +24,7 @@
         <div class="border p-3 rounded">
             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
-        	<div class="text-center mb-2">${company.com_name} 님</div>
+        	<div class="text-center mb-2">${sessionScope.loggedInCompany.com_name} 님</div>
 
         	<a class="btn btn-jobs" href="${pageContext.request.contextPath}/companies/editProfile">내 정보 수정</a>
             	<li class="nav-item">
@@ -82,23 +82,25 @@
 									<div class="fs-5 fw-bold w-100 text_ellipsis">
 										${resume.title }</div>
 								</div>
-								<div class="col-md-5 text-secondary">${resume.mem_name }|
-									${resume.mem_gender } | ${resume.mem_birth }</div>
-								<div>
-									찜하기
-									<div class="heartIcon">
-										<c:if test="${resume.interest eq 1 }">
-											<a
-												href="/interest92/mem_notInterest?mem_no=${resume.mem_no}&recruit_no=${recruit_no}"><i
-												class="bi bi-heart-fill 1"></i></a>
-										</c:if>
-										<c:if test="${resume.interest eq 0 }">
-											<a
-												href="/interest92/mem_interest?mem_no=${resume.mem_no}&recruit_no=${recruit_no}"><i
-												class="bi bi-heart 0"></i></a>
-										</c:if>
-									</div>
+								<div class="col-md-5 text-secondary">${resume.mem_name } |
+									${resume.mem_gender } | ${resume.mem_birth }
+									<div>
+										찜하기
+										<span class="heartIcon">
+											<c:if test="${resume.interest eq 1 }">
+												<a
+													href="/interest92/mem_notInterest?mem_no=${resume.mem_no}&recruit_no=${recruit_no}"><i
+													class="bi bi-heart-fill 1"></i></a>
+											</c:if>
+											<c:if test="${resume.interest eq 0 }">
+												<a
+													href="/interest92/mem_interest?mem_no=${resume.mem_no}&recruit_no=${recruit_no}"><i
+													class="bi bi-heart 0"></i></a>
+											</c:if>
+										</span>
+									</div>	
 								</div>
+								
 								<div class="col-md-3 d-flex flex-row-reverse">
 									<a
 										href="/company/mypage/getResumeDetail?s_resume_no=${resume.s_resume_no }&mem_recruit_no=${resume.mem_recruit_no }"

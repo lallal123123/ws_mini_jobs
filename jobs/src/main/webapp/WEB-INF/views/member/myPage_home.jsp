@@ -18,6 +18,11 @@
         <jsp:include page="../mypagesidebar.jsp"></jsp:include>
         <!-- 오른쪽 컬럼 -->
         <div class="col-9">
+        <p class="text-secondary d-flex">
+                        <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
+
+                        <a href="" class="nav-link text-black fw-bolder">My 홈</a>
+                    </p>
             <div class="border p-5 rounded mb-5">
             	<div class="row">
                  <div class="col-6 border-end">
