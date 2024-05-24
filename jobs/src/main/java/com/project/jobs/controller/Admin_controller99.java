@@ -171,9 +171,11 @@ public class Admin_controller99 {
 	}
 	
 	@RequestMapping("/notice_detail_99")
-	public String noticeDetailList(Model model, HttpServletRequest request) {
+	public String noticeDetailList(Model model, HttpServletRequest request, HttpSession session) {
 		String notice_no = request.getParameter("notice_no");
 		model.addAttribute("dto",noticeDao.getnoticeDetail_99(notice_no));
+		Member member = (Member)session.getAttribute("loggedInMember");
+		model.addAttribute("mem_no", member.getMem_no());
 		return "/admin/notice_detail";
 	}
 	
@@ -207,7 +209,7 @@ public class Admin_controller99 {
 	@RequestMapping("/faqList")
 	public String faqList(Model model) {
 		model.addAttribute("list", adminDao.faqList());
-		return "/faq/faq_list";
+		return "/faq/faq_admin_list";
 	}
 	@RequestMapping("/faqMemberList")
 	public String faqMemberList(Model model) {
@@ -221,6 +223,22 @@ public class Admin_controller99 {
 		
 		model.addAttribute("list", adminDao.faqCompanyList());
 		return "/faq/faq_company_list";
+	}
+	
+	@RequestMapping("/faqCategory_99")
+	public String faqCategoryList(Model model, HttpServletRequest request) {
+		String category = request.getParameter("category");
+		
+		model.addAttribute("list", adminDao.faqCategory_99(category));
+		return "/faq/faq_admin_list";
+	}
+	
+	@RequestMapping("/faqDetail_99")
+	public String faqDetail(Model model, HttpServletRequest request) {
+		String faq_noStr = request.getParameter("faq_no");
+		Long faq_no = Long.parseLong(faq_noStr);
+		model.addAttribute("dto", adminDao.faqDetail(faq_no));
+		return "/faq/faq_admin_detail";
 	}
 	
 	

@@ -58,9 +58,11 @@
         </div>
     </div>
     <div class="col-9 mb-5">
-    	<h4>개인회원 조회</h4>
-        <div class="border p-5">
-        	
+		<div class="border p-3">
+    	<p class="text-secondary d-flex">
+	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">&gt;</span>
+	    	<a href="" class="nav-link text-black fw-bolder">개인회원 조회</a>
+	    </p>
         <table class="table jobs-table text-center">
         <thead>
             <tr>
