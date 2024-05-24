@@ -41,7 +41,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-9">
+    <div class="col-9 mb-5">
     	<p class="text-secondary d-flex">
 	    	<a href="#" class="nav-link text-secondary">고객센터</a> <span class="mx-3">></span>
 	    	<a href="" class="nav-link text-black fw-bolder">문의·신고</a>
@@ -65,7 +65,7 @@
 				</form>
 			</div>
         	<a class="btn btn-outline-primary mt-3" href="../write_Form_99" role="button" onclick="return isLoggedIn()">문의·신고 글 작성하기</a>
-        	<table class="table jobs-table">
+        	<table class="table jobs-table text-center">
 			  <thead>
 			    <tr>
 			      <th scope="col">번호</th>
