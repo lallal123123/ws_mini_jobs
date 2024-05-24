@@ -1,8 +1,6 @@
 package com.project.jobs.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,10 +22,18 @@ public class CalendarController {
 
     @GetMapping
     public String getCalendarPage() {
-        return "calendarRecruit";  // JSP 파일명과 일치해야 합니다.
+        return "calendarRecruit";  
     }
 
-
-
-
+    @GetMapping("/job-postings")
+    @ResponseBody
+    public List<Recruit> getJobPostings() {
+        List<Recruit> recruits = recruitService.getAllRecruits();
+        recruits.forEach(recruit -> {
+            System.out.println("Title: " + recruit.getTitle());
+            System.out.println("Company: " + recruit.getCompany().getCom_name());
+            System.out.println("Deadline: " + recruit.getDeadline_date());
+        });
+        return recruits;
+    }
 }
