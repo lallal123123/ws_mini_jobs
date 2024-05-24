@@ -46,17 +46,19 @@
 					<div class="mb-3">
                         <label for="" class="form-label">희망직무</label>
                         <select class="form-select" name="hope_job" onchange="toggleTitleInput()">
+                            <option value="공통">공통</option>
                             <option value="디자인">디자인</option>
                             <option value="교육">교육</option>
                             <option value="개발-데이터">개발-데이터</option>
                             <option value="공공-복지">공공-복지</option>
                             <option value="미디어-문화-스포츠">미디어-문화-스포츠</option>
+                            
                         </select>
                     </div>
 	            	
 	            	<div class="mb-3" id="titleInput" style="display: none;">
                         <label for="" class="form-label">기술스택</label>
-                        <input type="text" class="form-control" name="title" placeholder="이력서 제목">
+                        <input type="text" class="form-control" name="keyword" placeholder="보유스킬">
                     </div>
 									
 												
