@@ -17,7 +17,7 @@
         <!-- 왼쪽 컬럼 -->
         <jsp:include page="../mypagesidebar.jsp"></jsp:include>
         <!-- 오른쪽 컬럼 -->
-        <div class="col-9">
+        <div class="col-9 mb-5">
         <p class="text-secondary d-flex">
                         <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
 

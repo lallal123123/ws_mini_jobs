@@ -87,7 +87,7 @@ display: inline-block;
 	<div class="container">
 		<div class="row">
 
-			<div class="col-12">
+			<div class="col-12 mb-5">
 				<div class="border p-5 mb-5">
 					<div class="mb-3">실시간 전체글 <strong>${cnt }</strong>개<a class="btn btn-jobs" href="list">전체글보기</a></div>
 					<div id="hotListAndCom">

@@ -14,7 +14,7 @@
 	crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 	<jsp:include page="../../header.jsp"></jsp:include>
 	<!-- 작업공간 영역 -->
 	<div class="container">

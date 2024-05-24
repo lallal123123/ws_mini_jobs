@@ -1,11 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>jobs 휴먼 클라우드 이력관리플렛폼</title>
-</head>
 
 
 <footer class="py-5 bg-jobs mt-auto pt-5">
@@ -39,6 +33,3 @@
 	    </div>
     </div>
 </footer>
-
-
-</html>
