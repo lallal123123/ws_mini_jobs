@@ -56,26 +56,30 @@
         </div>
     </div>
     
-    <div class="col-9">
+    <div class="col-9 mb-5">
+    	<p class="text-secondary d-flex">
+	    	<a href="#" class="nav-link text-secondary">고객센터</a> <span class="mx-3">></span>
+	    	<a href="#" class="nav-link text-secondary">공지사항</a> <span class="mx-3">></span>
+	    	<a href="" class="nav-link text-black fw-bolder">공지사항 작성</a>
+	    </p>
         <div class="border p-3">
         	<form action="../admin99/notice_write_99" method="post" onsubmit="return noticeRegForm()">
-		    	<h3 style="text-align:center;">공지사항 작성</h3>
-	      		<div>공지사항 종류(필수)</div>
+	      		<div class="mb-1">공지사항 종류(필수)</div>
 			  	<select class="form-select" name="category" id="category">
 			  	<option value="">선택하세요</option>
 			  	<option value="공지">공지</option>
 			  	<option value="서비스 오픈">서비스 오픈</option>
 			  	</select>
 	 			<div class="mb-3">
-                	<label for="" class="form-label">제목</label>
-                	<textarea class="form-control" name="title" id="title" placeholder="제목"></textarea>
+                	<label for="" class="form-label mt-3">제목</label>
+                	<textarea class="form-control mb-3" name="title" id="title" placeholder="제목"></textarea>
                 	<label for="" class="form-label">내용</label>
                 	<textarea class="form-control" name="content" id="content" placeholder="내용"></textarea>
            		</div>
            		
            		<input type="submit" class="btn btn-jobs w-100" value="등록하기">
 			</form>
-			<a class="btn btn-light" href="../admin99/notice_list_99" role="button">이전</a>
+			<a class="btn btn-light mt-3" href="../admin99/notice_list_99" role="button">이전</a>
         </div>
     </div>
 </div>

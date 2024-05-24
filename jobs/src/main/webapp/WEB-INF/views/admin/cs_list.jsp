@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 고객센터</title>
+<title>jobs 휴먼 클라우드 이력관리플렛폼</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
 </head>
@@ -58,23 +58,25 @@
         </div>
     </div>
     <div class="col-9">
-        <div class="border p-3">
+       
         <p class="text-secondary d-flex">
 	    	<a href="#" class="nav-link text-secondary">관리자페이지</a> <span class="mx-3">&gt;</span>
 	    	<a href="" class="nav-link text-black fw-bolder">고객센터 문의신고 내역</a>
 	    </p>
-        	<h3 style="text-align:center;">고객센터</h3>
-        	<form action="../csCategory_99" method="post">
-			  	<select class="form-select" name="category" id="category">
-			  	<option value="">전체보기</option>
-			  	<option value="서비스 이용 문의">서비스 이용 문의</option>
-			  	<option value="불량정보·오류 신고">불량정보·오류 신고</option>
-			  	<option value="서비스 제안·칭찬">서비스 제안·칭찬</option>
-			  	<option value="커뮤니티 관련사항">커뮤니티 관련사항</option>
-			  	</select>
-           		<input type="submit" class="btn btn-jobs w-100" value="검색하기">
-			</form>
-        	<table class="table">
+	     <div class="border p-5">
+		     <div class="overflow-auto">
+	        	<form class="d-flex float-start"  action="../csCategory_99" method="post">
+				  	<select class="form-select" name="category" id="category">
+				  	<option value="">전체보기</option>
+				  	<option value="서비스 이용 문의">서비스 이용 문의</option>
+				  	<option value="불량정보·오류 신고">불량정보·오류 신고</option>
+				  	<option value="서비스 제안·칭찬">서비스 제안·칭찬</option>
+				  	<option value="커뮤니티 관련사항">커뮤니티 관련사항</option>
+				  	</select>
+	           		<input type="submit" class="btn btn-jobs w-100" value="검색하기">
+				</form>
+			</div>
+        	<table class="table jobs-table">
 			  <thead>
 			    <tr>
 			      <th scope="col">번호</th>
@@ -87,7 +89,7 @@
 			  <tbody class="table-group-divider">
 			  
 			  <c:forEach var="list" items="${list }" varStatus="status">
-			  	<tr>
+			  	<tr class="border-bottom">
 			      <td scope="row">${status.count }</td>
 			      <td>${list.category }</td>
 			      <td>
