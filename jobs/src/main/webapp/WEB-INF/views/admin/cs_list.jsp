@@ -57,7 +57,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-9">
+    <div class="col-9 mb-5">
         <div class="border p-3">
     	<p class="text-secondary d-flex">
 	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">&gt;</span>
@@ -79,7 +79,7 @@
 	           		<input type="submit" class="btn btn-jobs w-100" value="검색하기">
 				</form>
 			</div>
-        	<table class="table jobs-table">
+        	<table class="table jobs-table text-center mt-3">
 			  <thead>
 			    <tr>
 			      <th scope="col">번호</th>
