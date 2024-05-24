@@ -30,5 +30,9 @@ public interface IAdminDao99 {
 	public List<Faq> faqCompanyList(); 
 	//faq 전체조회
 	public List<Faq> faqList();
+	//faq 카테고리로 조회
+	public List<Faq> faqCategory_99(@Param("category") String category);
+	//faq 디테일 조회
+	public Faq faqDetail(@Param("faq_no") Long faq_no);
 	
 }

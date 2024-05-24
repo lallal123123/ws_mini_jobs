@@ -63,9 +63,12 @@
 	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">&gt;</span>
 	    	<a href="#" class="nav-link text-black fw-bolder">FAQ 관리</a>
 	    </p>
-	    	<a class="btn btn-outline-primary mt-3" href="../admin99/faqWriteForm" role="button" onclick="">FAQ 글 작성하기</a>
-        	<h3 style="text-align:center;">FAQ 목록</h3>
-        	<form action="../csCategory_99" method="post">
+        	<div class="overflow-auto">
+		    <form class="d-flex float-end" action="/noticeSearchData_99">
+		      <input class="form-control me-2"  value="${searchData }" type="search" placeholder="제목 검색" aria-label="제목 검색" style="width: 150px;">
+		      <button class="btn btn-light" type="submit">검색</button>
+		    </form>
+		    <form class="d-flex float-start" action="../admin99/faqCategory_99" method="post">
 			  	<select class="form-select" name="category" id="category">
 			  	<option value="">전체보기</option>
 			  	<option value="회원가입·정보">회원가입·정보</option>
@@ -74,8 +77,11 @@
 			  	<option value="채용정보">채용정보</option>
 			  	<option value="기타">기타</option>
 			  	</select>
-           		<input type="submit" class="btn btn-jobs w-100" value="검색하기">
+           		<input type="submit" class="btn btn-jobs" value="검색하기">
 			</form>
+		  	</div>
+		  	<a class="btn btn-outline-primary mt-3" href="../admin99/faqWriteForm" role="button" onclick="">FAQ 글 작성하기</a>
+		  	
         	<table class="table">
 			  <thead>
 			    <tr>
@@ -90,7 +96,7 @@
 			  	<tr>
 			      <td scope="row">${status.count }</td>
 			      <td>${list.category }</td>
-			      <td>${list.title }</td>
+			      <td><a href="/admin99/faqDetail_99?faq_no=${list.faq_no }">${list.title }</a></td>
 			    </tr>
 			  </c:forEach>
 			  </tbody>

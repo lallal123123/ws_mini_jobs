@@ -67,7 +67,7 @@
         	<div id="title">${dto.title }</div>
         	<div>내용</div>
         	<div id="content">${dto.content }</div>
-        	<c:if test="${mem_no == '4'}">
+        	<c:if test="${mem_no == '3'}">
         		<a class="btn btn-light" href="../admin99/notice_modify_form?notice_no=${dto.notice_no }" role="button">수정</a>
         		<a class="btn btn-light" href="../admin99/noticeDelete_99?notice_no=${dto.notice_no }" role="button">삭제</a>
         	</c:if>

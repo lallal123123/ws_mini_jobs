@@ -70,5 +70,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="faqList">
 		SELECT * FROM faq
 	</select>
+	<select id="faqCategory_99">
+		SELECT * FROM faq 
+		<choose>
+			<when test="category == ''">
+				
+			</when>
+			<otherwise>
+				WHERE category = #{category}
+			</otherwise>
+		</choose>
+	</select>
 	
 </mapper>
