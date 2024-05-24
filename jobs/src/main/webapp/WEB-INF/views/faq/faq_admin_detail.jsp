@@ -6,10 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>jobs 휴먼 클라우드 이력관리플렛폼</title>
-<a href="community/">이준형</a>
-<a href="member/index">김경민</a>
-<a href="common/index">배서원</a>
-<a href="members/index">추창민</a>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
 </head>
@@ -61,6 +57,11 @@
         </div>
     </div>
     <div class="col-9">
+    	<p class="text-secondary d-flex">
+	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">&gt;</span>
+	    	<a href="#" class="nav-link text-secondary">FAQ 관리</a> <span class="mx-3">&gt;</span>
+	    	<a href="#" class="nav-link text-black fw-bolder">FAQ 상세보기</a>
+	    </p>
         <div class="border p-5">
         	<div id="category">#${dto.category }</div>
         	<div class="fs-7 text-secondary my-2" id="writerId">작성자 | ${writerId.mem_id }</div>
