@@ -75,7 +75,7 @@
 							        </c:when>
 								</c:choose>
 								마감일 ${crmlist.deadline_date } <br /> 
-								현재 지원자 <span class="text-info fw-bold">${crmlist.mem_count }</span>
+								
 							</div>
 							
 							<div class="col-md-3 d-flex flex-row-reverse">

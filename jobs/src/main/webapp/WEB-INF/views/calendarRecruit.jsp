@@ -14,36 +14,16 @@
 <body class="d-flex flex-column h-100">
 <jsp:include page="header.jsp"></jsp:include>
 <!-- 작업공간 영역 -->
-<div class="container">
+<div class="container-sm">
     <div class="row">
-        <div class="col-3">
-            <div class="border p-3">
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <!-- 여기에 메뉴를 나열해주세요 -->
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active" aria-current="page">
-                            메뉴1
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-body-emphasis">
-                            메뉴2
-                        </a>
-                    </li>   
-                </ul>
-            </div>
-        </div>
-        <div class="col-9">
+        
+        <div class="col-12 mb-5">
             <div class="border p-3">
                 <!-- FullCalendar 영역 -->
                 <div id="calendar"></div>
             </div>
         </div>
-        <div class="col-12">
-            <div class="border p-3">
-                <!-- 추가적인 하단 영역 -->
-            </div>
-        </div>
+        
     </div>
 </div>
 <!-- 작업공간 영역 끝 -->

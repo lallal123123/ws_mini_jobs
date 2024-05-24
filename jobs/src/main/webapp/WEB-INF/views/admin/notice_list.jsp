@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html>
@@ -92,6 +93,23 @@
 			  </thead>
 			  <tbody class="table-group-divider">
 			  
+			  
+							  <!-- 리스트 크기 계산 -->
+				<c:set var="totalCount" value="${fn:length(list)}" />
+				
+				<!-- 역순 번호 매기기 -->
+				<c:forEach var="item" items="${list}" varStatus="status">
+				    <tr class="border-bottom">
+				        <td scope="row">${totalCount - status.count + 1}</td>
+				        <td>${item.category}</td>
+				        <td><a href="../admin99/notice_detail_99?notice_no=${item.notice_no}">${item.title}</a></td>
+				        <td>
+				            <fmt:formatDate value="${item.reg_date}" pattern="yyyy-MM-dd"/>
+				        </td>
+				    </tr>
+				</c:forEach>
+			  		  
+			  <!-- 
 			  <c:forEach var="list" items="${list }" varStatus="status">
 			  	<tr class="border-bottom">
 			      <td scope="row">${status.count }</td>
@@ -101,7 +119,7 @@
 			      	<fmt:formatDate value="${list.reg_date }" pattern="yyyy-MM-dd"/>
 			      </td>
 			    </tr>
-			  </c:forEach>
+			  </c:forEach> -->
 			  </tbody>
 			</table>
         </div>

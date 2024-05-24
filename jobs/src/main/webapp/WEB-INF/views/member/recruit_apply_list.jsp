@@ -69,7 +69,7 @@
 						        </c:otherwise>
 						    </c:choose> 
 						    <c:if test="${memRecruitApply.pass eq null }">
-				        		<button type="button" class="btn btn-info text-white ms-2"  onclick="applyDelete()">
+				        		<button type="button" class="btn btn-info text-white ms-2"  id = "${memRecruitApply.mem_recruit_no }" onclick="applyDelete(event)">
 					               취소하기
 					            </button>
 					        </c:if>
@@ -90,10 +90,10 @@
 	<script>
 	const mem_recruit_no = document.querySelector("#mem_recruit_no");
 
-	function applyDelete(){
+	function applyDelete(e){
 		if(confirm("지원을 취소하시겠습니까?")){
-			location.href="/member/deleteRecruitApply?mem_recruit_no=" + mem_recruit_no.value;
-			console.log("/member/deleteRecruitApply?mem_recruit_no=" + mem_recruit_no.value);
+			location.href="/member/deleteRecruitApply?mem_recruit_no=" + e.target.id;
+			
 		}
 	}
 	</script>

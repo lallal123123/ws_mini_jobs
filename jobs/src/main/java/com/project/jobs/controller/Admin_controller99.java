@@ -131,6 +131,7 @@ public class Admin_controller99 {
 		String mem_no = request.getParameter("mem_no");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
+		content = content.replace("\n", "<br>");
 		String category = request.getParameter("category");
 		noticeDao.noticeWrite_99(mem_no, title, content, category);
 		

@@ -215,6 +215,9 @@ public class Contoller_community_company92 {
 
 	@RequestMapping("/write")
 	public String com_write(Com_community com_community, HttpSession session) {
+		String content = com_community.getContent();
+		content = content.replace("\n", "<br>");
+		com_community.setContent(content);
 		Company com = (Company) session.getAttribute("loggedInCompany");
 		com_community.setCom_no(com.getCom_no());
 		dao.write92(com_community);

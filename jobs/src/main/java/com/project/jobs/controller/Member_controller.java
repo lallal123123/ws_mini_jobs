@@ -146,7 +146,7 @@ public class Member_controller {
 			member.setMem_no(loggedInMember.getMem_no());
 			memberService.updateMember(member);
 			session.setAttribute("loggedInMember", member); // 업데이트된 회원 정보를 세션에 다시 저장
-			return "redirect:/members/mypage";
+			return "redirect:/members/mypage/myhome";
 		} else {
 			return "redirect:/members/loginForm";
 		}

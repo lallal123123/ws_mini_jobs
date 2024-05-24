@@ -44,7 +44,7 @@
         	<div id="category">#${dto.category }</div>
         	<div class="fs-5 fw-bold my-3" id="title">${dto.title }</div>
         	<div class="py-3 border-top border-bottom mb-3" id="content">${dto.content }</div>
-        	<c:if test="${mem_no == '3'}">
+        	<c:if test="${mem_no == '4'}">
         		<a class="btn btn-light" href="../admin99/notice_modify_form?notice_no=${dto.notice_no }" role="button">수정</a>
         		<a class="btn btn-light" href="../admin99/noticeDelete_99?notice_no=${dto.notice_no }" role="button">삭제</a>
         	</c:if>

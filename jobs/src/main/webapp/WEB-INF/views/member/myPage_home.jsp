@@ -28,7 +28,7 @@
                  <div class="col-6 border-end">
                  	<div class="d-flex justify-content-between border-bottom pb-3 mb-3">
                     	<h5>지원공고 내역</h5>
-                    	<a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="/resume/member_mypage_resume_list">더보기 ></a>
+                    	<a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="/member/getMemRecruitApplyList">더보기 ></a>
                     </div>
                      <c:forEach var="memRecruitApply" items="${memRecruitApplyList }">
 			        <div class="border p-3 mb-3">
@@ -67,7 +67,8 @@
                 <div class="col-6">
                 	<div class="d-flex justify-content-between border-bottom pb-3 mb-3">
                     	<h5>이력서 리스트</h5>
-                    	<a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="/member/getMemRecruitApplyList">더보기 ></a>
+                    	<a class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover" href="/resume/member_mypage_resume_list">
+                    	더보기 ></a>
                     </div>
                     <c:forEach var="siteList" items="${siteList}">
                     <div class="border p-2 mb-2">

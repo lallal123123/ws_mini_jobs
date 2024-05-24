@@ -216,6 +216,9 @@ public class Contoller_community_member92 {
 	@RequestMapping("/write")
 	public String mem_write(Mem_community mem_community, HttpSession session) {
 		Member mem = (Member) session.getAttribute("loggedInMember");
+		String content = mem_community.getContent();
+		content = content.replace("\n", "<br>");
+		mem_community.setContent(content);
 		mem_community.setMem_no(mem.getMem_no());
 		dao.write92(mem_community);
 
