@@ -17,6 +17,11 @@
             <jsp:include page="../mypagesidebar.jsp"></jsp:include>
             
             <div class="col-9">
+            <p class="text-secondary d-flex">
+                        <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
+                        <a href="#" class="nav-link text-secondary">이력서</a> <span class="mx-3">></span>
+                        <a href="" class="nav-link text-black fw-bolder">이력서 리스트</a>
+                    </p>
                 <div class="border p-5 rounded mb-3">
                 <!-- 작업시작 -->     
                  
@@ -53,7 +58,7 @@
                     <div class="border p-2 mb-2">
                         <div class="row align-items-center">
                             <div class="col-md-9">
-                                <div>이력서 제목 :${freeList.title } </div>
+                                <div>이력서 제목 : ${freeList.title } </div>
                             </div>
                             
                             <div class="col-md-3 d-flex flex-row-reverse">

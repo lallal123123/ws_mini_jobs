@@ -155,7 +155,6 @@ body{
                 <div class="col-9 mb-5">
                     <p class="text-secondary d-flex">
                         <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
-                        <a href="#" class="nav-link text-secondary">내 정보 보기</a> <span class="mx-3">></span>
                         <a href="" class="nav-link text-black fw-bolder">내 정보 수정하기</a>
                     </p>
                     <div class="border p-5 rounded">

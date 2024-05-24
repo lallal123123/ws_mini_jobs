@@ -15,6 +15,10 @@
         <div class="row">
              <jsp:include page="../mypagesidebar.jsp"></jsp:include>
             <div class="col-9">
+            <p class="text-secondary d-flex">
+                        <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
+                        <a href="" class="nav-link text-black fw-bolder">지원 공고 내역</a>
+                    </p>	
                  <div class="border p-5 rounded">
                     <c:forEach var="memRecruitApply" items="${memRecruitApplyList }">
 			        <div class="border p-3 mb-3">

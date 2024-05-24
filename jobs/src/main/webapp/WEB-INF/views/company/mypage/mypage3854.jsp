@@ -61,7 +61,7 @@
         </div>
     </div>
     
-    <div class="col-9">
+    <div class="col-9 mb-5">
 	    <p class="text-secondary d-flex">
 	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
 	    	<a href="" class="nav-link text-black fw-bolder">My 홈</a>
@@ -71,7 +71,7 @@
 	    <!-- 진행중인 공고 시작 -->
 	    <div class="d-flex justify-content-between py-2 border-bottom">
 		    <h4 class="fs-5">진행중인 공고</h4>
-		    <a href="/company/mypage/getComRecruitList">더보기 ></a>
+		    <a class="link-body-emphasis" href="/company/mypage/getComRecruitList">더보기 ></a>
 	    </div>
 	    <c:forEach var="recruit" items="${recruitList }">
 	        <div class="border p-3 mb-3">
@@ -101,14 +101,14 @@
         <!-- 진행중인 공고 종료 -->
          <div class="d-flex justify-content-between py-2 border-bottom">
 		    <h4 class="fs-5">지원 구직자 현황</h4>
-		    <a href="/mainPage/mem_recruit_list99">더보기 ></a>
+		    <a class="link-body-emphasis" href="/mainPage/mem_recruit_list99">더보기 ></a>
 	    </div>
         
         <c:forEach var="memRecruit" items="${memRecruitList }">
 	        <div class="border p-3 mb-3">
 	        	<div class="row align-items-center">
 	        		<div class="col-md-4">
-	        			<div class="fs-5 fw-bold w-100 text_ellipsis">
+	        			<div class="fw-bold w-100 text_ellipsis">
 	        			<a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="/company/mypage/getResumeDetail1?s_resume_no=${memRecruit.s_resume_no }">${memRecruit.mem_name } 이력서</a>
 	        			</div>
 	        		</div>
@@ -116,7 +116,7 @@
 	        		
 	        		</div>
 	        		<div class="col-md-3 d-flex flex-row-reverse">
-	        			<a href="/company/mypage/recruitDetail?recruit_no=${memRecruit.recruit_no }">공고번호 ${memRecruit.recruit_no }</a>
+	        			<a class="btn btn-sm btn-primary" href="/company/mypage/recruitDetail?recruit_no=${memRecruit.recruit_no }">공고번호 ${memRecruit.recruit_no }</a>
 	        		</div>
 	        	</div>
 	        </div>
@@ -124,24 +124,21 @@
         
         <div class="d-flex justify-content-between py-2 border-bottom">
 		    <h4 class="fs-5">스크랩한 구직자 리스트</h4>
-		    <a href="/interest92/memInterestList">더보기 ></a>
+		    <a class="link-body-emphasis" href="/interest92/memInterestList">더보기 ></a>
 	    </div>
         <c:forEach var="memInterestList" items="${list }">
 	        <div class="border p-3 mb-3">
 	        	<div class="row align-items-center">
 	        		<div class="col-md-4">
-	        			<div class="fs-5 fw-bold w-100 text_ellipsis">
+	        			<div class="fw-bold w-100 text_ellipsis">
 	        			<a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="/company/mypage/getResumeDetail1?s_resume_no=${memInterestList.s_resume_no }">${memInterestList.mem_name }</a>
 	        			</div>
 	        		</div>
 	        		<div class="col-md-5 text-secondary">
-	        			${memInterestList.mem_birth }
+	        			출생년도 ${memInterestList.mem_birth }
 	        		</div>
-	        		<div class="col-md-5 text-secondary">
-	        			
-	        		</div>
-	        		<div class="col-md-3 d-flex flex-row-reverse">
-						<a href="/mainPage/delete?mem_no=${memInterestList.mem_no }&com_no=${company.com_no }"><i class="bi bi-heart-fill 1"></i></a>
+	        		<div class="col-md-3 d-flex flex-row-reverse ">
+						<a href="/mainPage/delete?mem_no=${memInterestList.mem_no }&com_no=${company.com_no }"><i class="bi bi-heart-fill 1"></i></a><span class="text-secondary me-1">찜하기</span>
 	        		</div>
 	        	</div>
 	        </div>

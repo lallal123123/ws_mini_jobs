@@ -64,20 +64,28 @@
 				<div class="border p-5 rounded">
 
 						<c:forEach var="dto" items="${list}">
-							<div class="border p-2 mb-2">
+							<div class="border p-4 mb-2">
 								<div class="row align-items-center">
-									<div class="col-md-4">
-										<div>이름 :${dto.mem_name }</div>
-										<div>지원분야 :${dto.part }</div>
-										<div>희망직무 :${dto.hope_job }</div>
-										<div>email :${dto.mem_email }</div>
-										<div>출생년도 :${dto.mem_birth }</div>
-										<div>성별 :${dto.mem_gender }</div>
+									<div class="col-md-8 d-flex">
+										<div class="d-flex">
+											<div class="fw-bold me-5">${dto.mem_name } </div>
+										</div>
+										<div>
+											<div class="d-flex">
+												<div class="text-secondary me-1"> ${dto.part } | </div>
+												<div class="text-secondary me-1"> ${dto.hope_job } | </div>
+												<div class="text-secondary me-1"> ${dto.mem_email } | </div>
+											</div>
+											<div class="d-flex">
+												<div class="text-secondary me-1"> 출생년도 ${dto.mem_birth } |</div>
+												<div class="text-secondary me-1"> ${dto.mem_gender }</div>
+											</div>
+										</div>
 									</div>
-									<div class="col-md-5 text-secondary">
-										<div class="col-md-3 d-flex flex-row">
-											<a class="btn btn-secondary" href="/company/mypage/getResumeDetail1?s_resume_no=${dto.s_resume_no }">이력서조회</a> 
-											<a class="btn btn-jobs me-2" href="delete?mem_no=${dto.mem_no}&com_no=${dto.com_no}">관심삭제</a>
+									<div class="col-md-4">
+										<div class="overflow-auto">
+											<a class="btn btn-secondary float-end ms-2" href="delete?mem_no=${dto.mem_no}&com_no=${dto.com_no}">관심삭제</a>
+											<a class="btn btn-info text-white float-end" href="/company/mypage/getResumeDetail1?s_resume_no=${dto.s_resume_no }">이력서조회</a> 
 										</div>
 									</div>
 								</div>

@@ -38,7 +38,12 @@
 			 
 			<!-- 여긴 내용 -->
 			
-			<div class="col-9">
+			<div class="col-9 mb-5">
+				<p class="text-secondary d-flex">
+                        <a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">></span>
+                        <a href="#" class="nav-link text-secondary">이력서</a> <span class="mx-3">></span>
+                        <a href="" class="nav-link text-black fw-bolder">사이트 이력서 작성</a>
+                    </p>
 				<div class="border p-3">
 
 				<form id="resumeForm" action="member_mypage_resume_write" method="post" enctype="multipart/form-data">
