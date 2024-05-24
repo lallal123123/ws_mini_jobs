@@ -58,11 +58,11 @@
     
     <div class="col-9 mb-5">
     	<p class="text-secondary d-flex">
-	    	<a href="#" class="nav-link text-secondary">고객센터</a> <span class="mx-3">></span>
-	    	<a href="#" class="nav-link text-secondary">공지사항</a> <span class="mx-3">></span>
+	    	<a href="#" class="nav-link text-secondary">관리자 모드</a> <span class="mx-3">></span>
+	    	<a href="#" class="nav-link text-secondary">공지사항 관리</a> <span class="mx-3">></span>
 	    	<a href="" class="nav-link text-black fw-bolder">공지사항 작성</a>
 	    </p>
-        <div class="border p-3">
+        <div class="border p-5">
         	<form action="../admin99/notice_write_99" method="post" onsubmit="return noticeRegForm()">
 	      		<div class="mb-1">공지사항 종류(필수)</div>
 			  	<select class="form-select" name="category" id="category">

@@ -6,10 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>jobs 휴먼 클라우드 이력관리플렛폼</title>
-<a href="community/">이준형</a>
-<a href="member/index">김경민</a>
-<a href="common/index">배서원</a>
-<a href="members/index">추창민</a>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet">
 </head>
@@ -20,29 +16,39 @@
 <div class="row">
     <div class="col-3">
         <div class="border p-3">
-            <ul class="nav nav-pills flex-column mb-auto">
+             <ul class="nav nav-pills flex-column mb-auto">
             <!-- 여기에 메뉴를 나열해주세요 -->
-              <li class="nav-item">
-	                <a href="../cs_list_99" class="nav-link link-body-emphasis">문의·신고</a>
+            	<li>
+                	<div class="nav-link link-body-emphasis">FAQ</div>
+              	</li>
+              	<li class="nav-item">
+	                <a href="../admin99/faqMemberList" class="nav-link link-body-emphasis">· 일반 회원</a>
+	            </li>
+	            <li class="nav-item">
+	                <a href="../admin99/faqCompanyList" class="nav-link link-body-emphasis">· 기업 회원</a>
 	            </li>
 	            <li>
-                	<a href="../notice_list_99" class="nav-link active" aria-current="page">공지사항</a>
+                	<div class="nav-link link-body-emphasis">고객센터</div>
               	</li>
-            </ul>    
+            	<li class="nav-item">
+	                <a href="../cs_list_99" class="nav-link link-body-emphasis" aria-current="page">· 문의·신고</a>
+	            </li>
+	            <li>
+                	<a href="../notice_list_99" class="nav-link active">· 공지사항</a>
+              	</li>
+            </ul>
         </div>
     </div>
     <div class="col-9">
-        <div class="border p-3">
-        	<div id="category">${dto.category }</div>
-        	<div>제목</div>
-        	<div id="title">${dto.title }</div>
-        	<div>내용</div>
-        	<div id="content">${dto.content }</div>
+        <div class="border p-5">
+        	<div id="category">#${dto.category }</div>
+        	<div class="fs-5 fw-bold my-3" id="title">${dto.title }</div>
+        	<div class="py-3 border-top border-bottom mb-3" id="content">${dto.content }</div>
         	<c:if test="${mem_no == '3'}">
         		<a class="btn btn-light" href="../admin99/notice_modify_form?notice_no=${dto.notice_no }" role="button">수정</a>
         		<a class="btn btn-light" href="../admin99/noticeDelete_99?notice_no=${dto.notice_no }" role="button">삭제</a>
         	</c:if>
-        	<hr>
+        	
         	<a class="btn btn-light" href="../notice_list_99" role="button">이전</a>
         	<a class="btn btn-light" href="#" role="button">TOP</a>
         </div>

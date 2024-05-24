@@ -56,7 +56,12 @@
              </ul>
         </div>
     </div>
-    <div class="col-9">
+    <div class="col-9 mb-5">
+    	<p class="text-secondary d-flex">
+	    	<a href="#" class="nav-link text-secondary">관리자 모드</a> <span class="mx-3">&gt;</span>
+	    	<a href="#" class="nav-link text-secondary">고객센터 관리</a> <span class="mx-3">&gt;</span>
+	    	<a href="" class="nav-link text-black fw-bolder">문의·신고 상세보기</a>
+	    </p>
         <div class="border p-5">
         	<div id="category">#${dto.category }</div>
         	<div class="fs-7 text-secondary my-2" id="writerId">작성자 | ${writer.mem_id }</div>
@@ -65,14 +70,14 @@
        		<a class="btn btn-light" href="../delete_99?cs_no=${dto.cs_no }" role="button">삭제</a>
         	<hr>
         	<form action="../admin99/cs_request_99?cs_no=${dto.cs_no }" method="post" onsubmit="return requestRegForm()">
-        	<br>
+        	
         	<div class="mb-3">
                 	<label for="" class="form-label">답변 제목</label>
                 	<textarea class="form-control" name="title" id="title" placeholder="제목을 입력해주세요..."></textarea>
-                	<label for="" class="form-label">답변 내용</label>
+                	<label for="" class="form-label mt-3">답변 내용</label>
                 	<textarea class="form-control" name="content" id="content" placeholder="명확한 답변을 해주세요..."></textarea>
            	</div>
-           	<input type="submit" class="btn btn-jobs w-100" value="등록하기">
+           	<input type="submit" class="btn btn-jobs w-100 mb-3" value="등록하기">
            	<br>
         	<a class="btn btn-light" href="../admin99/cs_list_99" role="button">이전</a>
         	<a class="btn btn-light" href="#" role="button">TOP</a>
