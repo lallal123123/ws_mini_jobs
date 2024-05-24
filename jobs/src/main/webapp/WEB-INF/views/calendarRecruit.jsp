@@ -14,10 +14,9 @@
 <body class="d-flex flex-column h-100">
 <jsp:include page="header.jsp"></jsp:include>
 <!-- 작업공간 영역 -->
-<div class="container-sm">
+<div class="container">
     <div class="row">
-        
-        <div class="col-12 mb-5">
+        <div class="col-8 mx-auto mb-5">
             <div class="border p-3">
                 <!-- FullCalendar 영역 -->
                 <div id="calendar"></div>
