@@ -18,24 +18,12 @@
     <div class="row">
         <div class="col-3">
             <div class="border p-3">
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <!-- 여기에 메뉴를 나열해주세요 -->
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active" aria-current="page">
-                            메뉴1
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link link-body-emphasis">
-                            메뉴2
-                        </a>
-                    </li>   
-                </ul>
+                <!-- 왼쪽 메뉴 영역 -->
             </div>
         </div>
         <div class="col-9">
             <div class="border p-3">
-                <!-- FullCalendar 영역 -->
+                <!-- 여기에는 메뉴에 따른 페이지를 구현해주세요 -->
                 <div id="calendar"></div>
             </div>
         </div>
@@ -60,7 +48,7 @@
                         var events = [];
                         $(data).each(function() {
                             events.push({
-                                title: this.company.com_name + '마감일',
+                                title: this.title + ' [' + this.company.com_name + '] 마감일',
                                 start: this.deadline_date,
                                 allDay: true
                             });
