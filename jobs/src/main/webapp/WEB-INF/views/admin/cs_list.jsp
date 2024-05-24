@@ -58,11 +58,12 @@
         </div>
     </div>
     <div class="col-9 mb-5">
-        <div class="border p-3">
     	<p class="text-secondary d-flex">
-	    	<a href="#" class="nav-link text-secondary">마이페이지</a> <span class="mx-3">&gt;</span>
+	    	<a href="#" class="nav-link text-secondary">관리자 모드</a> <span class="mx-3">&gt;</span>
 	    	<a href="" class="nav-link text-black fw-bolder">고객센터 관리</a>
 	    </p>
+        <div class="border p-5">
+    	
 		     <div class="overflow-auto">
 		     	<form class="d-flex float-end" action="/noticeSearchData_99">
 			      <input class="form-control me-2"  value="${searchData }" type="search" placeholder="제목 검색" aria-label="제목 검색" style="width: 150px;">

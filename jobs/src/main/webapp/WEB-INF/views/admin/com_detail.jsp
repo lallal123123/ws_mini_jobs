@@ -58,7 +58,11 @@
         </div>
     </div>
     <div class="col-9 mb-5">
-    	<h4>기업회원 상세조회</h4>
+    	<p class="text-secondary d-flex">
+	    	<a href="#" class="nav-link text-secondary">관리자 모드</a> <span class="mx-3">&gt;</span>
+	    	<a href="#" class="nav-link text-secondary">기업회원 조회</a> <span class="mx-3">&gt;</span>
+	    	<a href="" class="nav-link text-black fw-bolder">기업회원 상세 조회</a>
+	    </p>
         <div class="border p-5">
         <table class="table border-none-table">
        			<tbody>

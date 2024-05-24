@@ -61,17 +61,16 @@
         </div>
     </div>
     <div class="col-9">
-        <div class="border p-3">
-        	<div id="category">${dto.category }</div>
-        	<div>제목</div>
-        	<div id="title">${dto.title }</div>
-        	<div>내용</div>
-        	<div id="content">${dto.content }</div>
-        	<c:if test="${mem_no == '3'}">
-        		<a class="btn btn-light" href="../admin99/notice_modify_form?notice_no=${dto.notice_no }" role="button">수정</a>
-        		<a class="btn btn-light" href="../admin99/noticeDelete_99?notice_no=${dto.notice_no }" role="button">삭제</a>
+        <div class="border p-5">
+        	<div id="category">#${dto.category }</div>
+        	<div class="fs-7 text-secondary my-2" id="writerId">작성자 | ${writer.mem_id }</div>
+        	<div class="fs-5 fw-bold my-3" id="title">${dto.title }</div>
+        	<div class="py-3 border-top border-bottom mb-3" id="content">${dto.content }</div>
+        	
+        	<c:if test="${mem_no == '4'}">
+        		<a class="btn btn-light" href="" role="button">수정</a>
+        		<a class="btn btn-light" href="" role="button">삭제</a>
         	</c:if>
-        	<hr>
         	<a class="btn btn-light" href="../admin99/notice_list_99" role="button">이전</a>
         	<a class="btn btn-light" href="#" role="button">TOP</a>
         </div>
